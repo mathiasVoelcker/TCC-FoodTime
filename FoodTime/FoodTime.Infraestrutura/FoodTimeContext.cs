@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FoodTime.Dominio.Entidades;
+using FoodTime.Infraestrutura.Mapping;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -16,5 +18,14 @@ namespace FoodTime.Infraestrutura
             Configuration.LazyLoadingEnabled = false;
             Configuration.ProxyCreationEnabled = false;
         }
+
+        public DbSet<Usuario> Usuarios { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new UsuarioMapping());
+            base.OnModelCreating(modelBuilder);
+        }
+
     }
 }

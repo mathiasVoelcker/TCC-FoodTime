@@ -97,6 +97,12 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="FoodTimeContext.cs" />
     <Compile Include="IFoodTimeContext.cs" />
+    <Compile Include="Mapping\UsuarioMapping.cs" />
+    <Compile Include="Migrations\201712071717228_Criar Tabela Usuario.cs" />
+    <Compile Include="Migrations\201712071717228_Criar Tabela Usuario.Designer.cs">
+      <DependentUpon>201712071717228_Criar Tabela Usuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,7 +110,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Mapping\" />
+    <ProjectReference Include="..\FoodTime.Dominio\FoodTime.Dominio.csproj">
+      <Project>{79affa64-e09b-4ffa-87b5-a782f8cb0f34}</Project>
+      <Name>FoodTime.Dominio</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712071717228_Criar Tabela Usuario.resx">
+      <DependentUpon>201712071717228_Criar Tabela Usuario.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
