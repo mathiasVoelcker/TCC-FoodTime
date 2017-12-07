@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FoodTime.Dominio.Entidades;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace FoodTime.Infraestrutura
     {
         int SaveChanges();
 
-        //DbSet<Usuario> Usuarios { get; set; }
+        DbSet<Usuario> Usuarios { get; set; }
 
     }
 }

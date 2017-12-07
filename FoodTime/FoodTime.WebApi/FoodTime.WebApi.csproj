@@ -131,9 +131,12 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\UsuarioLoginModel.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -147,8 +150,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FoodTime.Dominio\FoodTime.Dominio.csproj">
+      <Project>{79affa64-e09b-4ffa-87b5-a782f8cb0f34}</Project>
+      <Name>FoodTime.Dominio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FoodTime.Infraestrutura\FoodTime.Infraestrutura.csproj">
+      <Project>{1a91687c-d588-4290-92a7-aac860fd6658}</Project>
+      <Name>FoodTime.Infraestrutura</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
