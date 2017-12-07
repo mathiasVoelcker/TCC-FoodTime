@@ -1,0 +1,34 @@
+.table-overflow
+{
+	max-height:130px;
+    overflow-y:auto;
+	margin-bottom:20px;
+}
+.nav-link{
+	font-weight:bold;
+	color:#1b1e21;
+}
+.bg-dark {
+    background-color: #ffc107!important;
+}
+
+.navbar-dark .navbar-nav .nav-link .nav-link {
+    color: rgba(0,0,0,.9);
+}
+
+.navbar-dark .navbar-brand {
+	font-weight:bold;
+    color: #1b1e21;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #1d2124;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav  {
+    color: #1d2124;
+}
+
+.show>.nav-link{
+	color: #1d2124;
+}
