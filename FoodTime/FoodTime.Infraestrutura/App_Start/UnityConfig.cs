@@ -1,6 +1,7 @@
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace FoodTime.Infraestrutura
 {
@@ -42,6 +43,7 @@ namespace FoodTime.Infraestrutura
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IFoodTimeContext, FoodTimeContext>(new InjectionConstructor("name=CrescerFoodTime"));
         }
     }
 }
