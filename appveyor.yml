@@ -5,12 +5,10 @@ before_build:
 image: Visual Studio 2017
 build:
   verbosity: minimal
-test:
-  assemblies:
-    only:
-      - FoodTime.UnitTest.dll
-# notifications:
-#   - provider: Slack
-#     auth_token:
-#         secure: "Tf9aa4rBrKSe4VfgZbETWWXcuvWTxZkQbhlKuZ/LS0C66QnkrS7pe1Ohzk6J33xdbJVWPkZAM342Zd/Oc8oHVQ=="
-#     channel: "food-time"
+notifications:
+- provider: Slack
+  incoming_webhook: https://hooks.slack.com/services/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
+  channel: tcc-foodtime
+  on_build_success: true
+  on_build_failure: true
+  on_build_status_changed: false
