@@ -1,6 +1,8 @@
+using FoodTime.Infraestrutura;
 using System;
 
 using Unity;
+using Unity.Injection;
 
 namespace FoodTime.WebApi
 {
@@ -42,6 +44,7 @@ namespace FoodTime.WebApi
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
+            container.RegisterType<IFoodTimeContext, FoodTimeContext>(new InjectionConstructor("name=CrescerFoodTime"));
         }
     }
 }
