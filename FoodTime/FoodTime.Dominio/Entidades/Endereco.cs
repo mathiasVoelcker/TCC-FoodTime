@@ -46,20 +46,44 @@ namespace FoodTime.Dominio.Entidades
             if (string.IsNullOrEmpty(Rua))
                 mensagens.Add("Rua não pode ser nula.");
 
+            if (Rua.Length>50)
+                mensagens.Add("Tamanho máximo 50 caracteres");
+
+            if (string.IsNullOrEmpty(Numero))
+                mensagens.Add("Numero não pode ser nulo.");
+
+            if (Numero.Length > 20)
+                mensagens.Add("Tamanho máximo 20 caracteres");
+
+            if (string.IsNullOrEmpty(Apto))
+                mensagens.Add("Apto não pode ser nulo.");
+
+            if (Apto.Length > 20)
+                mensagens.Add("Tamanho máximo 20 caracteres");
+
             if (string.IsNullOrEmpty(Bairro))
                 mensagens.Add("Bairro não pode ser nulo.");
+
+            if (Bairro.Length > 50)
+                mensagens.Add("Tamanho máximo 50 caracteres");
 
             if (string.IsNullOrEmpty(Cidade))
                 mensagens.Add("Cidade não pode ser nula.");
 
+            if (Cidade.Length > 50)
+                mensagens.Add("Tamanho máximo 50 caracteres");
+
             if (string.IsNullOrEmpty(Estado))
                 mensagens.Add("Estado não pode ser nulo.");
 
-            if (string.IsNullOrEmpty(Rua))
-                mensagens.Add("Rua não pode ser nula.");
+            if (Estado.Length > 50)
+                mensagens.Add("Tamanho máximo 50 caracteres");
 
             if (string.IsNullOrWhiteSpace(CEP))
                 mensagens.Add("CEP não pode ser nulo ou conter espaços.");
+
+            if (CEP.Length > 8)
+                mensagens.Add("Tamanho máximo 50 caracteres");
 
             if (Latitude==0)
                 mensagens.Add("Latitude não pode ser nula");

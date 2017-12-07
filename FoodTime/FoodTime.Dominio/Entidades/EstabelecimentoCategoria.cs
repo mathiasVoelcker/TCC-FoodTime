@@ -8,10 +8,10 @@ namespace FoodTime.Dominio.Entidades
 {
     public class EstabelecimentoCategoria
     {
-        public EstabelecimentoCategoria(int idEstabelecimento, int idCategoria)
+        public EstabelecimentoCategoria(Estabelecimento estabelecimento, Categoria categoria)
         {
-            IdEstabelecimento = idEstabelecimento;
-            IdCategoria = idCategoria;
+            Estabelecimento = estabelecimento;
+            Categoria = categoria;
         }
 
         protected EstabelecimentoCategoria()
@@ -20,17 +20,17 @@ namespace FoodTime.Dominio.Entidades
 
         public int Id { get; private set; }
 
-        public int IdEstabelecimento { get; private set; }
-        public int IdCategoria { get; private set; }
+        public Estabelecimento Estabelecimento { get; private set; }
+        public Categoria Categoria { get; private set; }
 
         public List<string> ValidarEntrada()
         {
             List<string> mensagens = new List<string>();
 
-            if (IdEstabelecimento == 0)
+            if (Estabelecimento == null)
                 mensagens.Add("Deve conter um Estabelecimento vinculado.");
 
-            if (IdCategoria == 0)
+            if (Categoria == null)
                 mensagens.Add("Deve conter uma Categoria vinculada.");
 
             return mensagens;

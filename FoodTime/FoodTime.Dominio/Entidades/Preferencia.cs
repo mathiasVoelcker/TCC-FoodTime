@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace FoodTime.Dominio.Entidades
 {
-    public class Categoria
+    public class Preferencia
     {
-        public Categoria(string descricao)
+    
+        public Preferencia(string descricao, Boolean aprovado)
         {
             Descricao = descricao;
+            Aprovado = aprovado;
         }
 
-        protected Categoria()
+        protected Preferencia()
         {
         }
 
         public int Id { get; private set; }
-
         public string Descricao { get; private set; }
+        public Boolean Aprovado { get; private set; }
 
         public List<string> ValidarEntrada()
         {
@@ -28,7 +30,7 @@ namespace FoodTime.Dominio.Entidades
             if (string.IsNullOrWhiteSpace(Descricao))
                 mensagens.Add("Descricao não pode ser nulo.");
 
-            if (Descricao.Length>50)
+            if (Descricao.Length > 50)
                 mensagens.Add("O tamanho máximo são 500 caracteres.");
 
             return mensagens;

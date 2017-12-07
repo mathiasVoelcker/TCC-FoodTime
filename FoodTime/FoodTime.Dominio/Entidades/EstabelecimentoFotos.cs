@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace FoodTime.Dominio.Entidades
 {
-    public class FotoEstabelecimento
+    public class EstabelecimentoFotos
     {
-        public FotoEstabelecimento(string foto, int idUsuario)
+        public EstabelecimentoFotos(string foto, int idUsuario)
         {
             Foto = foto;
             IdUsuario = idUsuario;
         }
 
-        protected FotoEstabelecimento()
+        protected EstabelecimentoFotos()
         {
         }
 
