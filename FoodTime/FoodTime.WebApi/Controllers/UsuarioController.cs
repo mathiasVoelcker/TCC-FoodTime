@@ -21,7 +21,7 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult ObterUsuario([FromBody] UsuarioLoginModel usuarioLoginModel)
+        public IHttpActionResult ObterUsuario([FromUri]UsuarioLoginModel usuarioLoginModel)
         {
             var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Email == usuarioLoginModel.Email);
             if (usuario == null)

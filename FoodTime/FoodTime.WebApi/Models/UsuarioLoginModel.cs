@@ -8,13 +8,6 @@ namespace FoodTime.WebApi.Models
 {
     public class UsuarioLoginModel
     {
-        public UsuarioLoginModel() { }
-
-        public UsuarioLoginModel(Usuario usuario)
-        {
-            Email = usuario.Email;
-            Senha = usuario.Senha;
-        }
 
         public string Email { get; set; }
 
