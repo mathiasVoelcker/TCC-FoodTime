@@ -9,13 +9,14 @@ namespace FoodTime.Dominio.Entidades
 {
     public class Usuario
     {
-        public Usuario(string email, string senha, string nome, string sobrenome, string fotoPerfil, bool admin)
+        public Usuario(string email, string senha, string nome, string sobrenome, string fotoPerfil, DateTime dataNascimento, bool admin)
         {
             Email = email;
             Senha = CriptografarSenha(senha);
             Nome = nome;
             Sobrenome = sobrenome;
             FotoPerfil = fotoPerfil;
+            DataNascimento = dataNascimento;
             Admin = admin;
         }
 
