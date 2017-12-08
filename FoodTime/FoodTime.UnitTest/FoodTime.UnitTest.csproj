@@ -51,6 +51,7 @@
     <Compile Include="AvaliacaoTest.cs" />
     <Compile Include="CategoriaTest.cs" />
     <Compile Include="EnderecoTest.cs" />
+    <Compile Include="FotoTest.cs" />
     <Compile Include="UsuarioTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

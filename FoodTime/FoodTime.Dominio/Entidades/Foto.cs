@@ -26,7 +26,7 @@ namespace FoodTime.Dominio.Entidades
             List<string> mensagens = new List<string>();
 
             if (string.IsNullOrWhiteSpace(Caminho))
-                mensagens.Add("Descricao não pode ser nulo.");
+                mensagens.Add("Caminho não pode ser nulo.");
 
             if (Caminho.Length > 200)
                 mensagens.Add("O tamanho máximo são 200 caracteres.");
