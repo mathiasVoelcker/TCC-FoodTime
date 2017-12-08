@@ -51,3 +51,24 @@
 	background-color: rgb(252,185,78);
 	border-color: rgb(252,185,78);
 }
+
+.d-flex_usuario{
+	width:20%;
+	height:10%;	
+	margin-left:20%;
+	border: 5px solid rgb(252,185,78);
+}
+#header_usuario{
+	display: flex;
+	margin-top:3.5%;
+	height:10%;
+}
+.cor_usuario{
+	color:rgb(252,185,78);
+}
+.cor_dados{
+	color:rgb(0,156,129);
+}
+.cor_resp{
+	color: white;
+}
