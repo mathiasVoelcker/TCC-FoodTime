@@ -20,10 +20,12 @@ namespace FoodTime.Infraestrutura
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Avaliacao> Avaliacoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UsuarioMapping());
+            modelBuilder.Configurations.Add(new AvaliacaoMapping());
             base.OnModelCreating(modelBuilder);
         }
 

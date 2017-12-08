@@ -97,6 +97,7 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="FoodTimeContext.cs" />
     <Compile Include="IFoodTimeContext.cs" />
+    <Compile Include="Mapping\AvaliacaoMapping.cs" />
     <Compile Include="Mapping\UsuarioMapping.cs" />
     <Compile Include="Migrations\201712071717228_Criar Tabela Usuario.cs" />
     <Compile Include="Migrations\201712071717228_Criar Tabela Usuario.Designer.cs">

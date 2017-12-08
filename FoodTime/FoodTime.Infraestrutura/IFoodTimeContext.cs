@@ -13,6 +13,7 @@ namespace FoodTime.Infraestrutura
         int SaveChanges();
 
         DbSet<Usuario> Usuarios { get; set; }
+        DbSet<Avaliacao> Avaliacoes { get; set; }
 
     }
 }
