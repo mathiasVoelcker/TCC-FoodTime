@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FoodTime.Dominio.Entidades;
 
 namespace FoodTime.UnitTest
 {
@@ -9,6 +10,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Inicializacao_De_Endereco()
         {
+            Endereco endereco;
             var rua = "rua teste";
             var numero = "numero teste";
             var apto = "";
@@ -20,15 +22,18 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            //usuario = new Endereco(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            //Assert.IsTrue(usuario.Email == email);
-            ////Assert.IsTrue(usuario.Senha == senha);
-            //Assert.IsTrue(usuario.Nome == nome);
-            //Assert.IsTrue(usuario.Sobrenome == sobrenome);
-            //Assert.IsTrue(usuario.FotoPerfil == fotoPerfil);
-            //Assert.IsTrue(usuario.DataNascimento == dataNascimento);
-            //Assert.IsTrue(usuario.Admin == isAdmin);
+            Assert.IsTrue(endereco.Rua == rua);
+            Assert.IsTrue(endereco.Numero == numero);
+            Assert.IsTrue(endereco.Apto == apto);
+            Assert.IsTrue(endereco.Complemento == complemento);
+            Assert.IsTrue(endereco.Bairro == bairro);
+            Assert.IsTrue(endereco.Cidade == cidade);
+            Assert.IsTrue(endereco.Estado == estado);
+            Assert.IsTrue(endereco.CEP == cep);
+            Assert.IsTrue(endereco.Latitude == latitude);
+            Assert.IsTrue(endereco.Longitude == longitude);
         }
     }
 }

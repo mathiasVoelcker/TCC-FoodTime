@@ -14,7 +14,7 @@ namespace FoodTime.Infraestrutura.Mapping
         {
             ToTable("Foto", "schemaFoodTime");
             HasKey(x => x.Id);
-            Property(x => x.Path).HasMaxLength(500).IsRequired();
+            Property(x => x.Caminho).HasMaxLength(500).IsRequired();
         }
     }
 }

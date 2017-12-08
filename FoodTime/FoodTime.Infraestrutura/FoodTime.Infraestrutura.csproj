@@ -105,9 +105,9 @@
     <Compile Include="Mapping\FotoMapping.cs" />
     <Compile Include="Mapping\PreferenciaMapping.cs" />
     <Compile Include="Mapping\UsuarioMapping.cs" />
-    <Compile Include="Migrations\201712081832243_Primeiro Migration.cs" />
-    <Compile Include="Migrations\201712081832243_Primeiro Migration.Designer.cs">
-      <DependentUpon>201712081832243_Primeiro Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201712082009045_Migration_Base.cs" />
+    <Compile Include="Migrations\201712082009045_Migration_Base.Designer.cs">
+      <DependentUpon>201712082009045_Migration_Base.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -123,8 +123,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712081832243_Primeiro Migration.resx">
-      <DependentUpon>201712081832243_Primeiro Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712082009045_Migration_Base.resx">
+      <DependentUpon>201712082009045_Migration_Base.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
