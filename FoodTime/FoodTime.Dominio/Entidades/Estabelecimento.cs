@@ -13,12 +13,12 @@ namespace FoodTime.Dominio.Entidades
         {
         }
 
-        protected Estabelecimento(string nome, string telefone, int idEndereco, EstabelecimentoCategoria categoria, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<EstabelecimentoFotos> fotos, List<EstabelecimentoPreferencias> preferencias)
+        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categoria, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<String> fotos, List<Preferencia> preferencias)
         {
             Nome = nome;
             Telefone = telefone;
-            IdEndereço = idEndereco;
-            Categoria = categoria;
+            Endereco = endereco;
+            Categorias = categoria;
             HorarioAbertura = horaAbertura;
             HorarioFechamento = horaFechamento;
             PrecoMedio = precoMedio;
@@ -29,15 +29,15 @@ namespace FoodTime.Dominio.Entidades
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Telefone { get; private set; }
-        public int IdEndereço { get; private set; }
-        public EstabelecimentoCategoria Categoria { get; private set; }
-        public List<EstabelecimentoFotos> Fotos { get; private set; }
-        public List<EstabelecimentoPreferencias> Preferencias { get; private set; }
+        public Endereco Endereco { get; private set; }
+        public List<Categoria> Categorias { get; private set; }
+        public List<String> Fotos { get; private set; }
+        public List<Preferencia> Preferencias { get; private set; }
         public DateTime HorarioAbertura { get; private set; }
         public DateTime HorarioFechamento { get; private set; }
         public decimal PrecoMedio { get; private set; }
 
-   
+        
 
 
         public List<string> ValidarEntrada()
@@ -47,14 +47,26 @@ namespace FoodTime.Dominio.Entidades
             if (string.IsNullOrEmpty(Nome))
                 mensagens.Add("Nome não pode ser nulo.");
 
+            if (Nome.Length>100)
+                mensagens.Add("Tamanho máximo 100 caracteres");
+
             if (string.IsNullOrEmpty(Telefone))
                 mensagens.Add("Telefone não pode ser nulo.");
 
-            if (IdEndereço==0)
+            if (Nome.Length > 20)
+                mensagens.Add("Tamanho máximo 100 caracteres");
+
+            if (Endereco==null)
                 mensagens.Add("Deve conter um Endereço atrelado ao Estabelecimento");
 
-            if (Categoria==null)
-                mensagens.Add("Categoria não pode ser nulo.");
+            if (Fotos==null)
+                mensagens.Add("A Lista de Fotos não pode ser nula.");
+
+            if (Categorias == null)
+                mensagens.Add("A Lista de Categorias não pode ser nula.");
+
+            if (Preferencias == null)
+                mensagens.Add("A Lista de Preferencias não pode ser nula.");
 
             if (HorarioAbertura == null)
                 mensagens.Add("Horario de abertura não pode ser nulo.");
