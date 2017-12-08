@@ -42,7 +42,6 @@ namespace FoodTime.UnitTest
             var isAdmin = true;
 
             usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
-            usuario.CriptografarSenha(usuario.Senha);
 
             Assert.IsTrue(usuario.ValidarSenha(senha));
         }
