@@ -19,14 +19,28 @@ namespace FoodTime.UnitTest
         }
 
         [TestMethod]
-        public void Testar_Inicializacao_De_Categoria_Com_Descricao_Invalida()
+        public void Testar_Inicializacao_De_Categoria_Com_Descricao_Maior()
         {
             Categoria categoria;
-            var descricao = "testeNome";
+            var descricao = "Usando llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun";
 
             categoria = new Categoria(descricao);
 
             Assert.IsTrue(categoria.Descricao == descricao);
+            Assert.IsTrue(categoria.ValidarEntrada().Count == 1);
+        }
+
+        [TestMethod]
+        public void Testar_Inicializacao_De_Categoria_Com_Descricao_Nula()
+        {
+            Categoria categoria;
+            var descricao = "";
+            
+            categoria = new Categoria(descricao);
+
+            Assert.IsTrue(categoria.ValidarEntrada().Count==1);
+            Assert.IsTrue(categoria.ValidarEntrada().Contains("Descricao não pode ser nulo."));
+
         }
     }
 }
