@@ -132,11 +132,14 @@
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AvaliacaoController.cs" />
+    <Compile Include="Controllers\PreferenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AvaliacaoModel.cs" />
+    <Compile Include="Models\EstabelecimentoPreferenciaModel.cs" />
+    <Compile Include="Models\PreferenciaModel.cs" />
     <Compile Include="Models\UsuarioLoginModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

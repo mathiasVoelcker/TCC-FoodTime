@@ -45,7 +45,7 @@ namespace FoodTime.WebApi.Controllers
                 context.SaveChanges();
                 return Created($"api/avaliacao/{avaliacao.Id}", avaliacaoModel);
             }
-            return BadRequest(String.Join(String.Empty, mensagensErro.ToArray()));
+            return BadRequest(String.Join(" " , mensagensErro.ToArray()));
         }
     }
 }

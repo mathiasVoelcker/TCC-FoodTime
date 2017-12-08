@@ -9,7 +9,7 @@ namespace FoodTime.Dominio.Entidades
     public class EstabelecimentoPreferencia
     {
 
-        public EstabelecimentoPreferencia(Preferencia preferencia, Estabelecimento estabelecimento, Boolean aprovado)
+        public EstabelecimentoPreferencia(Estabelecimento estabelecimento, Preferencia preferencia, Boolean aprovado)
         {
             Preferencia = preferencia;
             Estabelecimento = estabelecimento;
