@@ -43,6 +43,12 @@ namespace FoodTime.Dominio.Entidades
             if (this.PrecoMedio < 0)
                 mensagens.Add("Preco medio nao pode ser negativo.");
 
+            if (Comentario.Length > 500)
+                mensagens.Add("O comentario máximo são 500 caracteres.");
+
+            if (string.IsNullOrWhiteSpace(Comentario))
+                mensagens.Add("Comentario não pode ser nulo.");
+
             return mensagens;
         }
     }

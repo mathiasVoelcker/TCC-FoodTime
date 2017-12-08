@@ -5,9 +5,9 @@ using System.Web;
 
 namespace FoodTime.WebApi.Models
 {
-    public class AvaliacaoModel
+    public class AvaliacaoModel //model que recebe avaliacao de fronEnd
     {
-        public int Id { get; set; }
+        //public int Id { get; set; }
         public int Nota { get; set; }
         public decimal PrecoMedio { get; set; }
         public string Comentario { get; set; }

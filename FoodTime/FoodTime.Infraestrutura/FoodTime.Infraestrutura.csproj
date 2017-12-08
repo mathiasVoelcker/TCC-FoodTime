@@ -103,6 +103,10 @@
     <Compile Include="Migrations\201712071717228_Criar Tabela Usuario.Designer.cs">
       <DependentUpon>201712071717228_Criar Tabela Usuario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712081130215_Criar Tabela de Avaliacao.cs" />
+    <Compile Include="Migrations\201712081130215_Criar Tabela de Avaliacao.Designer.cs">
+      <DependentUpon>201712081130215_Criar Tabela de Avaliacao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -119,6 +123,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712071717228_Criar Tabela Usuario.resx">
       <DependentUpon>201712071717228_Criar Tabela Usuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712081130215_Criar Tabela de Avaliacao.resx">
+      <DependentUpon>201712081130215_Criar Tabela de Avaliacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
