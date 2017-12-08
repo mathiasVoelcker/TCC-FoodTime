@@ -20,6 +20,7 @@ namespace FoodTime.Infraestrutura
         }
 
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Estabelecimento> Estabelecimentos { get; set; }
         public DbSet<Avaliacao> Avaliacoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
