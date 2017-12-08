@@ -32,3 +32,18 @@
 .show>.nav-link{
 	color: #1d2124;
 }
+
+.btn-primary:hover {
+	color: #fff;
+	font-weight:bold;
+    background-color: rgb(236,66,36);
+    border-color: rgb(172,39,86);
+    
+}
+
+.btn-primary {
+    color: black;
+	font-weight:bold;
+    background-color: rgb(252,185,78);
+    border-color: black;
+}
