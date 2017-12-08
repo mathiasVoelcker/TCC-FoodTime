@@ -46,16 +46,16 @@ namespace FoodTime.Dominio.Entidades
                 mensagens.Add("Nome não pode ser nulo.");
 
             if (Nome.Length>100)
-                mensagens.Add("Tamanho máximo 100 caracteres");
+                mensagens.Add("Tamanho máximo 100 caracteres.");
 
             if (string.IsNullOrEmpty(Telefone))
                 mensagens.Add("Telefone não pode ser nulo.");
 
             if (Nome.Length > 20)
-                mensagens.Add("Tamanho máximo 100 caracteres");
+                mensagens.Add("Tamanho máximo 100 caracteres.");
 
             if (Endereco==null)
-                mensagens.Add("Deve conter um Endereço atrelado ao Estabelecimento");
+                mensagens.Add("Deve conter um Endereço atrelado ao Estabelecimento.");
 
             if (Fotos==null)
                 mensagens.Add("A Lista de Fotos não pode ser nula.");
@@ -70,7 +70,7 @@ namespace FoodTime.Dominio.Entidades
                 mensagens.Add("Horario de fechamento não pode ser nulo.");
 
             if (PrecoMedio==0)
-                mensagens.Add("O Estabelecimento deve conter um preço médio");
+                mensagens.Add("O Estabelecimento deve conter um preço médio.");
 
             return mensagens;
         }

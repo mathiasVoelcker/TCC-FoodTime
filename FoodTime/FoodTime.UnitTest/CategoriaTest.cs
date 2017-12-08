@@ -19,7 +19,7 @@ namespace FoodTime.UnitTest
         }
 
         [TestMethod]
-        public void Testar_Inicializacao_De_Categoria_Com_Descricao_Maior()
+        public void Testar_Validar_Categoria_Com_Descricao_Maior()
         {
             Categoria categoria;
             var descricao = "Usando llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun llorem ipsun";
@@ -31,7 +31,7 @@ namespace FoodTime.UnitTest
         }
 
         [TestMethod]
-        public void Testar_Inicializacao_De_Categoria_Com_Descricao_Nula()
+        public void Testar_Validar_Categoria_Com_Descricao_Nula()
         {
             Categoria categoria;
             var descricao = "";
