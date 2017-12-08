@@ -35,19 +35,19 @@ namespace FoodTime.Dominio.Entidades
             List<string> mensagens = new List<string>();
 
             if (this.Nota > 10)
-                mensagens.Add("Nota nao pode ser maior que 10.");
+                mensagens.Add("Nota não pode ser maior que 10.");
 
             if (this.Nota < 0)
-                mensagens.Add("Nota nao pode ser menor que 10.");
+                mensagens.Add("Nota não pode ser menor que 0.");
 
             if (this.PrecoMedio < 0)
-                mensagens.Add("Preco medio nao pode ser negativo.");
+                mensagens.Add("Preço médio não pode ser negativo.");
 
             if (Comentario.Length > 500)
-                mensagens.Add("O comentario máximo são 500 caracteres.");
+                mensagens.Add("O comentário não pode ter mais de 500 caracteres.");
 
             if (string.IsNullOrWhiteSpace(Comentario))
-                mensagens.Add("Comentario não pode ser nulo.");
+                mensagens.Add("Comentário não pode ser nulo.");
 
             return mensagens;
         }
