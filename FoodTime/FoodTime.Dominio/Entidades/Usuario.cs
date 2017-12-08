@@ -12,12 +12,14 @@ namespace FoodTime.Dominio.Entidades
         public Usuario(string email, string senha, string nome, string sobrenome, string fotoPerfil, DateTime dataNascimento, bool admin)
         {
             Email = email;
-            Senha = CriptografarSenha(senha);
+            Senha = senha;
             Nome = nome;
             Sobrenome = sobrenome;
             FotoPerfil = fotoPerfil;
             DataNascimento = dataNascimento;
             Admin = admin;
+            
+            Senha = CriptografarSenha(senha);
         }
 
         protected Usuario()
@@ -55,16 +57,16 @@ namespace FoodTime.Dominio.Entidades
             List<string> mensagens = new List<string>();
 
             if (string.IsNullOrWhiteSpace(Email))
-                mensagens.Add("Email não não pode ser nulo.");
+                mensagens.Add("Email não pode ser nulo.");
 
-            if (string.IsNullOrEmpty(Senha))
-                mensagens.Add("Senha não não pode ser nula.");
+            if (string.IsNullOrWhiteSpace(Senha))
+                mensagens.Add("Senha não pode ser nula.");
 
             if (string.IsNullOrWhiteSpace(Nome))
-                mensagens.Add("Nome não não pode ser nulo.");
+                mensagens.Add("Nome não pode ser nulo.");
 
-            if (string.IsNullOrEmpty(Sobrenome))
-                mensagens.Add("Sobrenome não não pode ser nula.");
+            if (string.IsNullOrWhiteSpace(Sobrenome))
+                mensagens.Add("Sobrenome não pode ser nulo.");
 
             return mensagens;
         }

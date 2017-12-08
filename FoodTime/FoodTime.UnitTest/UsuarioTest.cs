@@ -42,8 +42,128 @@ namespace FoodTime.UnitTest
             var isAdmin = true;
 
             usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario.CriptografarSenha(usuario.Senha);
 
             Assert.IsTrue(usuario.ValidarSenha(senha));
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Correto()
+        {
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = "testeSobrenome";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Count == 0);
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Nome_Nulo()
+        {
+            Usuario usuario;
+            var nome = "";
+            var sobrenome = "testeSobrenome";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Contains("Nome não pode ser nulo."));
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Nome_Com_Espaco_Em_Branco()
+        {
+            Usuario usuario;
+            var nome = " ";
+            var sobrenome = "testeSobrenome";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Contains("Nome não pode ser nulo."));
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Sobrenome_Nulo()
+        {
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = "";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Contains("Sobrenome não pode ser nulo."));
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Sobrenome_Com_Espaco_Em_Branco()
+        {
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = " ";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Contains("Sobrenome não pode ser nulo."));
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Email_Nulo()
+        {
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = "testeSobrenome";
+            var email = "";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Contains("Email não pode ser nulo."));
+        }
+
+        [TestMethod]
+        public void Testar_Validar_Email_Com_Espaco_Em_Branco()
+        {
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = "testeSobrenome";
+            var email = " ";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+
+            Assert.IsTrue(usuario.ValidarEntrada().Contains("Email não pode ser nulo."));
         }
     }
 }
