@@ -11,10 +11,15 @@ using System.Web.Http;
 namespace FoodTime.WebApi.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/usuario")]
+    [RoutePrefix("api/avaliacao")]
     public class AvaliacaoController : ApiController
     {
         IFoodTimeContext context;
+
+        public AvaliacaoController()
+        {
+            context = new FoodTimeContext();
+        }
 
         [HttpPost, Route("registro")]
         public IHttpActionResult Registrar([FromBody]AvaliacaoModel avaliacaoModel)

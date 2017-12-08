@@ -20,6 +20,10 @@ namespace FoodTime.Dominio.Entidades
             Estabelecimento = estabelecimento;
         }
 
+        protected Avaliacao()
+        {
+        }
+
         public int Id { get; private set; }
         public int Nota { get; private set; }
         public decimal PrecoMedio { get; private set; }
