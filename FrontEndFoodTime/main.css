@@ -1,0 +1,10 @@
+body {
+  padding-top: 50px;
+}
+.content {
+  padding: 10px 15px;
+}
+
+.navbar-form label {
+  color: #9d9d9d;
+}
