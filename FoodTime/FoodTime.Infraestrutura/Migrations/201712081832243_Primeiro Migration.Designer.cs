@@ -7,13 +7,13 @@ namespace FoodTime.Infraestrutura.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class CriarTabeladeAvaliacao : IMigrationMetadata
+    public sealed partial class PrimeiroMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(CriarTabeladeAvaliacao));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(PrimeiroMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "201712081130215_Criar Tabela de Avaliacao"; }
+            get { return "201712081832243_Primeiro Migration"; }
         }
         
         string IMigrationMetadata.Source

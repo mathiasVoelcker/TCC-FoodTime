@@ -44,9 +44,8 @@
     <Compile Include="Entidades\Categoria.cs" />
     <Compile Include="Entidades\Endereco.cs" />
     <Compile Include="Entidades\Estabelecimento.cs" />
-    <Compile Include="Entidades\EstabelecimentoCategoria.cs" />
-    <Compile Include="Entidades\EstabelecimentoPreferencias.cs" />
-    <Compile Include="Entidades\EstabelecimentoFotos.cs" />
+    <Compile Include="Entidades\EstabelecimentoPreferencia.cs" />
+    <Compile Include="Entidades\Foto.cs" />
     <Compile Include="Entidades\Preferencia.cs" />
     <Compile Include="Entidades\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

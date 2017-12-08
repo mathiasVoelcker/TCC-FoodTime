@@ -8,10 +8,10 @@ namespace FoodTime.Dominio.Entidades
 {
     public class Foto
     {
-        public Foto(string path, Estabelecimento estabelecimento)
+        public Foto(string path)
         {
             Path = path;
-            Estabelecimento = estabelecimento;
+            
         }
 
         protected Foto()
@@ -20,7 +20,6 @@ namespace FoodTime.Dominio.Entidades
 
         public int Id { get; private set; }
         public string Path { get; private set; }
-        public Estabelecimento Estabelecimento { get; private set; }
 
         public List<string> ValidarEntrada()
         {
@@ -32,8 +31,7 @@ namespace FoodTime.Dominio.Entidades
             if (Path.Length > 200)
                 mensagens.Add("O tamanho máximo são 200 caracteres.");
 
-            if (Estabelecimento==null)
-                mensagens.Add("Deve ter um Estabelecimento vinculado a foto.");
+
             
 
             return mensagens;

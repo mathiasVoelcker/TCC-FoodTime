@@ -24,7 +24,7 @@ namespace FoodTime.Infraestrutura.Mapping
             Property(x => x.Latitude).HasPrecision(10,7).IsRequired();
             Property(x => x.Longitude).HasPrecision(10, 7).IsRequired();
             Property(x => x.Numero).HasMaxLength(20).IsRequired();
-            Property(x => x.Rua).HasMaxLength(50).IsRequired();
+            Property(x => x.Rua).HasMaxLength(50).IsRequired(); 
         }
     }
 }

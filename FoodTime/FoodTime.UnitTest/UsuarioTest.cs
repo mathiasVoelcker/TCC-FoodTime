@@ -19,7 +19,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.Email == email);
             //Assert.IsTrue(usuario.Senha == senha);
@@ -41,7 +41,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarSenha(senha));
         }
@@ -58,7 +58,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Count == 0);
         }
@@ -75,7 +75,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Contains("Nome não pode ser nulo."));
         }
@@ -92,7 +92,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Contains("Nome não pode ser nulo."));
         }
@@ -109,7 +109,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Contains("Sobrenome não pode ser nulo."));
         }
@@ -126,7 +126,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Contains("Sobrenome não pode ser nulo."));
         }
@@ -143,7 +143,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Contains("Email não pode ser nulo."));
         }
@@ -160,7 +160,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
             Assert.IsTrue(usuario.ValidarEntrada().Contains("Email não pode ser nulo."));
         }

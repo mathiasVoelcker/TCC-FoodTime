@@ -12,7 +12,7 @@ namespace FoodTime.Infraestrutura.Mapping
     {
         public EstabelecimentoMapping()
         {
-            ToTable("EstabelecimentoMapping", "schemaFoodTime");
+            ToTable("Estabelecimento", "schemaFoodTime");
             HasKey(x => x.Id);
             Property(x => x.Nome).HasMaxLength(100).IsRequired();
             Property(x => x.Telefone).HasMaxLength(12).IsRequired();
@@ -26,7 +26,7 @@ namespace FoodTime.Infraestrutura.Mapping
                 x.MapLeftKey("Id_Estabelecimento");
                 x.MapRightKey("Id_Categoria");
             });
-            HasMany(x => x.Fotos).WithRequired().Map(x => x.MapKey("Id_Estabelecimento"));
+            HasMany(x => x.Fotos).WithRequired().Map(x => x.MapKey("Id_Estabelecimzento"));
         }
     }
 }

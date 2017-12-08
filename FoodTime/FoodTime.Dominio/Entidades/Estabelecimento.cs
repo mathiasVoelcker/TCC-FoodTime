@@ -13,12 +13,12 @@ namespace FoodTime.Dominio.Entidades
         {
         }
 
-        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<String> categoria, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<String> fotos)
+        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categorias, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<Foto> fotos)
         {
             Nome = nome;
             Telefone = telefone;
             Endereco = endereco;
-            Categorias = categoria;
+            Categorias = categorias;
             HorarioAbertura = horaAbertura;
             HorarioFechamento = horaFechamento;
             PrecoMedio = precoMedio;
@@ -29,8 +29,8 @@ namespace FoodTime.Dominio.Entidades
         public string Nome { get; private set; }
         public string Telefone { get; private set; }
         public Endereco Endereco { get; private set; }
-        public List<String> Categorias { get; private set; }
-        public List<String> Fotos { get; private set; }
+        public List<Categoria> Categorias { get; private set; }
+        public List<Foto> Fotos { get; private set; }
         public DateTime HorarioAbertura { get; private set; }
         public DateTime HorarioFechamento { get; private set; }
         public decimal PrecoMedio { get; private set; }
