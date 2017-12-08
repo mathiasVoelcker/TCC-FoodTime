@@ -13,7 +13,7 @@ namespace FoodTime.Dominio.Entidades
         {
         }
 
-        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categoria, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<String> fotos, List<Preferencia> preferencias)
+        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<String> categoria, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<String> fotos)
         {
             Nome = nome;
             Telefone = telefone;
@@ -23,16 +23,14 @@ namespace FoodTime.Dominio.Entidades
             HorarioFechamento = horaFechamento;
             PrecoMedio = precoMedio;
             Fotos = fotos;
-            Preferencias = preferencias;
         }
 
         public int Id { get; private set; }
         public string Nome { get; private set; }
         public string Telefone { get; private set; }
         public Endereco Endereco { get; private set; }
-        public List<Categoria> Categorias { get; private set; }
+        public List<String> Categorias { get; private set; }
         public List<String> Fotos { get; private set; }
-        public List<Preferencia> Preferencias { get; private set; }
         public DateTime HorarioAbertura { get; private set; }
         public DateTime HorarioFechamento { get; private set; }
         public decimal PrecoMedio { get; private set; }
@@ -64,9 +62,6 @@ namespace FoodTime.Dominio.Entidades
 
             if (Categorias == null)
                 mensagens.Add("A Lista de Categorias não pode ser nula.");
-
-            if (Preferencias == null)
-                mensagens.Add("A Lista de Preferencias não pode ser nula.");
 
             if (HorarioAbertura == null)
                 mensagens.Add("Horario de abertura não pode ser nulo.");

@@ -15,6 +15,9 @@ namespace FoodTime.Infraestrutura
         DbSet<Usuario> Usuarios { get; set; }
         DbSet<Avaliacao> Avaliacoes { get; set; }
         DbSet<Estabelecimento> Estabelecimentos { get; set; }
-
+        DbSet<EstabelecimentoPreferencia> EstabelecimentoPreferencias { get; set; }
+        DbSet<Preferencia> Preferencias { get; set; }
+        DbSet<Endereco> Enderecos { get; set; }
+        DbSet<Categoria> Categorias { get; set; }
     }
 }

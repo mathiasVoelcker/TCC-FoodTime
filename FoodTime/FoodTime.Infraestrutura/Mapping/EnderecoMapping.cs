@@ -21,12 +21,10 @@ namespace FoodTime.Infraestrutura.Mapping
             Property(x => x.Cidade).HasMaxLength(50).IsRequired();
             Property(x => x.Complemento).HasMaxLength(50).IsRequired();
             Property(x => x.Estado).HasMaxLength(50).IsRequired();
-            Property(x => x.Latitude).IsRequired();
-            Property(x => x.Longitude).IsRequired();
+            Property(x => x.Latitude).HasPrecision(10,7).IsRequired();
+            Property(x => x.Longitude).HasPrecision(10, 7).IsRequired();
             Property(x => x.Numero).HasMaxLength(20).IsRequired();
             Property(x => x.Rua).HasMaxLength(50).IsRequired();
-
-
         }
     }
 }

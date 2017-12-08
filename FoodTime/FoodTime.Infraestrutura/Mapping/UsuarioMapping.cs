@@ -21,6 +21,12 @@ namespace FoodTime.Infraestrutura.Mapping
             Property(x => x.FotoPerfil).HasMaxLength(500).IsRequired();
             Property(x => x.DataNascimento).IsRequired();
             Property(x => x.Admin).IsRequired();
+            HasMany(x => x.Preferencias).WithMany().Map(x =>
+            {
+                x.ToTable("Usuario_Preferencia", "schemaFoodTime");
+                x.MapLeftKey("Id_Usuario");
+                x.MapRightKey("Id_Preferencia");
+            });
         }
     }
 }
