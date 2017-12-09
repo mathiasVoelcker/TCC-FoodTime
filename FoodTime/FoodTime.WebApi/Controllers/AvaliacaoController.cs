@@ -50,9 +50,10 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult BuscarAvaliacoesDoUsuario([FromUri]UsuarioModel usuarioModel)
+        [Route("buscarPorIdUsuario")]
+        public IHttpActionResult BuscarUltimasAvaliacoesPorIdUsuario([FromUri]int idUsuario)
         {
-            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
+            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
             if (usuario == null)
                 return BadRequest("Usuário não existe");
             List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x => x.DataAvaliacao).Take(5).ToList();

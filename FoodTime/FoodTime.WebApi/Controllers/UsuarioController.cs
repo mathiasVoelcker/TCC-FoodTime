@@ -32,11 +32,23 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpPost]
-        public IHttpActionResult Adicionar([FromBody]Usuario usuario)
+        public IHttpActionResult Adicionar([FromBody]UsuarioCadastroModel usuarioCadastroModel)
         {
-            context.Usuarios.Add(usuario);
+            List<Preferencia> novaListaPreferencias = new List<Preferencia>();
+
+            foreach (var item in usuarioCadastroModel.IdsPreferencias)
+            {
+                var preferenciaExistente = context.Preferencias.FirstOrDefault(x => x.Id == item && x.Aprovado==true);
+                if (preferenciaExistente != null)
+                {
+                    novaListaPreferencias.Add(preferenciaExistente);
+                }
+            }
+            var novoUsuario = new Usuario(usuarioCadastroModel.Email, usuarioCadastroModel.Senha, usuarioCadastroModel.Nome, usuarioCadastroModel.Sobrenome, usuarioCadastroModel.FotoPerfil, usuarioCadastroModel.DataNascimento, usuarioCadastroModel.Admin, novaListaPreferencias);
+
+            context.Usuarios.Add(novoUsuario);
             context.SaveChanges();
-            return Created($"api/usuario/{usuario.Id}", usuario);
+            return Created($"api/usuario/{novoUsuario.Id}", novoUsuario);
         }
 
         [HttpGet]
@@ -59,17 +71,18 @@ namespace FoodTime.WebApi.Controllers
             return Ok(new UsuarioModel(usuario));
         }
 
-        [HttpGet]
-        public IHttpActionResult BuscarAvaliacoesPorUsuario([FromUri]UsuarioModel usuarioModel)
-        {
-            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
-            if (usuario == null)
-                return BadRequest("Usuário não existe");
-            List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x=> x.DataAvaliacao).ToList();
-            if (avaliacoes.Count == 0)
-                return BadRequest("Nenhuma avaliacão encontrada.");
-            return Ok(avaliacoes);
-        }
+        //[HttpGet]
+        //[Route("buscar")]]
+        //public IHttpActionResult BuscarAvaliacoesPorUsuario([FromUri]UsuarioModel usuarioModel)
+        //{
+        //    var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
+        //    if (usuario == null)
+        //        return BadRequest("Usuário não existe");
+        //    List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x=> x.DataAvaliacao).ToList();
+        //    if (avaliacoes.Count == 0)
+        //        return BadRequest("Nenhuma avaliacão encontrada.");
+        //    return Ok(avaliacoes);
+        //}
 
       
 

@@ -142,6 +142,7 @@
     <Compile Include="Models\EstabelecimentoPreferenciaModel.cs" />
     <Compile Include="Models\EstabelecimentoRecomendacaoModel.cs" />
     <Compile Include="Models\PreferenciaModel.cs" />
+    <Compile Include="Models\UsuarioCadastroModel.cs" />
     <Compile Include="Models\UsuarioLoginModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
