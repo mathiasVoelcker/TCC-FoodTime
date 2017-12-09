@@ -20,7 +20,12 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   //Login sem autenticacao
   function loginTemp(usuario){
-    return $http.get(urlUsuario + "?email=" + usuario.email)
+    return $http.get(urlUsuario + "?email=" + usuario.email).then(
+      function(response){
+        console.log(response)
+        $localStorage.usuarioLogado = response.data
+      }
+    )
   }
   // LOGIN - Retorna PROMISE com o response (sucesso ou erro)
   function login(usuario) {

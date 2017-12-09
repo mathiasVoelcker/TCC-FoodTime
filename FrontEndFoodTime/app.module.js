@@ -10,6 +10,8 @@ angular.module('app').constant('authConfig', {
 
     urlUsuario: 'http://localhost:65510/api/Usuario',
 
+    urlAvaliiacaoRegistro: 'http://localhost:65510/api/avaliacao/registro',
+
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/login',
 
