@@ -32,6 +32,7 @@ namespace FoodTime.UnitTest
             Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
             Assert.IsTrue(estabelecimento.Fotos == listaFotos);
             Assert.IsTrue(estabelecimento.Aprovado == aprovado);
+            Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 0);
         }
 
         [TestMethod]
@@ -51,13 +52,6 @@ namespace FoodTime.UnitTest
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
             Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("Nome não pode ser nulo."));
         }
@@ -78,14 +72,7 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
+            Assert.IsTrue(estabelecimento.Endereco==null);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("Deve conter um Endereço atrelado ao Estabelecimento."));
         }
@@ -107,13 +94,6 @@ namespace FoodTime.UnitTest
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
             Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("Tamanho máximo 100 caracteres."));
         }
@@ -134,14 +114,7 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
             Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("Telefone não pode ser nulo."));
         }
@@ -162,14 +135,7 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
             Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("Tamanho máximo 20 caracteres."));
         }
@@ -190,14 +156,7 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
             Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("O Estabelecimento deve conter um preço médio."));
         }
@@ -218,13 +177,8 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
             Assert.IsTrue(estabelecimento.Fotos == listaFotos);
+            Assert.IsTrue(estabelecimento.Fotos == null);
             Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("A Lista de Fotos não pode ser nula."));
@@ -246,14 +200,8 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
+            Assert.IsTrue(estabelecimento.Categorias == null);
             Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Count == 1);
             Assert.IsTrue(estabelecimento.ValidarEntrada().Contains("A Lista de Categorias não pode ser nula."));
         }
@@ -274,14 +222,8 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
             Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
             Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.EstaAberto(new DateTime().Date));
         }
 
@@ -301,14 +243,8 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
             Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
             Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsFalse(estabelecimento.EstaAberto(new DateTime().Date));
         }
 
@@ -334,14 +270,6 @@ namespace FoodTime.UnitTest
             estabelecimento.DistanciaEstabelecimento(latitude, longitude);
             var result = (decimal)Math.Sqrt((Math.Pow((double)(latitude - estabelecimento.Endereco.Latitude), 2.0)) + (Math.Pow((double)(longitude - estabelecimento.Endereco.Longitude), 2.0)));
 
-            Assert.IsTrue(estabelecimento.Nome == nome);
-            Assert.IsTrue(estabelecimento.Telefone == telefone);
-            Assert.IsTrue(estabelecimento.Categorias == listaCategorias);
-            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
-            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.PrecoMedio == precoMedio);
-            Assert.IsTrue(estabelecimento.Fotos == listaFotos);
-            Assert.IsTrue(estabelecimento.Aprovado == aprovado);
             Assert.IsTrue(estabelecimento.DistanciaEstabelecimento(latitude, longitude)==result);
         }
 

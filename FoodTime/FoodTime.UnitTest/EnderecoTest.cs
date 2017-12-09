@@ -54,15 +54,6 @@ namespace FoodTime.UnitTest
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count==1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Rua não pode ser nula."));
         }
@@ -85,15 +76,6 @@ namespace FoodTime.UnitTest
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Tamanho máximo 50 caracteres."));
         }
@@ -115,16 +97,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
             Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Numero não pode ser nulo."));
         }
@@ -146,16 +119,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
             Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Tamanho máximo 20 caracteres."));
         }
@@ -177,16 +141,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
             Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Bairro não pode ser nulo."));
         }
@@ -208,16 +163,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
             Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Tamanho máximo 50 caracteres."));
         }
@@ -240,16 +186,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
             Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Cidade não pode ser nula."));
         }
@@ -271,16 +208,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
             Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Tamanho máximo 50 caracteres."));
         }
@@ -302,16 +230,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
             Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Estado não pode ser nulo."));
         }
@@ -333,16 +252,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
             Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Tamanho máximo 50 caracteres."));
         }
@@ -364,16 +274,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
             Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("CEP não pode ser nulo ou conter espaços."));
         }
@@ -395,16 +296,8 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
+           
             Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             //Espacos e CEP>8
             Assert.IsTrue(endereco.ValidarEntrada().Count == 2);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("CEP não pode ser nulo ou conter espaços."));
@@ -427,16 +320,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
             Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Tamanho máximo 8 caracteres."));
         }
@@ -458,17 +342,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
             Assert.IsTrue(endereco.Latitude == latitude);
-            Assert.IsTrue(endereco.Longitude == longitude);
-            //Espacos e CEP>8
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Latitude não pode ser nula."));
         }
@@ -490,17 +364,7 @@ namespace FoodTime.UnitTest
 
             endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
-            Assert.IsTrue(endereco.Rua == rua);
-            Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
-            Assert.IsTrue(endereco.Complemento == complemento);
-            Assert.IsTrue(endereco.Bairro == bairro);
-            Assert.IsTrue(endereco.Cidade == cidade);
-            Assert.IsTrue(endereco.Estado == estado);
-            Assert.IsTrue(endereco.CEP == cep);
-            Assert.IsTrue(endereco.Latitude == latitude);
             Assert.IsTrue(endereco.Longitude == longitude);
-            //Espacos e CEP>8
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Longitude não pode ser nula."));
         }
