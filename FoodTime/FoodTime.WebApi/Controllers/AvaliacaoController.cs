@@ -36,7 +36,7 @@ namespace FoodTime.WebApi.Controllers
                 avaliacaoModel.Comentario,
                 avaliacaoModel.FotoAvaliacao,
                 avaliacaoModel.Recomendado,
-                avaliacaoModel.DataAvaliacao,
+                DateTime.Now,
                 usuario,
                 estabelecimento);
             var mensagensErro = avaliacao.ValidarEntrada();
