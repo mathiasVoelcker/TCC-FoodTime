@@ -19,14 +19,14 @@ angular.module('app').config(function ($routeProvider) {
       templateUrl: 'estabelecimento/estabelecimento.html'
     })
 
-    .when('/avaliar', {
+    .when('/avaliar/:IdEstabelecimento?', {
       controller: 'AvaliarController',
       templateUrl: 'estabelecimento/avaliar_estabelecimento.html'
     })
 
 
      // pública
-     .when('/perfilUsuario', {
+     .when('/perfilUsuario/:IdUsuario?', {
       controller: 'PerfilUsuarioController',
       templateUrl: 'usuario/perfil_usuario.html'
 

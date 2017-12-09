@@ -78,7 +78,7 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("buscarPorId")]
+        [Route("{id}")]
         public IHttpActionResult BuscarUsuarioPorId([FromUri]int id)
         {
             var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == id);
