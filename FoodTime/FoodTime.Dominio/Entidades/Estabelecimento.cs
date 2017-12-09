@@ -13,7 +13,7 @@ namespace FoodTime.Dominio.Entidades
         {
         }
 
-        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categorias, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<Foto> fotos)
+        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categorias, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<Foto> fotos, bool aprovado)
         {
             Nome = nome;
             Telefone = telefone;
@@ -23,6 +23,7 @@ namespace FoodTime.Dominio.Entidades
             HorarioFechamento = horaFechamento;
             PrecoMedio = precoMedio;
             Fotos = fotos;
+            Aprovado = aprovado;
         }
 
         public int Id { get; private set; }
@@ -34,8 +35,9 @@ namespace FoodTime.Dominio.Entidades
         public DateTime HorarioAbertura { get; private set; }
         public DateTime HorarioFechamento { get; private set; }
         public decimal PrecoMedio { get; private set; }
+        public bool Aprovado { get; private set; }
 
-        
+
 
 
         public List<string> ValidarEntrada()

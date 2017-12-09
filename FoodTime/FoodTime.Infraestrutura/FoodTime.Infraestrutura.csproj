@@ -109,6 +109,10 @@
     <Compile Include="Migrations\201712082124274_Primeira Migration.Designer.cs">
       <DependentUpon>201712082124274_Primeira Migration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712090026576_Atribuir aprovado a estabelecimento.cs" />
+    <Compile Include="Migrations\201712090026576_Atribuir aprovado a estabelecimento.Designer.cs">
+      <DependentUpon>201712090026576_Atribuir aprovado a estabelecimento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -125,6 +129,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712082124274_Primeira Migration.resx">
       <DependentUpon>201712082124274_Primeira Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712090026576_Atribuir aprovado a estabelecimento.resx">
+      <DependentUpon>201712090026576_Atribuir aprovado a estabelecimento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

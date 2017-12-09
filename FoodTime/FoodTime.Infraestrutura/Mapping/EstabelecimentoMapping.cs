@@ -19,6 +19,7 @@ namespace FoodTime.Infraestrutura.Mapping
             Property(x => x.PrecoMedio).HasPrecision(7, 2).IsRequired();
             Property(x => x.HorarioAbertura).IsRequired();
             Property(x => x.HorarioFechamento).IsRequired();
+            Property(x => x.Aprovado).IsRequired();
             HasRequired(x => x.Endereco).WithMany().Map(x => x.MapKey("Id_Endereco"));
             HasMany(x => x.Categorias).WithMany().Map(x =>
             {

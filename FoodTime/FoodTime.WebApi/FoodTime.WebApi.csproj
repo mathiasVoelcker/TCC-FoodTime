@@ -140,6 +140,7 @@
     </Compile>
     <Compile Include="Models\AvaliacaoModel.cs" />
     <Compile Include="Models\EstabelecimentoPreferenciaModel.cs" />
+    <Compile Include="Models\EstabelecimentoRecomendacao.cs" />
     <Compile Include="Models\PreferenciaModel.cs" />
     <Compile Include="Models\UsuarioLoginModel.cs" />
     <Compile Include="Models\UsuarioModel.cs" />
