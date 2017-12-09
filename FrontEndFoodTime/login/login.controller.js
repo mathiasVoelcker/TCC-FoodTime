@@ -1,17 +1,23 @@
-angular.module('app').controller('LoginController', function ($scope, authService) {
+angular.module('app').controller('LoginController', function ($scope, toastr, authService, $location, $http) {
+
+  function redirecionar(promise) {
+    promise.then(function () {
+        $location.path('/home/');
+    })
+}
 
   $scope.login = function (usuario) {
+    let promise;
 
-    authService.loginTemp(usuario)
+    promise = authService.loginTemp(usuario)
       .then(
-        function (response) {
-          console.log(response);
-          alert('Login com sucesso!');
+        function () {
+          toastr.success('Login com sucesso!')
+          redirecionar(promise);
 
         },
-        function (response) {
-          console.log(response);
-          alert('Erro no Login!');
+        function (error) {
+          toastr.error('Erro no Login!')
         });
   };
 
