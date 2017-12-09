@@ -38,9 +38,12 @@ namespace FoodTime.WebApi.Controllers
             var usuario = context.Usuarios.Include(x => x.Preferencias).AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
             foreach (Estabelecimento estabelecimento in estabelecimentoAbertos)
             {
-                estabelecimentosRecomendados.Add(new EstabelecimentoRecomendacaoModel(estabelecimento));
-                var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id)).ToList();
-                numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id)).Count();
+                var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
+                var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList();
+                numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count();
+                decimal notaMedia = (decimal)context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).Average();
+                decimal distancia = estabelecimento.DistanciaEstabelecimento(latitude, longitude);
+                estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), ((201 - distancia) / 201));
             }
 
             return Ok(estabelecimentoAbertos);
