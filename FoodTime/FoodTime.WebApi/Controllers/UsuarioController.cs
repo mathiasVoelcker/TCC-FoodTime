@@ -39,9 +39,9 @@ namespace FoodTime.WebApi.Controllers
 
         }
         [HttpGet]
-        public IHttpActionResult ObterUsuario([FromUri]UsuarioLoginModel usuarioLoginModel)
+        public IHttpActionResult ObterUsuario(String email)
         {
-            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Email == usuarioLoginModel.Email);
+            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Email == email);
             if (usuario == null)
                 return BadRequest("Usuário ou senha incorretos");
             return Ok(new UsuarioModel(usuario));
@@ -87,20 +87,17 @@ namespace FoodTime.WebApi.Controllers
             return Ok(new UsuarioModel(usuario));
         }
 
-        //[HttpGet]
-        //[Route("buscar")]]
-        //public IHttpActionResult BuscarAvaliacoesPorUsuario([FromUri]UsuarioModel usuarioModel)
-        //{
-        //    var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
-        //    if (usuario == null)
-        //        return BadRequest("Usuário não existe");
-        //    List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x=> x.DataAvaliacao).ToList();
-        //    if (avaliacoes.Count == 0)
-        //        return BadRequest("Nenhuma avaliacão encontrada.");
-        //    return Ok(avaliacoes);
-        //}
-
-      
-
+        [HttpGet]
+        [Route("buscarPorAvaliacoes")]
+        public IHttpActionResult BuscarAvaliacoesPorUsuario([FromUri]UsuarioModel usuarioModel)
+        {
+            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
+            if (usuario == null)
+                return BadRequest("Usuário não existe");
+            List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x=> x.DataAvaliacao).ToList();
+            if (avaliacoes.Count == 0)
+                return BadRequest("Nenhuma avaliacão encontrada.");
+            return Ok(avaliacoes);
+        }
     }
 }

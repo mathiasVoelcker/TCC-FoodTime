@@ -4,11 +4,11 @@ angular.module('app', ['ngRoute', 'auth']);
 angular.module('app').constant('authConfig', {
 
     // Obrigatória - URL da API que retorna o usuário
-    
+
     //urlUsuario: 'http://10.99.0.12:3296/api/acessos/usuarioLogado',
     //urlUsuario: 'http://10.99.0.24/AutDemo.WebApi/api/acessos/usuariologado',
 
-    urlUsuario: 'http://localhost:65510/api/usuario/usuariologado',
+    urlUsuario: 'http://localhost:65510/api/Usuario',
 
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/login',

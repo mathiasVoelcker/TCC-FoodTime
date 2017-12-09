@@ -2,7 +2,7 @@ angular.module('app').controller('LoginController', function ($scope, authServic
 
   $scope.login = function (usuario) {
 
-    authService.login(usuario)
+    authService.loginTemp(usuario)
       .then(
         function (response) {
           console.log(response);

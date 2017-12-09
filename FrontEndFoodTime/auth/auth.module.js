@@ -18,16 +18,18 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let urlPrivado = authConfig.urlPrivado;
   let urlLogout = authConfig.urlLogout;
 
-
+  //Login sem autenticacao
+  function loginTemp(usuario){
+    return $http.get(urlUsuario + "?email=" + usuario.email)
+  }
   // LOGIN - Retorna PROMISE com o response (sucesso ou erro)
   function login(usuario) {
-  debugger
     let deferred = $q.defer();
 
     let headerAuth = montarHeader(usuario);
 
     $http({
-      url: urlUsuario,
+      url: urlUsuario + "?email=" + usuario.email,
       method: 'GET',
       headers: headerAuth
     }).then(
@@ -49,13 +51,13 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
           $location.path(urlPrivado);
         }
 
-        // resolve promise com sucesso 
+        // resolve promise com sucesso
         deferred.resolve(response);
       },
 
       // Erro
       function (response) {
-        // resolve promise com erro 
+        // resolve promise com erro
         deferred.reject(response);
       });
 
@@ -132,6 +134,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   return {
     login: login,
+    loginTemp: loginTemp,
     logout: logout,
     getUsuario: getUsuario,
     possuiPermissao: possuiPermissao,
