@@ -13,7 +13,6 @@ namespace FoodTime.WebApi.Models
         public string Comentario { get; set; }
         public string FotoAvaliacao { get; set; }
         public bool Recomendado { get; private set; }
-        public DateTime DataAvaliacao { get; set; }
         public int IdUsuario { get; set; }
         public int IdEstabelecimento { get; set; }
     }
