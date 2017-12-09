@@ -32,7 +32,6 @@ namespace FoodTime.WebApi.Models
         public DateTime HorarioFechamento { get; set; }
         public decimal PrecoMedio { get; set; }
 
-        public decimal NotaMedia { get; set; }
         public decimal Relevancia { get; set; }
 
         public void setRelevancia(decimal preferenciasCorrespondencias, decimal notaMedia, decimal distancia)

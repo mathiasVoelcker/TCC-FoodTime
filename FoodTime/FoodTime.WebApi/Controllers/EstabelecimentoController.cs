@@ -32,7 +32,15 @@ namespace FoodTime.WebApi.Controllers
                 .AsNoTracking()
                 .Where(x => x.Aprovado)
                 .ToList();
+            if(estabelecimentosAprovados.Count == 0)
+            {
+                BadRequest("Não há estabelecimentos cadastrados no sistema ainda.");
+            }
             List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 20, 20, 0, 0))).ToList();
+            if (estabelecimentoAbertos.Count == 0)
+            {
+                BadRequest("Não há estabelecimentos abertos no momento.");
+            }
             List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
             var numPreferenciasCorrespondentes = 0;
             var usuario = context.Usuarios.Include(x => x.Preferencias).AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
@@ -44,9 +52,9 @@ namespace FoodTime.WebApi.Controllers
                 decimal notaMedia = (decimal)context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).Average();
                 decimal distancia = estabelecimento.DistanciaEstabelecimento(latitude, longitude);
                 estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), ((201 - distancia) / 201));
+                estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
-
-            return Ok(estabelecimentoAbertos);
+            return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(5));
         }
 
     }

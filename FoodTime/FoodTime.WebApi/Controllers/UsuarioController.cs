@@ -11,17 +11,33 @@ using System.Web.Http;
 
 namespace FoodTime.WebApi.Controllers
 {
-    [AllowAnonymous]
+
     [RoutePrefix("api/usuario")]
     public class UsuarioController : ApiController
     {
         IFoodTimeContext context;
 
-        public UsuarioController()
+        public UsuarioController(IFoodTimeContext context)
         {
-            context = new FoodTimeContext();
+           // context = new FoodTimeContext();
+            this.context = context;
         }
 
+        //Listar usuario logado
+        [HttpGet]
+        [Route("usuariologado")]
+
+        public IHttpActionResult GetUsuarioLogado()
+
+        {
+            var usuario = context.Usuarios.FirstOrDefault(x => x.Email.Equals(User.Identity.Name));
+
+            if (usuario == null)
+                return BadRequest("Usuário não encontrado.");
+
+            return Ok(new { dados = usuario });
+
+        }
         [HttpGet]
         public IHttpActionResult ObterUsuario([FromUri]UsuarioLoginModel usuarioLoginModel)
         {
