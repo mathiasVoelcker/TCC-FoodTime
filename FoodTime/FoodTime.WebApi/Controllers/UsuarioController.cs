@@ -30,7 +30,15 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Usuário ou senha incorretos");
             return Ok(new UsuarioModel(usuario));
         }
-      
+
+        [HttpPost]
+        public IHttpActionResult Adicionar([FromBody]Usuario usuario)
+        {
+            context.Usuarios.Add(usuario);
+            context.SaveChanges();
+            return Created($"api/usuario/{usuario.Id}", usuario);
+        }
+
         [HttpGet]
         [Route("buscar")]
         public IHttpActionResult BuscarUsuario([FromUri]UsuarioModel usuarioModel)
