@@ -58,6 +58,31 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpGet]
+        [Route("listar")]
+        public IHttpActionResult buscarTodosEstabelecimentos()
+        {
+            List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).ToList();
+            if (listaDeEstabelecimentos.Count == 0)
+            {
+                return BadRequest("Não existem estabelecimentos cadastrados.");
+            }
+            return Ok(listaDeEstabelecimentos);
+        }
+
+        [HttpGet]
+        [Route("listarCinco")]
+        public IHttpActionResult buscarCincoEstabelecimentos()
+        {
+            List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).Take(5).ToList();
+            if (listaDeEstabelecimentos.Count == 0)
+            {
+                return BadRequest("Não existem estabelecimentos cadastrados.");
+            }
+            return Ok(listaDeEstabelecimentos);
+        }
+
+
+        [HttpGet]
         [Route("{id}")]
         public IHttpActionResult BuscarEstabelecimentoPorId(int id)
         {
