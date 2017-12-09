@@ -12,7 +12,7 @@ angular.module('app').constant('authConfig', {
 
     urlAvaliiacao: 'http://localhost:65510/api/avaliacao/',
 
-    urlAvaliiacaoRegistro: 'http://localhost:65510/api/avaliacao/registro',
+    urlAvaliiacaoRegistro: 'http://localhost:65510/api/avaliacao/registro/',
 
     urlEstabelecimento: 'http://localhost:65510/api/estabelecimento/',
 
@@ -23,8 +23,6 @@ angular.module('app').constant('authConfig', {
     urlPrivado: '/privado',
 
     urlGrupo: '/grupo',
-
-    urlEstabelecimento: '/estabelecimento',
 
     urlAvaliarEstab: '/avaliarEstab',
 

@@ -9,6 +9,7 @@ angular.module('app')
     $scope.usuario.DataNascimento = formatarData($scope.usuario.DataNascimento)
     console.log($scope.usuario.DataNascimento)
     console.log($scope.usuario)
+    buscarRecomendacoes()
   })
 
   usuarioService.buscarAvaliacoesUsuario(idUsuario).then(
@@ -26,6 +27,22 @@ angular.module('app')
     var dataArray = data.split("-")
     var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
     return retorno
+  }
+
+  function buscarRecomendacoes(){
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+      console.log(pos)
+      usuarioService.buscarRecomendacao(idUsuario, pos.lat, pos.lng).then(
+        function (response){
+          console.log(response)
+          $scope.recomendacoes = response.data
+        }
+      )
+    })
   }
 
 });
