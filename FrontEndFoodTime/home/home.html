@@ -105,13 +105,14 @@
         </div>
       </div>
       <!-- /.row -->
+      <div id="ngrepeat" ng-repeat="estabelecimento in estabelecimentos | filter: filtro">
       <div class="row">	  
         <div class="col-md-3">
           <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="/auxiliares/imgs/res_04.jpg" alt="" style="width:250px;height:200px;">
+            <img class="img-fluid rounded mb-3 mb-md-0" src="{{estabelecimento.Fotos}}" alt="" style="width:250px;height:200px;">
           </a>
         </div>
-        <div id="ngrepeat" ng-repeat="estabelecimento in estabelecimentos | filter: filtro">
+       
         <div class="col-md-4">
           <h3>{{estabelecimento.Nome}}</h3>
 		  <p>Preço Médio: {{estabelecimento.PrecoMedio}} &nbsp;Horário: Aberto </p>
