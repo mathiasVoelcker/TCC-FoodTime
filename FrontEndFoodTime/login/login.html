@@ -1,23 +1,46 @@
-<div class="col-sm-12">
-  <h1 class="page-header">Login (pública)</h1>
-</div>
-
-<div class="col-sm-4">
-
-  <form novalidate name="formLogin" ng-submit="login(usuario)">
-
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input ng-model="usuario.email" type="email" class="form-control" name="email" id="email">
-    </div>
-
-    <div class="form-group">
-      <label for="senha">Senha</label>
-      <input ng-model="usuario.senha" type="password" class="form-control" name="senha" id="senha">
-    </div>
-
-    <button type="submit" class="btn btn-default">Entrar</button>
-
-  </form>
-
-</div>
+ <!-- Top content -->
+        <div class="top-content">        	
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <h1><img class="img-fluid rounded mb-3 mb-md-0" src="auxiliares/imgs/foodTime.png" alt="" style="height:80px;" ></h1>
+                            <div class="description">
+                            	<p>
+	                            	Encontre aqui os melhores estabelecimentos para suas refeições!
+	                            	Rede Social de recomendações de Estabelecimentos.
+                            	</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 form-box">
+                        	<div class="form-top">
+                        		<div class="form-top-left">
+                        			<h3>Login para o nosso site</h3>
+                            		<p>Entre com seu email e senha para log on:</p>
+                        		</div>
+                        		<div class="form-top-right">
+                        			<img class="img-fluid rounded mb-3 mb-md-0" src="auxiliares/imgs/relogio_new.jpg" alt="" style="height:80px;" >
+                        		</div>
+                            </div>
+                            <div class="form-bottom">
+                          <form novalidate name="formLogin" ng-submit="login(usuario)">
+			                    	<div class="form-group">
+			                    		<label class="sr-only" for="form-username">Email</label>
+                              <input ng-model="usuario.email" type="email" class="form-control" name="email" id="email">
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">Senha</label>
+                                <input ng-model="usuario.senha" type="password" class="form-control" name="senha" id="senha">
+			                        </div>
+			                        <button type="submit" class="btn">Entrar</button>
+			                    </form>
+		                    </div>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+            
+        </div>
