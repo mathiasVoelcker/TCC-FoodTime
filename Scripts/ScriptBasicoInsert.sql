@@ -4,6 +4,7 @@ select * from schemaFoodTime.usuario;
 select * from schemaFoodTime.usuario_preferencia;
 select * from schemaFoodTime.estabelecimento_preferencia;
 select * from schemaFoodTime.Avaliacao;
+select * from schemaFoodTime.endereco
 
 insert into schemaFoodTime.usuario_preferencia (id_usuario, id_preferencia)
 values (1, 1);
@@ -25,7 +26,19 @@ values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 
 insert into schemaFoodTime.endereco
 values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 1.0, 1.0);
 insert into schemaFoodTime.endereco
-values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 9.0, 9.0);
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -30.12612436, -51.00952148);
+insert into schemaFoodTime.endereco
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -32.12612436, -50.00952148);
+insert into schemaFoodTime.endereco
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -31.12612436, -51.00952148);
+insert into schemaFoodTime.endereco
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -30.52612436, -50.10952148);
+insert into schemaFoodTime.endereco
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -30.32612436, -51.20952148);
+insert into schemaFoodTime.endereco
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -30.52612436, -51.00952148);
+insert into schemaFoodTime.endereco
+values ('teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', 'teste', -30.12612436, -51.90952148);
 
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
 values ('teste', 'test', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 1.5, 1);
@@ -39,25 +52,23 @@ set horarioFechamento = CURRENT_TIMESTAMP
 where id < 3;
 
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Fratelo', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Fratelo', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 6);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('McDonalds', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 22.2, 7);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Outback', '2312421', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 90.5, 8);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Petiskeira', '929264832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 30.90, 9);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Madero', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 45.2, 10);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Japeska', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 52.2, 11);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Paris 6', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 42.2, 12);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('Divina Padoca', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 34.2, 6);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
-insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);
+values ('SOS Bebida', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 17.2, 6);
 
 
 
