@@ -252,7 +252,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Estabelecimento()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -262,15 +262,16 @@ namespace FoodTime.UnitTest
             DateTime horaAbertura = new DateTime().Date.AddHours(3);
             decimal precoMedio = 15.4M;
             bool aprovado = true;
-            var latitude = 100M;
-            var longitude = 100M;
+            var latitude = 30m;
+            var longitude = 40m;
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
       
             estabelecimento.DistanciaEstabelecimento(latitude, longitude);
-            var result = (decimal)Math.Sqrt((Math.Pow((double)(latitude - estabelecimento.Endereco.Latitude), 2.0)) + (Math.Pow((double)(longitude - estabelecimento.Endereco.Longitude), 2.0)));
-
-            Assert.IsTrue(estabelecimento.DistanciaEstabelecimento(latitude, longitude)==result);
+            var result = (402.5m - 50m)/402.5m;
+            Console.Write(result);
+            Console.Write(estabelecimento.DistanciaEstabelecimento(latitude, longitude));
+            Assert.IsTrue(estabelecimento.DistanciaEstabelecimento(latitude, longitude) == result);
         }
 
 
