@@ -13,7 +13,7 @@ namespace FoodTime.Dominio.Entidades
         {
         }
 
-        protected Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categorias, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<Foto> fotos, bool aprovado)
+        public Estabelecimento(string nome, string telefone, Endereco endereco, List<Categoria> categorias, DateTime horaAbertura, DateTime horaFechamento, decimal precoMedio, List<Foto> fotos, bool aprovado)
         {
             Nome = nome;
             Telefone = telefone;
