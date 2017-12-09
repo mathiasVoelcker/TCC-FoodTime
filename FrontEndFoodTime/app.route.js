@@ -32,6 +32,28 @@ angular.module('app').config(function ($routeProvider) {
 
     })
 
+     // pública
+     .when('/informacoesGrupo/:IdGrupo?', {
+      controller: 'GrupoController',
+      templateUrl: 'grupo/informacoes_grupo.html'
+
+    })
+
+
+     // pública
+     .when('/meusGrupos', {
+      controller: 'GrupoController',
+      templateUrl: 'grupo/meus_grupos.html'
+
+    })
+
+     // pública
+     .when('/minhaPreferencia', {
+      controller: 'PreferenciaController',
+      templateUrl: 'preferencias/minhas_preferencias.html'
+
+    })
+
     // privado
     .when('/privado', {
       controller: 'PrivadoController',

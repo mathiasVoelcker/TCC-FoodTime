@@ -10,6 +10,13 @@
     overflow-y:auto;
 	margin-bottom:20px;
 }
+
+.table-overflow_grupo{
+	max-height:330px;
+    overflow-y:auto;
+	margin-bottom:20px;
+}
+
 .nav-link{
 	font-weight:bold;
 	color:#1b1e21;

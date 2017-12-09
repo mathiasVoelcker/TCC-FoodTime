@@ -22,11 +22,15 @@ angular.module('app').constant('authConfig', {
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
     urlPrivado: '/privado',
 
-    urlGrupo: '/grupo',
+    urlGrupo: '/meusGrupos',
+
+    urlInformacoesGrupo: '/informacoesGrupo',
 
     urlAvaliarEstab: '/avaliarEstab',
 
     urlPerfilUsuario: '/perfilUsuario',
+
+    urlMinhaPreferencia: '/minhaPreferencia',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
     urlLogout: '/home'

@@ -88,3 +88,9 @@
 #texto_avaliar{
 	padding-top: 80px;
 }
+
+.table-overflow_grupo{
+	max-height:330px;
+    overflow-y:auto;
+	margin-bottom:20px;
+}
