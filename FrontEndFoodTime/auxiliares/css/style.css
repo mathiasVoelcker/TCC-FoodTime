@@ -80,6 +80,7 @@
 }
 .top-content{
 	background-image: url('../imgs/2.jpg');
+	background-repeat: repeat;
 }
 #img_relogio{
 	padding-top: 80px;
