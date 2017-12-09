@@ -24,6 +24,10 @@ angular.module('app').config(function ($routeProvider) {
       templateUrl: 'estabelecimento/avaliar_estabelecimento.html'
     })
 
+    .when('/sugerirEstabelecimento', {
+      controller: 'EstabelecimentoController',
+      templateUrl: 'estabelecimento/sugerir_estabelecimento.html'
+    })
 
      // pública
      .when('/perfilUsuario/:IdUsuario?', {
