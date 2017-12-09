@@ -37,6 +37,16 @@ namespace FoodTime.Dominio.Entidades
         public decimal PrecoMedio { get; private set; }
         public bool Aprovado { get; private set; }
 
+        public bool EstaAberto(DateTime horarioAtual)
+        {
+            var diff = HorarioAbertura.TimeOfDay - horarioAtual.TimeOfDay;
+            if (diff.Ticks > 0)
+                return false;
+            diff = HorarioFechamento.TimeOfDay - horarioAtual.TimeOfDay;
+            if (diff.Ticks < 0)
+                return false;
+            return true;
+        }
 
 
 

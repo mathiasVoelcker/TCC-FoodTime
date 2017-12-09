@@ -23,8 +23,10 @@ namespace FoodTime.WebApi.Controllers
         [HttpGet, Route("recomendacao")]
         public IHttpActionResult BuscarRecomendacoes(int idUsuario, decimal latitude, decimal longitude)
         {
-            List<Avaliacao> avaliacoesUsuario = context.Avaliacoes.AsNoTracking().Where(x => x.Usuario.Id == idUsuario).ToList();
-            return Ok(avaliacoesUsuario);
+            List<Estabelecimento> estabelecimentosAprovados = context.Estabelecimentos.AsNoTracking().Where(x => x.Aprovado).ToList();
+            List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 20, 20, 0, 0))).ToList();
+
+            return Ok(estabelecimentoAbertos);
         }
 
     }
