@@ -68,8 +68,8 @@ namespace FoodTime.Dominio.Entidades
             if (string.IsNullOrEmpty(Telefone))
                 mensagens.Add("Telefone não pode ser nulo.");
 
-            if (Nome.Length > 20)
-                mensagens.Add("Tamanho máximo 100 caracteres.");
+            if (Telefone.Length > 20)
+                mensagens.Add("Tamanho máximo 20 caracteres.");
 
             if (Endereco==null)
                 mensagens.Add("Deve conter um Endereço atrelado ao Estabelecimento.");

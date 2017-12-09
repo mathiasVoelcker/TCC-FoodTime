@@ -57,5 +57,19 @@ namespace FoodTime.WebApi.Controllers
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(5));
         }
 
+        [HttpGet]
+        [Route("BuscarEstabelecimentoPorId")]
+        public IHttpActionResult BuscarEstabelecimentoPorId(int idEstabelecimento)
+        {
+            Estabelecimento estabelecimentoExistente = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).FirstOrDefault(x => x.Id == idEstabelecimento);
+            if (estabelecimentoExistente==null)
+            {
+                return BadRequest("Estabelecimento não existente.");
+            }
+            return Ok(estabelecimentoExistente);
+        }
+
+
+
     }
 }

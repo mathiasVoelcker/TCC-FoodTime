@@ -51,12 +51,15 @@
     <Compile Include="AvaliacaoTest.cs" />
     <Compile Include="CategoriaTest.cs" />
     <Compile Include="EnderecoTest.cs" />
+    <Compile Include="EstabelecimentoTest.cs" />
     <Compile Include="FotoTest.cs" />
     <Compile Include="UsuarioTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FoodTime.Dominio\FoodTime.Dominio.csproj">
