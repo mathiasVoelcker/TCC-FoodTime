@@ -52,7 +52,8 @@ namespace FoodTime.Dominio.Entidades
         {
             var x = Math.Pow((double)(latitude - Endereco.Latitude), 2.0);
             var y = Math.Pow((double)(longitude- Endereco.Longitude), 2.0);
-            return (decimal)Math.Sqrt(x + y);
+            var distancia = (decimal)Math.Sqrt(x + y);
+            return ((402.5m - distancia) / 402.5m);
         }
 
         public List<string> ValidarEntrada()

@@ -68,7 +68,7 @@ namespace FoodTime.WebApi.Controllers
                 numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count();
                 decimal notaMedia = (decimal)context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).Average();
                 decimal distancia = estabelecimento.DistanciaEstabelecimento(latitude, longitude);
-                estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), ((201 - distancia) / 201));
+                estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), distancia);
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(5));
