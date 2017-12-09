@@ -1,8 +1,18 @@
 select * from schemaFoodTime.estabelecimento;
-select * from schemaFoodTime.endereco;
-select * from schemaFoodTime.estabelecimento_preferencia;
-select * from schemaFoodTime.avaliacao;
+select * from schemaFoodTime.preferencia;
+select * from schemaFoodTime.usuario;
+select * from schemaFoodTime.usuario_preferencia;
 
+insert into schemaFoodTime.usuario_preferencia (id_usuario, id_preferencia)
+values (1, 1);
+insert into schemaFoodTime.usuario_preferencia (id_usuario, id_preferencia)
+values (1, 2)
+insert into schemaFoodTime.usuario_preferencia (id_usuario, id_preferencia)
+values (2, 3);
+insert into schemaFoodTime.usuario_preferencia (id_usuario, id_preferencia)
+values (2, 4);
+insert into schemaFoodTime.usuario_preferencia (id_usuario, id_preferencia)
+values (2, 5);
 
 
 insert into schemaFoodTime.endereco
@@ -17,7 +27,11 @@ values ('teste', 'test', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 1.5, 1);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
 values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 2);
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
-values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 21.2, 2);
+values ('Super Rest', '9292329832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 21.2, 3);
+
+update schemaFoodTime.estabelecimento
+set horarioFechamento = CURRENT_TIMESTAMP
+where id < 3;
 
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
 values ('Super Restaurante', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 65.2, 1);

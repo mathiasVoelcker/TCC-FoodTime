@@ -35,5 +35,9 @@ namespace FoodTime.WebApi.Models
         public decimal NotaMedia { get; set; }
         public decimal Relevancia { get; set; }
 
+        public void setRelevancia(int numPreferenciasCorrespondencias)
+        {
+
+        }
     }
 }

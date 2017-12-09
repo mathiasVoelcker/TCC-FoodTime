@@ -1,11 +1,13 @@
 ﻿using FoodTime.Dominio.Entidades;
 using FoodTime.Infraestrutura;
+using FoodTime.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Data.Entity;
 
 namespace FoodTime.WebApi.Controllers
 {
@@ -23,8 +25,23 @@ namespace FoodTime.WebApi.Controllers
         [HttpGet, Route("recomendacao")]
         public IHttpActionResult BuscarRecomendacoes(int idUsuario, decimal latitude, decimal longitude)
         {
-            List<Estabelecimento> estabelecimentosAprovados = context.Estabelecimentos.AsNoTracking().Where(x => x.Aprovado).ToList();
+            List<Estabelecimento> estabelecimentosAprovados = context.Estabelecimentos
+                .Include(x => x.Endereco)
+                .Include(x => x.Categorias)
+                .Include(x => x.Fotos)
+                .AsNoTracking()
+                .Where(x => x.Aprovado)
+                .ToList();
             List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 20, 20, 0, 0))).ToList();
+            List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
+            var numPreferenciasCorrespondentes = 0;
+            var usuario = context.Usuarios.Include(x => x.Preferencias).AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
+            foreach (Estabelecimento estabelecimento in estabelecimentoAbertos)
+            {
+                estabelecimentosRecomendados.Add(new EstabelecimentoRecomendacaoModel(estabelecimento));
+                var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id)).ToList();
+                numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id)).Count();
+            }
 
             return Ok(estabelecimentoAbertos);
         }
