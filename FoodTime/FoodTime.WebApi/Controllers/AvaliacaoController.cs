@@ -1,6 +1,7 @@
 ﻿using FoodTime.Dominio.Entidades;
 using FoodTime.Infraestrutura;
 using FoodTime.WebApi.Models;
+using System.Data.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -46,6 +47,18 @@ namespace FoodTime.WebApi.Controllers
                 return Created($"api/avaliacao/{avaliacao.Id}", avaliacaoModel);
             }
             return BadRequest(String.Join(" " , mensagensErro.ToArray()));
+        }
+
+        [HttpGet]
+        public IHttpActionResult BuscarAvaliacoesDoUsuario([FromUri]UsuarioModel usuarioModel)
+        {
+            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
+            if (usuario == null)
+                return BadRequest("Usuário não existe");
+            List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x => x.DataAvaliacao).Take(5).ToList();
+            if (avaliacoes.Count == 0)
+                return BadRequest("Nenhuma avaliação encontrada.");
+            return Ok(avaliacoes);
         }
     }
 }
