@@ -22,6 +22,23 @@ namespace FoodTime.WebApi.Controllers
             context = new FoodTimeContext();
         }
 
+        [HttpPost, Route("registrar")]
+        public IHttpActionResult CriarEstabelecimento([FromBody] Estabelecimento estabelecimento)
+        {
+            context.Enderecos.Add(estabelecimento.Endereco);
+            foreach (Categoria categoria in estabelecimento.Categorias)
+            {
+                context.Categorias.Add(categoria);
+            }
+            foreach (Foto foto in estabelecimento.Fotos)
+            {
+                context.Fotos.Add(foto);
+            }
+            context.Estabelecimentos.Add(estabelecimento);
+            context.SaveChanges();
+            return Created("Sucesso", estabelecimento);
+        }
+
         [HttpGet, Route("recomendacao")]
         public IHttpActionResult BuscarRecomendacoes(int idUsuario, decimal latitude, decimal longitude)
         {
