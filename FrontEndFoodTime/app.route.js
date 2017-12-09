@@ -24,9 +24,12 @@ angular.module('app').config(function ($routeProvider) {
       templateUrl: 'estabelecimento/avaliar_estabelecimento.html'
     })
 
-    .when('/login', {
-      controller: 'LoginController',
-      templateUrl: 'login/login.html'
+
+     // pública
+     .when('/perfilUsuario', {
+      controller: 'PerfilUsuarioController',
+      templateUrl: 'usuario/perfil_usuario.html'
+
     })
 
     // privado
