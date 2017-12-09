@@ -3,6 +3,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
 
   let urlUsuario = authConfig.urlUsuario;
   let urlAvaliiacao = authConfig.urlAvaliiacao;
+  let urlEstabelecimento = authConfig.urlEstabelecimento;
 
   function listar(){
     let result =  $http.get(urlUsuario + lista);
@@ -35,6 +36,6 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     addUsuario: addUsuario,
     removeUsuario: removeUsuario,
     alterUsuario: alterUsuario,
-    buscarAvaliacoesUsuario
+    buscarAvaliacoesUsuario: buscarAvaliacoesUsuario
   };
 })

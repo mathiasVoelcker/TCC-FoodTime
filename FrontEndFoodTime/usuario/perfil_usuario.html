@@ -81,9 +81,9 @@
         <div ng-repeat="avaliacao in avaliacoes">
 
           <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="/auxiliares/imgs/{{avaliacao.Nota}}.jpg" alt="" style="width:15%;">
+            <img class="d-flex mr-3 rounded-circle" src="/auxiliares/imgs/{{avaliacao.Nota}}.png" alt="" style="width:15%;">
             <div class="media-body">
-              <h5 class="mt-0">{{avaliacao.PrecoMedio}}</h5>
+              <h5 class="mt-0">{{avaliacao.Estabelecimento.Nome}}</h5>
               {{avaliacao.Comentario}}
             </div>
           </div>

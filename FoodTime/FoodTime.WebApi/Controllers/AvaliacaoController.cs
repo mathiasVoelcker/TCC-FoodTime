@@ -56,7 +56,12 @@ namespace FoodTime.WebApi.Controllers
             var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
             if (usuario == null)
                 return BadRequest("Usuário não existe");
-            List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x => x.DataAvaliacao).Take(5).ToList();
+            List<Avaliacao> avaliacoes = context.Avaliacoes
+                .Include(x => x.Usuario)
+                .Include(x => x.Estabelecimento)
+                .Where(x => x.Usuario.Id == usuario.Id)
+                .OrderByDescending(x => x.DataAvaliacao)
+                .Take(5).ToList();
             if (avaliacoes.Count == 0)
                 return BadRequest("Nenhuma avaliação encontrada.");
             return Ok(avaliacoes);

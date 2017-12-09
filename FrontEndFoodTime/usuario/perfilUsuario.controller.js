@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('PerfilUsuarioController', function ($scope, $routeParams, authService, $http, usuarioService, estabelecimentoService) {
+.controller('PerfilUsuarioController', function ($scope, $routeParams, authService, $http, usuarioService) {
 
   var idUsuario = $routeParams.IdUsuario;
   usuarioService.buscarUsuario(idUsuario)
@@ -15,7 +15,6 @@ angular.module('app')
     function (response){
       console.log(response.data)
       $scope.avaliacoes = response.data
-      estabelecimentoService.buscarAvaliacaoPorId()
     }
   )
 
