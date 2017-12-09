@@ -58,10 +58,10 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("BuscarEstabelecimentoPorId")]
-        public IHttpActionResult BuscarEstabelecimentoPorId(int idEstabelecimento)
+        [Route("{id}")]
+        public IHttpActionResult BuscarEstabelecimentoPorId(int id)
         {
-            Estabelecimento estabelecimentoExistente = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).FirstOrDefault(x => x.Id == idEstabelecimento);
+            Estabelecimento estabelecimentoExistente = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).FirstOrDefault(x => x.Id == id);
             if (estabelecimentoExistente==null)
             {
                 return BadRequest("Estabelecimento não existente.");
