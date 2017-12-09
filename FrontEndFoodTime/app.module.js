@@ -16,6 +16,14 @@ angular.module('app').constant('authConfig', {
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
     urlPrivado: '/privado',
 
+    urlGrupo: '/grupo',
+
+    urlEstabelecimento: '/estabelecimento',
+
+    urlAvaliarEstab: '/avaliarEstab',
+
+    urlPerfilUsuario: '/usuario',
+
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
     urlLogout: '/home'
 });

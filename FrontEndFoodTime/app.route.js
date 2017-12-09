@@ -14,6 +14,12 @@ angular.module('app').config(function ($routeProvider) {
       templateUrl: 'login/login.html'
     })
 
+    // pública
+    .when('/estabelecimento', {
+      controller: 'EstabelecimentoController',
+      templateUrl: 'estabelecimento/avaliar_estabelecimento.html'
+    })
+
     // privado
     .when('/privado', {
       controller: 'PrivadoController',
