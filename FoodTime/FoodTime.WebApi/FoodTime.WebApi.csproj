@@ -151,6 +151,9 @@
     <Compile Include="Models\EstabelecimentoFiltroModel.cs" />
     <Compile Include="Models\EstabelecimentoPreferenciaModel.cs" />
     <Compile Include="Models\EstabelecimentoRecomendacaoModel.cs" />
+    <Compile Include="Models\GrupoModel.cs" />
+    <Compile Include="Models\GrupoUsuarioModel.cs" />
+    <Compile Include="Models\NotificacaoModel.cs" />
     <Compile Include="Models\PreferenciaModel.cs" />
     <Compile Include="Models\UsuarioCadastroModel.cs" />
     <Compile Include="Models\UsuarioLoginModel.cs" />
