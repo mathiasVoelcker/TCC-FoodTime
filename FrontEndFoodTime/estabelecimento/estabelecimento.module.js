@@ -1,10 +1,11 @@
 angular.module('auth').factory('estabService', function (authConfig, $http, $q, $location, $localStorage, $rootScope) {
 
-  let urlAvaliiacaoRegistro = authConfig.urlAvaliiacaoRegistro;
+  let urlAvaliacao = authConfig.urlAvaliacao;
+  let urlAvaliacaoRegistro = authConfig.urlAvaliacaoRegistro;
   let urlEstabelecimento = authConfig.urlEstabelecimento;
 
   function criarAvaliacao(avaliacao){
-    return $http.post(urlAvaliiacaoRegistro, avaliacao)
+    return $http.post(urlAvaliacaoRegistro, avaliacao)
   }
 
   function listar(){
@@ -28,12 +29,17 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     return $http.get(urlEstabelecimento + id)
   }
 
+  function buscarAvaliacoesEstab(id){
+    return $http.get(urlAvaliacao + "buscarPorIdEstabelecimento?idEstab=" + id)
+  }
+
   return{
     criarAvaliacao: criarAvaliacao,
     listar: listar,
     listarCinco: listarCinco,
     buscarPorFiltro: buscarPorFiltro,
-    buscarEstabelecimentoPorId: buscarEstabelecimentoPorId 
+    buscarEstabelecimentoPorId: buscarEstabelecimentoPorId,
+    buscarAvaliacoesEstab: buscarAvaliacoesEstab
   }
 
 

@@ -6,6 +6,8 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
     }
   )
 
+  $scope.usuarioLogado = authService.getUsuario();
+
   $scope.avaliacao
   $scope.avaliar = function(avaliacao){
     console.log(authService.getUsuario())

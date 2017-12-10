@@ -34,11 +34,8 @@ namespace FoodTime.Dominio.Entidades
             if (Usuario == null)
                 mensagens.Add("Deve ter um Usuario vinculado.");
 
-            if (Estabelecimento == null)
-                mensagens.Add("Deve ter um Estabelecimento vinculado.");
-
-            if (Grupo == null)
-                mensagens.Add("Deve ter um Grupo vinculado.");
+            if ((Grupo == null) && (Estabelecimento == null))
+                mensagens.Add("Deve ter um Grupo ou um estabelecimento vinculado.");
 
             return mensagens;
         }

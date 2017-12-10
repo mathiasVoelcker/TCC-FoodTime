@@ -1,135 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <title>1 Col Portfolio - Start Bootstrap Template</title>
+  <title>1 Col Portfolio - Start Bootstrap Template</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="auxiliares/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="auxiliares/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="auxiliares/css/1-col-portfolio.css" rel="stylesheet">
-    <link href="auxiliares/css/style.css" rel="stylesheet">
-  </head>
+  <!-- Custom styles for this template -->
+  <link href="auxiliares/css/1-col-portfolio.css" rel="stylesheet">
+  <link href="auxiliares/css/style.css" rel="stylesheet">
+</head>
 
-  <body>
+<body>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-        <a class="navbar-brand" href="#"><img class="img-fluid rounded mb-3 mb-md-0" src="auxiliares/imgs/foodTime.png" alt="" style="width:150px;height:30px;"></a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Meus grupos
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Meu Perfil</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Notificações</a>
-            </li>
-			 <li class="nav-item">
-              <a class="nav-link" href="#"><span class="glyphicon glyphicon-user"></span>Login</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Page Content -->
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
-			<br><br><br>
-      <!-- Page Heading -->
-      <h1 class="my-4">Informações do Estabelecimento
-      </h1>
-      <!-- Project One -->
-      <div class="row">
-        <div class="col-md-3">
-          <a href="#">
-            <img class="img-fluid rounded mb-3 mb-md-0" src="auxiliares/imgs/res_04.jpg" alt="" style="width:250px;height:200px;">
-          </a>
-        </div>
-        <div class="col-md-4">
-          <h3>Pizzaria Rominelli</h3>
-          <p>Rodízio e opções à la carte de pizzas, massas e filés, vinhos e sobremesas, em ambiente tranquilo e familiar.</p>
-		  <p>Preço Médio: $xxx,xx &nbsp;Horário: Aberto </p>
-		  <p>Média: 5,5 &nbsp;&nbsp;&nbsp;Nº de avaliações: 20</p>
-        </div>
-		
-			<div class="col-md-5"> 	
-				
-			  <a class="btn btn-primary" href="#">Avaliar Estabelecimento</a>
-			</div>
+      <a class="navbar-brand" href="#"><img class="img-fluid rounded mb-3 mb-md-0" src="auxiliares/imgs/foodTime.png" alt="" style="width:150px;height:30px;"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Meus grupos
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#!/perfilUsuario/{{usuarioLogado.Id}}">Meu Perfil</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Notificações</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><span class="glyphicon glyphicon-user"></span>Login</a>
+          </li>
+        </ul>
       </div>
-      <!-- /.row -->
-
-			<hr>
-			<h3 class="my-4">Últimas Avaliações
-				</h3>
-			<div class="col-md-10"> 	
-					<div>			
-						<div class="media mb-4">
-							<img class="d-flex mr-3 rounded-circle" src="auxiliares/imgs/pessoa_01.jpg" alt="" style="width:50px;height:50px;">
-							<div class="media-body">
-								<h5 class="mt-0">Commenter Name</h5>
-								Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 
-							</div>
-						</div>
-						<div class="media mb-4">
-						<img class="d-flex mr-3 rounded-circle" src="auxiliares/imgs/pessoa_02.jpg" alt="" style="width:50px;height:50px;">
-						<div class="media-body">
-								<h5 class="mt-0">Commenter Name</h5>
-								Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 
-						</div>
-						</div>
-						<div class="media mb-4">
-						<img class="d-flex mr-3 rounded-circle" src="auxiliares/imgs/pessoa_02.jpg" alt="" style="width:50px;height:50px;">
-						<div class="media-body">
-								<h5 class="mt-0">Commenter Name</h5>
-								Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 
-						</div>
-						</div>
-						<div class="media mb-4">
-								<img class="d-flex mr-3 rounded-circle" src="auxiliares/imgs/pessoa_02.jpg" alt="" style="width:50px;height:50px;">
-								<div class="media-body">
-										<h5 class="mt-0">Commenter Name</h5>
-										Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 
-								</div>
-								</div>
-								<div class="media mb-4">
-										<img class="d-flex mr-3 rounded-circle" src="auxiliares/imgs/pessoa_02.jpg" alt="" style="width:50px;height:50px;">
-										<div class="media-body">
-												<h5 class="mt-0">Commenter Name</h5>
-												Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 	Cras sit amet nibh libero, in gravida nulla. 
-										</div>
-								</div>
-					</div>
-				</div>
-      </div>
-      <!-- /.row -->
-     
-      <!-- Pagination -->
-
     </div>
-    <!-- /.container -->
-  <!-- Footer -->
-	<footer class="py-5 bg-dark">
-      <div class="container">
-        <p class="m-0 text-center text-white">Projeto Crescer 2017-2</p>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <br><br><br>
+    <!-- Page Heading -->
+    <h1 class="my-4">Informações do Estabelecimento
+    </h1>
+    <!-- Project One -->
+    <div class="row">
+      <div class="col-md-3">
+        <a href="#">
+          <img class="img-fluid rounded mb-3 mb-md-0" src="{{estabelecimento.Fotos[0]}}" alt="" style="width:250px;height:200px;">
+        </a>
       </div>
-      <!-- /.container -->
-    </footer>
-   
-  </body>
+      <div class="col-md-4">
+        <h3>{{estabelecimento.Nome}}</h3>
+        <p>{{estabelecimento.Endereco.Rua}}</p>
+        <p>Preço Médio: {{estabelecimento.PrecoMedio}}; &nbsp;&nbsp;&nbsp;
+          <span ng-show="estabelecimento.EstaAberto" class="aberto-label">Aberto</span>
+          <span ng-show="!estabelecimento.EstaAberto" class="fechado-label">Fechado</span>
+        </p>
+        <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp; Nº de avaliações: {{estabelecimento.NumAvaliacoes}}</p>
+      </div>
+
+      <div class="col-md-5">
+
+        <a class="btn btn-primary" href="#!/avaliar/{{IdEstabelecimento}}">Avaliar Estabelecimento</a>
+      </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+    <h3 class="my-4">Últimas Avaliações
+    </h3>
+    <div class="col-md-10">
+      <div>
+        <div class="media mb-4" ng-repeat="avaliacao in estabelecimento.Avaliacoes">
+          <img class="d-flex mr-3 rounded-circle" src="{{avaliacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
+          <div class="media-body">
+            <h5 class="mt-0">{{avaliacao.Usuario.Nome}}</h5>
+            {{avaliacao.Comentario}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /.row -->
+
+  <!-- Pagination -->
+
+</div>
+<!-- /.container -->
+<!-- Footer -->
+<footer class="py-5 bg-dark fixed">
+  <div class="container">
+    <p class="m-0 text-center text-white">Projeto Crescer 2017-2</p>
+  </div>
+  <!-- /.container -->
+</footer>
+
+
+</body>
 
 </html>

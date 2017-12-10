@@ -1,7 +1,7 @@
+
 angular.module('app').controller('HomeController', function ($scope, authService, $http, estabService, categoriaService) {
-    
+
   $scope.usuarioLogado = authService.getUsuario();
-  let estabelecimentos;
   estabService.listar();
   categoriaService.listar();
 

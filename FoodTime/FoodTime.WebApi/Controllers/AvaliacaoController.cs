@@ -66,5 +66,23 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Nenhuma avaliação encontrada.");
             return Ok(avaliacoes);
         }
+
+        [HttpGet]
+        [Route("buscarPorIdEstabelecimento")]
+        public IHttpActionResult BuscarUltimasAvaliacoesPorIdEstabelecimento([FromUri]int idEstab)
+        {
+            var estabelecimento = context.Estabelecimentos.AsNoTracking().FirstOrDefault(x => x.Id == idEstab);
+            if (estabelecimento == null)
+                return BadRequest("Estabelecimento não existe");
+            List<Avaliacao> avaliacoes = context.Avaliacoes
+                .Include(x => x.Usuario)
+                .Include(x => x.Estabelecimento)
+                .Where(x => x.Estabelecimento.Id == idEstab)
+                .OrderByDescending(x => x.DataAvaliacao)
+                .Take(5).ToList();
+            if (avaliacoes.Count == 0)
+                return BadRequest("Nenhuma avaliação encontrada.");
+            return Ok(avaliacoes);
+        }
     }
 }

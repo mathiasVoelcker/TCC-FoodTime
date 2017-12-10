@@ -35,7 +35,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Meu Perfil</a>
+            <a class="nav-link" href="#!/perfilUsuario/{{usuarioLogado.Id}}">Meu Perfil</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Notificações</a>
@@ -77,15 +77,12 @@
     <div class="container">
       <h3>Últimas Notas e comentários</h3>
       <br>
-      <div class="row">
-        <div ng-repeat="avaliacao in avaliacoes">
-
-          <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="/auxiliares/imgs/{{avaliacao.Nota}}.png" alt="" style="width:10%;">
-            <div class="media-body">
-              <h5 class="mt-0">{{avaliacao.Estabelecimento.Nome}}</h5>
-              {{avaliacao.Comentario}}
-            </div>
+      <div class="row" ng-repeat="avaliacao in avaliacoes">
+        <div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="/auxiliares/imgs/{{avaliacao.Nota}}.png" alt="" style="width:10%; height: 114px; width: 114px;">
+          <div class="media-body">
+            <h5 class="mt-0">{{avaliacao.Estabelecimento.Nome}}</h5>
+            {{avaliacao.Comentario}}
           </div>
         </div>
       </div>
@@ -99,14 +96,19 @@
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
+            <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">{{recomendacao.Nome}}</a>
+                <a href="#!/estabelecimento/{{recomendacao.Id}}">{{recomendacao.Nome}}</a>
               </h4>
               <p class="card-text">Telefone: {{recomendacao.Telefone}}</p>
               <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
+              <div>
+                <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
+                <a class="btn btn-danger" href="#!/avaliar/{{recomendacao.Id}}">Recusar</a>
+              </div>
             </div>
+
           </div>
         </div>
       </div>
