@@ -96,10 +96,10 @@
       <div class="row">
         <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
           <div class="card h-100">
-            <a href="#"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
+            <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
             <div class="card-body">
               <h4 class="card-title">
-                <a href="#">{{recomendacao.Nome}}</a>
+                <a href="#!/estabelecimento/{{recomendacao.Id}}">{{recomendacao.Nome}}</a>
               </h4>
               <p class="card-text">Telefone: {{recomendacao.Telefone}}</p>
               <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
