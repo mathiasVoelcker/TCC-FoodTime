@@ -14,7 +14,7 @@ angular.module('app').config(function ($routeProvider) {
       templateUrl: 'login/login.html'
     })
 
-    .when('/estabelecimento', {
+    .when('/estabelecimento/:IdEstabelecimento', {
       controller: 'EstabelecimentoController',
       templateUrl: 'estabelecimento/estabelecimento.html'
     })
@@ -69,7 +69,7 @@ angular.module('app').config(function ($routeProvider) {
       .when('/notificacoes', {
         controller: 'NotificacoesController',
         templateUrl: 'notificacoes/notificacoes.html'
-  
+
       })
 
     // privado
