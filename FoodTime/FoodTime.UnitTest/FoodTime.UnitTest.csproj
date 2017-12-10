@@ -53,6 +53,9 @@
     <Compile Include="EnderecoTest.cs" />
     <Compile Include="EstabelecimentoTest.cs" />
     <Compile Include="FotoTest.cs" />
+    <Compile Include="GrupoTest.cs" />
+    <Compile Include="GrupoUsuarioTest.cs" />
+    <Compile Include="NotificacaoTest.cs" />
     <Compile Include="UsuarioTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
