@@ -53,7 +53,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 BadRequest("Não há estabelecimentos cadastrados no sistema ainda.");
             }
-            List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 20, 20, 0, 0))).ToList();
+            List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0))).ToList();
             if (estabelecimentoAbertos.Count == 0)
             {
                 BadRequest("Não há estabelecimentos abertos no momento.");
@@ -66,7 +66,8 @@ namespace FoodTime.WebApi.Controllers
                 var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
                 var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList();
                 numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count();
-                decimal notaMedia = (decimal)context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).Average();
+                var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
+                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average(); 
                 decimal distancia = estabelecimento.DistanciaEstabelecimento(latitude, longitude);
                 estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), distancia);
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
@@ -109,6 +110,28 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Estabelecimento não existente.");
             }
             return Ok(estabelecimentoExistente);
+        }
+
+        [HttpGet]
+        [Route("buscarPorFiltros")]
+        public IHttpActionResult BuscarEstabelecimentoPorFiltros([FromUri] EstabelecimentoFiltroModel estabFiltro)
+        {
+            var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).AsNoTracking().ToList();
+
+            if (estabFiltro.endereco != null)
+            {
+                estabs = estabs.Where(x => x.Endereco.Compare(estabFiltro.endereco)).ToList();
+            }
+            if (estabFiltro.nome != null)
+            {
+                estabs = estabs.Where(x => x.CompareNome(estabFiltro.nome)).ToList();
+            }
+            if(estabFiltro.categorias != null)
+            {
+                estabs = estabs.Where(x => x.Categorias.Any(y => estabFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
+            }
+
+            return Ok();
         }
 
 

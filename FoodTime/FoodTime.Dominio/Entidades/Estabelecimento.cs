@@ -93,5 +93,10 @@ namespace FoodTime.Dominio.Entidades
             return mensagens;
         }
 
+        public bool CompareNome(string nomeComp)
+        {
+            var nomeEstab = Nome.ToUpper();
+            return nomeEstab.Contains(nomeComp.ToUpper());
+        }
     }
 }
