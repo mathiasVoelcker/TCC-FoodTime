@@ -2,8 +2,10 @@
 angular.module('app').controller('HomeController', function ($scope, authService, $http, estabService, categoriaService) {
 
   $scope.usuarioLogado = authService.getUsuario();
+  $scope.buscarPorFiltros = buscarPorFiltros;
   estabService.listar();
   categoriaService.listar();
+  let filtro = [];
 
     estabService.listarCinco().then(
       function(response){
@@ -28,12 +30,18 @@ angular.module('app').controller('HomeController', function ($scope, authService
     );
 
 
-    // function buscarPorFiltros(endereco, nome, categorias){
-    //   alterar
-    //   debugger
-    //   return $http.get(urlEstabelecimento + "filtro?endereco=" + endereco +  "&nome=" + nome + "&categorias=" + categorias)
-    // }
-
+    function buscarPorFiltros(endereco, nome, categorias){
+      debugger
+      filtro.push(endereco);
+      filtro.push(nome);
+      filtro.push(categorias);
+      estabService.buscarPorFiltros(filtro).then(
+        function(response){
+          debugger
+          $scope.estabelecimentosFiltrados = response.data;
+        }
+      );
+    }
 
 
   });

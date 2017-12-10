@@ -1,6 +1,5 @@
 ﻿using FoodTime.Dominio.Entidades;
 using FoodTime.Infraestrutura;
-using FoodTime.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +7,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Data.Entity;
+using FoodTime.WebApi.Models;
 
 namespace FoodTime.WebApi.Controllers
 {
@@ -109,6 +109,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 return BadRequest("Estabelecimento não existente.");
             }
+
             EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimentoExistente);
             var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == id).ToList();
             foreach(Avaliacao avaliacao in avaliacoes)

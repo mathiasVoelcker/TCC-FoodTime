@@ -76,9 +76,9 @@
                 <label>Localização</label>
 				<div >
 				  <div class="input-group">
-					<input type="text" class="form-control" ng-model="filtroNome" placeholder="Procurar por...">
+					<input type="text" class="form-control" ng-model="filtroEndereco" placeholder="Procurar por...">
 					<span class="input-group-btn">
-					  <button class="btn_pesquisa" type="button" ng-onclick="buscarPorFiltro(filtro)">
+					  <button class="btn_pesquisa" type="button">
 					  <a class="navbar-brand" href="#"><img class="img-fluid rounded mb-3 mb-md-0" src="/auxiliares/imgs/why_3.png" alt="" style="width:40px;height:40px;"></a>
 					  </button>
 					</span>
@@ -91,13 +91,13 @@
               <div class="controls">
                 <label>Categoria</label>
                 <select class="form-control dropdown" ng-selected="value=''">
-                    <option ng-model="filtro" ng-repeat="categoria in categorias" ng-value="categoria.Id">{{categoria.Descricao}}</option>
+                    <option ng-model="filtroCategoria" ng-repeat="categoria in categorias" ng-value="categoria.Id">{{categoria.Descricao}}</option>
                 </select>
               </div>
             </div>
             <div id="success"></div>
             <!-- For success/fail messages -->
-            <button type="submit" class="btn btn-primary" ng-onclick="" id="sendMessageButton">Pesquisar</button>
+            <button type="submit" class="btn btn-primary" onclick="buscarPorFiltros(filtroEndereco, filtro, filtroCategoria)" id="sendMessageButton">Pesquisar</button>
           </form>
 		  <hr>
         </div>

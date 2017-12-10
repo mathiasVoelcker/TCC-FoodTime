@@ -22,6 +22,7 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   function buscarPorFiltro(filtro){
     debugger
     let result =  $http.get(urlEstabelecimento+"buscarPorFiltro", filtro);
+    debugger
     return result;
   }
 
