@@ -65,6 +65,13 @@ angular.module('app').config(function ($routeProvider) {
 
     })
 
+      // pública
+      .when('/notificacoes', {
+        controller: 'NotificacoesController',
+        templateUrl: 'notificacoes/notificacoes.html'
+  
+      })
+
     // privado
     .when('/privado', {
       controller: 'PrivadoController',

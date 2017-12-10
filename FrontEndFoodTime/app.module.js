@@ -36,6 +36,8 @@ angular.module('app').constant('authConfig', {
 
     urlSugerirEstabelecimento: '/aprovacoes',
 
+    urlSugerirEstabelecimento: '/notificacoes',
+
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
     urlLogout: '/home'
 });

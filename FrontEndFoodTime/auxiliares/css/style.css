@@ -103,6 +103,11 @@
 	border: 3px solid rgb(236,66,36);
 	
 }
+
+.border_img_grupos{
+	border: 3px solid rgb(0,156,129);
+	
+}
 .palavra_titulo{
 	font-weight: bold;
 }
