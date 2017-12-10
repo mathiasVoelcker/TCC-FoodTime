@@ -70,6 +70,9 @@ values ('Divina Padoca', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 34.2
 insert into schemaFoodTime.estabelecimento (nome, telefone, horarioAbertura, horarioFechamento, precoMedio, id_endereco)
 values ('SOS Bebida', '92929832', CURRENT_TIMESTAMP , CURRENT_TIMESTAMP, 17.2, 6);
 
+update schemaFoodTime.endereco
+set longitude = -50
+where id = 1;
 
 
 
