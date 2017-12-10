@@ -19,6 +19,11 @@ namespace FoodTime.WebApi.Controllers
     {
         IFoodTimeContext context;
 
+        public CategoriaController(IFoodTimeContext context)
+        {
+            this.context = context;
+        }
+
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult BuscarCategoriaPorId([FromUri]int id)
@@ -38,5 +43,6 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Nenhuma categoria encontrada.");
             return Ok(ListaDeCategoria);
         }
+
     }
 }

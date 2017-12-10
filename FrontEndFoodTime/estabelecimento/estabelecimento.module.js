@@ -12,6 +12,12 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     return result;
   }
 
+  function listarCinco(){
+    let result =  $http.get(urlEstabelecimento+"listarCinco");
+    return result;
+  }
+ 
+
   function buscarPorFiltro(filtro){
     debugger
     let result =  $http.get(urlEstabelecimento+"buscarPorFiltro", filtro);
@@ -25,6 +31,8 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   return{
     criarAvaliacao: criarAvaliacao,
     listar: listar,
+    listarCinco: listarCinco,
+    buscarPorFiltro: buscarPorFiltro,
     buscarEstabelecimentoPorId: buscarEstabelecimentoPorId 
   }
 
