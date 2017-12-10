@@ -142,6 +142,9 @@
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\EstabelecimentoController.cs" />
     <Compile Include="Controllers\FotoController.cs" />
+    <Compile Include="Controllers\GrupoController.cs" />
+    <Compile Include="Controllers\GrupoUsuarioController.cs" />
+    <Compile Include="Controllers\NotificacaoController.cs" />
     <Compile Include="Controllers\PreferenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
