@@ -72,7 +72,7 @@ namespace FoodTime.WebApi.Controllers
                 estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), distancia);
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
-            return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(5));
+            return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
         }
 
         [HttpGet]
