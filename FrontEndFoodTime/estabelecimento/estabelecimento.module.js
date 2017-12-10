@@ -18,10 +18,15 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     return result;
   }
 
+  function buscarEstabelecimentoPorId(id){
+    return $http.get(urlEstabelecimento + id)
+  }
+
   return{
     criarAvaliacao: criarAvaliacao,
-    listar: listar
-  } 
-  
+    listar: listar,
+    buscarEstabelecimentoPorId: buscarEstabelecimentoPorId 
+  }
+
 
 })

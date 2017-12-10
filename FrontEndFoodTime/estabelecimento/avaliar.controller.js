@@ -1,5 +1,11 @@
 angular.module('app').controller('AvaliarController', function ($scope, $routeParams, estabService, authService) {
 
+  estabService.buscarEstabelecimentoPorId($routeParams.IdEstabelecimento).then(
+    function(response){
+      $scope.estabelecimento = response.data
+    }
+  )
+
   $scope.avaliacao
   $scope.avaliar = function(avaliacao){
     console.log(authService.getUsuario())
