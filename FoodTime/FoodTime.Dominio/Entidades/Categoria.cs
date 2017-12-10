@@ -29,7 +29,7 @@ namespace FoodTime.Dominio.Entidades
                 mensagens.Add("Descricao não pode ser nulo.");
 
             if (Descricao.Length>50)
-                mensagens.Add("O tamanho máximo são 500 caracteres.");
+                mensagens.Add("O tamanho máximo são 50 caracteres.");
 
             return mensagens;
         }
