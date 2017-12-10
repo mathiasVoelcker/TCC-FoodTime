@@ -95,7 +95,7 @@ namespace FoodTime.Dominio.Entidades
             return mensagens;
         }
 
-        public bool Compare(string endereco)
+        public bool Comparar(string endereco)
         {
             var enderecoString = Rua + " " + Numero + " " + Apto + " " + Complemento + " " + Bairro + " " + Cidade + " " + Estado + " " + CEP;
             enderecoString = enderecoString.ToUpper();

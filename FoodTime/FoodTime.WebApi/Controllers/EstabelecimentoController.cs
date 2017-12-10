@@ -120,7 +120,7 @@ namespace FoodTime.WebApi.Controllers
 
             if (estabFiltro.endereco != null)
             {
-                estabs = estabs.Where(x => x.Endereco.Compare(estabFiltro.endereco)).ToList();
+                estabs = estabs.Where(x => x.Endereco.Comparar(estabFiltro.endereco)).ToList();
             }
             if (estabFiltro.nome != null)
             {

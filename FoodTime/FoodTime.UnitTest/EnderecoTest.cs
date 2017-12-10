@@ -369,5 +369,44 @@ namespace FoodTime.UnitTest
             Assert.IsTrue(endereco.ValidarEntrada().Contains("Longitude não pode ser nula."));
         }
 
+        [TestMethod]
+        public void Testar_Comparar_Com_Retorno_True()
+        {
+            Endereco endereco;
+            var rua = "rua teste";
+            var numero = "369";
+            var apto = "";
+            var complemento = "";
+            var bairro = "Centro";
+            var cidade = "Porto Alegre";
+            var estado = "Rio Grande do Sul";
+            var cep = "96508060";
+            var latitude = 15.1M;
+            var longitude = 0M;
+            var stringAComparar = "ua tes";
+
+            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            Assert.IsTrue(endereco.Comparar(stringAComparar));
+        }
+
+        [TestMethod]
+        public void Testar_Comparar_Com_Retorno_False()
+        {
+            Endereco endereco;
+            var rua = "rua teste";
+            var numero = "369";
+            var apto = "";
+            var complemento = "";
+            var bairro = "Centro";
+            var cidade = "Porto Alegre";
+            var estado = "Rio Grande do Sul";
+            var cep = "96508060";
+            var latitude = 15.1M;
+            var longitude = 0M;
+            var stringAComparar = "ua test ";
+
+            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            Assert.IsFalse(endereco.Comparar(stringAComparar));
+        }
     }
 }
