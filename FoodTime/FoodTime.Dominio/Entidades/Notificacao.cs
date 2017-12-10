@@ -39,8 +39,6 @@ namespace FoodTime.Dominio.Entidades
 
             return mensagens;
         }
-
-
-
+    
     }
 }
