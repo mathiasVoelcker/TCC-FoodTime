@@ -77,17 +77,14 @@
     <div class="container">
       <h3>Últimas Notas e comentários</h3>
       <br>
-      <div class="row">
-        <div ng-repeat="avaliacao in avaliacoes">
-
+      <div class="row" ng-repeat="avaliacao in avaliacoes">
           <div class="media mb-4">
-            <img class="d-flex mr-3 rounded-circle" src="/auxiliares/imgs/{{avaliacao.Nota}}.png" alt="" style="width:10%;">
+            <img class="d-flex mr-3 rounded-circle" src="/auxiliares/imgs/{{avaliacao.Nota}}.png" alt="" style="width:10%; height: 114px; width: 114px;">
             <div class="media-body">
               <h5 class="mt-0">{{avaliacao.Estabelecimento.Nome}}</h5>
               {{avaliacao.Comentario}}
             </div>
           </div>
-        </div>
       </div>
     </div>
   </section>
