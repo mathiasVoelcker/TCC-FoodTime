@@ -8,8 +8,13 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   }
 
   function listar(){
-    debugger
     let result =  $http.get(urlEstabelecimento+"listar");
+    return result;
+  }
+
+  function buscarPorFiltro(filtro){
+    debugger
+    let result =  $http.get(urlEstabelecimento+"buscarPorFiltro", filtro);
     return result;
   }
 
