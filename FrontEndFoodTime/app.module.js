@@ -10,9 +10,9 @@ angular.module('app').constant('authConfig', {
 
     urlUsuario: 'http://localhost:65510/api/Usuario/',
 
-    urlAvaliiacao: 'http://localhost:65510/api/avaliacao/',
+    urlAvaliacao: 'http://localhost:65510/api/avaliacao/',
 
-    urlAvaliiacaoRegistro: 'http://localhost:65510/api/avaliacao/registro/',
+    urlAvaliacaoRegistro: 'http://localhost:65510/api/avaliacao/registro/',
 
     urlEstabelecimento: 'http://localhost:65510/api/estabelecimento/',
 

@@ -104,12 +104,22 @@ namespace FoodTime.WebApi.Controllers
         [Route("{id}")]
         public IHttpActionResult BuscarEstabelecimentoPorId(int id)
         {
-            Estabelecimento estabelecimentoExistente = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).FirstOrDefault(x => x.Id == id);
+            Estabelecimento estabelecimentoExistente = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).AsNoTracking().FirstOrDefault(x => x.Id == id);
             if (estabelecimentoExistente==null)
             {
                 return BadRequest("Estabelecimento não existente.");
             }
-            return Ok(estabelecimentoExistente);
+            EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimentoExistente);
+            var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == id).ToList();
+            foreach(Avaliacao avaliacao in avaliacoes)
+            {
+                estabModel.Avaliacoes.Add(avaliacao);
+            }
+            estabModel.EstaAberto = estabelecimentoExistente.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
+            var notasAvaliacoes = avaliacoes.Select(x => x.Nota);
+            estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
+            estabModel.NumAvaliacoes = notasAvaliacoes.Count();
+            return Ok(estabModel);
         }
 
         [HttpGet]

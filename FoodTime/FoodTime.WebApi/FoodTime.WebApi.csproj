@@ -152,6 +152,7 @@
     </Compile>
     <Compile Include="Models\AvaliacaoModel.cs" />
     <Compile Include="Models\EstabelecimentoFiltroModel.cs" />
+    <Compile Include="Models\EstabelecimentoModel.cs" />
     <Compile Include="Models\EstabelecimentoPreferenciaModel.cs" />
     <Compile Include="Models\EstabelecimentoRecomendacaoModel.cs" />
     <Compile Include="Models\GrupoModel.cs" />

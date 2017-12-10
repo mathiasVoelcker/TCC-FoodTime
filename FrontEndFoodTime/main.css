@@ -8,3 +8,19 @@ body {
 .navbar-form label {
   color: #9d9d9d;
 }
+
+.fixed{
+   position: absolute;
+   bottom: 0px;
+   width: 100%
+}
+
+.aberto-label{
+  color: green;
+  font-weight: bold;
+}
+
+.fechado-label{
+  color: red;
+  font-weight: bold;
+}
