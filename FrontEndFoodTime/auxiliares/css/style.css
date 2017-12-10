@@ -94,3 +94,19 @@
     overflow-y:auto;
 	margin-bottom:20px;
 }
+.table-overflow_preferencias{
+	max-height:270px;
+    overflow-y:auto;
+	margin-bottom:20px;
+}
+.border_img{
+	border: 3px solid rgb(236,66,36);
+	
+}
+.palavra_titulo{
+	font-weight: bold;
+}
+.palavra_resp{
+	font-weight: bold;
+	color:rgb(127,127,127);
+}

@@ -58,6 +58,13 @@ angular.module('app').config(function ($routeProvider) {
 
     })
 
+     // pública
+     .when('/aprovacoes', {
+      controller: 'EstabelecimentoController',
+      templateUrl: 'estabelecimento/aprovacoes.html'
+
+    })
+
     // privado
     .when('/privado', {
       controller: 'PrivadoController',
