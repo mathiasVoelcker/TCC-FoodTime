@@ -2,68 +2,85 @@
 using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using FoodTime.Dominio.Entidades;
 
 namespace FoodTime.UnitTest
 {
-    /// <summary>
-    /// Descrição resumida para GrupoUsuarioTest
-    /// </summary>
     [TestClass]
     public class GrupoUsuarioTest
     {
-        public GrupoUsuarioTest()
+        [TestMethod]
+        public void Testar_Inicializacao_De_GrupoUsuario()
         {
-            //
-            // TODO: Adicionar lógica de construtor aqui
-            //
+            GrupoUsuario grupoUsuario;
+
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = "testeSobrenome";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+
+            Grupo grupo;
+            var nomeGrupo = "FoodTime";
+            var imagem = "C:/Users/Usuario/AppData/Roaming/NVIDIA/GL/GLCache/hashs/3c823953fa783a6e3fa2343995e9093fa783a3fab95e3fa7895e3fa3885f995e3faa88c2a2/cb5d9093fa783a6725dc7b9b95e3fa7838/d9093fa783a6725dc73fa783a6b9b95e3fa/img.jpg";
+
+            grupo = new Grupo(nomeGrupo, imagem);
+
+
+            grupoUsuario = new GrupoUsuario(usuario, grupo, true);
+
+            Assert.IsTrue(grupoUsuario.Usuario == usuario);
+            Assert.IsTrue(grupoUsuario.Grupo == grupo);
+            Assert.IsTrue(grupoUsuario.Aprovado == true);
         }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Obtém ou define o contexto do teste que provê
-        ///informação e funcionalidade da execução de teste atual.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Atributos de teste adicionais
-        //
-        // É possível usar os seguintes atributos adicionais enquanto escreve os testes:
-        //
-        // Use ClassInitialize para executar código antes de executar o primeiro teste na classe
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // Use ClassCleanup para executar código após a execução de todos os testes em uma classe
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // Use TestInitialize para executar código antes de executar cada teste 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // Use TestCleanup para executar código após execução de cada teste
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void Testar_Validar_GrupoUsuario_Com_Usuario_Nulo()
         {
-            //
-            // TODO: Adicionar lógica de teste aqui
-            //
+            GrupoUsuario grupoUsuario;
+            Grupo grupo;
+            var nomeGrupo = "FoodTime";
+            var imagem = "C:/Users/Usuario/AppData/Roaming/NVIDIA/GL/GLCache/hashs/3c823953fa783a6e3fa2343995e9093fa783a3fab95e3fa7895e3fa3885f995e3faa88c2a2/cb5d9093fa783a6725dc7b9b95e3fa7838/d9093fa783a6725dc73fa783a6b9b95e3fa/img.jpg";
+
+            grupo = new Grupo(nomeGrupo, imagem);
+
+            grupoUsuario = new GrupoUsuario(null, grupo, true);
+
+            Assert.IsTrue(grupoUsuario.ValidarEntrada().Count ==1);
+            Assert.IsTrue(grupoUsuario.ValidarEntrada().Contains("Deve ter um Usuario vinculado."));
+            Assert.IsTrue(grupoUsuario.Grupo == grupo);
+            Assert.IsTrue(grupoUsuario.Aprovado == true);
         }
+
+        [TestMethod]
+        public void Testar_Validar_GrupoUsuario_Com_Grupo_Nulo()
+        {
+            GrupoUsuario grupoUsuario;
+
+            Usuario usuario;
+            var nome = "testeNome";
+            var sobrenome = "testeSobrenome";
+            var email = "teste@email.com";
+            var senha = "testeSenha";
+            var dataNascimento = new DateTime(2010, 8, 18);
+            var fotoPerfil = "testeFotoPerfil";
+            var isAdmin = true;
+
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+
+
+            grupoUsuario = new GrupoUsuario(usuario, null, true);
+
+            Assert.IsTrue(grupoUsuario.ValidarEntrada().Count == 1);
+            Assert.IsTrue(grupoUsuario.ValidarEntrada().Contains("Deve ter um Grupo vinculado."));
+            Assert.IsTrue(grupoUsuario.Usuario == usuario);
+            Assert.IsTrue(grupoUsuario.Aprovado == true);
+        }
+
     }
 }

@@ -30,10 +30,10 @@ namespace FoodTime.Dominio.Entidades
             List<string> mensagens = new List<string>();
 
             if (Usuario == null)
-                mensagens.Add("Deve ter um Usuario vinculada.");
+                mensagens.Add("Deve ter um Usuario vinculado.");
 
             if (Grupo == null)
-                mensagens.Add("Deve ter um Grupo vinculada.");
+                mensagens.Add("Deve ter um Grupo vinculado.");
 
             return mensagens;
         }
