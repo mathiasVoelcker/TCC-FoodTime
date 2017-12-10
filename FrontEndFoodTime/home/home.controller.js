@@ -1,7 +1,6 @@
 angular.module('app').controller('HomeController', function ($scope, authService, $http, estabService) {
-    
-  $scope.usuarioLogado = authService.getUsuario();
 
+  $scope.usuarioLogado = authService.getUsuario();
   estabService.listar();
 
     estabService.listar().then(
@@ -10,5 +9,5 @@ angular.module('app').controller('HomeController', function ($scope, authService
         $scope.estabelecimentos.foto = response.data.Fotos[0].Caminho;
       }
     );
-    
+
   });
