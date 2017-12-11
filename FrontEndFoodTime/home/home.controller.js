@@ -3,13 +3,20 @@ angular.module('app').controller('HomeController', function ($scope, authService
 
   $scope.usuarioLogado = authService.getUsuario();
   $scope.filtro = {Nome: "", Endereco: "", Categoria: ""};
+  $scope.usarLocalizacao = false
   // $scope.filtro.Nome = ""
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
   estabService.listar();
-  let filtro = [];
+  navigator.geolocation.getCurrentPosition(function(position) {
+    $scope.pos = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    }
+    console.log($scope.pos)
+  })
 
-  estabService.listarCinco().then(
+    estabService.listarCinco().then(
       function(response){
         $scope.estabelecimentos = response.data;
         estabelecimentos = response.data;
@@ -35,14 +42,27 @@ angular.module('app').controller('HomeController', function ($scope, authService
 
 
     $scope.buscarPorFiltros = function (){
-      console.log("dentro da funcao")
-      console.log($scope.filtro);
-      estabService.buscarPorFiltros($scope.filtro).then(
-        function(response){
-          console.log(response)
-          $scope.estabelecimentos = response.data;
-        }
-      );
+      if($scope.usarLocalizacao){
+        estabService.buscarPorFiltrosLocalizacao($scope.filtro, $scope.pos).then(
+          function(response){
+            console.log(response)
+            $scope.estabelecimentos = response.data;
+          }
+        );
+      }
+      else{
+        estabService.buscarPorFiltros($scope.filtro).then(
+          function(response){
+            console.log(response)
+            $scope.estabelecimentos = response.data;
+          }
+        );
+      }
+    }
+
+    $scope.setUsarLocalizacao = function(usarLocalizacao){
+      $scope.usarLocalizacao = usarLocalizacao;
+      console.log($scope.usarLocalizacao)
     }
 
 

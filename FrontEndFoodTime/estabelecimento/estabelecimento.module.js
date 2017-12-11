@@ -32,13 +32,20 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     return $http.get(urlAvaliacao + "buscarPorIdEstabelecimento?idEstab=" + id)
   }
 
+  function buscarPorFiltrosLocalizacao(filtro, posicao){
+    return $http.get(urlEstabelecimento+"buscarPorFiltrosLocalizacao?&estabFiltro.nome=" + filtro.Nome + "&estabLocalFiltro.latitude=" + posicao.lat + "&estabLocalFiltro.longitude=" + posicao.lng + "&estabFiltro.categorias=" + filtro.Categoria);
+  }
+
+
+
   return{
     criarAvaliacao: criarAvaliacao,
     listar: listar,
     listarCinco: listarCinco,
     buscarPorFiltros: buscarPorFiltros,
     buscarEstabelecimentoPorId: buscarEstabelecimentoPorId,
-    buscarAvaliacoesEstab: buscarAvaliacoesEstab
+    buscarAvaliacoesEstab: buscarAvaliacoesEstab,
+    buscarPorFiltrosLocalizacao: buscarPorFiltrosLocalizacao
   }
 
 

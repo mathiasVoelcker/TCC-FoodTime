@@ -63,8 +63,8 @@
         <h3>{{estabelecimento.Nome}}</h3>
         <p>{{estabelecimento.Endereco.Rua}}</p>
         <p>Preço Médio: {{estabelecimento.PrecoMedio}}; &nbsp;&nbsp;&nbsp;
-          <span ng-show="estabelecimento.EstaAberto" class="aberto-label">Aberto</span>
-          <span ng-show="!estabelecimento.EstaAberto" class="fechado-label">Fechado</span>
+          <span ng-show="estabelecimento.EstaAberto" class="success-label">Aberto</span>
+          <span ng-show="!estabelecimento.EstaAberto" class="danger-label">Fechado</span>
         </p>
         <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp; Nº de avaliações: {{estabelecimento.NumAvaliacoes}}</p>
       </div>

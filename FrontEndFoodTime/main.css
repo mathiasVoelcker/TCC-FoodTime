@@ -15,12 +15,12 @@ body {
    width: 100%
 }
 
-.aberto-label{
+.success-label{
   color: green;
   font-weight: bold;
 }
 
-.fechado-label{
+.danger-label{
   color: red;
   font-weight: bold;
 }
