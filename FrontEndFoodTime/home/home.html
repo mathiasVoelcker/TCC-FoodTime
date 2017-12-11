@@ -105,19 +105,19 @@
       </div>
     </div>
     <!-- /.row -->
-    <div id="ngrepeat" ng-repeat="estabelecimento in estabelecimentos | filter: (filtro.Nome || filtro.Endereco)">
+    <div id="ngrepeat" ng-repeat="estabelecimento in estabelecimentos | filter: {Nome: filtro.Nome}">
       <div class="row">
         <div class="col-md-2">
           <a href="#">
             <!-- <img class="img-fluid rounded mb-3 mb-md-0" ng-src="\auxiliares\imgs\logoFoodTime_new.jpg" alt="" style="width:250px;height:200px;"> -->
-            <img class="img-fluid rounded mb-3 mb-md-0 dimencao-imagem" ng-src="{{ estabelecimento.Fotos[0].Caminho || '\\auxiliares\\imgs\\logoFoodTime_new.jpg' }}" alt="" >
+            <img class="img-fluid rounded mb-3 mb-md-0 dimencao-imagem" ng-src="{{ estabelecimento.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg' }}" alt="" >
           </a>
         </div>
 
         <div class="col-md-4">
           <h3>{{estabelecimento.Nome}}</h3>
           <p>Preço Médio: {{estabelecimento.PrecoMedio}} &nbsp;Horário: Aberto </p>
-          <p>Média: {{estabelecimento.MEDIA}} &nbsp;&nbsp;&nbsp;Nº de avaliações: {{estabelecimento.NumeroAvaliacoes }}</p>
+          <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp;Nº de avaliações: {{estabelecimento.NumAvaliacoes }}</p>
         </div>
 
         <div class="col-md-5">

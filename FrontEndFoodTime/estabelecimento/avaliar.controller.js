@@ -18,7 +18,7 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
     estabService.criarAvaliacao(avaliacao).then(
       function(response){
         console.log(response)
-        alert("SUCESSO!")
+        alert("Avaliação feita com sucesso!")
       }, function(response){
         console.log(response)
       }

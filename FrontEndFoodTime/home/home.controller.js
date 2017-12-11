@@ -45,16 +45,18 @@ angular.module('app').controller('HomeController', function ($scope, authService
       if($scope.usarLocalizacao){
         estabService.buscarPorFiltrosLocalizacao($scope.filtro, $scope.pos).then(
           function(response){
-            console.log(response)
+            console.log("listagem")
             $scope.estabelecimentos = response.data;
+            console.log($scope.estabelecimentos)
           }
         );
       }
       else{
         estabService.buscarPorFiltros($scope.filtro).then(
           function(response){
-            console.log(response)
+            console.log("listagem")
             $scope.estabelecimentos = response.data;
+            console.log($scope.estabelecimentos)
           }
         );
       }

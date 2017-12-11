@@ -99,11 +99,17 @@ namespace FoodTime.WebApi.Controllers
         public IHttpActionResult buscarCincoEstabelecimentos()
         {
             List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).Take(5).ToList();
+
             if (listaDeEstabelecimentos.Count == 0)
             {
                 return BadRequest("Não existem estabelecimentos cadastrados.");
             }
-            return Ok(listaDeEstabelecimentos);
+            List<EstabelecimentoModel> listaEstabelecimentosModel = new List<EstabelecimentoModel>();
+            foreach(Estabelecimento estabelecimento in listaDeEstabelecimentos)
+            {
+                listaEstabelecimentosModel.Add(criarEstabModel(estabelecimento));
+            }
+            return Ok(listaEstabelecimentosModel);
         }
 
 
@@ -116,27 +122,14 @@ namespace FoodTime.WebApi.Controllers
             {
                 return BadRequest("Estabelecimento não existente.");
             }
-
-            EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimentoExistente);
-            var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == id).ToList();
-            if (avaliacoes != null) {
-                foreach (Avaliacao avaliacao in avaliacoes)
-                {
-                    estabModel.Avaliacoes.Add(avaliacao);
-                }
-                estabModel.EstaAberto = estabelecimentoExistente.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
-                var notasAvaliacoes = avaliacoes.Select(x => x.Nota);
-                estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
-                estabModel.NumAvaliacoes = notasAvaliacoes.Count();
-            }
-            return Ok(estabModel);
+            return Ok(criarEstabModel(estabelecimentoExistente));
         }
 
         [HttpGet]
         [Route("buscarPorFiltros")]
         public IHttpActionResult BuscarEstabelecimentoPorFiltros([FromUri] EstabelecimentoFiltroModel estabFiltro)
         {
-            var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).AsNoTracking().ToList();
+            var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).AsNoTracking().ToList();
 
             if (estabFiltro.endereco != null)
             {
@@ -146,19 +139,27 @@ namespace FoodTime.WebApi.Controllers
             {
                 estabs = estabs.Where(x => x.CompareNome(estabFiltro.nome)).ToList();
             }
-            if(estabFiltro.categorias[0] != null)
+            if (estabFiltro.categorias != null)
             {
-                estabs = estabs.Where(x => x.Categorias.Any(y => estabFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
+                if (estabFiltro.categorias[0] != null)
+                {
+                    estabs = estabs.Where(x => x.Categorias.Any(y => estabFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
+                }
+            }
+            List<EstabelecimentoModel> estabsModel = new List<EstabelecimentoModel>();
+            foreach(Estabelecimento estabelecimento in estabs)
+            {
+                estabsModel.Add(criarEstabModel(estabelecimento));
             }
 
-            return Ok(estabs);
+            return Ok(estabsModel);
         }
 
         [HttpGet]
         [Route("buscarPorFiltrosLocalizacao")]
         public IHttpActionResult BuscarEstabelecimentoPorFiltrosLocalizacao([FromUri] EstabelecimentoFiltroLocalModel estabLocalFiltro)
         {
-            var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).AsNoTracking().ToList();
+            var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).AsNoTracking().ToList();
 
             estabs = estabs.Where(x => x.DistanciaEstabelecimento(estabLocalFiltro.latitude, estabLocalFiltro.longitude) < 0.5m).ToList();
             if (estabLocalFiltro.nome != null)
@@ -172,11 +173,32 @@ namespace FoodTime.WebApi.Controllers
                     estabs = estabs.Where(x => x.Categorias.Any(y => estabLocalFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
                 }
             }
+            List<EstabelecimentoModel> estabsModel = new List<EstabelecimentoModel>();
+            foreach (Estabelecimento estabelecimento in estabs)
+            {
+                estabsModel.Add(criarEstabModel(estabelecimento));
+            }
 
-            return Ok(estabs);
+            return Ok(estabsModel);
         }
 
-
+        private EstabelecimentoModel criarEstabModel(Estabelecimento estabelecimento)
+        {
+            EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimento);
+            var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).ToList();
+            if (avaliacoes.Count() != 0)
+            {
+                foreach (Avaliacao avaliacao in avaliacoes)
+                {
+                    estabModel.Avaliacoes.Add(avaliacao);
+                }
+                estabModel.EstaAberto = estabelecimento.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
+                var notasAvaliacoes = avaliacoes.Select(x => x.Nota);
+                estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
+                estabModel.NumAvaliacoes = notasAvaliacoes.Count();
+            }
+            return estabModel;
+        }
 
     }
 }

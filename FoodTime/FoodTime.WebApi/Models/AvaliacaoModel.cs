@@ -30,7 +30,7 @@ namespace FoodTime.WebApi.Models
         public decimal PrecoMedio { get; set; }
         public string Comentario { get; set; }
         public string FotoAvaliacao { get; set; }
-        public bool Recomendado { get; private set; }
+        public bool Recomendado { get; set; }
         public int IdUsuario { get; set; }
         public int IdEstabelecimento { get; set; }
     }
