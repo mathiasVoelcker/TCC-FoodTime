@@ -19,7 +19,7 @@ namespace FoodTime.WebApi.Controllers
 
         public UsuarioController(IFoodTimeContext context)
         {
-           // context = new FoodTimeContext();
+            // context = new FoodTimeContext();
             this.context = context;
         }
 
@@ -54,7 +54,7 @@ namespace FoodTime.WebApi.Controllers
 
             foreach (var item in usuarioCadastroModel.IdsPreferencias)
             {
-                var preferenciaExistente = context.Preferencias.FirstOrDefault(x => x.Id == item && x.Aprovado==true);
+                var preferenciaExistente = context.Preferencias.FirstOrDefault(x => x.Id == item && x.Aprovado == true);
                 if (preferenciaExistente != null)
                 {
                     novaListaPreferencias.Add(preferenciaExistente);
@@ -94,10 +94,21 @@ namespace FoodTime.WebApi.Controllers
             var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
             if (usuario == null)
                 return BadRequest("Usuário não existe");
-            List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x=> x.DataAvaliacao).ToList();
+            List<Avaliacao> avaliacoes = context.Avaliacoes.Include(x => x.Usuario).Where(x => x.Usuario.Id == usuario.Id).OrderByDescending(x => x.DataAvaliacao).ToList();
             if (avaliacoes.Count == 0)
                 return BadRequest("Nenhuma avaliacão encontrada.");
             return Ok(avaliacoes);
+        }
+
+        [HttpPut]
+        [Route("excluirRecomendacao")]
+        public IHttpActionResult ExcluirRecomendacao(int idEstabelecimento, int idUsuario)
+        {
+            var usuario = context.Usuarios.Include(x => x.Estabelecimento).FirstOrDefault(x => x.Id == idUsuario);
+            var estabelecimento = context.Estabelecimentos.FirstOrDefault(x => x.Id == idEstabelecimento);
+            usuario.Estabelecimento.Add(estabelecimento);
+            context.SaveChanges();
+            return Ok(usuario);
         }
     }
 }

@@ -53,6 +53,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 BadRequest("Não há estabelecimentos cadastrados no sistema ainda.");
             }
+            estabelecimentosAprovados = estabelecimentosAprovados.Where(x => !context.Usuarios.Include(y => y.Estabelecimento).FirstOrDefault(y => y.Id == idUsuario).Estabelecimento.Any(z => z.Id == x.Id)).ToList();
             List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0))).ToList();
             if (estabelecimentoAbertos.Count == 0)
             {
@@ -69,7 +70,13 @@ namespace FoodTime.WebApi.Controllers
                 var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
                 decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average(); 
                 decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude);
-                estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), distancia);
+                var numPreferencias = usuario.Preferencias.Count();
+                var preferenciaCoeficiente = 0;
+                if (numPreferencias != 0)
+                {
+                    preferenciaCoeficiente = numPreferenciasCorrespondentes/numPreferencias;
+                }
+                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distancia);
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
@@ -112,14 +119,16 @@ namespace FoodTime.WebApi.Controllers
 
             EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimentoExistente);
             var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == id).ToList();
-            foreach(Avaliacao avaliacao in avaliacoes)
-            {
-                estabModel.Avaliacoes.Add(avaliacao);
+            if (avaliacoes != null) {
+                foreach (Avaliacao avaliacao in avaliacoes)
+                {
+                    estabModel.Avaliacoes.Add(avaliacao);
+                }
+                estabModel.EstaAberto = estabelecimentoExistente.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
+                var notasAvaliacoes = avaliacoes.Select(x => x.Nota);
+                estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
+                estabModel.NumAvaliacoes = notasAvaliacoes.Count();
             }
-            estabModel.EstaAberto = estabelecimentoExistente.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
-            var notasAvaliacoes = avaliacoes.Select(x => x.Nota);
-            estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
-            estabModel.NumAvaliacoes = notasAvaliacoes.Count();
             return Ok(estabModel);
         }
 

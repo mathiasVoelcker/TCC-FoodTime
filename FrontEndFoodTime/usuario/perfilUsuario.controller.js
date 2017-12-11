@@ -19,6 +19,7 @@ angular.module('app')
     }
   )
 
+
   // //teste de buscar o primeiro
   // buscarUsuario(1);
 
@@ -43,6 +44,16 @@ angular.module('app')
         }
       )
     })
+  }
+
+  $scope.excluirRecomendacao = function(idEstabelecimento){
+    console.log("ENTROU")
+    usuarioService.excluirRecomendacao(idEstabelecimento, idUsuario).then(
+      function(response){
+        console.log(response)
+        buscarRecomendacoes()
+      }
+    )
   }
 
 });

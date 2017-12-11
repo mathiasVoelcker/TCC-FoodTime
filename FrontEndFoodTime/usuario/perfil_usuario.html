@@ -105,7 +105,7 @@
               <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
               <div>
                 <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
-                <a class="btn btn-danger" href="#!/avaliar/{{recomendacao.Id}}">Recusar</a>
+                <a class="btn btn-danger" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
               </div>
             </div>
 

@@ -19,6 +19,11 @@ namespace FoodTime.WebApi.Models
             IdEstabelecimento = avaliacao.Estabelecimento.Id;
         }
 
+        public AvaliacaoModel()
+        {
+
+        }
+
         //public int Id { get; set; }
 
         public int Nota { get; set; }

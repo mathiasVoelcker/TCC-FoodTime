@@ -20,7 +20,7 @@ namespace FoodTime.Dominio.Entidades
             Admin = admin;
             Preferencias = preferencias;
             Senha = CriptografarSenha(senha);
-            Estabelecimento = estabelecimentos;
+            Estabelecimento = new List<Estabelecimento>();
         }
 
         protected Usuario()

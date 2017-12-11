@@ -2,7 +2,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
 
 
   let urlUsuario = authConfig.urlUsuario;
-  let urlAvaliiacao = authConfig.urlAvaliiacao;
+  let urlAvaliacao = authConfig.urlAvaliacao;
   let urlEstabelecimento = authConfig.urlEstabelecimento;
 
   function listar(){
@@ -27,11 +27,15 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
   }
 
   function buscarAvaliacoesUsuario(id){
-    return $http.get(urlAvaliiacao + "buscarPorIdUsuario?idUsuario=" + id)
+    return $http.get(urlAvaliacao + "buscarPorIdUsuario?idUsuario=" + id)
   }
 
   function buscarRecomendacao(idUsuario, latitude, longitude){
     return $http.get(urlEstabelecimento + "recomendacao?idUsuario=" + idUsuario +  "&latitude=" + latitude + "&longitude=" + longitude)
+  }
+
+  function excluirRecomendacao(idEstabelecimento, idUsuario){
+    return $http.put(urlUsuario + "excluirRecomendacao?idEstabelecimento=" + idEstabelecimento + "&idUsuario=" + idUsuario)
   }
 
   return {
@@ -41,6 +45,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     removeUsuario: removeUsuario,
     alterUsuario: alterUsuario,
     buscarAvaliacoesUsuario: buscarAvaliacoesUsuario,
-    buscarRecomendacao: buscarRecomendacao
+    buscarRecomendacao: buscarRecomendacao,
+    excluirRecomendacao: excluirRecomendacao
   }
 })
