@@ -160,7 +160,7 @@ namespace FoodTime.WebApi.Controllers
         {
             var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).AsNoTracking().ToList();
 
-            estabs = estabs.Where(x => x.DistanciaEstabelecimento(estabLocalFiltro.latitude, estabLocalFiltro.longitude) < 1m).ToList();
+            estabs = estabs.Where(x => x.DistanciaEstabelecimento(estabLocalFiltro.latitude, estabLocalFiltro.longitude) < 0.5m).ToList();
             if (estabLocalFiltro.nome != null)
             {
                 estabs = estabs.Where(x => x.CompareNome(estabLocalFiltro.nome)).ToList();
