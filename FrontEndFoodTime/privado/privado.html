@@ -1,7 +1,4 @@
-<h1 class="page-header">Página Privada</h1>
-
-<p>{{ mensagem.colaborador }}</p>
-
-<p ng-if="auth.possuiPermissao('Administrador')">{{ mensagem.administrador }}</p>
-
-<p>{{ auth.getUsuario().Nome }}</p>
+<form id="foto" action="" enctype="multipart/form-data">
+    <input type="file" id="file" name="pic" accept="image/*">
+    <input type="submit" ng-click="addFoto()"  />
+</form>

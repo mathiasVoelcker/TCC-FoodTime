@@ -9,45 +9,39 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web;
+using System.Configuration;
+using System.IO;
 
 namespace FoodTime.WebApi.Controllers
 {
+    [AllowAnonymous]
+    [RoutePrefix("api/foto")]
     public class FotoController : ApiController
     {
         [HttpPost]
-        public IHttpActionResult AdicionarFoto(HttpPostedFileBase file)
+        [Route("novaFoto")]
+        public IHttpActionResult AdicionarFoto()
         {
+            var httpRequest = HttpContext.Current.Request;
+            var file = httpRequest.Files[0];
 
-            if (file.ContentLength > 0 && file != null)
+            if (file != null)
             {
-
-                //        model.ANEXO.NOME_ARQUIVO = file.FileName;
-                //        model.ANEXO.TIPO_CONTENT = file.ContentType;
-                //        model.ANEXO.NOME_HASH = model.ID_ATIVIDADE_EXTENSAO + Criptografia.MD5Hash(model.ANEXO.NOME_ARQUIVO);
-
-                //        var fileNameHash = Path.GetFileName(model.ANEXO.NOME_HASH);
-                //        var fileName = Path.GetFileName(model.ANEXO.NOME_ARQUIVO);
-                //        var directory = (String.IsNullOrEmpty(ConfigurationManager.AppSettings["pathAnexos"])) ? Server.MapPath("~/App_Data/Images/") : ConfigurationManager.AppSettings["pathAnexos"];
-
-                //        if (!Directory.Exists(directory))
-                //        {
-                //            Directory.CreateDirectory(directory);
-                //        }
-                //        var path = Path.Combine(directory, fileNameHash);
-                //        var pathOriginal = Path.Combine(directory, fileName);
-                //        model.ANEXO.TIPO_ARQUIVO = Path.GetExtension(pathOriginal);
-                //        file.SaveAs(path);
-
-                //        model.ANEXO.ID_ATIVIDADE_EXTENSAO = model.ID_ATIVIDADE_EXTENSAO;
-                //        model.ANEXO.Insert();
-                //        TempData["Message_Anexo"] = "Arquivo armazenado com sucesso!";
-
-                //    return null;
-                //}
-
+                if (file.ContentLength > 0)
+                {
+                    Foto foto = new Foto(file.FileName);
+                    var directory = ConfigurationManager.AppSettings["pathFotos"];
+                    if (!Directory.Exists(directory))
+                    {
+                        Directory.CreateDirectory(directory);
+                    }
+                    var pathOriginal = Path.Combine(directory, file.FileName);
+                    file.SaveAs(pathOriginal);
+                    return Ok("Arquivo salvo com sucesso!");
+                }
             }
-            return null;
-
+            return BadRequest("Ocorreu um erro ao salvar o arquivo.");
         }
+
     }
 }
