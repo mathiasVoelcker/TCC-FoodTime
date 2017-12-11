@@ -23,7 +23,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null, null);
 
             Grupo grupo;
             var nomeGrupo = "FoodTime";
@@ -71,7 +71,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null, null);
 
 
             grupoUsuario = new GrupoUsuario(usuario, null, true);

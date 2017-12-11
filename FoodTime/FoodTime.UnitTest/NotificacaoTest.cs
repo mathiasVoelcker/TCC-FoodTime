@@ -24,7 +24,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null, null);
 
             Grupo grupo;
             var nomeGrupo = "FoodTime";
@@ -99,7 +99,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null, null);
   
             notificacao = new Notificacao(usuario, null, null, true);
 
@@ -123,7 +123,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null, null);
 
 
             Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
@@ -159,7 +159,7 @@ namespace FoodTime.UnitTest
             var fotoPerfil = "testeFotoPerfil";
             var isAdmin = true;
 
-            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
+            usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null, null);
 
             Grupo grupo;
             var nomeGrupo = "FoodTime";
