@@ -1,6 +1,8 @@
 body {
   padding-top: 0px;
+  height: 100%;
 }
+
 .content {
   padding: 10px 15px;
 }
@@ -13,6 +15,7 @@ body {
    position: absolute;
    bottom: 0px;
    width: 100%
+
 }
 
 .success-label{
@@ -25,6 +28,16 @@ body {
   font-weight: bold;
 }
 
+
 .dimencao-imagem{
   width: 175px;
 }
+
+.btn_pesquisa_lupa{
+  background-image:url("../auxiliares/imgs/lupa.png");
+}
+
+.input-group-btn{
+  background-image:url("auxiliares/imgs/lupa.png");
+}
+

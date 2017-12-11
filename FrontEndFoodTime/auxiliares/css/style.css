@@ -4,6 +4,7 @@
     overflow-y:auto;
 	margin-bottom:20px;
 }
+html, body {height:100%;}
 
 .table-overflow_participantes{
 	max-height:220px;
@@ -116,3 +117,10 @@
 	font-weight: bold;
 	color:rgb(127,127,127);
 }
+.btn_pesquisa_lupa{
+	background-image:url("../auxiliares/imgs/lupa.png");
+  }
+  
+  .input-group-btn{
+	background-image:url("auxiliares/imgs/lupa.png");
+  }
