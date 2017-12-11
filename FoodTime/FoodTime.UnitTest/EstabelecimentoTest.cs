@@ -267,11 +267,9 @@ namespace FoodTime.UnitTest
 
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
       
-            estabelecimento.DistanciaEstabelecimento(latitude, longitude);
             var result = (402.5m - 50m)/402.5m;
-            Console.Write(result);
-            Console.Write(estabelecimento.DistanciaEstabelecimento(latitude, longitude));
-            Assert.IsTrue(estabelecimento.DistanciaEstabelecimento(latitude, longitude) == result);
+
+            Assert.IsTrue(estabelecimento.DistanciaCoeficiente(latitude, longitude) == result);
         }
 
 

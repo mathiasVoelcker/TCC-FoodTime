@@ -68,7 +68,7 @@ namespace FoodTime.WebApi.Controllers
                 numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count();
                 var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
                 decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average(); 
-                decimal distancia = estabelecimento.DistanciaEstabelecimento(latitude, longitude);
+                decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude);
                 estabelecimentoRecomendado.setRelevancia((numPreferenciasCorrespondentes / (usuario.Preferencias.Count())), (notaMedia / 10), distancia);
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
@@ -140,6 +140,28 @@ namespace FoodTime.WebApi.Controllers
             if(estabFiltro.categorias[0] != null)
             {
                 estabs = estabs.Where(x => x.Categorias.Any(y => estabFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
+            }
+
+            return Ok(estabs);
+        }
+
+        [HttpGet]
+        [Route("buscarPorFiltrosLocalizacao")]
+        public IHttpActionResult BuscarEstabelecimentoPorFiltrosLocalizacao([FromUri] EstabelecimentoFiltroLocalModel estabLocalFiltro)
+        {
+            var estabs = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).AsNoTracking().ToList();
+
+            estabs = estabs.Where(x => x.DistanciaEstabelecimento(estabLocalFiltro.latitude, estabLocalFiltro.longitude) < 1m).ToList();
+            if (estabLocalFiltro.nome != null)
+            {
+                estabs = estabs.Where(x => x.CompareNome(estabLocalFiltro.nome)).ToList();
+            }
+            if(estabLocalFiltro.categorias != null)
+            {
+                if (estabLocalFiltro.categorias[0] != null)
+                {
+                    estabs = estabs.Where(x => x.Categorias.Any(y => estabLocalFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
+                }
             }
 
             return Ok(estabs);

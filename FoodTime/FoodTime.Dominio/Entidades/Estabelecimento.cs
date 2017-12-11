@@ -48,12 +48,19 @@ namespace FoodTime.Dominio.Entidades
             return true;
         }
 
-        public decimal DistanciaEstabelecimento(decimal latitude, decimal longitude)
+        public decimal DistanciaCoeficiente(decimal latitude, decimal longitude)
         {
             var x = Math.Pow((double)(latitude - Endereco.Latitude), 2.0);
             var y = Math.Pow((double)(longitude- Endereco.Longitude), 2.0);
             var distancia = (decimal)Math.Sqrt(x + y);
             return ((402.5m - distancia) / 402.5m);
+        }
+
+        public decimal DistanciaEstabelecimento(decimal latitude, decimal longitude)
+        {
+            var x = Math.Pow((double)(latitude - Endereco.Latitude), 2.0);
+            var y = Math.Pow((double)(longitude - Endereco.Longitude), 2.0);
+            return (decimal)Math.Sqrt(x + y);
         }
 
         public List<string> ValidarEntrada()
