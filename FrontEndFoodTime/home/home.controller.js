@@ -20,7 +20,7 @@ angular.module('app').controller('HomeController', function ($scope, authService
       function(response){
         $scope.estabelecimentos = response.data;
         estabelecimentos = response.data;
-        console.log($scope.filtro)
+        console.log(response)
         // estabelecimentos.forEach(function(element) {
         //   debugger
         //   $scope.estabelecimentos[element.Id].Endereco.Latitude = element.Endereco.Latitude;
