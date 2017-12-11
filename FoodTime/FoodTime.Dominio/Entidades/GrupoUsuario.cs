@@ -8,7 +8,7 @@ namespace FoodTime.Dominio.Entidades
 {
     public class GrupoUsuario
     {
-        public GrupoUsuario(Usuario usuario, Grupo grupo, Boolean aprovado)
+        public GrupoUsuario(Usuario usuario, Grupo grupo, bool aprovado)
         {
             Usuario = usuario;
             Grupo = grupo;
@@ -23,7 +23,7 @@ namespace FoodTime.Dominio.Entidades
 
         public Usuario Usuario { get; private set; }
         public Grupo Grupo { get; private set; }
-        public Boolean Aprovado { get; private set; }
+        public bool Aprovado { get; private set; }
 
         public List<string> ValidarEntrada()
         {

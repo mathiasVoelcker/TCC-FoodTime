@@ -26,7 +26,6 @@ namespace FoodTime.WebApi.Controllers
         //Listar usuario logado
         [HttpGet]
         [Route("usuariologado")]
-
         public IHttpActionResult GetUsuarioLogado()
 
         {
@@ -38,14 +37,27 @@ namespace FoodTime.WebApi.Controllers
             return Ok(new { dados = usuario });
 
         }
+
         [HttpGet]
-        public IHttpActionResult ObterUsuario(String email)
+        public IHttpActionResult ObterUsuarioPorEmail(string email)
         {
             var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Email == email);
             if (usuario == null)
                 return BadRequest("Usuário ou senha incorretos");
             return Ok(new UsuarioModel(usuario));
         }
+
+        [HttpGet]
+        [Route("buscarPorFiltro")]
+        public IHttpActionResult ObterUsuarioPorFiltro(string filtro)
+        {
+            List<Usuario> usuarios = context.Usuarios.AsNoTracking().Where(x => (x.Email.Contains(filtro) || x.Nome.Contains(filtro))).ToList();
+            if (usuarios == null)
+                return BadRequest("Nenhum usuário encontrado");
+            return Ok(usuarios);
+        }
+        
+
 
         [HttpPost]
         public IHttpActionResult Adicionar([FromBody]UsuarioCadastroModel usuarioCadastroModel)
@@ -67,15 +79,15 @@ namespace FoodTime.WebApi.Controllers
             return Created($"api/usuario/{novoUsuario.Id}", novoUsuario);
         }
 
-        [HttpGet]
-        [Route("buscar")]
-        public IHttpActionResult BuscarUsuario([FromUri]UsuarioModel usuarioModel)
-        {
-            var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
-            if (usuario == null)
-                return BadRequest("Usuário não existe");
-            return Ok(new UsuarioModel(usuario));
-        }
+        //[HttpGet]
+        //[Route("buscar")]
+        //public IHttpActionResult BuscarUsuario([FromUri]UsuarioModel usuarioModel)
+        //{
+        //    var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
+        //    if (usuario == null)
+        //        return BadRequest("Usuário não existe");
+        //    return Ok(new UsuarioModel(usuario));
+        //}
 
         [HttpGet]
         [Route("{id}")]

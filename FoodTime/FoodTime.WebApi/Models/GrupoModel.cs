@@ -9,5 +9,6 @@ namespace FoodTime.WebApi.Models
     {
         public string Nome { get; set; }
         public string Imagem { get; set; }
+        public List<int> IdUsuarios { get; set; }
     }
 }
