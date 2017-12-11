@@ -15,8 +15,12 @@ angular.module('auth').factory('fotoService', function($http, authConfig){
         var request = {
             method: 'POST',
             url: 'http://localhost:65510/api/foto/novafoto',
-            data: formData
+            data: formData,
+            headers : {
+              'Content-Type' : undefined
+             }
         }
+        debugger;
         return $http(request);
       }
     
