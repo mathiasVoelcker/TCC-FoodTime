@@ -60,7 +60,7 @@ namespace FoodTime.WebApi.Controllers
                     novaListaPreferencias.Add(preferenciaExistente);
                 }
             }
-            var novoUsuario = new Usuario(usuarioCadastroModel.Email, usuarioCadastroModel.Senha, usuarioCadastroModel.Nome, usuarioCadastroModel.Sobrenome, usuarioCadastroModel.FotoPerfil, usuarioCadastroModel.DataNascimento, usuarioCadastroModel.Admin, novaListaPreferencias, null);
+            var novoUsuario = new Usuario(usuarioCadastroModel.Email, usuarioCadastroModel.Senha, usuarioCadastroModel.Nome, usuarioCadastroModel.Sobrenome, usuarioCadastroModel.FotoPerfil, usuarioCadastroModel.DataNascimento, usuarioCadastroModel.Admin, novaListaPreferencias);
 
             context.Usuarios.Add(novoUsuario);
             context.SaveChanges();
@@ -104,9 +104,9 @@ namespace FoodTime.WebApi.Controllers
         [Route("excluirRecomendacao")]
         public IHttpActionResult ExcluirRecomendacao(int idEstabelecimento, int idUsuario)
         {
-            var usuario = context.Usuarios.Include(x => x.Estabelecimento).FirstOrDefault(x => x.Id == idUsuario);
+            var usuario = context.Usuarios.Include(x => x.EstabelecimentosRecusados).FirstOrDefault(x => x.Id == idUsuario);
             var estabelecimento = context.Estabelecimentos.FirstOrDefault(x => x.Id == idEstabelecimento);
-            usuario.Estabelecimento.Add(estabelecimento);
+            usuario.EstabelecimentosRecusados.Add(estabelecimento);
             context.SaveChanges();
             return Ok(usuario);
         }

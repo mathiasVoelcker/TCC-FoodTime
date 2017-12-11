@@ -27,7 +27,7 @@ namespace FoodTime.Infraestrutura.Mapping
                 x.MapLeftKey("Id_Usuario");
                 x.MapRightKey("Id_Preferencia");
             });
-            HasMany(x => x.Estabelecimento).WithMany().Map(x =>
+            HasMany(x => x.EstabelecimentosRecusados).WithMany().Map(x =>
             {
                 x.ToTable("Estabelecimento_Recusado", "schemaFoodTime");
                 x.MapLeftKey("Id_Usuario");

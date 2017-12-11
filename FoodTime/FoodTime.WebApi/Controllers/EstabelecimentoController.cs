@@ -53,7 +53,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 BadRequest("Não há estabelecimentos cadastrados no sistema ainda.");
             }
-            estabelecimentosAprovados = estabelecimentosAprovados.Where(x => !context.Usuarios.Include(y => y.Estabelecimento).FirstOrDefault(y => y.Id == idUsuario).Estabelecimento.Any(z => z.Id == x.Id)).ToList();
+            estabelecimentosAprovados = estabelecimentosAprovados.Where(x => !context.Usuarios.Include(y => y.EstabelecimentosRecusados).FirstOrDefault(y => y.Id == idUsuario).EstabelecimentosRecusados.Any(z => z.Id == x.Id)).ToList();
             List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0))).ToList();
             if (estabelecimentoAbertos.Count == 0)
             {
@@ -197,6 +197,7 @@ namespace FoodTime.WebApi.Controllers
                 estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
                 estabModel.NumAvaliacoes = notasAvaliacoes.Count();
             }
+            estabModel.Avaliacoes.OrderByDescending(x => x.DataAvaliacao);
             return estabModel;
         }
 

@@ -27,7 +27,7 @@ namespace FoodTime.Infraestrutura.Mapping
                 x.MapLeftKey("Id_Estabelecimento");
                 x.MapRightKey("Id_Categoria");
             });
-            HasMany(x => x.Fotos).WithRequired().Map(x => x.MapKey("Id_Estabelecimzento"));
+            HasMany(x => x.Fotos).WithRequired().Map(x => x.MapKey("Id_Estabelecimento"));
         }
     }
 }

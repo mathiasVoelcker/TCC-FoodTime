@@ -27,6 +27,8 @@ namespace FoodTime.Infraestrutura
         public DbSet<Endereco> Enderecos { get; set; }
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Foto> Fotos { get; set; }
+        public DbSet<Grupo> Grupos { get; set; }
+        public DbSet<GrupoUsuario> GrupoUsuarios{ get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,6 +40,8 @@ namespace FoodTime.Infraestrutura
             modelBuilder.Configurations.Add(new PreferenciaMapping());
             modelBuilder.Configurations.Add(new CategoriaMapping());
             modelBuilder.Configurations.Add(new FotoMapping());
+            modelBuilder.Configurations.Add(new GrupoMapping());
+            modelBuilder.Configurations.Add(new GrupoUsuarioMapping());
             base.OnModelCreating(modelBuilder);
         }
 

@@ -20,5 +20,7 @@ namespace FoodTime.Infraestrutura
         DbSet<Endereco> Enderecos { get; set; }
         DbSet<Categoria> Categorias { get; set; }
         DbSet<Foto> Fotos { get; set; }
+        DbSet<Grupo> Grupos { get; set; }
+        DbSet<GrupoUsuario> GrupoUsuarios { get; set; }
     }
 }

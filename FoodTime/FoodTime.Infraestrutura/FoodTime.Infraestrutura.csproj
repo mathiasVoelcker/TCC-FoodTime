@@ -103,6 +103,8 @@
     <Compile Include="Mapping\EstabelecimentoMapping.cs" />
     <Compile Include="Mapping\EstabelecimentoPreferenciaMapping.cs" />
     <Compile Include="Mapping\FotoMapping.cs" />
+    <Compile Include="Mapping\GrupoMapping.cs" />
+    <Compile Include="Mapping\GrupoUsuarioMapping.cs" />
     <Compile Include="Mapping\PreferenciaMapping.cs" />
     <Compile Include="Mapping\UsuarioMapping.cs" />
     <Compile Include="Migrations\201712082124274_Primeira Migration.cs" />
@@ -116,6 +118,10 @@
     <Compile Include="Migrations\201712110241248_Minha Migration.cs" />
     <Compile Include="Migrations\201712110241248_Minha Migration.Designer.cs">
       <DependentUpon>201712110241248_Minha Migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712111847332_Criar Grupos.cs" />
+    <Compile Include="Migrations\201712111847332_Criar Grupos.Designer.cs">
+      <DependentUpon>201712111847332_Criar Grupos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -139,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712110241248_Minha Migration.resx">
       <DependentUpon>201712110241248_Minha Migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712111847332_Criar Grupos.resx">
+      <DependentUpon>201712111847332_Criar Grupos.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

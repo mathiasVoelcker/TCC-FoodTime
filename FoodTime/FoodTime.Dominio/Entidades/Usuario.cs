@@ -9,7 +9,7 @@ namespace FoodTime.Dominio.Entidades
 {
     public class Usuario
     {
-        public Usuario(string email, string senha, string nome, string sobrenome, string fotoPerfil, DateTime dataNascimento, bool admin, List<Preferencia> preferencias, List<Estabelecimento> estabelecimentos)
+        public Usuario(string email, string senha, string nome, string sobrenome, string fotoPerfil, DateTime dataNascimento, bool admin, List<Preferencia> preferencias)
         {
             Email = email;
             Senha = senha;
@@ -20,7 +20,7 @@ namespace FoodTime.Dominio.Entidades
             Admin = admin;
             Preferencias = preferencias;
             Senha = CriptografarSenha(senha);
-            Estabelecimento = new List<Estabelecimento>();
+            EstabelecimentosRecusados = new List<Estabelecimento>();
         }
 
         protected Usuario()
@@ -36,7 +36,7 @@ namespace FoodTime.Dominio.Entidades
         public string FotoPerfil { get; private set; }
         public bool Admin { get; private set; }
         public List<Preferencia> Preferencias { get; private set; }
-        public List<Estabelecimento> Estabelecimento { get; private set; }
+        public List<Estabelecimento> EstabelecimentosRecusados { get; private set; }
 
         public bool ValidarSenha(string senha)
         {
