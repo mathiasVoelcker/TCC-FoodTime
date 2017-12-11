@@ -137,12 +137,12 @@ namespace FoodTime.WebApi.Controllers
             {
                 estabs = estabs.Where(x => x.CompareNome(estabFiltro.nome)).ToList();
             }
-            if(estabFiltro.categorias != null)
+            if(estabFiltro.categorias[0] != null)
             {
                 estabs = estabs.Where(x => x.Categorias.Any(y => estabFiltro.categorias.Any(z => z.Equals(y.Descricao)))).ToList();
             }
 
-            return Ok();
+            return Ok(estabs);
         }
 
 

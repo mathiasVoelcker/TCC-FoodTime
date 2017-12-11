@@ -17,12 +17,10 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     let result =  $http.get(urlEstabelecimento+"listarCinco");
     return result;
   }
- 
 
-  function buscarPorFiltro(filtro){
-    debugger
-    let result =  $http.get(urlEstabelecimento+"buscarPorFiltro", filtro);
-    debugger
+
+  function buscarPorFiltros(filtro){
+    let result =  $http.get(urlEstabelecimento+"buscarPorFiltros?estabFiltro.endereco=" + filtro.Endereco + "&estabFiltro.nome=" + filtro.Nome + "&estabFiltro.categorias=" + filtro.Categoria);
     return result;
   }
 
@@ -38,7 +36,7 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     criarAvaliacao: criarAvaliacao,
     listar: listar,
     listarCinco: listarCinco,
-    buscarPorFiltro: buscarPorFiltro,
+    buscarPorFiltros: buscarPorFiltros,
     buscarEstabelecimentoPorId: buscarEstabelecimentoPorId,
     buscarAvaliacoesEstab: buscarAvaliacoesEstab
   }

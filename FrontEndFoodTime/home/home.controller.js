@@ -2,15 +2,18 @@
 angular.module('app').controller('HomeController', function ($scope, authService, $http, estabService, categoriaService) {
 
   $scope.usuarioLogado = authService.getUsuario();
-  $scope.buscarPorFiltros = buscarPorFiltros;
+  $scope.filtro = {Nome: "", Endereco: "", Categoria: ""};
+  // $scope.filtro.Nome = ""
+  // $scope.filtro.Endereco = ""
+  // $scope.filtro.Categoria = ""
   estabService.listar();
-  categoriaService.listar();
   let filtro = [];
 
-    estabService.listarCinco().then(
+  estabService.listarCinco().then(
       function(response){
         $scope.estabelecimentos = response.data;
         estabelecimentos = response.data;
+        console.log($scope.filtro)
         // estabelecimentos.forEach(function(element) {
         //   debugger
         //   $scope.estabelecimentos[element.Id].Endereco.Latitude = element.Endereco.Latitude;
@@ -26,19 +29,18 @@ angular.module('app').controller('HomeController', function ($scope, authService
     categoriaService.listar().then(
       function(response){
         $scope.categorias = response.data;
+        console.log($scope.categorias)
       }
     );
 
 
-    function buscarPorFiltros(endereco, nome, categorias){
-      debugger
-      filtro.push(endereco);
-      filtro.push(nome);
-      filtro.push(categorias);
-      estabService.buscarPorFiltros(filtro).then(
+    $scope.buscarPorFiltros = function (){
+      console.log("dentro da funcao")
+      console.log($scope.filtro);
+      estabService.buscarPorFiltros($scope.filtro).then(
         function(response){
-          debugger
-          $scope.estabelecimentosFiltrados = response.data;
+          console.log(response)
+          $scope.estabelecimentos = response.data;
         }
       );
     }
