@@ -70,17 +70,19 @@ angular.module('app').directive('adicionarParticipantes', function(){
           if(idUsuarios.length == 0){
             alert("Nenhum usuário selecionado")
           }
-          var novoParticipante = {IdUsuario: 0, IdGrupo: $scope.idgrupo, Aprovado: false}
-          idUsuarios.forEach(function(idUsuario){
-            novoParticipante.IdUsuario = idUsuario
-            novosParticipantes.push(novoParticipante)
-          })
-          grupoService.atualizarGrupo(novosParticipantes).then(
-            function(response){
-              console.log(response)
-              alert("Grupo atualizado com sucesso!")
-            }
-          )
+          else{
+            var novoParticipante = {IdUsuario: 0, IdGrupo: $scope.idgrupo, Aprovado: false}
+            idUsuarios.forEach(function(idUsuario){
+              novoParticipante.IdUsuario = idUsuario
+              novosParticipantes.push(novoParticipante)
+            })
+            grupoService.atualizarGrupo(novosParticipantes).then(
+              function(response){
+                console.log(response)
+                alert("Grupo atualizado com sucesso!")
+              }
+            )
+          }
         }
 
         function atualizarTabelasParticipantes(){

@@ -43,7 +43,6 @@ angular.module('app')
     }
 
     $scope.excluirRecomendacao = function (idEstabelecimento) {
-      console.log("ENTROU")
       usuarioService.excluirRecomendacao(idEstabelecimento, $scope.usuario.Id).then(
         function (response) {
           console.log(response)

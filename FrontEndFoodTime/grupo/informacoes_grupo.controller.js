@@ -1,9 +1,10 @@
-angular.module('app').controller('InformacoesGrupoController', function ($scope, $routeParams, authService, grupoService, $http) {
+angular.module('app').controller('InformacoesGrupoController', function ($scope, $routeParams, authService, grupoService, usuarioService, $http) {
 
   $scope.participantes = []
   $scope.solicitacoes = []
   $scope.mostraRecomendacoes = false
   var idUsuario = authService.getUsuario().Id
+  var idGrupo = $routeParams.IdGrupo
   grupoService.buscarGrupo($routeParams.IdGrupo).then(
     function (response) {
       $scope.grupo = response.data
@@ -15,10 +16,10 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
           $scope.solicitacoes.push(grupoUsuario)
         }
       })
-      buscarRecomendacoes($scope.grupo.Id)
+      buscarRecomendacoes()
     })
 
-    function buscarRecomendacoes(idGrupo) {
+    function buscarRecomendacoes() {
       navigator.geolocation.getCurrentPosition(function (position) {
         var pos = {
           lat: position.coords.latitude,
@@ -30,5 +31,14 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
             $scope.recomendacoes = response.data
           })
         })
+      }
+
+      $scope.excluirRecomendacao = function (idEstabelecimento) {
+        usuarioService.excluirRecomendacao(idEstabelecimento, idUsuario).then(
+          function (response) {
+            console.log(response)
+            buscarRecomendacoes()
+          }
+        )
       }
     })
