@@ -37,8 +37,8 @@ angular.module('app').config(function ($routeProvider) {
     })
 
      // pública
-     .when('/informacoesGrupo/:IdGrupo?', {
-      controller: 'GrupoController',
+     .when('/informacoesGrupo/:IdGrupo', {
+      controller: 'InformacoesGrupoController',
       templateUrl: 'grupo/informacoes_grupo.html'
 
     })

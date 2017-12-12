@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
+using System.Data.Entity;
+
 
 namespace FoodTime.WebApi.Controllers
 {
@@ -18,6 +20,27 @@ namespace FoodTime.WebApi.Controllers
         {
             // context = new FoodTimeContext();
             this.context = context;
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public IHttpActionResult BuscarGruposPorId(int id)
+        {
+            var grupo = context.Grupos.FirstOrDefault(x => x.Id == id);
+            if (grupo == null)
+            {
+                BadRequest("Nenhum grupo encontrado");
+            }
+            GrupoCompletoModel grupoCompleto = new GrupoCompletoModel(grupo);
+            List<GrupoUsuario> grupoUsuarios = context.GrupoUsuarios.Include(x => x.Usuario).Where(x => x.Grupo.Id == id).ToList();
+            if(grupoUsuarios != null)
+            {
+               foreach(GrupoUsuario grupoUsuario in grupoUsuarios)
+                {
+                    grupoCompleto.GrupoUsuarios.Add(grupoUsuario);
+                }
+            }
+            return Ok(grupoCompleto);
         }
 
         [HttpPost]

@@ -1,7 +1,6 @@
 angular.module('app')
 .controller('GrupoController', function ($scope, authService, usuarioService, grupoService, $http) {
 
-
   $scope.mostraTabela = false
   $scope.naoEncontrou = false
   $scope.usuarios

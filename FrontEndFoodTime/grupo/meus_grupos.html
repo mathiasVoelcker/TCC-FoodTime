@@ -15,7 +15,7 @@
         <div class="media mb-4" ng-repeat="grupo in gruposUsuario">
           <img class="d-flex mr-3 rounded-circle" src="{{grupo.Imagem}}" alt="" style="width:70px;height:70px;">
           <div class="media-body">
-            <h5 class="mt-4"><a class="nav-link" href="#!/informacoesGrupo/:IdGrupo?">{{grupo.Nome}}</a></h5>
+            <h5 class="mt-4"><a class="nav-link" href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a></h5>
           </div>
         </div>
       </div>
