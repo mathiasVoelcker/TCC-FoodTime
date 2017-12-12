@@ -4,18 +4,22 @@ angular.module('app').directive('adicionarParticipantes', function(){
       "nome": "=nome",
       "foto": "=foto"
     },
-    controller: function ($scope, $rootScope, usuarioService, grupoService, $route){
+    controller: function ($scope, $rootScope, usuarioService, grupoService, authService, $route){
+      var usuarioLogado = authService.getUsuario()
       $scope.mostraTabela = false
       $scope.naoEncontrou = false
       $scope.usuarios
-      $scope.grupo = {Nome: $scope.nome, Foto: "https://image.freepik.com/icones-gratis/grupo-de-homens_318-62649.jpg", IdUsuarios: []};
+      $scope.grupo = {Nome: $scope.nome, Foto: "https://image.freepik.com/icones-gratis/grupo-de-homens_318-62649.jpg", IdUsuarios: [ usuarioLogado.Id]};
       console.log($scope.grupo)
-      $scope.solicitacoes = []
+      $scope.solicitacoes = [ usuarioLogado ]
       $scope.buscarUsuarioPorFiltro = function(filtro){
         usuarioService.buscarPorFiltro(filtro).then(
           function(response){
             $scope.usuarios = response.data
             for(var i = 0; i < $scope.usuarios.length; i++){
+              if($scope.usuarios[i].Id == usuarioLogado){
+                $scope.usuarios.splice(i, 1);
+              }
               $scope.solicitacoes.forEach(function(solicitacao){
                 if($scope.usuarios[i].Id == solicitacao.Id){
                   $scope.usuarios.splice(i, 1);
@@ -40,12 +44,17 @@ angular.module('app').directive('adicionarParticipantes', function(){
         }
 
         $scope.criarGrupo = function(grupo){
-          grupo.Nome = $scope.nome
-          console.log(grupo)
-          grupoService.criarGrupo(grupo).then(
-            function(response){
-              alert("Grupo criado com sucesso")
-            })
+          if($scope.nome == undefined){
+            alert("Grupo deve ter um Nome");
+          }
+          else{
+            grupo.Nome = $scope.nome
+            console.log(grupo)
+            grupoService.criarGrupo(grupo).then(
+              function(response){
+                alert("Grupo criado com sucesso")
+              })
+            }
           }
         },
         templateUrl: 'grupo/adicionar_participantes.directive.html'
