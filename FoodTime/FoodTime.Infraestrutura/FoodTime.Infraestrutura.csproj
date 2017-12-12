@@ -123,6 +123,10 @@
     <Compile Include="Migrations\201712111847332_Criar Grupos.Designer.cs">
       <DependentUpon>201712111847332_Criar Grupos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712120317327_Refatorar banco.cs" />
+    <Compile Include="Migrations\201712120317327_Refatorar banco.Designer.cs">
+      <DependentUpon>201712120317327_Refatorar banco.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -148,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712111847332_Criar Grupos.resx">
       <DependentUpon>201712111847332_Criar Grupos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712120317327_Refatorar banco.resx">
+      <DependentUpon>201712120317327_Refatorar banco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -15,7 +15,7 @@ namespace FoodTime.Infraestrutura.Mapping
             ToTable("Grupo", "schemaFoodTime");
             HasKey(x => x.Id);
             Property(x => x.Nome).HasMaxLength(50).IsRequired();
-            Property(x => x.Imagem).HasMaxLength(500).IsRequired();
+            Property(x => x.Foto).HasMaxLength(500).IsRequired();
         }
     }
 }

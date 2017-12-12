@@ -11,11 +11,11 @@ namespace FoodTime.WebApi.Models
         public GrupoCompletoModel(Grupo grupo)
         {
             Nome = grupo.Nome;
-            Imagem = grupo.Imagem;
+            Foto = grupo.Foto;
             GrupoUsuarios = new List<GrupoUsuario>();
         }
         public string Nome { get; set; }
-        public string Imagem { get; set; }
+        public string Foto { get; set; }
         public List<GrupoUsuario> GrupoUsuarios { get; set; }
     }
 }

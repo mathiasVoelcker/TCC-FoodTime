@@ -20,8 +20,8 @@ namespace FoodTime.Infraestrutura.Mapping
             Property(x => x.Comentario).HasMaxLength(500).IsRequired();
             Property(x => x.FotoAvaliacao).HasMaxLength(500).IsRequired();
             Property(x => x.DataAvaliacao).IsRequired();
-            HasRequired(x => x.Usuario).WithMany().Map(x => x.MapKey("IdUsuario"));
-            HasRequired(x => x.Estabelecimento).WithMany().Map(x => x.MapKey("IdEstabelecimento"));
+            HasRequired(x => x.Usuario).WithMany().Map(x => x.MapKey("Id_Usuario"));
+            HasRequired(x => x.Estabelecimento).WithMany().Map(x => x.MapKey("Id_Estabelecimento"));
         }
     }
 }

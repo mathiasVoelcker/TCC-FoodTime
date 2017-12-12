@@ -8,10 +8,10 @@ namespace FoodTime.Dominio.Entidades
 {
     public class Grupo
     {
-        public Grupo(string nome, string imagem)
+        public Grupo(string nome, string foto)
         {
             Nome = nome;
-            Imagem = imagem;
+            Foto = foto;
         }
 
         protected Grupo()
@@ -20,7 +20,7 @@ namespace FoodTime.Dominio.Entidades
 
         public int Id { get; private set; }
         public string Nome { get; private set; }
-        public string Imagem { get; private set; }
+        public string Foto { get; private set; }
 
         public List<string> ValidarEntrada()
         {
@@ -32,10 +32,10 @@ namespace FoodTime.Dominio.Entidades
             if (Nome.Length > 50)
                 mensagens.Add("O tamanho máximo são 50 caracteres.");
 
-            if (string.IsNullOrWhiteSpace(Imagem))
+            if (string.IsNullOrWhiteSpace(Foto))
                 mensagens.Add("Imagem não pode ser nula.");
 
-            if (Imagem.Length > 500)
+            if (Foto.Length > 500)
                 mensagens.Add("O tamanho máximo são 500 caracteres.");
 
             return mensagens;

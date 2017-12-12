@@ -13,7 +13,7 @@
       <br>
       <div >
         <div class="media mb-4" ng-repeat="grupo in gruposUsuario">
-          <img class="d-flex mr-3 rounded-circle" src="{{grupo.Imagem || 'https://image.freepik.com/icones-gratis/grupo-de-usuarios-silhueta_318-49953.jpg'}}" alt="" style="width:70px;height:70px;">
+          <img class="d-flex mr-3 rounded-circle" src="{{grupo.Foto || 'https://image.freepik.com/icones-gratis/grupo-de-usuarios-silhueta_318-49953.jpg'}}" alt="" style="width:70px;height:70px;">
           <div class="media-body">
             <h5 class="mt-4"><a class="nav-link" href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a></h5>
           </div>

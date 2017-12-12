@@ -12,7 +12,7 @@ namespace FoodTime.Infraestrutura.Mapping
     {
         public GrupoUsuarioMapping()
         {
-            ToTable("GrupoUsuario", "schemaFoodTime");
+            ToTable("Grupo_Usuario", "schemaFoodTime");
             HasKey(x => x.Id);
             HasRequired(x => x.Grupo).WithMany().Map(x => x.MapKey("Id_Grupo"));
             HasRequired(x => x.Usuario).WithMany().Map(x => x.MapKey("Id_Usuario"));
