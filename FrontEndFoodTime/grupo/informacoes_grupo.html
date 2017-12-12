@@ -52,9 +52,9 @@
 </section>
 <section class="py-3">
   <div class="container">
-    <h3>Estabelecimentos Recomendados para o Grupo</h3>
+    <h3 ng-if="recomendacoes.isArray">Estabelecimentos Recomendados para o Grupo</h3>
     <br>
-    <div class="row">
+    <div class="row" ng-if="recomendacoes.isArray">
       <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
         <div class="card h-100">
           <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
@@ -76,7 +76,7 @@
     <h3>Adicionar participantes ao grupo</h3>
     <div class="row">
       <div class="col-md-6">
-        <adicionar-participantes nome="" foto="" estacriando="false"></adicionar-participantes>
+        <adicionar-participantes idgrupo="grupo.Id" nome="" foto="" estacriando="false"></adicionar-participantes>
       </div>
     </div>
   </div>

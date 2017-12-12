@@ -2,6 +2,7 @@ angular.module('auth').factory('grupoService', function (authConfig, $http, $q, 
 
   let urlGrupo = authConfig.urlGrupo;
   let urlEstabelecimento = authConfig.urlEstabelecimento;
+  let urlUsuario = authConfig.urlUsuario;
 
   function criarGrupo(grupo){
     return $http.post(urlGrupo, grupo)
@@ -18,6 +19,7 @@ angular.module('auth').factory('grupoService', function (authConfig, $http, $q, 
   function buscarRecomendacao(idUsuario, idGrupo, latitude, longitude){
     return $http.get(urlEstabelecimento + "recomendacaoGrupo?idUsuario=" + idUsuario +  "&idGrupo=" + idGrupo + "&latitude=" + latitude + "&longitude=" + longitude)
   }
+
 
 
   return{

@@ -101,9 +101,10 @@ namespace FoodTime.WebApi.Controllers
 
         [HttpGet]
         [Route("buscarPorGrupo")]
-        public IHttpActionResult BuscarUsuariosNaoMembrosDeGrupo(int idGrupo)
+        public IHttpActionResult BuscarUsuariosNaoMembrosDeGrupo(int idGrupo, string filtro)
         {
-            List<Usuario> usuarios = context.Usuarios.Where(x => !context.GrupoUsuarios.Any(y => (y.Usuario.Id == x.Id && y.Grupo.Id == idGrupo))).ToList();
+            List<Usuario> usuarios = context.Usuarios.AsNoTracking().Where(x => !context.GrupoUsuarios.Any(y => (y.Usuario.Id == x.Id && y.Grupo.Id == idGrupo))).ToList();
+            usuarios = usuarios.Where(x => (x.Email.Contains(filtro) || x.Nome.Contains(filtro))).ToList();
             return Ok(usuarios);
         }
 
