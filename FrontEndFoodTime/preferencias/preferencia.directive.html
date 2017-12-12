@@ -26,9 +26,9 @@
           </thead>
           <tbody ng-init="limit=5">
                 <tr ng-repeat="preferencia in preferencias | limitTo: limit | filter: filtro" >
-                    <td><label>
-                      <input type="checkbox" value="">
-                    </label></td>
+                    <td>
+                      <label><input type="checkbox" value=""></label>
+                    </td>
                     <td>{{preferencia.Descricao}}</td>
                   </tr>
             <label> <input type="checkbox" id="listarTodos" ng-click="trocaLimite()" ng-model="flag" value=""> Listar Todos</label>

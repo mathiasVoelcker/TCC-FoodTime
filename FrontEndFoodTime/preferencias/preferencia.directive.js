@@ -6,18 +6,11 @@ angular.module('app').directive('preferenciasDiretiva', function () {
     controller: function ($scope, authService, $rootScope, preferenciasService) {
 
       preferenciasService.listar();
-      preferenciasService.listarCinco();
 
       preferenciasService.listar().then(
         function (response) {
           debugger
           $scope.preferencias = response.data;
-        });
-
-      preferenciasService.listarCinco().then(
-        function (response) {
-          debugger
-          $scope.cincoPreferencias = response.data;
         });
 
         $scope.trocaLimite = function trocaLimite() {

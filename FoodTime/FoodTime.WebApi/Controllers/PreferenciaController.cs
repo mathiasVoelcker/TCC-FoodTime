@@ -52,7 +52,7 @@ namespace FoodTime.WebApi.Controllers
             return BadRequest(String.Join(String.Empty, mensagensErro.ToArray()));
         }
 
-        [HttpPost, Route("listar")]
+        [HttpGet, Route("listar")]
         public IHttpActionResult BuscarTodasPreferencias()
         {
             var listaDePreferencias = context.Preferencias.Where(x => x.Aprovado == true).ToList();
