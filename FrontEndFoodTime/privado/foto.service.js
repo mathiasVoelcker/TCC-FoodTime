@@ -20,7 +20,6 @@ angular.module('auth').factory('fotoService', function($http, authConfig){
               'Content-Type' : undefined
              }
         }
-        debugger;
         return $http(request);
       }
     
