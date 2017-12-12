@@ -42,45 +42,63 @@ namespace FoodTime.WebApi.Controllers
         [HttpGet, Route("recomendacao")]
         public IHttpActionResult BuscarRecomendacoes(int idUsuario, decimal latitude, decimal longitude)
         {
-            List<Estabelecimento> estabelecimentosAprovados = context.Estabelecimentos
-                .Include(x => x.Endereco)
-                .Include(x => x.Categorias)
-                .Include(x => x.Fotos)
-                .AsNoTracking()
-                .Where(x => x.Aprovado)
-                .ToList();
-            if(estabelecimentosAprovados.Count == 0)
+            List<Estabelecimento> estabelecimentos = new List<Estabelecimento>();
+            var retorno = ConferirEstabRecomendados(idUsuario, out estabelecimentos);
+            if(retorno != null)
             {
-                BadRequest("Não há estabelecimentos cadastrados no sistema ainda.");
-            }
-            estabelecimentosAprovados = estabelecimentosAprovados.Where(x => !context.Usuarios.Include(y => y.EstabelecimentosRecusados).FirstOrDefault(y => y.Id == idUsuario).EstabelecimentosRecusados.Any(z => z.Id == x.Id)).ToList();
-            List<Estabelecimento> estabelecimentoAbertos = estabelecimentosAprovados.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0))).ToList();
-            if (estabelecimentoAbertos.Count == 0)
-            {
-                BadRequest("Não há estabelecimentos abertos no momento.");
+                return BadRequest(retorno);
             }
             List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
             var numPreferenciasCorrespondentes = 0;
             var usuario = context.Usuarios.Include(x => x.Preferencias).AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
-            foreach (Estabelecimento estabelecimento in estabelecimentoAbertos)
+            foreach (Estabelecimento estabelecimento in estabelecimentos)
             {
                 var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
                 var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList();
                 numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count();
                 var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
-                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average(); 
+                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average();
                 decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude);
                 var numPreferencias = usuario.Preferencias.Count();
-                var preferenciaCoeficiente = 0;
-                if (numPreferencias != 0)
-                {
-                    preferenciaCoeficiente = numPreferenciasCorrespondentes/numPreferencias;
-                }
+                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias;
                 estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distancia);
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
         }
+
+        [HttpGet, Route("recomendacaoGrupo")]
+        public IHttpActionResult BuscarRecomendacoesGrupos(int idUsuario, int idGrupo, decimal latitude, decimal longitude)
+        {
+            List<Estabelecimento> estabelecimentos = new List<Estabelecimento>();
+            var teste = ConferirEstabRecomendados(idUsuario, out estabelecimentos);
+            if (teste != null)
+            {
+                return BadRequest(teste);
+            }
+            List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
+            var numPreferenciasCorrespondentes = 0;
+            var usuariosGrupo = context.GrupoUsuarios.Include(x => x.Usuario.Preferencias).AsNoTracking().Where(x => x.Grupo.Id == idGrupo && x.Aprovado).ToList();
+            if(usuariosGrupo.Count() == 0)
+            {
+                return Ok("Este grupo nao possui membros ainda");
+            }
+            var numPreferencias = usuariosGrupo.Sum(x => x.Usuario.Preferencias.Count());
+            foreach (Estabelecimento estabelecimento in estabelecimentos)
+            {
+                var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
+                var estabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList();
+                numPreferenciasCorrespondentes = estabelecimentoPreferencias.Where(x => (usuariosGrupo.Any(y => y.Usuario.Preferencias.Any(z => z.Id == x.Preferencia.Id) && x.Aprovado))).Count();
+                var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
+                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average();
+                decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude);
+                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias;
+                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distancia);
+                estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
+            }
+            return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
+        }
+
 
         [HttpGet]
         [Route("listar")]
@@ -105,7 +123,7 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Não existem estabelecimentos cadastrados.");
             }
             List<EstabelecimentoModel> listaEstabelecimentosModel = new List<EstabelecimentoModel>();
-            foreach(Estabelecimento estabelecimento in listaDeEstabelecimentos)
+            foreach (Estabelecimento estabelecimento in listaDeEstabelecimentos)
             {
                 listaEstabelecimentosModel.Add(criarEstabModel(estabelecimento));
             }
@@ -118,7 +136,7 @@ namespace FoodTime.WebApi.Controllers
         public IHttpActionResult BuscarEstabelecimentoPorId(int id)
         {
             Estabelecimento estabelecimentoExistente = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).AsNoTracking().FirstOrDefault(x => x.Id == id);
-            if (estabelecimentoExistente==null)
+            if (estabelecimentoExistente == null)
             {
                 return BadRequest("Estabelecimento não existente.");
             }
@@ -147,7 +165,7 @@ namespace FoodTime.WebApi.Controllers
                 }
             }
             List<EstabelecimentoModel> estabsModel = new List<EstabelecimentoModel>();
-            foreach(Estabelecimento estabelecimento in estabs)
+            foreach (Estabelecimento estabelecimento in estabs)
             {
                 estabsModel.Add(criarEstabModel(estabelecimento));
             }
@@ -166,7 +184,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 estabs = estabs.Where(x => x.CompareNome(estabLocalFiltro.nome)).ToList();
             }
-            if(estabLocalFiltro.categorias != null)
+            if (estabLocalFiltro.categorias != null)
             {
                 if (estabLocalFiltro.categorias[0] != null)
                 {
@@ -201,5 +219,28 @@ namespace FoodTime.WebApi.Controllers
             return estabModel;
         }
 
+        private String ConferirEstabRecomendados(int idUsuario, out List<Estabelecimento> estabelecimentos)
+        {
+            estabelecimentos = context.Estabelecimentos
+                .Include(x => x.Endereco)
+                .Include(x => x.Categorias)
+                .Include(x => x.Fotos)
+                .AsNoTracking()
+                .Where(x => x.Aprovado)
+                .ToList(); //buscar estabelecimentos aprovados
+            if (estabelecimentos.Count == 0)
+            {
+                return "Não há estabelecimentos cadastrados no sistema ainda.";
+            }
+            //buscar estabelecimentos nao recusados
+            estabelecimentos = estabelecimentos.Where(x => !context.Usuarios.Include(y => y.EstabelecimentosRecusados).FirstOrDefault(y => y.Id == idUsuario).EstabelecimentosRecusados.Any(z => z.Id == x.Id)).ToList();
+            //buscar estabelecimentos abertos
+            estabelecimentos = estabelecimentos.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0))).ToList();
+            if (estabelecimentos.Count == 0)
+            {
+                return "Não há estabelecimentos abertos no momento.";
+            }
+            return null;
+        }
     }
 }
