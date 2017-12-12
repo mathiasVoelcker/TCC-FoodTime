@@ -38,6 +38,10 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     return $http.put(urlUsuario + "excluirRecomendacao?idEstabelecimento=" + idEstabelecimento + "&idUsuario=" + idUsuario)
   }
 
+  function buscarPorFiltro(filtro){
+    return $http.get(urlUsuario + "/buscarPorFiltro?filtro=" + filtro)
+  }
+
   return {
     listar: listar,
     buscarUsuario: buscarUsuario,
@@ -46,6 +50,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     alterUsuario: alterUsuario,
     buscarAvaliacoesUsuario: buscarAvaliacoesUsuario,
     buscarRecomendacao: buscarRecomendacao,
-    excluirRecomendacao: excluirRecomendacao
+    excluirRecomendacao: excluirRecomendacao,
+    buscarPorFiltro: buscarPorFiltro
   }
 })

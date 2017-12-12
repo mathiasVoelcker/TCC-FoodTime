@@ -18,13 +18,14 @@ angular.module('app').constant('authConfig', {
 
     urlCategoria: 'http://localhost:65510/api/categoria/',
 
+    urlGrupo: 'http://localhost:65510/api/Grupo/',
+
     // Obrigatória - URL da aplicação que possui o formulário de login
     urlLogin: '/login',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
     urlPrivado: '/privado',
 
-    urlGrupo: '/meusGrupos',
 
     urlInformacoesGrupo: '/informacoesGrupo',
 

@@ -41,3 +41,11 @@ body {
   background-image:url("auxiliares/imgs/lupa.png");
 }
 
+.clickable-area{
+  cursor: pointer;
+
+}
+
+.clickable-area:hover{
+  background-color: #f7f7f7;
+}

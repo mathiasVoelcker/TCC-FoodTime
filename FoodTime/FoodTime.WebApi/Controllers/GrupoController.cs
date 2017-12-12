@@ -29,10 +29,26 @@ namespace FoodTime.WebApi.Controllers
             foreach (int idUsuario in grupoModel.IdUsuarios)
             {
                 var usuario = context.Usuarios.FirstOrDefault(x => x.Id == idUsuario);
+                if(usuario == null)
+                {
+                    return BadRequest("Usuário não encontrado");
+                }
                 context.GrupoUsuarios.Add(new GrupoUsuario(usuario, grupo, false));
             }
             context.SaveChanges();
             return Ok(grupoModel);
+        }
+
+        [HttpGet]
+        [Route("buscarPorUsuario")]
+        public IHttpActionResult BuscarGruposPorUsuario(int idUsuario)
+        {
+            List<Grupo> grupos = context.GrupoUsuarios.Where(x => x.Usuario.Id == idUsuario).Select(x => x.Grupo).ToList();
+            if (grupos == null)
+            {
+                BadRequest("Nenhum grupo encontrado para este usuário");
+            }
+            return Ok(grupos);
         }
     }
 }
