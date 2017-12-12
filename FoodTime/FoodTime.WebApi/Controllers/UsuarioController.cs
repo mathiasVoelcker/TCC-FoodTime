@@ -56,8 +56,6 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Nenhum usuário encontrado");
             return Ok(usuarios);
         }
-        
-
 
         [HttpPost]
         public IHttpActionResult Adicionar([FromBody]UsuarioCadastroModel usuarioCadastroModel)
@@ -73,21 +71,10 @@ namespace FoodTime.WebApi.Controllers
                 }
             }
             var novoUsuario = new Usuario(usuarioCadastroModel.Email, usuarioCadastroModel.Senha, usuarioCadastroModel.Nome, usuarioCadastroModel.Sobrenome, usuarioCadastroModel.FotoPerfil, usuarioCadastroModel.DataNascimento, usuarioCadastroModel.Admin, novaListaPreferencias);
-
             context.Usuarios.Add(novoUsuario);
             context.SaveChanges();
             return Created($"api/usuario/{novoUsuario.Id}", novoUsuario);
         }
-
-        //[HttpGet]
-        //[Route("buscar")]
-        //public IHttpActionResult BuscarUsuario([FromUri]UsuarioModel usuarioModel)
-        //{
-        //    var usuario = context.Usuarios.AsNoTracking().FirstOrDefault(x => x.Id == usuarioModel.Id);
-        //    if (usuario == null)
-        //        return BadRequest("Usuário não existe");
-        //    return Ok(new UsuarioModel(usuario));
-        //}
 
         [HttpGet]
         [Route("{id}")]
