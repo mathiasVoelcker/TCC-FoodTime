@@ -12,6 +12,10 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     let result =  $http.get(urlEstabelecimento+"listar");
     return result;
   }
+  function listarMapa(){
+    let result =  $http.get(urlEstabelecimento+"listarMapa");
+    return result;
+  }
 
   function listarCinco(){
     let result =  $http.get(urlEstabelecimento+"listarCinco");
@@ -27,6 +31,7 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   function buscarEstabelecimentoPorId(id){
     return $http.get(urlEstabelecimento + id)
   }
+  
 
   function buscarAvaliacoesEstab(id){
     return $http.get(urlAvaliacao + "buscarPorIdEstabelecimento?idEstab=" + id)
@@ -41,6 +46,7 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   return{
     criarAvaliacao: criarAvaliacao,
     listar: listar,
+    listarMapa: listarMapa,
     listarCinco: listarCinco,
     buscarPorFiltros: buscarPorFiltros,
     buscarEstabelecimentoPorId: buscarEstabelecimentoPorId,

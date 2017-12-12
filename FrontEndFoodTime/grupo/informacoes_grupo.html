@@ -1,38 +1,26 @@
-
-<link href="auxiliares/css/full-width-pics.css" rel="stylesheet">
-<!--colocar a diretiva home/header.directive-->
 <cwi-header></cwi-header>
-<!-- Header - set the background image for the header in the line below -->
 <header class="py-3 bg-image-full" style="background-image: url('auxiliares/imgs/1@2x.jpg');" id="header_usuario">
-  <img class="d-flex_usuario mr-6 rounded-circle" src="{{grupo.Foto || 'https://image.freepik.com/icones-gratis/grupo-de-usuarios-silhueta_318-49953.jpg'}}" alt="">
-  <!-- Content section -->
+  <img class="d-flex_usuario mr-6 rounded-circle" src="{{grupo.Foto || 'https://image.freepik.com/icones-gratis/grupo-de-usuarios-silhueta_318-49953.jpg'}}"
+    alt="">
   <section class="py-3">
     <div class="container">
-      <br><br><br>
+      <div class="espaco"></div>
       <h1 class="cor_usuario">{{grupo.Nome}}</h1>
-      <br>
-      <div class="row">
-        <br>
-        <div class="container">
-          <br>
-          <div class="col-md-12s">
-            <a class="btn btn-primary" href="#">Adicionar Participante</a>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </header>
 <section class="py-5">
   <div class="container">
-
     <div class="row">
       <div class="col-md-6">
-        <div><h3>Participantes</h3></div>
+        <div>
+          <h3>Participantes</h3>
+        </div>
         <br>
         <div class="table-overflow_participantes">
           <div class="media mb-4" ng-repeat="participante in participantes">
-            <img class="d-flex mr-3 rounded-circle" src="{{participante.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
+            <img class="d-flex mr-3 rounded-circle" src="{{participante.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
+              alt="" style="width:50px;height:50px;">
             <div class="media-body">
               <h5 class="mt-0">{{participante.Usuario.Nome}}</h5>
               E-mail: {{participante.Usuario.Email}}
@@ -42,11 +30,14 @@
         <span class="danger-label" ng-if="participantes.length == 0">Este grupo ainda não possui participantes</span>
       </div>
       <div class="col-md-6">
-        <div><h3>Participantes Convidados</h3></div>
+        <div>
+          <h3>Participantes Convidados</h3>
+        </div>
         <br>
         <div class="table-overflow_participantes">
           <div class="media mb-4" ng-repeat="solicitacao in solicitacoes">
-            <img class="d-flex mr-3 rounded-circle" src="{{solicitacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
+            <img class="d-flex mr-3 rounded-circle" src="{{solicitacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
+              alt="" style="width:50px;height:50px;">
             <div class="media-body">
               <h5 class="mt-0">{{solicitacao.Usuario.Nome}}</h5>
               E-mail: {{solicitacao.Usuario.Email}}
@@ -54,15 +45,11 @@
           </div>
         </div>
         <span class="success-label" ng-if="solicitacoes.length == 0">Nenhuma solicitação pendente</span>
-
       </div>
     </div>
-
-
   </div>
-</div>
+  </div>
 </section>
-<!-- Content section -->
 <section class="py-3">
   <div class="container">
     <h3>Estabelecimentos Recomendados para o Grupo</h3>

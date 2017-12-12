@@ -1,17 +1,15 @@
-
-  <cwi-header></cwi-header>
-  <!-- Page Content -->
-  <div class="container">
-    <br>
-    <div class="row">
-      <div class="col-lg-6 mb-4" >
-        <h2 id="texto_avaliar">Avaliar {{estabelecimento.Nome}}</h2>
-        <form name="formAvaliacao" ng-submit="avaliar(avaliacao)" novalidate>
-          <br>
-          <div class="control-group form-group">
-            <div class="form-group">
-              <label>Nota:</label>
-              <label class="radio-inline">
+<cwi-header>
+</cwi-header>
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <h2 id="texto_avaliar">Avaliar {{estabelecimento.Nome}}</h2>
+      <form name="formAvaliacao" ng-submit="avaliar(avaliacao)" novalidate>
+        <br>
+        <div class="control-group form-group">
+          <div class="form-group">
+            <label>Nota:</label>
+            <label class="radio-inline">
                 <select class="form-control" ng-model="avaliacao.nota" name="nota">
                   <option>1</option>
                   <option>2</option>
@@ -25,84 +23,84 @@
                   <option>10</option>
                 </select>
               </label>
-            </div>
-            <!-- Comments Form -->
-            <div class="card my-4">
-              <h5 class="card-header">Comentário:</h5>
-              <div class="card-body">
-                <div class="form-group">
-                  <textarea ng-model="avaliacao.comentario" nome="comentario" class="form-control" rows="3"></textarea>
-                </div>
-                <div class="form-group">
-                  <label>Foto:</label>
-                  <label class="radio-inline">
+          </div>
+          <!-- Comments Form -->
+          <div class="card my-4">
+            <h5 class="card-header">Comentário:</h5>
+            <div class="card-body">
+              <div class="form-group">
+                <textarea ng-model="avaliacao.comentario" nome="comentario" class="form-control" rows="3"></textarea>
+              </div>
+              <div class="form-group">
+                <label>Foto:</label>
+                <label class="radio-inline">
                       <input type="file" id="file" name="pic" accept="image/*">
                   </label>
 
-                </div>
-                <!-- <a nome="fotoAvaliacao" class="btn btn-primary">Foto</a> -->
               </div>
+              <!-- <a nome="fotoAvaliacao" class="btn btn-primary">Foto</a> -->
             </div>
-            <div class="form-group">
-              <label>Preço Médio:</label>
-              <label class="radio-inline">
+          </div>
+          <div class="form-group">
+            <label>Preço Médio:</label>
+            <label class="radio-inline">
                 <input type="number" step="any" ng-model="avaliacao.precoMedio" nome="precoMedio" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
               </label>
 
-            </div>
-            <div class="form-group">
-              <label>Recomendaria esse lugar e/ou voltaria novamente?</label>
-              <label class="radio-inline">
+          </div>
+          <div class="form-group">
+            <label>Recomendaria esse lugar e/ou voltaria novamente?</label>
+            <label class="radio-inline">
                 <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline1" ng-model="avaliacao.Recomendado" value="true" checked>Sim
               </label>
-              <label class="radio-inline">
+            <label class="radio-inline">
                 <input type="radio" name="optionsRadiosInline" id="optionsRadiosInline2" ng-model="avaliacao.Recomendado" value="false">Não
               </label>
-            </div>
           </div>
-          <div class="control-group form-group">
-            <div class="controls" >
-              <label>Preferências</label>
-              <div>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Sugerir gostos...">
-                  <span class="input-group-btn">
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label>Preferências</label>
+            <div>
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Sugerir gostos...">
+                <span class="input-group-btn">
                     <a class="btn btn-primary" id="sendMessageButton">Pesquisar</a>
                   </span>
-                </div>
               </div>
-
             </div>
+
           </div>
-          <div class="panel panel-default">
-            <h4>Resultado da Pesquisa</h4>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-              <div class="table-responsive table-bordered">
-                <table class="table">
-                  <thead class="card-header">
-                    <tr>
-                      <th></th>
-                      <th>Preferência</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td><label>
+        </div>
+        <div class="panel panel-default">
+          <h4>Resultado da Pesquisa</h4>
+          <!-- /.panel-heading -->
+          <div class="panel-body">
+            <div class="table-responsive table-bordered">
+              <table class="table">
+                <thead class="card-header">
+                  <tr>
+                    <th></th>
+                    <th>Preferência</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><label>
                         <input type="checkbox" value="">
                       </label></td>
-                      <td>Comida Vegetariana</td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <label>
+                    <td>Comida Vegetariana</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label>
                           <input type="checkbox" value="">
                         </label>
-                      </td>
-                      <td>local geek</td>
-                    </tr>
-                    <tr>
-                      <td><label>
+                    </td>
+                    <td>local geek</td>
+                  </tr>
+                  <tr>
+                    <td><label>
                         <input type="checkbox" value="">
                       </label>
                     </td>
@@ -142,13 +140,13 @@
             </div>
             <!-- /.table-responsive -->
           </div>
-      <!-- /.panel-body -->
+          <!-- /.panel-body -->
+        </div>
+        <div id="success"></div>
+        <!-- For success/fail messages -->
+        <button class="btn btn-primary" ng-click="addFoto()">Salvar avaliação</button>
+      </form>
     </div>
-    <div id="success"></div>
-    <!-- For success/fail messages -->
-    <button class="btn btn-primary" ng-click="addFoto()">Salvar avaliação</button>
-  </form>
-</div>
-</div>
-<div class="row"></div>
+  </div>
+  <div class="row"></div>
 </div>

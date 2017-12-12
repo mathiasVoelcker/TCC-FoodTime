@@ -1,46 +1,41 @@
-
-  <cwi-header></cwi-header> 
-  <!-- Page Content -->
-  <div class="container">
-    <br><br><br>
-    <!-- Page Heading -->
-    <h1 class="my-4">Informações do Estabelecimento
-    </h1>
-    <!-- Project One -->
-    <div class="row">
-      <div class="col-md-3">
-        <a href="#">
-          <img class="img-fluid rounded mb-3 mb-md-0" src="{{estabelecimento.Fotos[0]}}" alt="" style="width:250px;height:200px;">
-        </a>
-      </div>
-      <div class="col-md-4">
-        <h3>{{estabelecimento.Nome}}</h3>
-        <p>{{estabelecimento.Endereco.Rua}}</p>
-        <p>Preço Médio: {{estabelecimento.PrecoMedio}}; &nbsp;&nbsp;&nbsp;
-          <span ng-show="estabelecimento.EstaAberto" class="success-label">Aberto</span>
-          <span ng-show="!estabelecimento.EstaAberto" class="danger-label">Fechado</span>
-        </p>
-        <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp; Nº de avaliações: {{estabelecimento.NumAvaliacoes}}</p>
-      </div>
-      <div class="col-md-5">
-        <a class="btn btn-primary" href="#!/avaliar/{{IdEstabelecimento}}">Avaliar Estabelecimento</a>
-      </div>
+<cwi-header>
+</cwi-header>
+<div class="container">
+  <div class="espaco"></div>
+  <!-- Page Heading -->
+  <h1 class="my-4">Informações do Estabelecimento
+  </h1>
+  <!-- Project One -->
+  <div class="row">
+    <div class="col-md-3">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="{{estabelecimento.Fotos[0]}}" alt="" style="width:250px;height:200px;">
     </div>
-    <hr>
-    <h3 class="my-4">Últimas Avaliações
-    </h3>
-    <div class="col-md-10">
-      <div>
-        <div class="media mb-4" ng-repeat="avaliacao in estabelecimento.Avaliacoes">
-          <img class="d-flex mr-3 rounded-circle" src="{{avaliacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
-          <div class="media-body">
-            <h5 class="mt-0">{{avaliacao.Usuario.Nome}}</h5>
-            {{avaliacao.Comentario}}
-          </div>
+    <div class="col-md-4">
+      <h3>{{estabelecimento.Nome}}</h3>
+      <p>{{estabelecimento.Endereco.Rua}}</p>
+      <p>Preço Médio: {{estabelecimento.PrecoMedio}}; &nbsp;&nbsp;&nbsp;
+        <span ng-show="estabelecimento.EstaAberto" class="success-label">Aberto</span>
+        <span ng-show="!estabelecimento.EstaAberto" class="danger-label">Fechado</span>
+      </p>
+      <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp; Nº de avaliações: {{estabelecimento.NumAvaliacoes}}</p>
+    </div>
+    <div class="col-md-5">
+      <a class="btn btn-primary" href="#!/avaliar/{{IdEstabelecimento}}">Avaliar Estabelecimento</a>
+    </div>
+  </div>
+  <hr>
+  <h3 class="my-4">Últimas Avaliações
+  </h3>
+  <div class="col-md-10">
+    <div>
+      <div class="media mb-4" ng-repeat="avaliacao in estabelecimento.Avaliacoes">
+        <img class="d-flex mr-3 rounded-circle" src="{{avaliacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
+          alt="" style="width:50px;height:50px;">
+        <div class="media-body">
+          <h5 class="mt-0">{{avaliacao.Usuario.Nome}}</h5>
+          {{avaliacao.Comentario}}
         </div>
       </div>
     </div>
   </div>
-
-<!-- /.container -->
-
+</div>
