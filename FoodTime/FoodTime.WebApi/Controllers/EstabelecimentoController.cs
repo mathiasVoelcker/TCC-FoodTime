@@ -202,13 +202,13 @@ namespace FoodTime.WebApi.Controllers
         {
             EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimento);
             var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).ToList();
+            estabModel.EstaAberto = estabelecimento.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
             if (avaliacoes.Count() != 0)
             {
                 foreach (Avaliacao avaliacao in avaliacoes)
                 {
                     estabModel.Avaliacoes.Add(avaliacao);
                 }
-                estabModel.EstaAberto = estabelecimento.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0));
                 var notasAvaliacoes = avaliacoes.Select(x => x.Nota);
                 estabModel.MediaAvaliacoes = (decimal)notasAvaliacoes.Average();
                 estabModel.NumAvaliacoes = notasAvaliacoes.Count();

@@ -31,27 +31,6 @@ angular.module('app').constant('authConfig', {
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
     urlPrivado: '/privado',
 
-    //autenticado - admin
-    urlInformacoesGrupo: '/informacoesGrupo',
-
-    //Autenticado - Admin
-    urlAvaliarEstab: '/avaliarEstab',
-
-    //autenticado - admin
-    urlPerfilUsuario: '/perfilUsuario',
-
-    //autenticado - admin
-    urlMinhaPreferencia: '/minhaPreferencia',
-
-    //autenticado e admin
-    urlSugerirEstabelecimento: '/sugerirEstabelecimento',
-
-    //admin
-    urlSugerirEstabelecimento: '/aprovacoes',
-
-    //autenticado e admin
-    urlSugerirEstabelecimento: '/notificacoes',
-
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
     //pública - autenticado e admin
     urlLogout: '/home'
