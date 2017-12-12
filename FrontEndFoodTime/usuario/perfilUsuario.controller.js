@@ -1,18 +1,14 @@
 angular.module('app')
 .controller('PerfilUsuarioController', function ($scope, $routeParams, authService, $http, usuarioService) {
 
-  var idUsuario = $routeParams.IdUsuario;
-  usuarioService.buscarUsuario(idUsuario)
-  .then(function (response){
-    $scope.usuario = response.data;
+  $scope.usuario = authService.getUsuario();
+  $scope.usuario.DataNascimento = formatarData($scope.usuario.DataNascimento)
+  console.log($scope.usuario.DataNascimento)
+  console.log($scope.usuario)
+  buscarRecomendacoes()
 
-    $scope.usuario.DataNascimento = formatarData($scope.usuario.DataNascimento)
-    console.log($scope.usuario.DataNascimento)
-    console.log($scope.usuario)
-    buscarRecomendacoes()
-  })
 
-  usuarioService.buscarAvaliacoesUsuario(idUsuario).then(
+  usuarioService.buscarAvaliacoesUsuario($scope.usuario.Id).then(
     function (response){
       console.log(response.data)
       $scope.avaliacoes = response.data
@@ -37,7 +33,7 @@ angular.module('app')
         lng: position.coords.longitude
       }
       console.log(pos)
-      usuarioService.buscarRecomendacao(idUsuario, pos.lat, pos.lng).then(
+      usuarioService.buscarRecomendacao($scope.usuario.Id, pos.lat, pos.lng).then(
         function (response){
           console.log(response)
           $scope.recomendacoes = response.data
@@ -48,7 +44,7 @@ angular.module('app')
 
   $scope.excluirRecomendacao = function(idEstabelecimento){
     console.log("ENTROU")
-    usuarioService.excluirRecomendacao(idEstabelecimento, idUsuario).then(
+    usuarioService.excluirRecomendacao(idEstabelecimento, $scope.usuario.Id).then(
       function(response){
         console.log(response)
         buscarRecomendacoes()

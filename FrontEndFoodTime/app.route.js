@@ -15,7 +15,7 @@ angular.module('app').config(function ($routeProvider) {
     })
 
     // item nº 3.4 e 3.9 - autenticado
-    .when('/perfilUsuario/:IdUsuario?', {
+    .when('/perfilUsuario', {
       controller: 'PerfilUsuarioController',
       templateUrl: 'usuario/perfil_usuario.html'
 
