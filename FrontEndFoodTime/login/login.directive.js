@@ -1,11 +1,9 @@
-angular
-.module('app')
-.directive('loginDiretiva',function(){
+angular.module('app')
+.directive('cwiLogin', function (authService, $rootScope) {
+    return {
+      restrict: 'E',
+      scope: {},
+      templateUrl: '../login/login.directive.html'
+    }
 
-    return{
-        scope:{
-            p: '=loginDiretiva'
-        },
-        templateUrl:'login/login.directive.html'
-    };
 });

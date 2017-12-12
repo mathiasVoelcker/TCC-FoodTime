@@ -2,23 +2,23 @@ angular.module('app').controller('LoginController', function ($scope, toastr, au
 
   function redirecionar(promise) {
     promise.then(function () {
-        $location.path('/home/');
+      $location.path('/home/');
     })
-}
+  }
 
   $scope.login = function (usuario) {
     let promise;
 
     promise = authService.loginTemp(usuario)
       .then(
-        function () {
-          toastr.success('Login com sucesso!')
-          redirecionar(promise);
+      function () {
+        toastr.success('Login com sucesso!')
+        redirecionar(promise);
 
-        },
-        function (error) {
-          toastr.error('Erro no Login!')
-        });
+      },
+      function (error) {
+        toastr.error('Erro no Login!')
+      });
   };
 
 });

@@ -10,37 +10,49 @@ angular.module('app').constant('authConfig', {
 
     urlUsuario: 'http://localhost:65510/api/Usuario/',
 
+    //autenticado - admin
     urlAvaliacao: 'http://localhost:65510/api/avaliacao/',
 
+    //autenticado - admin
     urlAvaliacaoRegistro: 'http://localhost:65510/api/avaliacao/registro/',
 
+    //pública
     urlEstabelecimento: 'http://localhost:65510/api/estabelecimento/',
 
+    //pública
     urlCategoria: 'http://localhost:65510/api/categoria/',
 
+    //autenticado - admin
     urlGrupo: 'http://localhost:65510/api/Grupo/',
 
-    // Obrigatória - URL da aplicação que possui o formulário de login
+    // Obrigatória - URL da aplicação que possui o formulário de login - pública - autenticado e admin
     urlLogin: '/login',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGIN com sucesso
     urlPrivado: '/privado',
 
-
+    //autenticado - admin
     urlInformacoesGrupo: '/informacoesGrupo',
 
+    //Autenticado - Admin
     urlAvaliarEstab: '/avaliarEstab',
 
+    //autenticado - admin
     urlPerfilUsuario: '/perfilUsuario',
 
+    //autenticado - admin
     urlMinhaPreferencia: '/minhaPreferencia',
 
+    //autenticado e admin
     urlSugerirEstabelecimento: '/sugerirEstabelecimento',
 
+    //admin
     urlSugerirEstabelecimento: '/aprovacoes',
 
+    //autenticado e admin
     urlSugerirEstabelecimento: '/notificacoes',
 
     // Opcional - URL da aplicação para onde será redirecionado (se for informado) após o LOGOUT
+    //pública - autenticado e admin
     urlLogout: '/home'
 });
