@@ -51,5 +51,17 @@ namespace FoodTime.WebApi.Controllers
             }
             return BadRequest(String.Join(String.Empty, mensagensErro.ToArray()));
         }
+
+        [HttpPost, Route("listar")]
+        public IHttpActionResult BuscarTodasPreferencias()
+        {
+            var listaDePreferencias = context.Preferencias.Where(x => x.Aprovado == true).ToList();
+
+            if (listaDePreferencias.Count == 0)
+            {
+                return BadRequest("Não existem preferencias cadastradas.");
+            }
+            return Ok(listaDePreferencias);
+        }
     }
 }

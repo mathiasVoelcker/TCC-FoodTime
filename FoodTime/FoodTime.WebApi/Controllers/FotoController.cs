@@ -32,7 +32,14 @@ namespace FoodTime.WebApi.Controllers
                     Foto foto = new Foto(file.FileName);
                     //ESTE DIRETORIO DEVE SER ALTERADO DE ACORDO COM O SERVER ONDE VAMOS RODAR PARA A APRESENTACAO. 
                     //PARA QUE CRIE E ESTEJA DE ACORDO COM AS FOTOS DOS ESTABELECIMENTOS RECOMENDADOS AO DAR GET.
-                    var directory = ConfigurationManager.AppSettings["pathFotos"];
+                    var directoryProject = AppDomain.CurrentDomain.BaseDirectory.Replace("FoodTime\\FoodTime.WebApi\\", ""); 
+                    //directoryProject = directoryProject.Replace("FoodTime\\FoodTime.WebApi\\","");
+                    var directoryPicture = ConfigurationManager.AppSettings["pathFotos"];
+                    var directory = directoryProject + directoryPicture;
+                   
+
+
+
                     if (!Directory.Exists(directory))
                     {
                         Directory.CreateDirectory(directory);

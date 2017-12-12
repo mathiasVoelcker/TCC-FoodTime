@@ -100,7 +100,7 @@ namespace FoodTime.WebApi.Controllers
 
         [HttpGet]
         [Route("listar")]
-        public IHttpActionResult buscarTodosEstabelecimentos()
+        public IHttpActionResult BuscarTodosEstabelecimentos()
         {
             List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).ToList();
             if (listaDeEstabelecimentos.Count == 0)
@@ -112,7 +112,7 @@ namespace FoodTime.WebApi.Controllers
 
         [HttpGet]
         [Route("listarCinco")]
-        public IHttpActionResult buscarCincoEstabelecimentos()
+        public IHttpActionResult BuscarCincoEstabelecimentos()
         {
             List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).Take(5).ToList();
 
@@ -123,7 +123,7 @@ namespace FoodTime.WebApi.Controllers
             List<EstabelecimentoModel> listaEstabelecimentosModel = new List<EstabelecimentoModel>();
             foreach (Estabelecimento estabelecimento in listaDeEstabelecimentos)
             {
-                listaEstabelecimentosModel.Add(criarEstabModel(estabelecimento));
+                listaEstabelecimentosModel.Add(CriarEstabModel(estabelecimento));
             }
             return Ok(listaEstabelecimentosModel);
         }
@@ -138,7 +138,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 return BadRequest("Estabelecimento não existente.");
             }
-            return Ok(criarEstabModel(estabelecimentoExistente));
+            return Ok(CriarEstabModel(estabelecimentoExistente));
         }
 
         [HttpGet]
@@ -165,7 +165,7 @@ namespace FoodTime.WebApi.Controllers
             List<EstabelecimentoModel> estabsModel = new List<EstabelecimentoModel>();
             foreach (Estabelecimento estabelecimento in estabs)
             {
-                estabsModel.Add(criarEstabModel(estabelecimento));
+                estabsModel.Add(CriarEstabModel(estabelecimento));
             }
 
             return Ok(estabsModel);
@@ -192,13 +192,13 @@ namespace FoodTime.WebApi.Controllers
             List<EstabelecimentoModel> estabsModel = new List<EstabelecimentoModel>();
             foreach (Estabelecimento estabelecimento in estabs)
             {
-                estabsModel.Add(criarEstabModel(estabelecimento));
+                estabsModel.Add(CriarEstabModel(estabelecimento));
             }
 
             return Ok(estabsModel);
         }
 
-        private EstabelecimentoModel criarEstabModel(Estabelecimento estabelecimento)
+        private EstabelecimentoModel CriarEstabModel(Estabelecimento estabelecimento)
         {
             EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimento);
             var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).ToList();
