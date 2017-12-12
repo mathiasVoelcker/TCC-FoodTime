@@ -46,7 +46,7 @@ namespace FoodTime.WebApi.Controllers
         [HttpPost]
         public IHttpActionResult CriarGrupo(GrupoModel grupoModel)
         {
-            context.Grupos.Add(new Grupo(grupoModel.Nome, grupoModel.Imagem));
+            context.Grupos.Add(new Grupo(grupoModel.Nome, grupoModel.Foto));
             context.SaveChanges();
             var grupo = context.Grupos.OrderByDescending(x => x.Id).FirstOrDefault();
             foreach (int idUsuario in grupoModel.IdUsuarios)

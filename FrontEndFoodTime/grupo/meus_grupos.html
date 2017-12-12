@@ -24,7 +24,7 @@
 
       <div><h3>Criar Grupo</h3></div>
       <br>
-      <form name="sentMessage" id="contactForm" ng-submit="criarGrupo(grupo)" novalidate>
+      <form name="sentMessage" id="contactForm" novalidate>
         <div class="control-group form-group">
           <div class="controls">
             <label>Nome:</label>
@@ -34,94 +34,16 @@
         </div>
         <div class="control-group form-group">
           <div class="controls">
-            <label>Imagem:</label>
+            <label>Foto:</label>
             <input type="file" class="btn" id="name" required>
             <p class="help-block"></p>
           </div>
         </div>
-        <div class="control-group form-group">
-          <div class="controls" >
-            <label>Buscar participante</label>
-            <div >
-              <div class="input-group">
-                <input type="text" ng-model="filtro" class="form-control" placeholder="Buscar usuarios por nome ou e-mail">
-                <span class="input-group-btn">
-                  <a class="btn btn-primary" ng-click="buscarUsuarioPorFiltro(filtro)" id="sendMessageButton">Pesquisar</a>
-              </span>
-            </div>
-          </div>
+        <adicionar-participantes nome="grupo.Nome" foto=""></adicionar-participantes>
 
-        </div>
       </div>
-      <div class="panel panel-default" ng-if="mostraTabela">
-        <h4>Resultado da Pesquisa</h4>
-        <!-- /.panel-heading -->
-        <div class="table-overflow_grupo">
-          <div class="panel-body">
-            <div class="table-responsive table-bordered">
-              <table class="table">
-                <thead class="card-header">
-                  <tr>
-                    <th>Participante</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr ng-repeat="usuario in usuarios">
-                    <td class="clickable-area">
-                      <div class="media mb-4" ng-click="selecionarUsuario(usuario)" >
-                        <img class="d-flex mr-3 rounded-circle" src="{{usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
-                        <div class="media-body">
-                          <h5 class="mt-3">{{usuario.Nome}}</h5>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
-          </div>
-        </div>
-        <!-- /.panel-body -->
-      </div>
-      <span class="danger-label" ng-if="naoEncontrou">Nenhum Usuario encontrado</span>
-      <div class="panel panel-default" ng-if="solicitacoes.length != 0">
-        <h4>Participantes Selecionados</h4>
-        <!-- /.panel-heading -->
-        <div class="table-overflow_grupo">
-          <div class="panel-body">
-            <div class="table-responsive table-bordered">
-              <table class="table">
-                <thead class="card-header">
-                  <tr>
-                    <th>Participante</th>
-                  </tr>
-                </thead>
-                <tbody >
-                  <tr ng-repeat="solicitacao in solicitacoes">
-                    <td>
-                      <div class="media mb-4">
-                        <img class="d-flex mr-3 rounded-circle" src="{{solicitacao.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
-                        <div class="media-body">
-                          <h5 class="mt-3">{{solicitacao.Nome}}</h5>
-                        </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.table-responsive -->
-          </div>
-        </div>
-        <!-- /.panel-body -->
-      </div>
-      <div id="success"></div>
-      <!-- For success/fail messages -->
-      <button type="submit" class="btn btn-primary" id="sendMessageButton">Salvar</button>
-    </div>
-  </form>
-</div>
-<br>
+    </form>
+  </div>
+  <br>
 </div>
 <!-- /.container -->
