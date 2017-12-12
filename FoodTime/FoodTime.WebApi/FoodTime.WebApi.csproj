@@ -159,7 +159,6 @@
     <Compile Include="Models\EstabFiltroLocalModel.cs" />
     <Compile Include="Models\GrupoCompletoModel.cs" />
     <Compile Include="Models\GrupoModel.cs" />
-    <Compile Include="Models\GrupoUsuarioListModel.cs" />
     <Compile Include="Models\GrupoUsuarioModel.cs" />
     <Compile Include="Models\NotificacaoModel.cs" />
     <Compile Include="Models\PreferenciaModel.cs" />

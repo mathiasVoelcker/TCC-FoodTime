@@ -67,6 +67,9 @@ angular.module('app').directive('adicionarParticipantes', function(){
         }
 
         function atualizarGrupo(idUsuarios){
+          if(idUsuarios.length == 0){
+            alert("Nenhum usuário selecionado")
+          }
           var novoParticipante = {IdUsuario: 0, IdGrupo: $scope.idgrupo, Aprovado: false}
           idUsuarios.forEach(function(idUsuario){
             novoParticipante.IdUsuario = idUsuario
@@ -75,6 +78,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
           grupoService.atualizarGrupo(novosParticipantes).then(
             function(response){
               console.log(response)
+              alert("Grupo atualizado com sucesso!")
             }
           )
         }
