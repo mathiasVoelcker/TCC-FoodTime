@@ -2,16 +2,22 @@ angular.module('app').directive('adicionarParticipantes', function(){
   return {
     scope: {
       "nome": "=nome",
-      "foto": "=foto"
+      "foto": "=foto",
+      "estacriando": "=estacriando"
     },
     controller: function ($scope, $rootScope, usuarioService, grupoService, authService, $route){
       var usuarioLogado = authService.getUsuario()
+
       $scope.mostraTabela = false
       $scope.naoEncontrou = false
       $scope.usuarios
-      $scope.grupo = {Nome: $scope.nome, Foto: "https://image.freepik.com/icones-gratis/grupo-de-homens_318-62649.jpg", IdUsuarios: [ usuarioLogado.Id]};
+      $scope.grupo = {Nome: "", Foto: "", IdUsuarios: []};
       console.log($scope.grupo)
-      $scope.solicitacoes = [ usuarioLogado ]
+      $scope.solicitacoes = []
+      if(estacriando){
+        $scope.solicitacoes = [usuarioLogado]
+        $scope.grupo = {Nome: $scope.nome, Foto: "https://image.freepik.com/icones-gratis/grupo-de-homens_318-62649.jpg", IdUsuarios: [ usuarioLogado.Id]};
+      }
       $scope.buscarUsuarioPorFiltro = function(filtro){
         usuarioService.buscarPorFiltro(filtro).then(
           function(response){
@@ -42,8 +48,15 @@ angular.module('app').directive('adicionarParticipantes', function(){
           $scope.solicitacoes.push(usuario); //inserir usuario a lista de solicitacoes para o grupo
           $scope.grupo.IdUsuarios.push(usuario.Id)
         }
-
-        $scope.criarGrupo = function(grupo){
+        $scope.salvarGrupo = function(grupo){
+          if($scope.estacriando){
+            criarGrupo(grupo)
+          }
+          else{
+            atualizarGrupo(grupo.IdUsuarios)
+          }
+        }
+        function criarGrupo(grupo){
           if($scope.nome == undefined){
             alert("Grupo deve ter um Nome");
           }
@@ -55,6 +68,11 @@ angular.module('app').directive('adicionarParticipantes', function(){
                 alert("Grupo criado com sucesso")
               })
             }
+          }
+
+          function atualizarGrupo(idUsuarios){
+            alert("Vou Atualizar Um Grupo")
+            console.log(idUsuarios)
           }
         },
         templateUrl: 'grupo/adicionar_participantes.directive.html'
