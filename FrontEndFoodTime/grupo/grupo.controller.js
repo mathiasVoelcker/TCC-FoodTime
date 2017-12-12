@@ -31,7 +31,7 @@ angular.module('app')
 
 
 
-  grupoService.buscarGrupo(authService.getUsuario().Id).then(
+  grupoService.buscarGrupoPorUsuario(authService.getUsuario().Id).then(
     function(response){
       console.log(response)
       $scope.gruposUsuario = response.data

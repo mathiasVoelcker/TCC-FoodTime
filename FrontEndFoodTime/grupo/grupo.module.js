@@ -6,13 +6,18 @@ angular.module('auth').factory('grupoService', function (authConfig, $http, $q, 
     return $http.post(urlGrupo, grupo)
   }
 
-  function buscarGrupo(idUsuario){
+  function buscarGrupoPorUsuario(idUsuario){
     return $http.get(urlGrupo + "buscarPorUsuario?idUsuario=" + idUsuario)
+  }
+
+  function buscarGrupo(idGrupo){
+    return $http.get(urlGrupo + idGrupo)
   }
 
 
   return{
     criarGrupo: criarGrupo,
+    buscarGrupoPorUsuario: buscarGrupoPorUsuario,
     buscarGrupo: buscarGrupo
   }
 })
