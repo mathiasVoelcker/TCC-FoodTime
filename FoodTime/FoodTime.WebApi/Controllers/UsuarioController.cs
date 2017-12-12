@@ -51,6 +51,8 @@ namespace FoodTime.WebApi.Controllers
         [Route("buscarPorFiltro")]
         public IHttpActionResult ObterUsuarioPorFiltro(string filtro)
         {
+            if (filtro == null)
+                filtro = "";
             List<Usuario> usuarios = context.Usuarios.AsNoTracking().Where(x => (x.Email.Contains(filtro) || x.Nome.Contains(filtro))).ToList();
             if (usuarios == null)
                 return BadRequest("Nenhum usuário encontrado");
@@ -103,7 +105,11 @@ namespace FoodTime.WebApi.Controllers
         [Route("buscarPorGrupo")]
         public IHttpActionResult BuscarUsuariosNaoMembrosDeGrupo(int idGrupo, string filtro)
         {
+            if (filtro == null)
+                filtro = "";
             List<Usuario> usuarios = context.Usuarios.AsNoTracking().Where(x => !context.GrupoUsuarios.Any(y => (y.Usuario.Id == x.Id && y.Grupo.Id == idGrupo))).ToList();
+            if (usuarios == null)
+                return BadRequest("Nenhum usuário encontrado");
             usuarios = usuarios.Where(x => (x.Email.Contains(filtro) || x.Nome.Contains(filtro))).ToList();
             return Ok(usuarios);
         }

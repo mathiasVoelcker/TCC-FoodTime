@@ -96,38 +96,6 @@ namespace FoodTime.WebApi.Controllers
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
         }
-        
-
-        //[HttpGet]
-        //[Route("listarMapa")]
-        //public IHttpActionResult buscarTodosEstabelecimentosMapa()
-        //{
-        //    List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).ToList();
-        //    if (listaDeEstabelecimentos.Count == 0)
-        //    {
-        //        return BadRequest("Não existem estabelecimentos cadastrados.");
-        //    }
-        //    return Ok(listaDeEstabelecimentos);
-        //}
-
-        //[HttpGet]
-        //[Route("listarCincoMapa")]
-        //public IHttpActionResult buscarCincoEstabelecimentosMapa()
-        //{
-        //    List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).Take(5).ToList();
-
-        //    if (listaDeEstabelecimentos.Count == 0)
-        //    {
-        //        return BadRequest("Não existem estabelecimentos cadastrados.");
-        //    }
-        //    List<EstabelecimentoMapaModel> listaEstabelecimentosModel = new List<EstabelecimentoMapaModel>();
-        //    foreach (Estabelecimento estabelecimento in listaDeEstabelecimentos)
-        //    {
-        //        listaEstabelecimentosModel.Add(criarEstabModel(estabelecimento));
-        //    }
-        //    return Ok(listaEstabelecimentosModel);
-        //}
-
 
         [HttpGet]
         [Route("listar")]

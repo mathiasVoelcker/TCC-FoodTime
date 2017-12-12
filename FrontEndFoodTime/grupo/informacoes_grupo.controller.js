@@ -2,10 +2,10 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
 
   $scope.participantes = []
   $scope.solicitacoes = []
+  $scope.mostraRecomendacoes = false
   var idUsuario = authService.getUsuario().Id
   grupoService.buscarGrupo($routeParams.IdGrupo).then(
     function (response) {
-      console.log(response)
       $scope.grupo = response.data
       $scope.grupo.GrupoUsuarios.forEach(function (grupoUsuario) {
         if (grupoUsuario.Aprovado) {
@@ -24,10 +24,9 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
           lat: position.coords.latitude,
           lng: position.coords.longitude
         }
-        console.log(pos)
         grupoService.buscarRecomendacao(idUsuario, idGrupo, pos.lat, pos.lng).then(
           function (response) {
-            console.log(response)
+            $scope.mostraRecomendacoes = (typeof response.data != "string")
             $scope.recomendacoes = response.data
           })
         })
