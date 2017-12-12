@@ -68,51 +68,19 @@
     <h3>Estabelecimentos Recomendados para o Grupo</h3>
     <br>
     <div class="row">
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
         <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="auxiliares/imgs/res_03.jpg" alt="" style="width:255px;height:155px;"></a>
+          <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
           <div class="card-body">
             <h4 class="card-title">
-              <a href="#">Pizzaria Rominelli</a>
+              <a href="#!/estabelecimento/{{recomendacao.Id}}">{{recomendacao.Nome}}</a>
             </h4>
-            <p>Telefone:(51) xxxx-xxxx</p>
-            <p>Preço Médio: R$ XX,XX</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="auxiliares/imgs/res_02.jpg" alt="" style="width:255px;height:155px;"></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Pizzaria Rominelli</a>
-            </h4>
-            <p>Telefone:(51) xxxx-xxxx</p>
-            <p>Preço Médio: R$ XX,XX</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="auxiliares/imgs/res_03.jpg" alt="" style="width:255px;height:155px;"></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Pizzaria Rominelli</a>
-            </h4>
-            <p>Telefone:(51) xxxx-xxxx</p>
-            <p>Preço Médio: R$ XX,XX</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item">
-        <div class="card h-100">
-          <a href="#"><img class="card-img-top" src="auxiliares/imgs/res_01.jpg" alt="" style="width:255px;height:155px;"></a>
-          <div class="card-body">
-            <h4 class="card-title">
-              <a href="#">Pizzaria Rominelli</a>
-            </h4>
-            <p>Telefone:(51) xxxx-xxxx</p>
-            <p>Preço Médio: R$ XX,XX</p>
+            <p class="card-text">Telefone: {{recomendacao.Telefone}}</p>
+            <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
+            <div>
+              <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
+              <a class="btn btn-danger" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
+            </div>
           </div>
         </div>
       </div>
