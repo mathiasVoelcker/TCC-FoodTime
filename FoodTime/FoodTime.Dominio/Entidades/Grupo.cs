@@ -33,7 +33,7 @@ namespace FoodTime.Dominio.Entidades
                 mensagens.Add("O tamanho máximo são 50 caracteres.");
 
             if (string.IsNullOrWhiteSpace(Foto))
-                mensagens.Add("Imagem não pode ser nula.");
+                mensagens.Add("Foto não pode ser nula.");
 
             if (Foto.Length > 500)
                 mensagens.Add("O tamanho máximo são 500 caracteres.");
