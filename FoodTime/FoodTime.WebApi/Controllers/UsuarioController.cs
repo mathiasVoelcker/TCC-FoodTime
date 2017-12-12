@@ -99,6 +99,14 @@ namespace FoodTime.WebApi.Controllers
             return Ok(avaliacoes);
         }
 
+        [HttpGet]
+        [Route("buscarPorGrupo")]
+        public IHttpActionResult BuscarUsuariosNaoMembrosDeGrupo(int idGrupo)
+        {
+            List<Usuario> usuarios = context.Usuarios.Where(x => !context.GrupoUsuarios.Any(y => (y.Usuario.Id == x.Id && y.Grupo.Id == idGrupo))).ToList();
+            return Ok(usuarios);
+        }
+
         [HttpPut]
         [Route("excluirRecomendacao")]
         public IHttpActionResult ExcluirRecomendacao(int idEstabelecimento, int idUsuario)
