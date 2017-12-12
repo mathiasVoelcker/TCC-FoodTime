@@ -13,7 +13,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
       $scope.naoEncontrou = false
       $scope.usuarios
       $scope.grupo = {Nome: "", Foto: "", IdUsuarios: []};
-      console.log($scope.grupo)
+      var novosParticipantes = []
       $scope.solicitacoes = []
       if($scope.estacriando){
         $scope.solicitacoes = [usuarioLogado]
@@ -67,8 +67,16 @@ angular.module('app').directive('adicionarParticipantes', function(){
         }
 
         function atualizarGrupo(idUsuarios){
-          alert("Vou Atualizar Um Grupo")
-          console.log(idUsuarios)
+          var novoParticipante = {IdUsuario: 0, IdGrupo: $scope.idgrupo, Aprovado: false}
+          idUsuarios.forEach(function(idUsuario){
+            novoParticipante.IdUsuario = idUsuario
+            novosParticipantes.push(novoParticipante)
+          })
+          grupoService.atualizarGrupo(novosParticipantes).then(
+            function(response){
+              console.log(response)
+            }
+          )
         }
 
         function atualizarTabelasParticipantes(){
