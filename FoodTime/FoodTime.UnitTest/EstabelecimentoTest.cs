@@ -250,7 +250,7 @@ namespace FoodTime.UnitTest
 
 
         [TestMethod]
-        public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Estabelecimento()
+        public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Coeficiente()
         {
             Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
             List<Categoria> listaCategorias = null;
@@ -272,6 +272,28 @@ namespace FoodTime.UnitTest
             Assert.IsTrue(estabelecimento.DistanciaCoeficiente(latitude, longitude) == result);
         }
 
+        [TestMethod]
+        public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Estabelecimento()
+        {
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
+            List<Categoria> listaCategorias = null;
+            List<Foto> listaFotos = new List<Foto>();
+            Estabelecimento estabelecimento;
+            var nome = "nome teste";
+            var telefone = "telefone teste";
+            DateTime horaFechamento = new DateTime().Date.AddHours(12);
+            DateTime horaAbertura = new DateTime().Date.AddHours(3);
+            decimal precoMedio = 15.4M;
+            bool aprovado = true;
+            var latitude = 30m;
+            var longitude = 40m;
+
+            estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
+
+            var result = 50m;
+
+            Assert.IsTrue(estabelecimento.DistanciaEstabelecimento(latitude, longitude) == result);
+        }
 
 
     }

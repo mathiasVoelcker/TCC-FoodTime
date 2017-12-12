@@ -50,10 +50,7 @@ namespace FoodTime.Dominio.Entidades
 
         public decimal DistanciaCoeficiente(decimal latitude, decimal longitude)
         {
-            var x = Math.Pow((double)(latitude - Endereco.Latitude), 2.0);
-            var y = Math.Pow((double)(longitude- Endereco.Longitude), 2.0);
-            var distancia = (decimal)Math.Sqrt(x + y);
-            return ((402.5m - distancia) / 402.5m);
+            return ((402.5m - DistanciaEstabelecimento(latitude, longitude)) / 402.5m);
         }
 
         public decimal DistanciaEstabelecimento(decimal latitude, decimal longitude)

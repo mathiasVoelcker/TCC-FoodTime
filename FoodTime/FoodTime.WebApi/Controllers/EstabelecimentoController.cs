@@ -43,25 +43,24 @@ namespace FoodTime.WebApi.Controllers
         public IHttpActionResult BuscarRecomendacoes(int idUsuario, decimal latitude, decimal longitude)
         {
             List<Estabelecimento> estabelecimentos = new List<Estabelecimento>();
-            var retorno = ConferirEstabRecomendados(idUsuario, out estabelecimentos);
+            var retorno = ConferirEstabRecomendados(idUsuario, out estabelecimentos); //atribui estabelecimentos abertos, aprovados e nao recusados, e retorna mensagem de erro caso nao encontre
             if(retorno != null)
             {
                 return BadRequest(retorno);
             }
             List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
-            var numPreferenciasCorrespondentes = 0;
             var usuario = context.Usuarios.Include(x => x.Preferencias).AsNoTracking().FirstOrDefault(x => x.Id == idUsuario);
+            var numPreferencias = usuario.Preferencias.Count();
             foreach (Estabelecimento estabelecimento in estabelecimentos)
             {
                 var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
-                var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList();
-                numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count();
-                var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
-                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average();
-                decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude);
-                var numPreferencias = usuario.Preferencias.Count();
-                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias;
-                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distancia);
+                var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList(); //lista todas preferencias aprovadas do estabelecimento
+                var numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count(); //contagem de preferencias de estabelecimento correspondentes as preferencias do usuario
+                var notasEstab = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
+                decimal notaMedia = notasEstab.Count == 0 ? 0.5m : (decimal)notasEstab.Average(); // calcula media de notas de estabelecimento
+                decimal distanciaCoeficiente = estabelecimento.DistanciaCoeficiente(latitude, longitude); // coeficiente de distancia para calculo de relevancia
+                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias; //coeficiente de preferencia para calculo de relevancia
+                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distanciaCoeficiente); //calcula relevancia de estabelecimento
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
@@ -71,13 +70,12 @@ namespace FoodTime.WebApi.Controllers
         public IHttpActionResult BuscarRecomendacoesGrupos(int idUsuario, int idGrupo, decimal latitude, decimal longitude)
         {
             List<Estabelecimento> estabelecimentos = new List<Estabelecimento>();
-            var teste = ConferirEstabRecomendados(idUsuario, out estabelecimentos);
-            if (teste != null)
+            var retorno = ConferirEstabRecomendados(idUsuario, out estabelecimentos); //atribui estabelecimentos abertos, aprovados e nao recusados, e retorna mensagem de erro caso nao encontre
+            if (retorno != null)
             {
-                return BadRequest(teste);
+                return BadRequest(retorno);
             }
             List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
-            var numPreferenciasCorrespondentes = 0;
             var usuariosGrupo = context.GrupoUsuarios.Include(x => x.Usuario.Preferencias).AsNoTracking().Where(x => x.Grupo.Id == idGrupo && x.Aprovado).ToList();
             if(usuariosGrupo.Count() == 0)
             {
@@ -87,13 +85,13 @@ namespace FoodTime.WebApi.Controllers
             foreach (Estabelecimento estabelecimento in estabelecimentos)
             {
                 var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
-                var estabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList();
-                numPreferenciasCorrespondentes = estabelecimentoPreferencias.Where(x => (usuariosGrupo.Any(y => y.Usuario.Preferencias.Any(z => z.Id == x.Preferencia.Id) && x.Aprovado))).Count();
+                var estabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList(); //lista todas preferencias aprovadas do estabelecimento
+                var numPreferenciasCorrespondentes = estabelecimentoPreferencias.Where(x => (usuariosGrupo.Any(y => y.Usuario.Preferencias.Any(z => z.Id == x.Preferencia.Id) && x.Aprovado))).Count();//contagem de preferencias de estabelecimento correspondentes as preferencias dos membros do grupo
                 var notasEst = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
-                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average();
-                decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude);
-                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias;
-                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distancia);
+                decimal notaMedia = notasEst.Count == 0 ? 0.5m : (decimal)notasEst.Average(); // calcula media de notas de estabelecimento
+                decimal distancia = estabelecimento.DistanciaCoeficiente(latitude, longitude); // coeficiente de distancia para calculo de relevancia
+                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias; //coeficiente de preferencia para calculo de relevancia
+                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distancia); //calcula relevancia de estabelecimento
                 estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
