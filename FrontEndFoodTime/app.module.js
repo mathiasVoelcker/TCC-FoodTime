@@ -27,6 +27,8 @@ angular.module('app').constant('authConfig', {
 
     urlPreferencia: 'http://localhost:65510/api/preferencia/',
     urlGrupoUsuario: 'http://localhost:65510/api/GrupoUsuario/',
+
+    urlNotificacao: 'http://localhost:65510/api/notificacao/',
     // Obrigatória - URL da aplicação que possui o formulário de login - pública - autenticado e admin
     urlLogin: '/login',
 
