@@ -10,6 +10,7 @@ namespace FoodTime.WebApi.Models
     {
         public EstabelecimentoModel(Estabelecimento estabelecimento)
         {
+            Id = estabelecimento.Id;
             Nome = estabelecimento.Nome;
             Telefone = estabelecimento.Telefone;
             IdEndereco = estabelecimento.Endereco.Id;
@@ -19,6 +20,7 @@ namespace FoodTime.WebApi.Models
             Avaliacoes = new List<Avaliacao>();
         }
 
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
         public int IdEndereco { get; set; }

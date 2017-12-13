@@ -22,7 +22,7 @@ namespace FoodTime.WebApi.Controllers
             context = new FoodTimeContext();
         }
 
-        [HttpPost, Route("registrar")]
+        [HttpPost]
         public IHttpActionResult CriarEstabelecimento([FromBody] EstabelecimentoRegistroModel estabelecimentoModel)
         {
 
