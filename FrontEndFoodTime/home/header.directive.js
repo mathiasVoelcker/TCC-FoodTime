@@ -5,7 +5,7 @@ angular.module('app')
       scope: {},
       templateUrl: '../home/header.directive.html',
 
-      controller: function ($scope) {
+      controller: function ($scope, usuarioService, authService, $http) {
 
         atualizarUsuario();
 
@@ -21,7 +21,27 @@ angular.module('app')
 
         function atualizarUsuario() {
           $scope.usuario = authService.getUsuario();
+          console.log(authService.getUsuario())
         }
+
+        var idUsuario = authService.getUsuario().Id;
+        
+          usuarioService.buscarSolicitacoesGrupo(idUsuario).then(
+            function(response){
+              console.log(response)
+              $scope.solicitacoes = response.data
+            }
+          )
+        
+          $scope.aceitarSolicitacao = function(idGrupo){
+            usuarioService.aprovarSolicitacao(idGrupo, idUsuario).then(
+              function(response){
+                console.log(response)
+                toastr.success('Você agora faz parte deste grupo!');
+              }
+            )
+          }
+
       }
     }
 

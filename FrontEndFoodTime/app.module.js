@@ -8,7 +8,9 @@ angular.module('app').constant('authConfig', {
     //urlUsuario: 'http://10.99.0.12:3296/api/acessos/usuarioLogado',
     //urlUsuario: 'http://10.99.0.24/AutDemo.WebApi/api/acessos/usuariologado',
 
-    urlUsuario: 'http://localhost:65510/api/usuario/usuariologado',
+    urlUsuario: 'http://localhost:65510/api/Usuario/',
+
+    urlUsuarioLogado: 'http://localhost:65510/api/usuario/usuariologado',
 
     //autenticado - admin
     urlAvaliacao: 'http://localhost:65510/api/avaliacao/',

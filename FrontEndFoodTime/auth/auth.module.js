@@ -13,7 +13,7 @@ angular.module('auth').config(function ($httpProvider) {
 angular.module('auth').factory('authService', function (authConfig, $http, $q, $location, $localStorage, $rootScope) {
 
   // Utiliza constant de configuração
-  let urlUsuario = authConfig.urlUsuario;
+  let urlUsuario = authConfig.urlUsuarioLogado;
   let urlLogin = authConfig.urlLogin;
   let urlPrivado = authConfig.urlPrivado;
   let urlLogout = authConfig.urlLogout;
