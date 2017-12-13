@@ -44,7 +44,7 @@ angular.module('app').config(function ($routeProvider) {
 
     // item nº 3.10 - autenticado
     .when('/sugerirEstabelecimento', {
-      controller: 'EstabelecimentoController',
+      controller: 'SugerirEstabelecimentoController',
       templateUrl: 'estabelecimento/sugerir_estabelecimento.html'
     })
 
