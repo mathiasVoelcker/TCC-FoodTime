@@ -1,11 +1,35 @@
-﻿using System;
+﻿using FoodTime.Dominio.Entidades;
+using FoodTime.Infraestrutura;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Http;
+using System.Data.Entity;
 
 namespace FoodTime.WebApi.Controllers
 {
-    public class NotificacaoController
+    [RoutePrefix("api/notificacao")]
+    public class NotificacaoController : ApiController
     {
+        IFoodTimeContext context;
+
+        public NotificacaoController(IFoodTimeContext context)
+        {
+            // context = new FoodTimeContext();
+            this.context = context;
+        }
+
+        [HttpGet]
+        [Route("solicitacoes")]
+        public IHttpActionResult BuscarSolicitacoesDeGrupo(int idUsuario)
+        {
+            List<Notificacao> notificacoes = context.Notificacoes.Include(x => x.Usuario).Include(x => x.Grupo).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Visibilidade && x.Estabelecimento == null)).ToList();
+            if(notificacoes != null)
+            {
+                notificacoes = notificacoes.Where(x => x.Usuario.Id == idUsuario).ToList();
+            }
+            return Ok(notificacoes);
+        }
     }
 }

@@ -107,8 +107,6 @@ angular.module('app').directive('adicionarParticipantes', function(){
         }
 
         $scope.addFoto = function(){
-          alert("entrou")
-          console.log("entrou")
           var file = document.getElementById('file').files[0];
           var fd = new FormData();
           fd.append('file', file);
