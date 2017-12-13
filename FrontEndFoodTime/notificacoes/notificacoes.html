@@ -13,15 +13,18 @@
           </div>
           <br>
           <div>
-            <div class="media mb-4" ng-repeat="solicitacao in solicitacoes">
-              <img class="d-flex mr-3 rounded-circle border_img_grupos" src="/../auxiliares/fotos/{{solicitacao.Grupo.Foto}}" alt="" style="width:50px;height:50px;">
-              <div class="media-body">
-                <h5 class="mt-0">{{solicitacao.Grupo.Nome}}</h5>
-                Você foi convidado a participar deste grupo.
+            <div class="" ng-repeat="solicitacao in solicitacoes">
+              <div class="media mb-4" >
+                <img class="d-flex mr-3 rounded-circle border_img_grupos" src="/../auxiliares/fotos/{{solicitacao.Grupo.Foto}}" alt="" style="width:50px;height:50px;">
+                <div class="media-body">
+                  <h5 class="mt-0">{{solicitacao.Grupo.Nome}}</h5>
+                  Você foi convidado a participar deste grupo.
+                </div>
               </div>
+              <a class="btn btn-primary" ng-click="aceitarSolicitacao(solicitacao.Grupo.Id)">Entrar para o grupo</a>
+              <a class="btn btn-danger">Recusar convite</a>
+              <div class="espaco"></div>
             </div>
-            <a class="btn btn-primary">Entrar para o grupo</a>
-            <a class="btn btn-danger">Recusar convite</a>
           </div>
         </div>
       </div>

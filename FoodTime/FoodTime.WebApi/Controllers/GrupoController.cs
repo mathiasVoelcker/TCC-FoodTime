@@ -57,8 +57,10 @@ namespace FoodTime.WebApi.Controllers
                     return BadRequest("Usuário não encontrado");
                 }
                 context.GrupoUsuarios.Add(new GrupoUsuario(usuario, grupo, grupoModel.IdUsuarios.First() == idUsuario));
-                Notificacao notificacao = new Notificacao(usuario, null, grupo, true);
-                context.Notificacoes.Add(notificacao);
+                if(grupoModel.IdUsuarios.First() != idUsuario){
+                    Notificacao notificacao = new Notificacao(usuario, null, grupo, true);
+                    context.Notificacoes.Add(notificacao);
+                }
             }
             context.SaveChanges();
             return Ok(grupoModel);
@@ -68,7 +70,7 @@ namespace FoodTime.WebApi.Controllers
         [Route("buscarPorUsuario")]
         public IHttpActionResult BuscarGruposPorUsuario(int idUsuario)
         {
-            List<Grupo> grupos = context.GrupoUsuarios.Where(x => x.Usuario.Id == idUsuario).Select(x => x.Grupo).ToList();
+            List<Grupo> grupos = context.GrupoUsuarios.Where(x => (x.Usuario.Id == idUsuario && x.Aprovado)).Select(x => x.Grupo).ToList();
             if (grupos == null)
             {
                 BadRequest("Nenhum grupo encontrado para este usuário");

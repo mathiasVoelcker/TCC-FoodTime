@@ -9,4 +9,13 @@ angular.module('app')
       $scope.solicitacoes = response.data
     }
   )
+
+  $scope.aceitarSolicitacao = function(idGrupo){
+    usuarioService.aprovarSolicitacao(idGrupo, idUsuario).then(
+      function(response){
+        console.log(response)
+        alert("Você agora faz parte deste grupo!");
+      }
+    )
+  }
 });

@@ -36,6 +36,8 @@ namespace FoodTime.WebApi.Controllers
                 {
                     return BadRequest("Grupo não encontrado");
                 }
+                Notificacao notificacao = new Notificacao(usuario, null, grupo, true);
+                context.Notificacoes.Add(notificacao);
                 context.GrupoUsuarios.Add(new GrupoUsuario(usuario, grupo, false));
             }
             context.SaveChanges();

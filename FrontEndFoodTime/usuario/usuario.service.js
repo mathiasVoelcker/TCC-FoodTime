@@ -5,6 +5,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
   let urlAvaliacao = authConfig.urlAvaliacao;
   let urlEstabelecimento = authConfig.urlEstabelecimento;
   let urlNotificacao = authConfig.urlNotificacao;
+  let urlGrupoUsuario = authConfig.urlGrupoUsuario;
 
   function listar(){
     let result =  $http.get(urlUsuario + lista);
@@ -51,6 +52,10 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     return $http.get(urlNotificacao + "solicitacoes?idUsuario=" + idUsuario)
   }
 
+  function aprovarSolicitacao(idGrupo, idUsuario){
+    return $http.put(urlGrupoUsuario + "AprovarSolicitacao?idGrupo=" + idGrupo + "&idUsuario=" + idUsuario)
+  }
+
   return {
     listar: listar,
     buscarUsuario: buscarUsuario,
@@ -62,6 +67,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     excluirRecomendacao: excluirRecomendacao,
     buscarPorFiltro: buscarPorFiltro,
     buscarPorGrupo: buscarPorGrupo,
-    buscarSolicitacoesGrupo: buscarSolicitacoesGrupo
+    buscarSolicitacoesGrupo: buscarSolicitacoesGrupo,
+    aprovarSolicitacao: aprovarSolicitacao
   }
 })
