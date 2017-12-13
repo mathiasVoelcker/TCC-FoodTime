@@ -24,7 +24,7 @@ angular.module('app')
           console.log(authService.getUsuario())
         }
 
-        var idUsuario = authService.getUsuario().Id;
+      /*  var idUsuario = authService.getUsuario().Id;
         
           usuarioService.buscarSolicitacoesGrupo(idUsuario).then(
             function(response){
@@ -40,7 +40,7 @@ angular.module('app')
                 toastr.success('Você agora faz parte deste grupo!');
               }
             )
-          }
+          }*/
 
       }
     }

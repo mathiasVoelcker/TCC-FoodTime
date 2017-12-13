@@ -29,7 +29,6 @@
                     </div>
               </div>
             </li>
-         
           <div ng-if="usuario" class="div_login" >
               <li class="nav-item"> 
                   <label class="col-sm-20 control-label success-label">Olá {{usuario.Nome}}</label>
@@ -37,7 +36,7 @@
                   <button type="button" class="btn btn-auxiliar" ng-click="logout()">Logout</button>
               </li>
           </div>
-          <div ng-if="usuario == 'undefined'">
+          <div ng-if="!usuario">
             <a class="btn btn-primary" href="/#!/login" role="button">Login</a>
           </div>
         </ul>
