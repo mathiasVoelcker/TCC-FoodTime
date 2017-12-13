@@ -16,26 +16,18 @@ angular.module('app').controller('HomeController', function ($scope, authService
     console.log($scope.pos)
   })
 
-  estabService.listarMapa().then(
-    function (response) {
-      
+  estabService.listarCinco().then(
+    function(response){
       $scope.estabelecimentos = response.data;
-      // estabelecimentos = response.data;
-      $scope.estabelecimentos.forEach(function(element) {
-        debugger
-        element.Endereco.link;
-        let link = "http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll="+element.Endereco.Latitude+","+element.Endereco.Longitude+"&amp;spn="+element.Endereco.Longitude+",17&amp;t=m&amp;z=17&amp;output=embed";
-        element.Endereco.link = link;
-        console.log(element.Endereco.link);
-      }, this);
-     
-    //  $scope.mapa = "http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll="+estabelecimentos.Endereco.Latitude+","+estabelecimentos.Endereco.Latitude+"&amp;spn="+estabelecimentos.Endereco.Latitude+",17&amp;t=m&amp;z=17&amp;output=embed";
+      estabelecimentos = response.data;
       console.log(response)
-
-      if (response.data.Fotos != undefined)
-        $scope.estabelecimentos.foto = response.data.Fotos[0].Caminho;
+      // estabelecimentos.forEach(function(element) {
+      //   debugger
+      //   $scope.estabelecimentos[element.Id].Endereco.Latitude = element.Endereco.Latitude;
+      // }, this);
     }
-  );
+  )
+
 
   categoriaService.listar().then(
     function (response) {
