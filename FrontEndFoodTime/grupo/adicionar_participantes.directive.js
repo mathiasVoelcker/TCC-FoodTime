@@ -1,27 +1,25 @@
 angular.module('app').directive('adicionarParticipantes', function(){
   return {
     scope: {
-      "idgrupo": "=idgrupo",
-      "nome": "=nome",
-      "foto": "=foto",
-      "estacriando": "=estacriando"
+      "idGrupo": "=idGrupo",
+      "estaCriando": "=estaCriando"
     },
-    controller: function ($scope, $rootScope, usuarioService, grupoService, authService, $route){
-      var usuarioLogado = authService.getUsuario()
+    controller: function ($scope, $rootScope, usuarioService, grupoService, authService, fotoService, $route){
 
+      var usuarioLogado = authService.getUsuario()
       $scope.mostraTabela = false
       $scope.naoEncontrou = false
       $scope.usuarios
       $scope.grupo = {Nome: "", Foto: "", IdUsuarios: []};
       var novosParticipantes = []
       $scope.solicitacoes = []
-      if($scope.estacriando){
+      if($scope.estaCriando){
         $scope.solicitacoes = [usuarioLogado]
-        $scope.grupo = {Nome: $scope.nome, Foto: "https://image.freepik.com/icones-gratis/grupo-de-homens_318-62649.jpg", IdUsuarios: [ usuarioLogado.Id]};
+        $scope.grupo = {Nome: "", Foto: "https://image.freepik.com/icones-gratis/grupo-de-homens_318-62649.jpgs", IdUsuarios: [ usuarioLogado.Id]};
       }
 
       $scope.buscarUsuarioPorFiltro = function(filtro){
-        if($scope.estacriando){
+        if($scope.estaCriando){
           usuarioService.buscarPorFiltro(filtro).then(
             function(response){
               $scope.usuarios = response.data
@@ -30,7 +28,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
           )
         }
         else{
-          usuarioService.buscarPorGrupo($scope.idgrupo, filtro).then(
+          usuarioService.buscarPorGrupo($scope.idGrupo, filtro).then(
             function(response){
               $scope.usuarios = response.data
               atualizarTabelasParticipantes()
@@ -44,20 +42,22 @@ angular.module('app').directive('adicionarParticipantes', function(){
         $scope.solicitacoes.push(usuario); //inserir usuario a lista de solicitacoes para o grupo
         $scope.grupo.IdUsuarios.push(usuario.Id)
       }
+
       $scope.salvarGrupo = function(grupo){
-        if($scope.estacriando){
+        if($scope.estaCriando){
           criarGrupo(grupo)
         }
         else{
           atualizarGrupo(grupo.IdUsuarios)
         }
       }
+
       function criarGrupo(grupo){
-        if($scope.nome == undefined){
+        if($scope.grupo.Nome == undefined){
           alert("Grupo deve ter um Nome");
         }
         else{
-          grupo.Nome = $scope.nome
+          $scope.addFoto()
           console.log(grupo)
           grupoService.criarGrupo(grupo).then(
             function(response){
@@ -71,7 +71,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
             alert("Nenhum usuário selecionado")
           }
           else{
-            var novoParticipante = {IdUsuario: 0, IdGrupo: $scope.idgrupo, Aprovado: false}
+            var novoParticipante = {IdUsuario: 0, idGrupo: $scope.idGrupo, Aprovado: false}
             idUsuarios.forEach(function(idUsuario){
               novoParticipante.IdUsuario = idUsuario
               novosParticipantes.push(novoParticipante)
@@ -104,6 +104,21 @@ angular.module('app').directive('adicionarParticipantes', function(){
             $scope.naoEncontrou = true
             $scope.mostraTabela = false
           }
+        }
+
+        $scope.addFoto = function(){
+          alert("entrou")
+          console.log("entrou")
+          var file = document.getElementById('file').files[0];
+          var fd = new FormData();
+          fd.append('file', file);
+          $scope.grupo.Foto = file.name;
+          fotoService.addFoto(fd).then(
+            function(response){
+              console.log("Foto adicionada com sucesso!");
+            }, function(response){
+            }
+          )
         }
 
       },

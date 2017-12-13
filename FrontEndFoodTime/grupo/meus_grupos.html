@@ -10,8 +10,8 @@
     <div class="col-md-6">
       <div>
         <div class="media mb-4" ng-repeat="grupo in gruposUsuario">
-          <img class="d-flex mr-3 rounded-circle" src="{{grupo.Foto || 'https://image.freepik.com/icones-gratis/grupo-de-usuarios-silhueta_318-49953.jpg'}}"
-            alt="" style="width:70px;height:70px;">
+          <img class="d-flex mr-3 rounded-circle" src="/../auxiliares/fotos/{{grupo.Foto}}"
+          alt="" style="width:70px;height:70px;">
           <div class="media-body">
             <h5 class="mt-4"><a class="nav-link" href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a></h5>
           </div>
@@ -22,26 +22,11 @@
 
       <div><h3>Criar Grupo</h3></div>
       <br>
-      <form name="sentMessage" id="contactForm" novalidate>
-        <div class="control-group form-group">
-          <div class="controls">
-            <label>Nome:</label>
-            <input type="text" ng-model="grupo.Nome" class="form-control" id="name" placeholder="Digite o nome do grupo" required data-validation-required-message="Por favor, digite seu nome.">
-            <p class="help-block"></p>
-          </div>
-        </div>
-        <div class="control-group form-group">
-          <div class="controls">
-            <label>Foto:</label>
-            <input type="file" class="btn" id="name" required>
-            <p class="help-block"></p>
-          </div>
-        </div>
-        <adicionar-participantes idgrupo="" nome="grupo.Nome" foto="" estacriando="true"></adicionar-participantes>
 
-      </div>
-    </form>
+      <adicionar-participantes id-grupo="" esta-criando="true"></adicionar-participantes>
+
+
+    </div>
+    <br>
   </div>
-  <br>
-</div>
-<!-- /.container -->
+  <!-- /.container -->
