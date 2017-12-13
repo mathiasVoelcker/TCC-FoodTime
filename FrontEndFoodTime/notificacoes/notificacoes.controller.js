@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('NotificacoesController', function ($scope, usuarioService, authService, $http) {
+.controller('NotificacoesController', function ($scope, toastr, usuarioService, authService, $http) {
 
   var idUsuario = authService.getUsuario().Id
 
@@ -14,7 +14,7 @@ angular.module('app')
     usuarioService.aprovarSolicitacao(idGrupo, idUsuario).then(
       function(response){
         console.log(response)
-        alert("Você agora faz parte deste grupo!");
+        toastr.success('Você agora faz parte deste grupo!');
       }
     )
   }

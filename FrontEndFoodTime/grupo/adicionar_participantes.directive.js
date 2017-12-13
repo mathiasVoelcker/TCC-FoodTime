@@ -4,7 +4,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
       "idGrupo": "=idGrupo",
       "estaCriando": "=estaCriando"
     },
-    controller: function ($scope, $rootScope, usuarioService, grupoService, authService, fotoService, $route){
+    controller: function ($scope, $rootScope, toastr, usuarioService, grupoService, authService, fotoService, $route){
 
       var usuarioLogado = authService.getUsuario()
       $scope.mostraTabela = false
@@ -54,21 +54,21 @@ angular.module('app').directive('adicionarParticipantes', function(){
 
       function criarGrupo(grupo){
         if($scope.grupo.Nome == undefined){
-          alert("Grupo deve ter um Nome");
+          toastr.error('Grupo deve ter um Nome!')
         }
         else{
           $scope.addFoto()
           console.log(grupo)
           grupoService.criarGrupo(grupo).then(
             function(response){
-              alert("Grupo criado com sucesso")
+              toastr.success('Grupo criado com sucesso!')
             })
           }
         }
 
         function atualizarGrupo(idUsuarios){
           if(idUsuarios.length == 0){
-            alert("Nenhum usuário selecionado")
+            toastr.error('Nenhum usuário selecionado!')
           }
           else{
             var novoParticipante = {IdUsuario: 0, idGrupo: $scope.idGrupo, Aprovado: false}
@@ -79,7 +79,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
             grupoService.atualizarGrupo(novosParticipantes).then(
               function(response){
                 console.log(response)
-                alert("Grupo atualizado com sucesso!")
+                toastr.success('Grupo atualizado com sucesso!')
               }
             )
           }

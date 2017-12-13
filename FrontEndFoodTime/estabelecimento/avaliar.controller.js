@@ -1,4 +1,4 @@
-angular.module('app').controller('AvaliarController', function ($scope, $routeParams, estabService, authService, fotoService) {
+angular.module('app').controller('AvaliarController', function ($scope, $routeParams, toastr, estabService, authService, fotoService) {
 
   estabService.buscarEstabelecimentoPorId($routeParams.IdEstabelecimento).then(
     function(response){
@@ -32,7 +32,7 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
     estabService.criarAvaliacao(avaliacao).then(
       function(response){
         console.log(response)
-        alert("Avaliação feita com sucesso!")
+        toastr.success('Avaliação feita com sucesso!')
       }, function(response){
         console.log(response)
       }

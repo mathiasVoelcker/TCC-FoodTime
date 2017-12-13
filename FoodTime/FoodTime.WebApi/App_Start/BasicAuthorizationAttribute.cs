@@ -13,7 +13,7 @@ using System.Web.Http.Controllers;
 using FoodTime.Infraestrutura;
 
 
-namespace Crescer.ReservasAereas.WebApi.App_Start
+namespace FoodTime.WebApi.App_Start
 {
     public class BasicAuthorization : AuthorizeAttribute
     {
