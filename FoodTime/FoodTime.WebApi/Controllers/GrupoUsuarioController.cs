@@ -41,5 +41,19 @@ namespace FoodTime.WebApi.Controllers
             context.SaveChanges();
             return Ok(grupoUsuarioListModel);
         }
+
+        [HttpPut]
+        [Route("AprovarSolicitacao")]
+        public IHttpActionResult AprovarSolicitacaoDeAmizade(int idGrupo, int idUsuario)
+        {
+            GrupoUsuario grupoUsuario = context.GrupoUsuarios.FirstOrDefault(x => (x.Grupo.Id == idGrupo && x.Usuario.Id == idUsuario));
+            if(grupoUsuario == null)
+            {
+                return BadRequest("Nenhum grupo encontrado");
+            }
+            grupoUsuario.AprovarSolicitacao();
+            context.SaveChanges();
+            return Ok();
+        }
     }
 }

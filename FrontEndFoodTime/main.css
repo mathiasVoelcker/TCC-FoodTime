@@ -12,9 +12,9 @@ body {
 }
 
 .fixed{
-   position: absolute;
-   bottom: 0px;
-   width: 100%
+  position: absolute;
+  bottom: 0px;
+  width: 100%
 
 }
 
@@ -50,4 +50,17 @@ body {
 }
 .espaco{
   height: 100px;
+}
+
+.icone-notificacao{
+  position: absolute;
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  right: -5px;
+  top: 5px;
+  text-align: center;
+  color: white;
+  margin-top: -1px;
 }

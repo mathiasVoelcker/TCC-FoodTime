@@ -2,9 +2,9 @@ angular.module('app')
   .controller('PerfilUsuarioController', function ($scope, $routeParams, authService, $http, usuarioService) {
 
     $scope.usuario = authService.getUsuario();
-    $scope.usuario.DataNascimento = formatarData($scope.usuario.DataNascimento)
-    console.log($scope.usuario.DataNascimento)
     console.log($scope.usuario)
+    // console.log($scope.usuario.DataNascimento)
+    // console.log($scope.usuario)
     buscarRecomendacoes()
 
 
@@ -18,13 +18,6 @@ angular.module('app')
 
     // //teste de buscar o primeiro
     // buscarUsuario(1);
-
-    function formatarData(data) {
-      data = data.substring(0, 10)
-      var dataArray = data.split("-")
-      var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
-      return retorno
-    }
 
     function buscarRecomendacoes() {
       navigator.geolocation.getCurrentPosition(function (position) {

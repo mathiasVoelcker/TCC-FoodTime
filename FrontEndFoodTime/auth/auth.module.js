@@ -24,6 +24,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       function(response){
         console.log(response)
         $localStorage.usuarioLogado = response.data
+        $localStorage.usuarioLogado.DataNascimento = formatarData(response.data.DataNascimento)
       }
     )
   }
@@ -43,7 +44,8 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       function (response) {
 
         // Adiciona usuário e header ao localstorage
-        $localStorage.usuarioLogado = response.data.dados;
+        $localStorage.usuarioLogado = response.data;
+        $localStorage.usuarioLodado.DataNascimento = formatarData(response.data.DataNascimento)
         $localStorage.headerAuth = montarHeader(usuario)['Authorization'];
 
         // Adiciona header de autenticação em todos os próximos requests
@@ -136,6 +138,13 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       'Authorization': `Basic ${hash}`
     };
   };
+
+  function formatarData(data) {
+    data = data.substring(0, 10)
+    var dataArray = data.split("-")
+    var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
+    return retorno
+  }
 
   return {
     login: login,

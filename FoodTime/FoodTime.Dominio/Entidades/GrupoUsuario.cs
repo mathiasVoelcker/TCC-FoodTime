@@ -25,6 +25,11 @@ namespace FoodTime.Dominio.Entidades
         public Grupo Grupo { get; private set; }
         public bool Aprovado { get; private set; }
 
+        public void AprovarSolicitacao()
+        {
+            Aprovado = true;
+        }
+
         public List<string> ValidarEntrada()
         {
             List<string> mensagens = new List<string>();
