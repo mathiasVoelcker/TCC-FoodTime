@@ -59,6 +59,7 @@ namespace FoodTime.WebApi.Controllers
             return Ok(usuarios);
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public IHttpActionResult Adicionar([FromBody]UsuarioCadastroModel usuarioCadastroModel)
         {

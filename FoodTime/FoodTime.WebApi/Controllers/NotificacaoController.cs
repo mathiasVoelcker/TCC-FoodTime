@@ -31,5 +31,17 @@ namespace FoodTime.WebApi.Controllers
             }
             return Ok(notificacoes);
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IHttpActionResult AtualizarNotificacaoParaInvisivel([FromUri]int id)
+        {
+            var notificacao = context.Notificacoes.FirstOrDefault(x => x.Id == id);
+            if (notificacao == null)
+                return BadRequest("Notificação não encontrada");
+            notificacao.MarcarComoLida();
+            context.SaveChanges();
+            return Ok(notificacao);
+        }
     }
 }

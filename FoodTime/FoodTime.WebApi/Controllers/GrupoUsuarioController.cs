@@ -54,6 +54,8 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Nenhum grupo encontrado");
             }
             grupoUsuario.AprovarSolicitacao();
+            var notificacao = context.Notificacoes.FirstOrDefault(x => (x.Grupo.Id == idGrupo && x.Usuario.Id == idUsuario));
+            notificacao.MarcarComoLida();
             context.SaveChanges();
             return Ok();
         }

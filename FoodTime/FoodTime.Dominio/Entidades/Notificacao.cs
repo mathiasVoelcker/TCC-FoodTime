@@ -26,6 +26,10 @@ namespace FoodTime.Dominio.Entidades
         public Grupo Grupo { get; private set; }
         public bool Visibilidade { get; private set; }       
        
+        public void MarcarComoLida()
+        {
+            Visibilidade = false;
+        }
 
         public List<string> ValidarEntrada()
         {
