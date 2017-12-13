@@ -5,7 +5,7 @@
   <div class="row">
     <div class="col-lg-8 mb-4">
       <h2>Sugerir Estabelecimento</h2>
-      <form name="sentMessage" ng-submit="cadastrarEstabelecimento(estabelecimento)" id="contactForm" novalidate>
+      <form name="sugerirEstabelecimento" ng-submit="cadastrarEstabelecimento(estabelecimento)" id="contactForm" novalidate>
         <div class="control-group form-group">
           <div class="form-group">
             <label class="campo-cadastro">Buscar Estabelecimento</label>
@@ -16,7 +16,7 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>Nome:</label>
-              <input type="text" class="form-control" disabled ng-model="estabelecimento.Nome" value="{{estabelecimento.Nome}}"required data-validation-required-message="Please enter your name.">
+              <input type="text" class="form-control" disabled ng-model="estabelecimento.Nome" value="{{estabelecimento.Nome}}"required >
               <!-- <label>{{estabelecimento.Nome}}</label> -->
               <p class="help-block"></p>
             </div>
@@ -32,14 +32,14 @@
             <div class="controls">
               <label>Endereço:</label>
               <div class="row">
-                <div class="col-md-6">
-                  <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Rua" placeholder="Rua, Avenida, Alameda, etc."  required data-validation-required-message="Please enter your name.">
+                <div class="col-md-4">
+                  <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Rua" placeholder="Rua, Avenida, Alameda, etc."  required >
                 </div>
                 <div class="col-md-3">
-                  <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Numero" placeholder="Número"  required data-validation-required-message="Please enter your name.">
+                  <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Numero" placeholder="Número"  required >
                 </div>
                 <div class="col-md-3">
-                  <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Apto" placeholder="Apartamento" required data-validation-required-message="Please enter your name.">
+                  <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Apto" placeholder="Apartamento">(Não Obrigatório)
                 </div>
               </div>
               <p class="help-block"></p>
@@ -47,84 +47,50 @@
             <div class="row">
               <div class="col-md-4">
                 <label>Bairro:</label>
-                <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Bairro" required data-validation-required-message="Please enter your name.">
+                <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Bairro" required >
               </div>
               <div class="col-md-4">
                 <label>Cidade:</label>
-                <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Cidade" required data-validation-required-message="Please enter your name.">
+                <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Cidade" required >
               </div>
               <div class="col-md-4">
                 <label>Estado:</label>
-                <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Estado" required data-validation-required-message="Please enter your name.">
+                <input type="text" class="form-control" ng-model="estabelecimento.Endereco.Estado" required >
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <label>Preço Médio:</label>
-              <input type="number" step="0.01" ng-model="estabelecimento.PrecoMedio" class="form-control" required data-validation-required-message="Please enter your name.">
+              <input type="number" step="0.01" ng-model="estabelecimento.PrecoMedio" class="form-control" required >
             </div>
             <div class="col-md-4">
               <label>Horário de Abertura:</label>
-              <input type="time" class="form-control" ng-model="estabelecimento.HorarioAbertura" required data-validation-required-message="Please enter your name.">
+              <input type="time" class="form-control" ng-model="estabelecimento.HorarioAbertura" required >
             </div>
             <div class="col-md-4">
               <label>Horário de Fechamento:</label>
-              <input type="time" class="form-control" ng-model="estabelecimento.HorarioFechamento"  required data-validation-required-message="Please enter your name.">
+              <input type="time" class="form-control" ng-model="estabelecimento.HorarioFechamento"  required >
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <label>Telefone:</label>
-              <input type="text" class="form-control" ng-model="estabelecimento.Telefone" required data-validation-required-message="Please enter your name.">
+              <input type="text" class="form-control" ng-model="estabelecimento.Telefone" required>
             </div>
           </div>
           <div class="row">
             <div class="col-md-4">
               <label>CEP:</label>
-              <input type="text" class="form-control" ng-model="estabelecimento.Endereco.CEP" required data-validation-required-message="Please enter your name.">
+              <input type="text" class="form-control" ng-model="estabelecimento.Endereco.CEP" required >
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
-              <label>Categorias</label>
-              <div>
-              </div>
-            </div>
-            <div class="panel panel-default">
-              <!-- /.panel-heading -->
-              <div class="panel-body">
-                <div class="table-responsive table-bordered">
-                  <table class="table">
-                    <tbody>
-                      <tr>
-                        <td><label>
-                          <input type="checkbox" value="">
-                        </label></td>
-                        <td>Alimentação(Almoço,Jantar)</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>
-                            <input type="checkbox" value="">
-                          </label>
-                        </td>
-                        <td>Café</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <label>
-                            <input type="checkbox" value="">
-                          </label>
-                        </td>
-                        <td>Vida Noturna</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <!-- /.table-responsive -->
-              </div>
-              <!-- /.panel-body -->
+              <label>Categoria</label>
+              <select class="form-control dropdown" ng-selected="value=''" ng-model="filtro.Categoria" >
+                <option ng-repeat="categoria in categorias" ng-value="categoria.Descricao">{{categoria.Descricao}}</option>
+              </select>
             </div>
           </div>
           <div class="control-group form-group">
@@ -211,9 +177,10 @@
           <!-- /.panel-body -->
         </div>
         <div id="success"></div>
-      <!-- For success/fail messages -->
-      <button type="submit" class="btn btn-primary" id="sendMessageButton">Salvar</button>
-    </div>
+        <!-- For success/fail messages -->
+        <button type="submit" class="btn btn-primary" id="sendMessageButton">Salvar</button>
+        <span class="danger-label" ng-show="sugerirEstabelecimento.$invalid && sugerirEstabelecimento.$submitted">Campos obrigatórios não preenchidos</span>
+      </div>
 
     </form>
   </div>

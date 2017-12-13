@@ -9,18 +9,31 @@ angular.module('app').directive('preferenciasDiretiva', function () {
 
       preferenciasService.listar().then(
         function (response) {
-          debugger
           $scope.preferencias = response.data;
         });
 
         $scope.trocaLimite = function trocaLimite() {
-        debugger
         var target = document.getElementById("listarTodos");
         if (target.checked == true)
           $scope.limit = 'All';
         else
           $scope.limit = 5;
       }
+
+      var usuarioLogado = authService.getUsuario()
+      $scope.mostraTabela = false
+      $scope.naoEncontrou = false
+      $scope.preferencias
+      var novasPreferencias = []
+      $scope.preferenciasSelecionadas = []
+
+      $scope.selecionarPreferencia = function(preferencia){
+        $scope.preferencias.splice(($scope.preferencias.indexOf(preferencia)), 1);
+        $scope.preferenciasSelecionadas.push(preferencia);
+        // $scope.grupo.IdUsuarios.push(preferencia)
+      }
+
+      
 
 
       // $scope.preferencias = preferencias;
@@ -56,4 +69,3 @@ angular.module('app').directive('preferenciasDiretiva', function () {
     }
   }
 });
-

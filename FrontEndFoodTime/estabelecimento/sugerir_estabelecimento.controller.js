@@ -1,4 +1,4 @@
-angular.module('app').controller('SugerirEstabelecimentoController', function ($scope, $routeParams, authService, estabService, fotoService, $http) {
+angular.module('app').controller('SugerirEstabelecimentoController', function ($scope, $routeParams, authService, estabService, fotoService, categoriaService, $http) {
 
   $scope.estabelecimento = { }
   $scope.estabelecimento.Endereco = { }
@@ -8,7 +8,12 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
 
   $scope.buscouEstab = false
 
-
+  categoriaService.listar().then(
+    function (response) {
+      $scope.categorias = response.data;
+      console.log($scope.categorias)
+    }
+  );
 
   autoComplete();
   var origem;
@@ -35,23 +40,28 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
   }
 
   $scope.cadastrarEstabelecimento = function(estabelecimento){
-    var file = document.getElementById('file').files[0];
-    var fd = new FormData();
-    fd.append('file', file);
-    estabelecimento.Fotos.push(file.name);
-    console.log(estabelecimento)
-    estabService.criarEstabelecimento(estabelecimento).then(
-      function(response){
-        alert("Estabelecimento Cadastrado com sucesso")
-        console.log(response)
+    if(sugerirEstabelecimento.$valid){
+      var file = document.getElementById('file').files[0];
+      var fd = new FormData();
+      fd.append('file', file);
+      if(file != undefined){
+        estabelecimento.Fotos.push(file.name);
+        fotoService.addFoto(fd).then(
+          function(response){
+            console.log("Foto adicionada com sucesso!");
+          }, function(response){
+          }
+        )};
+        console.log(estabelecimento)
+        estabService.criarEstabelecimento(estabelecimento).then(
+          function(response){
+            alert("Estabelecimento Cadastrado com sucesso")
+            console.log(response)
+          }
+        )
       }
-    )
-    fotoService.addFoto(fd).then(
-      function(response){
-        console.log("Foto adicionada com sucesso!");
-      }, function(response){
-      }
-    )};
+    }
+
 
 
   })
