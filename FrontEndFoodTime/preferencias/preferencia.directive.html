@@ -1,58 +1,68 @@
-<div class="control-group form-group">
-  <div class="controls" >
-    <label>Preferências</label>
-    <div>
-      <div class="input-group">
-        <input type="text" class="form-control" ng-model="filtro" placeholder="Sugerir gostos...">
-        <span class="input-group-btn">
-          <a class="btn btn-primary" id="sendMessageButton">Pesquisar</a>
-        </span>
+<div class="row">
+  <div class="col-lg-6 mb-4">
+    <div class="control-group form-group">
+      <div class="controler">
+        <label>Preferências</label>
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="filtro" placeholder="Sugerir gostos...">
+          <span class="input-group-btn">
+            <a class="btn btn-primary" id="sendMessageButton">Pesquisar</a>
+          </span>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="panel panel-default">
-  <h4>Resultado da Pesquisa</h4>
-  <!-- /.panel-heading -->
-  <div class="panel-body">
-    <div class="table-responsive table-bordered">
-      <table class="table">
-        <thead class="card-header">
-          <tr>
-            <th>Preferência</th>
-          </tr>
-        </thead>
-        <tbody ng-init="limit=5">
-          <tr ng-repeat="preferencia in preferencias | limitTo: limit | filter: filtro" >
-            <td class="clickable-area" ng-click="selecionarPreferencia(preferencia)">{{preferencia.Descricao}}</td>
-          </tr>
-          <label><input type="checkbox" id="listarTodos" ng-click="trocaLimite()" ng-model="flag" value=""> Listar Todos</label>
-        </tbody>
-      </table>
+<div class="row">
+  <div class="col-lg-6 mb-4">
+    <div class="panel panel-default">
+      <h4>Resultado da Pesquisa</h4>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive table-bordered">
+          <table class="table">
+            <thead class="card-header">
+              <tr>
+                <th>Preferência</th>
+              </tr>
+            </thead>
+            <tbody ng-init="limit=5">
+              <tr ng-repeat="preferencia in preferencias | limitTo: limit | filter: filtro" >
+                <td class="clickable-area" ng-click="selecionarPreferencia(preferencia)">{{preferencia.Descricao}}</td>
+              </tr>
+              <label><input type="checkbox" id="listarTodos" ng-click="trocaLimite()" ng-model="flag" value=""> Listar Todos</label>
+            </tbody>
+          </table>
+        </div>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.panel-body -->
     </div>
-    <!-- /.table-responsive -->
   </div>
-  <!-- /.panel-body -->
+  <div class="col-lg-6 mb-4">
+    <div class="panel panel-default">
+      <h4>Preferências Selecionadas</h4>
+      <!-- /.panel-heading -->
+      <div class="panel-body">
+        <div class="table-responsive table-bordered">
+          <table class="table">
+            <thead class="card-header">
+              <tr>
+                <th>Preferências</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="preferenciaSelecionada in preferenciasSelecionadas">
+                <td>{{preferenciaSelecionada.Descricao}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <a class="btn btn-primary" ng-click="AdicionarPreferencias()">Adicionar Preferências</a>
+        <!-- /.table-responsive -->
+      </div>
+      <!-- /.panel-body -->
+    </div>
+  </div>
 </div>
-<div class="panel panel-default">
-  <h4>Preferências Selecionadas</h4>
-  <!-- /.panel-heading -->
-  <div class="panel-body">
-    <div class="table-responsive table-bordered">
-      <table class="table">
-        <thead class="card-header">
-          <tr>
-            <th>Preferências</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr ng-repeat="preferenciaSelecionada in preferenciasSelecionadas">
-            <td>{{preferenciaSelecionada.Descricao}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- /.table-responsive -->
-  </div>
-  <!-- /.panel-body -->
 </div>

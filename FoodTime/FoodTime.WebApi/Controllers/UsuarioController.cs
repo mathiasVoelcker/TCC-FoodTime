@@ -124,5 +124,23 @@ namespace FoodTime.WebApi.Controllers
             context.SaveChanges();
             return Ok(usuario);
         }
+
+        [HttpPut]
+        [Route("adicionarPreferencias")]
+        public IHttpActionResult AdicionarPreferencias([FromBody]List<int> idPreferencias, int idUsuario)
+        {
+            var usuario = context.Usuarios.Include(x => x.Preferencias).FirstOrDefault(x => x.Id == idUsuario);
+            if (usuario == null)
+                return BadRequest("Usuario não encontrado");
+            foreach(int idPreferencia in idPreferencias)
+            {
+                var preferencia = context.Preferencias.FirstOrDefault(x => x.Id == idPreferencia);
+                if (preferencia == null)
+                    return BadRequest("Preferencia não encontrada");
+                usuario.Preferencias.Add(preferencia);
+            }
+            context.SaveChanges();
+            return Ok(usuario);
+        }
     }
 }
