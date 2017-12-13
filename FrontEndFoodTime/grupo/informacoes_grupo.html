@@ -4,8 +4,8 @@
     alt="">
   <section class="py-3">
     <div class="container">
-      <div class="espaco"></div>
-      <h1 class="cor_usuario">{{grupo.Nome}}</h1>
+        <div class="espaco_2"></div>
+      <h1 class="cor_dados">{{grupo.Nome}}</h1>
     </div>
   </section>
 </header>
@@ -57,7 +57,7 @@
     <div class="row" ng-if="mostraRecomendacoes">
       <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
         <div class="card h-100">
-          <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:255px;height:155px;"></a>
+          <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:100%;height:155px;"></a>
           <div class="card-body">
             <h4 class="card-title">
               <a href="#!/estabelecimento/{{recomendacao.Id}}">{{recomendacao.Nome}}</a>

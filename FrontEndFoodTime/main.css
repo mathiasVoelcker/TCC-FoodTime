@@ -51,6 +51,9 @@ body {
 .espaco{
   height: 100px;
 }
+.espaco_2{
+  height: 50px;
+}
 
 .icone-notificacao{
   position: absolute;
