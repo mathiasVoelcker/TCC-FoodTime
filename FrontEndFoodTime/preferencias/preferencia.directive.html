@@ -53,7 +53,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="preferenciaSelecionada in preferenciasSelecionadas">
-                <td>{{preferenciaSelecionada.Descricao}}</td>
+                <td class="clickable-area" ng-click="retirarSelecionarPreferencia(preferenciaSelecionada)">{{preferenciaSelecionada.Descricao}}</td>
               </tr>
             </tbody>
           </table>

@@ -7,11 +7,11 @@ angular.module('auth').factory('preferenciasService', function($http, authConfig
         return result;
       }
 
-      // function listarCinco(){
-      //   let result =  $http.get(urlPreferencia + "listarCinco");
-      //   return result;
-      // }
-    
+      function listarPreferenciasMenosAsDoUsuario(idUsuario){
+        let result =  $http.get(urlPreferencia + "listarPreferenciasMenosAsDoUsuario?idUsuario=" + idUsuario);
+        return result;
+      }
+      listarPreferenciasMenosAsDoUsuario
       function buscarPreferencia(id){
         return $http.get(urlPreferencia + id);
       }
@@ -25,6 +25,7 @@ angular.module('auth').factory('preferenciasService', function($http, authConfig
         listar: listar,
         buscarPreferencia: buscarPreferencia,
         addPreferencia: addPreferencia,
+        listarPreferenciasMenosAsDoUsuario: listarPreferenciasMenosAsDoUsuario
       }
     })
     

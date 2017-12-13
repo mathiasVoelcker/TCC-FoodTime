@@ -7,6 +7,7 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
   )
   let nomeFotoAvaliacao;
   $scope.usuarioLogado = authService.getUsuario();
+  $scope.comTodasPreferencias = true;
 
 
   $scope.addFoto = function(){

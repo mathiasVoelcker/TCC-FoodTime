@@ -4,6 +4,7 @@ using FoodTime.WebApi.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -62,6 +63,25 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Não existem preferencias cadastradas.");
             }
             return Ok(listaDePreferencias);
+        }
+
+        [HttpGet, Route("listarPreferenciasMenosAsDoUsuario")]
+        public IHttpActionResult BuscarTodasPreferenciasMenosAsDoUsuario([FromUri]int idUsuario)
+        {
+            var usuarioExistente = context.Usuarios.Include(x => x.Preferencias).FirstOrDefault(x=> x.Id==idUsuario);
+            if (usuarioExistente == null)
+            {
+                return BadRequest("Usuário não existe");
+            }
+
+            List<Preferencia> listaDePreferencias = (List<Preferencia>)context.Preferencias.Where(x => x.Aprovado == true).ToList();
+            if (listaDePreferencias.Count == 0)
+            {
+                return BadRequest("Não existem preferencias cadastradas.");
+            }
+            var preferenciasFiltradas = listaDePreferencias.Except(usuarioExistente.Preferencias).ToList();
+           
+            return Ok(preferenciasFiltradas);
         }
     }
 }

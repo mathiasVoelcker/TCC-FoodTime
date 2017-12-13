@@ -2,17 +2,33 @@ angular.module('app').directive('preferenciasDiretiva', function () {
 
   return {
     restrict: 'E',
+    scope: {
+      comTodasPreferencias: '='
+    },
     templateUrl: '../preferencias/preferencia.directive.html',
     controller: function ($scope, authService, $rootScope, preferenciasService) {
 
-      preferenciasService.listar();
+      console.log($scope.comTodasPreferencias);
+      var idUsuario = authService.getUsuario().Id
+     
+      if ($scope.comTodasPreferencias) {
+        preferenciasService.listar().then(
+          function (response) {
+            $scope.preferencias = response.data;
+          });
+        preferenciasService.listar();
+        
+      } else {
+        preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario).then(
+          function (response) {
+            $scope.preferencias = response.data;
+          });
+        preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario);
+        
+      }
 
-      preferenciasService.listar().then(
-        function (response) {
-          $scope.preferencias = response.data;
-        });
 
-        $scope.trocaLimite = function trocaLimite() {
+      $scope.trocaLimite = function trocaLimite() {
         var target = document.getElementById("listarTodos");
         if (target.checked == true)
           $scope.limit = 'All';
@@ -27,15 +43,21 @@ angular.module('app').directive('preferenciasDiretiva', function () {
       var novasPreferencias = []
       $scope.preferenciasSelecionadas = []
 
-      $scope.selecionarPreferencia = function(preferencia){
+      $scope.selecionarPreferencia = function (preferencia) {
         $scope.preferencias.splice(($scope.preferencias.indexOf(preferencia)), 1);
         $scope.preferenciasSelecionadas.push(preferencia);
         // $scope.grupo.IdUsuarios.push(preferencia)
       }
+      $scope.retirarSelecionarPreferencia = function (preferencia) {
+        $scope.preferenciasSelecionadas.splice(($scope.preferenciasSelecionadas.indexOf(preferencia)), 1);
+        $scope.preferencias.push(preferencia);
+       
+        // $scope.grupo.IdUsuarios.push(preferencia)
+      }
 
-      $scope.AdicionarPreferencias = function(){
+      $scope.AdicionarPreferencias = function () {
         console.log($scope.preferenciasSelecionadas)
-        idPreferencias = $scope.preferenciasSelecionadas.map(function(pref){
+        idPreferencias = $scope.preferenciasSelecionadas.map(function (pref) {
           return pref.Id
         });
         console.log(idPreferencias)
