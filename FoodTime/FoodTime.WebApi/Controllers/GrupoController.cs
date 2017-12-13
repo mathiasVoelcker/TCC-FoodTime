@@ -49,7 +49,6 @@ namespace FoodTime.WebApi.Controllers
             context.Grupos.Add(new Grupo(grupoModel.Nome, grupoModel.Foto));
             context.SaveChanges();
             var grupo = context.Grupos.OrderByDescending(x => x.Id).FirstOrDefault();
-            var i = 0;
             foreach (int idUsuario in grupoModel.IdUsuarios)
             {
                 var usuario = context.Usuarios.FirstOrDefault(x => x.Id == idUsuario);
@@ -58,6 +57,8 @@ namespace FoodTime.WebApi.Controllers
                     return BadRequest("Usuário não encontrado");
                 }
                 context.GrupoUsuarios.Add(new GrupoUsuario(usuario, grupo, grupoModel.IdUsuarios.First() == idUsuario));
+                Notificacao notificacao = new Notificacao(usuario, null, grupo, true);
+                context.Notificacoes.Add(notificacao);
             }
             context.SaveChanges();
             return Ok(grupoModel);

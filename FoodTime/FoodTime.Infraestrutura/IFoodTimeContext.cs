@@ -22,5 +22,6 @@ namespace FoodTime.Infraestrutura
         DbSet<Foto> Fotos { get; set; }
         DbSet<Grupo> Grupos { get; set; }
         DbSet<GrupoUsuario> GrupoUsuarios { get; set; }
+        DbSet<Notificacao> Notificacoes { get; set; }
     }
 }

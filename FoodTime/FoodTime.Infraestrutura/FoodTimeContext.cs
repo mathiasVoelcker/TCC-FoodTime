@@ -29,6 +29,7 @@ namespace FoodTime.Infraestrutura
         public DbSet<Foto> Fotos { get; set; }
         public DbSet<Grupo> Grupos { get; set; }
         public DbSet<GrupoUsuario> GrupoUsuarios{ get; set; }
+        public DbSet<Notificacao> Notificacoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -42,6 +43,7 @@ namespace FoodTime.Infraestrutura
             modelBuilder.Configurations.Add(new FotoMapping());
             modelBuilder.Configurations.Add(new GrupoMapping());
             modelBuilder.Configurations.Add(new GrupoUsuarioMapping());
+            modelBuilder.Configurations.Add(new NotificacaoMapping());
             base.OnModelCreating(modelBuilder);
         }
 

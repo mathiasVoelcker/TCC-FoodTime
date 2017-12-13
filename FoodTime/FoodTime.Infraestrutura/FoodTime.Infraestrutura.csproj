@@ -105,6 +105,7 @@
     <Compile Include="Mapping\FotoMapping.cs" />
     <Compile Include="Mapping\GrupoMapping.cs" />
     <Compile Include="Mapping\GrupoUsuarioMapping.cs" />
+    <Compile Include="Mapping\NotificacaoMapping.cs" />
     <Compile Include="Mapping\PreferenciaMapping.cs" />
     <Compile Include="Mapping\UsuarioMapping.cs" />
     <Compile Include="Migrations\201712082124274_Primeira Migration.cs" />
@@ -123,9 +124,14 @@
     <Compile Include="Migrations\201712111847332_Criar Grupos.Designer.cs">
       <DependentUpon>201712111847332_Criar Grupos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712120317327_Refatorar banco.cs" />
-    <Compile Include="Migrations\201712120317327_Refatorar banco.Designer.cs">
-      <DependentUpon>201712120317327_Refatorar banco.cs</DependentUpon>
+    <Compile Include="Migrations\201712120317327_Refatorar_banco.cs" />
+    <Compile Include="Migrations\201712120317327_Refatorar_banco.Designer.cs">
+      <DependentUpon>201712120317327_Refatorar_banco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712130447191_Adicionar Notificacao.cs" />
+    <Compile Include="Migrations\201712130504502_Ajustar Tabela Notificacao.cs" />
+    <Compile Include="Migrations\201712130504502_Ajustar Tabela Notificacao.Designer.cs">
+      <DependentUpon>201712130504502_Ajustar Tabela Notificacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -153,8 +159,11 @@
     <EmbeddedResource Include="Migrations\201712111847332_Criar Grupos.resx">
       <DependentUpon>201712111847332_Criar Grupos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712120317327_Refatorar banco.resx">
-      <DependentUpon>201712120317327_Refatorar banco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712120317327_Refatorar_banco.resx">
+      <DependentUpon>201712120317327_Refatorar_banco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712130504502_Ajustar Tabela Notificacao.resx">
+      <DependentUpon>201712130504502_Ajustar Tabela Notificacao.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

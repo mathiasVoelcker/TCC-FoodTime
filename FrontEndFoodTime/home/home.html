@@ -29,11 +29,9 @@
                 <div class="input-group">
                   <input type="text" class="form-control" ng-disabled="usarLocalizacao" ng-model="filtro.Endereco" placeholder="Procurar por...">
                   <span class="input-group-btn">
-                    <!-- <button class="btn_pesquisa_lupa" type="button"> -->
-                    <a class="btn btn-primary" ng-click="setUsarLocalizacao(!usarLocalizacao)">
+                    <a class="btn btn-primary " ng-click="setUsarLocalizacao(!usarLocalizacao)">
                       Localização Atual
                     </a>
-                    <!-- </button> -->
                   </span>
                 </div>
                 <span ng-if="usarLocalizacao" class="success-label">Usar geolocalizacao</span>
