@@ -9,16 +9,17 @@ angular.module('app').controller('LoginController', function ($scope, toastr, au
   $scope.login = function (usuario) {
     let promise;
 
-    promise = authService.loginTemp(usuario)
+    promise = authService.login(usuario)
       .then(
-      function () {
+      function (response) {
         toastr.success('Login com sucesso!')
         redirecionar(promise);
-
       },
-      function (error) {
+      function (response) {
         toastr.error('Erro no Login!')
       });
   };
 
 });
+
+

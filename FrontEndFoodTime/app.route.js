@@ -17,41 +17,82 @@ angular.module('app').config(function ($routeProvider) {
     // item nº 3.4 e 3.9 - autenticado
     .when('/perfilUsuario', {
       controller: 'PerfilUsuarioController',
-      templateUrl: 'usuario/perfil_usuario.html'
+      templateUrl: 'usuario/perfil_usuario.html',
+      resolve: {
 
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
     })
 
     // item nº 3.5, 3.6 e 3.9 - autenticado
     .when('/meusGrupos', {
       controller: 'GrupoController',
-      templateUrl: 'grupo/meus_grupos.html'
+      templateUrl: 'grupo/meus_grupos.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
 
     })
 
     // item nº 3.7 -  autenticado
     .when('/informacoesGrupo/:IdGrupo', {
       controller: 'InformacoesGrupoController',
-      templateUrl: 'grupo/informacoes_grupo.html'
+      templateUrl: 'grupo/informacoes_grupo.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
 
     })
 
-     // item nº 3.8 - autenticado
-     .when('/minhaPreferencia', {
+    // item nº 3.8 - autenticado
+    .when('/minhaPreferencia', {
       controller: 'PreferenciaController',
-      templateUrl: 'preferencias/minhas_preferencias.html'
+      templateUrl: 'preferencias/minhas_preferencias.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
 
     })
 
     // item nº 3.10 - autenticado
     .when('/sugerirEstabelecimento', {
       controller: 'SugerirEstabelecimentoController',
-      templateUrl: 'estabelecimento/sugerir_estabelecimento.html'
+      templateUrl: 'estabelecimento/sugerir_estabelecimento.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
     })
 
     // item nº 3.11 - admin
     .when('/aprovacoes', {
       controller: 'EstabelecimentoController',
-      templateUrl: 'estabelecimento/aprovacoes.html'
+      templateUrl: 'estabelecimento/aprovacoes.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.possuiPermissaoPromise(true);
+        }
+      }
 
     })
     // item nº 3.12 - pública
@@ -63,13 +104,27 @@ angular.module('app').config(function ($routeProvider) {
     // item nº 3.13 - autenticado
     .when('/avaliar/:IdEstabelecimento?', {
       controller: 'AvaliarController',
-      templateUrl: 'estabelecimento/avaliar_estabelecimento.html'
+      templateUrl: 'estabelecimento/avaliar_estabelecimento.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
     })
 
     // item nº 3.14 - autenticado
     .when('/notificacoes', {
       controller: 'NotificacoesController',
-      templateUrl: 'notificacoes/notificacoes.html'
+      templateUrl: 'notificacoes/notificacoes.html',
+      resolve: {
+
+        // define que para acessar esta página deve ser um usuário autenticado (mas não restringe o tipo de permissão)
+        autenticado: function (authService) {
+          return authService.isAutenticadoPromise();
+        }
+      }
 
     })
 

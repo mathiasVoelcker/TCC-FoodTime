@@ -35,8 +35,6 @@ a:hover{
   color: red;
   font-weight: bold;
 }
-
-
 .dimencao-imagem{
   width: 175px;
 }
@@ -74,4 +72,9 @@ a:hover{
   text-align: center;
   color: white;
   margin-top: -1px;
+}
+
+.div_login{
+  margin-top: 3px;
+  margin-left: 40px;
 }

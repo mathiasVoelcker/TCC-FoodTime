@@ -47,6 +47,12 @@ html, body {height:100%;}
     border-color: rgb(172,39,86);
     
 }
+.btn-auxiliar{
+	color: #fff;
+	font-weight:bold;
+	background-color: rgb(236,66,36);
+	border:1px solid black;
+}
 .btn-primary {
     color: black;
 	font-weight:bold;
@@ -57,7 +63,6 @@ html, body {height:100%;}
 	background-color: rgb(252,185,78);
 	border-color: rgb(252,185,78);
 }
-
 .d-flex_usuario{
 	width:15%;
 	height:10%;	
@@ -65,7 +70,6 @@ html, body {height:100%;}
 	border: 5px solid rgb(252,185,78);
 	margin-top:50px;
 }
-
 #header_usuario{
 	display: flex;
 	margin-top:3.5%;
@@ -122,6 +126,7 @@ html, body {height:100%;}
 	background-image:url("../auxiliares/imgs/lupa.png");
   }
   
-  .input-group-btn{
+.input-group-btn{
 	background-image:url("auxiliares/imgs/lupa.png");
   }
+  

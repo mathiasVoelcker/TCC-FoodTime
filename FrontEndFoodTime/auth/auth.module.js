@@ -18,24 +18,16 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
   let urlPrivado = authConfig.urlPrivado;
   let urlLogout = authConfig.urlLogout;
 
-  //Login sem autenticacao
-  function loginTemp(usuario){
-    return $http.get(urlUsuario + "?email=" + usuario.email).then(
-      function(response){
-        console.log(response)
-        $localStorage.usuarioLogado = response.data
-        $localStorage.usuarioLogado.DataNascimento = formatarData(response.data.DataNascimento)
-      }
-    )
-  }
+
   // LOGIN - Retorna PROMISE com o response (sucesso ou erro)
   function login(usuario) {
+
     let deferred = $q.defer();
 
     let headerAuth = montarHeader(usuario);
 
     $http({
-      url: urlUsuario + "?email=" + usuario.email,
+      url: urlUsuario,
       method: 'GET',
       headers: headerAuth
     }).then(
@@ -44,8 +36,7 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       function (response) {
 
         // Adiciona usuário e header ao localstorage
-        $localStorage.usuarioLogado = response.data;
-        $localStorage.usuarioLodado.DataNascimento = formatarData(response.data.DataNascimento)
+        $localStorage.usuarioLogado = response.data.dados;
         $localStorage.headerAuth = montarHeader(usuario)['Authorization'];
 
         // Adiciona header de autenticação em todos os próximos requests
@@ -58,19 +49,21 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
           $location.path(urlPrivado);
         }
 
-        // resolve promise com sucesso
+        // resolve promise com sucesso 
         deferred.resolve(response);
       },
 
       // Erro
       function (response) {
-        // resolve promise com erro
+        // resolve promise com erro 
         deferred.reject(response);
       });
 
     // Retorna promise, sem resolver
     return deferred.promise;
   };
+
+
 
   // LOGOUT (sem retorno)
   function logout() {
@@ -98,11 +91,13 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   function possuiPermissao(permissao) {
     return isAutenticado() &&
-      getUsuario().Permissoes.find((p) => p.Nome === permissao);
+     // getUsuario().Permissoes.find((p) => p.Nome === permissao);
+     getUsuario().Administrador == permissao;
   };
 
 
   // PROMISE
+
   function isAutenticadoPromise() {
 
     let deferred = $q.defer();
@@ -139,16 +134,8 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
     };
   };
 
-  function formatarData(data) {
-    data = data.substring(0, 10)
-    var dataArray = data.split("-")
-    var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
-    return retorno
-  }
-
   return {
     login: login,
-    loginTemp: loginTemp,
     logout: logout,
     getUsuario: getUsuario,
     possuiPermissao: possuiPermissao,

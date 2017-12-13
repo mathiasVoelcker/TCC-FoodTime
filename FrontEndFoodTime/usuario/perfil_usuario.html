@@ -19,7 +19,7 @@
           <div class="col-md-12s">
             <a class="btn btn-primary" href="#!/minhaPreferencia/">Minhas preferêcias</a>
             <a class="btn btn-primary" href="#!/sugerirEstabelecimento">Sugerir Estabelecimento</a>
-            <a class="btn btn-primary" href="#!/aprovacoes">Aprovações</a>
+            <!--<a class="btn btn-primary" href="#!/aprovacoes">Aprovações</a>-->
           </div>
         </div>
       </div>
@@ -60,10 +60,9 @@
             <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
             <div>
               <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
-              <a class="btn btn-danger" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
+              <a class="btn btn-auxiliar" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
             </div>
           </div>
-
         </div>
       </div>
     </div>
