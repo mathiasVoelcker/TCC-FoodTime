@@ -23,17 +23,32 @@ namespace FoodTime.WebApi.Controllers
         }
 
         [HttpPost, Route("registrar")]
-        public IHttpActionResult CriarEstabelecimento([FromBody] Estabelecimento estabelecimento)
+        public IHttpActionResult CriarEstabelecimento([FromBody] EstabelecimentoRegistroModel estabelecimentoModel)
         {
-            context.Enderecos.Add(estabelecimento.Endereco);
-            foreach (Categoria categoria in estabelecimento.Categorias)
+
+            context.Enderecos.Add(estabelecimentoModel.Endereco);
+            context.SaveChanges();
+            Endereco endereco = context.Enderecos.OrderByDescending(x => x.Id).FirstOrDefault();
+            List<Categoria> categorias = new List<Categoria>();
+            List<Foto> fotos = new List<Foto>();
+            foreach (int idCategoria in estabelecimentoModel.idCategorias)
             {
-                context.Categorias.Add(categoria);
+                categorias.Add(context.Categorias.FirstOrDefault(x => x.Id == idCategoria));
             }
-            foreach (Foto foto in estabelecimento.Fotos)
+            foreach (int idFoto in estabelecimentoModel.idFotos)
             {
-                context.Fotos.Add(foto);
+                fotos.Add(context.Fotos.FirstOrDefault(x => x.Id == idFoto));
             }
+            Estabelecimento estabelecimento = new Estabelecimento(estabelecimentoModel.Nome,
+                estabelecimentoModel.Telefone,
+                endereco,
+                categorias,
+                estabelecimentoModel.HorarioAbertura,
+                estabelecimentoModel.HorarioFechamento,
+                estabelecimentoModel.PrecoMedio,
+                fotos,
+                estabelecimentoModel.Aprovado
+                );
             context.Estabelecimentos.Add(estabelecimento);
             context.SaveChanges();
             return Created("Sucesso", estabelecimento);

@@ -156,6 +156,7 @@
     <Compile Include="Models\EstabelecimentoModel.cs" />
     <Compile Include="Models\EstabelecimentoPreferenciaModel.cs" />
     <Compile Include="Models\EstabelecimentoRecomendacaoModel.cs" />
+    <Compile Include="Models\EstabelecimentoRegistroModel.cs" />
     <Compile Include="Models\EstabFiltroLocalModel.cs" />
     <Compile Include="Models\GrupoCompletoModel.cs" />
     <Compile Include="Models\GrupoModel.cs" />
