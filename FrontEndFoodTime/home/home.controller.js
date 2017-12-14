@@ -11,7 +11,6 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   // $scope.filtro.Nome = ""
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
-  $scope.url = "https://maps.google.com/maps?q=1,1&hl=es;z=14&amp;output=embed"
   estabService.listar();
   navigator.geolocation.getCurrentPosition(function (position) {
     $scope.pos = {

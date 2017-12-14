@@ -9,7 +9,7 @@
         <div class="control-group form-group">
           <div class="form-group">
             <label class="campo-cadastro">Buscar Estabelecimento</label>
-            <input id="autocomplete" ng-class="{'enviar': enviar}" placeholder="Ex: Avenida Theodomiro Porto da Fonseca - Cristo Rei, São Leopoldo - RS, Brazil" class="form-control" type="text" ng-model="localizacao" required />
+            <input id="autocomplete" ng-class="{'enviar': enviar}" placeholder="Qual o local que deseja encontrar?" class="form-control" type="text" ng-model="localizacao" required />
           </div>
         </div>
         <div ng-if="buscouEstab">
@@ -94,7 +94,7 @@
             </div>
           </div>
           <preferencias-diretiva com-todas-preferencias="comTodasPreferencias" adicionar-preferencias-func="adicionarPreferencias" remover-preferencias-func="removerPreferencias"></preferencias-diretiva>
-          
+
         <div id="success"></div>
         <!-- For success/fail messages -->
         <button type="submit" class="btn btn-primary" id="sendMessageButton">Salvar</button>
@@ -106,5 +106,6 @@
 </div>
 </div>
 </div>
-<script src="https://apis.google.com/js/platform.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrNVnB-vyQcOlvyUvsF1wAOLbogzuTLHo&callback&libraries=places"></script>
+<!-- <script src="https://apis.google.com/js/platform.js"></script> -->
+<!-- <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDrNVnB-vyQcOlvyUvsF1wAOLbogzuTLHo&callback&libraries=places"></script> -->
+<script async defer src="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=AIzaSyDrNVnB-vyQcOlvyUvsF1wAOLbogzuTLHo"></script>
