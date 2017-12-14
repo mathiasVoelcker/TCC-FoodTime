@@ -23,6 +23,10 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
     $scope.autocomplete.addListener('place_changed', atribuirDadosAEscopo);
   }
 
+  function redirecionar(){
+    $location.path("/#!/home");
+  }
+
   function atribuirDadosAEscopo() {
     var place = $scope.autocomplete.getPlace();
     console.log(place)
@@ -55,6 +59,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
           }
         )
       }
+      redirecionar();
     }
 
 

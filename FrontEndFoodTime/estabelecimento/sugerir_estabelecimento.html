@@ -88,8 +88,10 @@
           <div class="control-group form-group">
             <div class="controls">
               <label>Categoria</label>
-              <select class="form-control dropdown" ng-selected="value=''" ng-model="filtro.Categoria" >
-                <option ng-repeat="categoria in categorias" ng-value="categoria.Descricao">{{categoria.Descricao}}</option>
+              <select class="form-control dropdown" multiple ng-selected="value=''" ng-model="estabelecimento.idCategorias" >
+                  <!-- <select class="form-control dropdown" multiple ng-selected="value=''" ng-model="filtro.Categoria" > -->
+                      
+                <option ng-repeat="categoria in categorias" ng-model="estabelecimento.idCategoria" ng-value="categoria.Id">{{categoria.Descricao}}</option> 
               </select>
             </div>
           </div>
