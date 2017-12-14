@@ -3,6 +3,7 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   let urlAvaliacao = authConfig.urlAvaliacao;
   let urlAvaliacaoRegistro = authConfig.urlAvaliacaoRegistro;
   let urlEstabelecimento = authConfig.urlEstabelecimento;
+  let urlEstabelecimentoPreferencia = authConfig.urlEstabelecimentoPreferencia;
 
   function criarAvaliacao(avaliacao){
     return $http.post(urlAvaliacaoRegistro, avaliacao)
@@ -44,6 +45,10 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     return $http.get(urlEstabelecimento+"buscarPorFiltrosLocalizacao?&estabFiltro.nome=" + filtro.Nome + "&estabLocalFiltro.latitude=" + posicao.lat + "&estabLocalFiltro.longitude=" + posicao.lng + "&estabFiltro.categorias=" + filtro.Categoria);
   }
 
+  function adicionarPreferencias(idPreferencias, idEstab){
+    return $http.post(urlEstabelecimentoPreferencia + "?idEstabelecimento=" + idEstab, idPreferencias)
+  }
+
 
 
   return{
@@ -55,7 +60,8 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
     buscarEstabelecimentoPorId: buscarEstabelecimentoPorId,
     buscarAvaliacoesEstab: buscarAvaliacoesEstab,
     buscarPorFiltrosLocalizacao: buscarPorFiltrosLocalizacao,
-    criarEstabelecimento: criarEstabelecimento
+    criarEstabelecimento: criarEstabelecimento,
+    adicionarPreferencias: adicionarPreferencias
   }
 
 

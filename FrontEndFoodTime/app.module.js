@@ -22,6 +22,9 @@ angular.module('app').constant('authConfig', {
     urlEstabelecimento: 'http://localhost:65510/api/estabelecimento/',
 
     //pública
+    urlEstabelecimentoPreferencia: 'http://localhost:65510/api/estabelecimentoPreferencia/',
+
+    //pública
     urlCategoria: 'http://localhost:65510/api/categoria/',
 
     //autenticado - admin
