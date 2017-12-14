@@ -36,7 +36,9 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       function (response) {
 
         // Adiciona usuário e header ao localstorage
-        $localStorage.usuarioLogado = response.data.dados;
+        var usuario = response.data.dados
+        usuario.DataNascimento = formatarData(usuario.DataNascimento)
+        $localStorage.usuarioLogado = usuario;
         $localStorage.headerAuth = montarHeader(usuario)['Authorization'];
 
         // Adiciona header de autenticação em todos os próximos requests
@@ -49,13 +51,13 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
           $location.path(urlPrivado);
         }
 
-        // resolve promise com sucesso 
+        // resolve promise com sucesso
         deferred.resolve(response);
       },
 
       // Erro
       function (response) {
-        // resolve promise com erro 
+        // resolve promise com erro
         deferred.reject(response);
       });
 
@@ -133,6 +135,13 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
       'Authorization': `Basic ${hash}`
     };
   };
+
+  function formatarData(data) {
+    data = data.substring(0, 10)
+    var dataArray = data.split("-")
+    var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
+    return retorno
+  }
 
   return {
     login: login,
