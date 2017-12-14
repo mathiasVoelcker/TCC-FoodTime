@@ -59,12 +59,17 @@
           </div>
         </div>
         <preferencias-diretiva com-todas-preferencias="comTodasPreferencias" adicionar-preferencias-func="adicionarPreferencias" remover-preferencias-func="removerPreferencias"></preferencias-diretiva>
-            <!-- <preferencias-diretiva com-todas-preferencias="comTodasPreferencias" adicionar-preferencias="adicionarPreferencias"></preferencias-diretiva> -->
+        <!-- <preferencias-diretiva com-todas-preferencias="comTodasPreferencias" adicionar-preferencias="adicionarPreferencias"></preferencias-diretiva> -->
 
         <div id="success"></div>
         <!-- For success/fail messages -->
         <button class="btn btn-primary">Salvar avaliação</button>
-        <span class="danger-label" ng-show="formAvaliacao.$invalid && formAvaliacao.$submitted">Todos os campos devem ser preenchidos</span>
+        <div class="row">
+          <span class="danger-label" ng-show="formAvaliacao.$invalid && formAvaliacao.$submitted">Todos os campos devem ser preenchidos</span>
+        </div>
+        <div class="row">
+          <span class="danger-label" ng-if="semFoto">Adicione uma foto à avaliação</span>
+        </div>
       </form>
     </div>
   </div>

@@ -62,7 +62,6 @@ angular.module('app').directive('preferenciasDiretiva', function () {
           }
 
           $scope.adicionarPreferencias = function () {
-            debugger
             console.log($scope.preferenciasSelecionadas)
             idPreferencias = $scope.preferenciasSelecionadas.map(function (pref) {
               return pref.Id

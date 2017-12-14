@@ -79,6 +79,7 @@ namespace FoodTime.WebApi.Controllers
             {
                 return BadRequest("Não existem preferencias cadastradas.");
             }
+            listaDePreferencias = listaDePreferencias.Where(x => context.EstabelecimentoPreferencias.Any(y => y.Estabelecimento.Id == x.Id)).ToList();
             var preferenciasFiltradas = listaDePreferencias.Except(usuarioExistente.Preferencias).ToList();
            
             return Ok(preferenciasFiltradas);

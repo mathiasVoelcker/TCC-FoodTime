@@ -1,6 +1,7 @@
 angular.module('app').controller('AvaliarController', function ($scope, $routeParams, toastr, usuarioService, estabService, authService, fotoService) {
 
   $scope.idPreferencias = []
+  $scope.semFoto = false;
   $scope.adicionarPreferencias = function (idPreferencia) {
     $scope.idPreferencias.push(idPreferencia)
     console.log($scope.idPreferencias)
@@ -38,32 +39,34 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
     $scope.avaliar = function(avaliacao){
       // debugger
       var file = document.getElementById('file').files[0];
-      if(file == undefined){
-        $scope.formAvaliacao.$setValidity('required', false)
-      }
-      if($scope.formAvaliacao.$valid){
-        console.log(authService.getUsuario())
-        $scope.avaliacao.nota = parseInt($scope.avaliacao.nota)
-        $scope.avaliacao.idUsuario = authService.getUsuario().Id
-        $scope.avaliacao.IdEstabelecimento = parseInt($routeParams.IdEstabelecimento)
-        avaliacao.FotoAvaliacao = file.name;
-        $scope.addFoto(file)
-        console.log(avaliacao);
-        estabService.criarAvaliacao(avaliacao).then(
-          function(response){
-            console.log(response)
-            toastr.success('Avaliação feita com sucesso!')
-            if($scope.idPreferencias.length > 0){
-              estabService.adicionarPreferencias($scope.idPreferencias, $scope.avaliacao.IdEstabelecimento).then(
-                function(response){
-                  console.log(response)
-                }
-              )
+      if(file != undefined){
+        if($scope.formAvaliacao.$valid){
+          console.log(authService.getUsuario())
+          $scope.avaliacao.nota = parseInt($scope.avaliacao.nota)
+          $scope.avaliacao.idUsuario = authService.getUsuario().Id
+          $scope.avaliacao.IdEstabelecimento = parseInt($routeParams.IdEstabelecimento)
+          avaliacao.FotoAvaliacao = file.name;
+          $scope.addFoto(file)
+          console.log(avaliacao);
+          estabService.criarAvaliacao(avaliacao).then(
+            function(response){
+              console.log(response)
+              toastr.success('Avaliação feita com sucesso!')
+              if($scope.idPreferencias.length > 0){
+                estabService.adicionarPreferencias($scope.idPreferencias, $scope.avaliacao.IdEstabelecimento).then(
+                  function(response){
+                    console.log(response)
+                  }
+                )
+              }
+            }, function(response){
+              console.log(response)
             }
-          }, function(response){
-            console.log(response)
-          }
-        )
+          )
+        }
+      }
+      else{
+        $scope.semFoto = true;
       }
     }
 
