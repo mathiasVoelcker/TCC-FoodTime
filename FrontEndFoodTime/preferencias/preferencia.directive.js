@@ -4,6 +4,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
     restrict: 'E',
     scope: {
       comTodasPreferencias: '=',
+      idEstabelecimento: '=',
       adicionarPreferenciasFunc: '=',
       removerPreferenciasFunc: '='
     },
@@ -13,12 +14,10 @@ angular.module('app').directive('preferenciasDiretiva', function () {
       var idUsuario = authService.getUsuario().Id
 
       if ($scope.comTodasPreferencias) {
-        preferenciasService.listar().then(
+        preferenciasService.listarPorEstab($scope.idEstabelecimento).then(
           function (response) {
             $scope.preferencias = response.data;
           });
-          preferenciasService.listar();
-
         } else {
           preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario).then(
             function (response) {

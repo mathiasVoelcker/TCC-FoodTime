@@ -56,7 +56,7 @@ namespace FoodTime.WebApi.Controllers
         [HttpGet, Route("listar")]
         public IHttpActionResult BuscarTodasPreferencias()
         {
-            var listaDePreferencias = context.Preferencias.Where(x => x.Aprovado == true).ToList();
+            var listaDePreferencias = context.Preferencias.Where(x => x.Aprovado).ToList();
 
             if (listaDePreferencias.Count == 0)
             {
@@ -74,7 +74,7 @@ namespace FoodTime.WebApi.Controllers
                 return BadRequest("Usuário não existe");
             }
 
-            List<Preferencia> listaDePreferencias = (List<Preferencia>)context.Preferencias.Where(x => x.Aprovado == true).ToList();
+            List<Preferencia> listaDePreferencias = (List<Preferencia>)context.Preferencias.Where(x => x.Aprovado).ToList();
             if (listaDePreferencias.Count == 0)
             {
                 return BadRequest("Não existem preferencias cadastradas.");
@@ -83,6 +83,25 @@ namespace FoodTime.WebApi.Controllers
             var preferenciasFiltradas = listaDePreferencias.Except(usuarioExistente.Preferencias).ToList();
            
             return Ok(preferenciasFiltradas);
+        }
+
+        [HttpGet, Route("listarPreferenciasPorEstab")]
+        public IHttpActionResult BuscarTodasPreferenciasMenosAsDoEstab([FromUri]int idEstab)
+        {
+            var estabelecimentoExistente = context.Estabelecimentos.FirstOrDefault(x => x.Id == idEstab);
+            if (estabelecimentoExistente == null)
+            {
+                var listaDeTodasPreferencias = context.Preferencias.Where(x => x.Aprovado).ToList();
+                return Ok(listaDeTodasPreferencias);
+            }
+            List<Preferencia> listaDePreferencias = (List<Preferencia>)context.Preferencias.Where(x => x.Aprovado).ToList();
+            if (listaDePreferencias.Count == 0)
+            {
+                return BadRequest("Não existem preferencias cadastradas.");
+            }
+            var listaDePreferenciasDeEstab = context.EstabelecimentoPreferencias.Where(x => x.Estabelecimento.Id == idEstab).Select(x => x.Preferencia).ToList();
+            listaDePreferencias = listaDePreferencias.Except(listaDePreferenciasDeEstab).ToList();
+            return Ok(listaDePreferencias);
         }
     }
 }

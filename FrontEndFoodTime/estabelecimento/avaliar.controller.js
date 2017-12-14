@@ -7,12 +7,14 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
     console.log($scope.idPreferencias)
   }
 
+  $scope.idEstabelecimento = parseInt($routeParams.IdEstabelecimento)
+
   $scope.removerPreferencias = function(idPreferencia){
     $scope.idPreferencias.splice(($scope.idPreferencias.indexOf(idPreferencia)), 1);
     console.log($scope.idPreferencias)
   }
 
-  estabService.buscarEstabelecimentoPorId($routeParams.IdEstabelecimento).then(
+  estabService.buscarEstabelecimentoPorId($scope.idEstabelecimento).then(
     function(response){
       $scope.estabelecimento = response.data
     }
@@ -44,7 +46,7 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
           console.log(authService.getUsuario())
           $scope.avaliacao.nota = parseInt($scope.avaliacao.nota)
           $scope.avaliacao.idUsuario = authService.getUsuario().Id
-          $scope.avaliacao.IdEstabelecimento = parseInt($routeParams.IdEstabelecimento)
+          $scope.avaliacao.IdEstabelecimento = $scope.idEstabelecimento
           avaliacao.FotoAvaliacao = file.name;
           $scope.addFoto(file)
           console.log(avaliacao);
