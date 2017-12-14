@@ -9,18 +9,23 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
   $scope.usuarioLogado = authService.getUsuario();
   $scope.comTodasPreferencias = true;
 
-
   $scope.addFoto = function(){
     var file = document.getElementById('file').files[0];
     var fd = new FormData();
     fd.append('file', file);
     nomeFotoAvaliacao = file.name;
+    $scope.adicionarPreferencias();
     fotoService.addFoto(fd).then(
       function(response){
         console.log("Foto adicionada com sucesso!");
       }, function(response){
+      })
+    
+  };  
+       $scope.adicionarPreferencias = function () {
+       console.log($scope.idPreferencias)
+        usuarioService.adicionarPreferencias($scope.idPreferencias, usuarioLogado.Id)
       }
-    )};  
 
   $scope.avaliacao
   $scope.avaliar = function(avaliacao){

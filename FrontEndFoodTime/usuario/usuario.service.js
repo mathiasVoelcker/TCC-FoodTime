@@ -57,6 +57,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
   }
 
   function adicionarPreferencias(idPreferencias, idUsuario){
+    debugger
     return $http.put(urlUsuario + "adicionarPreferencias?&idUsuario=" + idUsuario, idPreferencias)
   }
 

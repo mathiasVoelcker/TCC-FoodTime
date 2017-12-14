@@ -11,7 +11,6 @@ angular.module('auth').factory('preferenciasService', function($http, authConfig
         let result =  $http.get(urlPreferencia + "listarPreferenciasMenosAsDoUsuario?idUsuario=" + idUsuario);
         return result;
       }
-      listarPreferenciasMenosAsDoUsuario
       function buscarPreferencia(id){
         return $http.get(urlPreferencia + id);
       }
