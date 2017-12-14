@@ -125,5 +125,8 @@ html, body {height:100%;}
 	font-weight: bold;
 	color:rgb(127,127,127);
 }
+.clickable-area:hover{
+	background:rgb(255, 8, 8);
+}
 
   
