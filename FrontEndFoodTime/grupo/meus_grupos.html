@@ -2,26 +2,31 @@
 <div class="espaco"></div>
 <div class="container">
   <div class="row">
-    <div class="col-lg-6 mb-4">
-      <h2>Meus Grupos</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-6">
-      <div>
-        <div class="media mb-4" ng-repeat="grupo in gruposUsuario">
-          <img class="d-flex mr-3 rounded-circle border_img_grupos" src="/../auxiliares/fotos/{{grupo.Foto}}" alt="" style="width:70px;height:70px;">
-          <div class="media-body">
-            <h5 class="mt-4"><a class="nav-link " href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a></h5>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 border-table">
+    <div class="col-md-6 border-table fundo_panel">
       <div>
         <h3>Criar Grupo</h3>
       </div>
       <adicionar-participantes id-grupo="" esta-criando="true"></adicionar-participantes>
+    </div>
+    <div class="col-md-6">
+      <section class="py-3">
+        <div class="container">
+          <h3>Meus Grupos</h3>
+          <br>
+          <div class="row">
+            <div class="col-lg-5 col-md-4 portfolio-item" ng-repeat="grupo in gruposUsuario">
+              <div class="card h-100 border-table-estabelecimento">
+                <a><img class="card-img-top" src="/../auxiliares/fotos/{{grupo.Foto}}" alt="" style="width:100%;height:155px;"></a>
+                <div class="card-body">
+                  <h4 class="card-title">
+                    <a href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a>
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+      </section>
+      </div>
     </div>
   </div>
   <div class="espaco"></div>
