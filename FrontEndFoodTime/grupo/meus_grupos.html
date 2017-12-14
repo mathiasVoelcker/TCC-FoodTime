@@ -10,23 +10,19 @@
     <div class="col-md-6">
       <div>
         <div class="media mb-4" ng-repeat="grupo in gruposUsuario">
-          <img class="d-flex mr-3 rounded-circle" src="/../auxiliares/fotos/{{grupo.Foto}}"
-          alt="" style="width:70px;height:70px;">
+          <img class="d-flex mr-3 rounded-circle border_img_grupos" src="/../auxiliares/fotos/{{grupo.Foto}}" alt="" style="width:70px;height:70px;">
           <div class="media-body">
-            <h5 class="mt-4"><a class="nav-link" href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a></h5>
+            <h5 class="mt-4"><a class="nav-link " href="#!/informacoesGrupo/{{grupo.Id}}">{{grupo.Nome}}</a></h5>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6">
-
-      <div><h3>Criar Grupo</h3></div>
-      <br>
-
+    <div class="col-md-6 border-table">
+      <div>
+        <h3>Criar Grupo</h3>
+      </div>
       <adicionar-participantes id-grupo="" esta-criando="true"></adicionar-participantes>
-
-
     </div>
-    <br>
   </div>
+  <div class="espaco"></div>
   <!-- /.container -->

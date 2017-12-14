@@ -1,10 +1,11 @@
 <cwi-header></cwi-header>
 <header class="py-3 bg-image-full" style="background-image: url('auxiliares/imgs/1@2x.jpg');" id="header_usuario">
-  <img class="d-flex_usuario mr-6 rounded-circle" src="/../auxiliares/fotos/{{grupo.Foto}}" width="134" height="136"
-    alt="">
-  <section class="py-3">
+  <!--<img class="d-flex_usuario mr-3 rounded-circle" src="auxiliares/imgs/photo.jpg" alt="">-->
+  <img class="d-flex_usuario mr-3 rounded-circle" src="/../auxiliares/fotos/{{grupo.Foto}}" alt="">
+  <section class="py-1">
     <div class="container">
-        <div class="espaco_2"></div>
+      <div class="espaco_2"></div>
+      <div class="espaco_2"></div>
       <h1 class="cor_dados">{{grupo.Nome}}</h1>
     </div>
   </section>
@@ -19,7 +20,7 @@
         <br>
         <div class="table-overflow_participantes">
           <div class="media mb-4" ng-repeat="participante in participantes">
-            <img class="d-flex mr-3 rounded-circle" src="{{participante.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
+            <img class="d-flex mr-3 rounded-circle border_img_grupos" src="{{participante.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
               alt="" style="width:50px;height:50px;">
             <div class="media-body">
               <h5 class="mt-0">{{participante.Usuario.Nome}}</h5>
@@ -36,7 +37,7 @@
         <br>
         <div class="table-overflow_participantes">
           <div class="media mb-4" ng-repeat="solicitacao in solicitacoes">
-            <img class="d-flex mr-3 rounded-circle" src="{{solicitacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
+            <img class="d-flex mr-3 rounded-circle border_img_grupos" src="{{solicitacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
               alt="" style="width:50px;height:50px;">
             <div class="media-body">
               <h5 class="mt-0">{{solicitacao.Usuario.Nome}}</h5>
@@ -66,7 +67,7 @@
             <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
             <div>
               <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
-              <a class="btn btn-danger" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
+              <a class="btn btn-auxiliar" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
             </div>
           </div>
         </div>
