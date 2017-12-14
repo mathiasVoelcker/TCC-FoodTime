@@ -13,7 +13,7 @@ namespace FoodTime.WebApi.Models
             Id = estabelecimento.Id;
             Nome = estabelecimento.Nome;
             Telefone = estabelecimento.Telefone;
-            IdEndereco = estabelecimento.Endereco.Id;
+            Endereco = estabelecimento.Endereco;
             PrecoMedio = estabelecimento.PrecoMedio;
             Categorias = estabelecimento.Categorias.Select(x => x.Descricao).ToList();
             Fotos = estabelecimento.Fotos.Select(x => x.Caminho).ToList();
@@ -23,7 +23,7 @@ namespace FoodTime.WebApi.Models
         public int Id { get; set; }
         public string Nome { get; set; }
         public string Telefone { get; set; }
-        public int IdEndereco { get; set; }
+        public Endereco Endereco { get; set; }
         public List<String> Categorias { get; set; }
         public List<String> Fotos { get; set; }
         public decimal PrecoMedio { get; set; }

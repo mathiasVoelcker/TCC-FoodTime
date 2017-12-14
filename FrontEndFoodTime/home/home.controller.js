@@ -1,12 +1,17 @@
+angular.module('app').controller('HomeController', function ($scope, $sce, authService, $http, estabService, categoriaService) {
 
-angular.module('app').controller('HomeController', function ($scope, authService, $http, estabService, categoriaService) {
+  $scope.trustSrc = function(latitude, longitude) {
+    return $sce.trustAsResourceUrl(`https://maps.google.com/maps?q=${latitude},${longitude}&hl=es;z=14&amp;&output=embed`);
+  }
 
   $scope.usuarioLogado = authService.getUsuario();
   $scope.filtro = { Nome: "", Endereco: "", Categoria: "" };
   $scope.usarLocalizacao = false
+  $scope.estabelecimentos = []
   // $scope.filtro.Nome = ""
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
+  $scope.url = "https://maps.google.com/maps?q=1,1&hl=es;z=14&amp;output=embed"
   estabService.listar();
   navigator.geolocation.getCurrentPosition(function (position) {
     $scope.pos = {
@@ -21,6 +26,7 @@ angular.module('app').controller('HomeController', function ($scope, authService
       $scope.estabelecimentos = response.data;
       estabelecimentos = response.data;
       console.log(response)
+      // $scope.$apply();
       // estabelecimentos.forEach(function(element) {
       //   debugger
       //   $scope.estabelecimentos[element.Id].Endereco.Latitude = element.Endereco.Latitude;
@@ -41,18 +47,18 @@ angular.module('app').controller('HomeController', function ($scope, authService
     if ($scope.usarLocalizacao) {
       estabService.buscarPorFiltrosLocalizacao($scope.filtro, $scope.pos).then(
         function (response) {
-          console.log("listagem")
           $scope.estabelecimentos = response.data;
           console.log($scope.estabelecimentos)
+          // $scope.$apply();
         }
       );
     }
     else {
       estabService.buscarPorFiltros($scope.filtro).then(
         function (response) {
-          console.log("listagem")
           $scope.estabelecimentos = response.data;
           console.log($scope.estabelecimentos)
+          // $scope.$apply();
         }
       );
     }
