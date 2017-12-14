@@ -1,20 +1,14 @@
 <cwi-header></cwi-header>
 <div class="container">
   <!-- Page Heading -->
-  <h1 class="my-8" align="center">
-    <a class="navbar-brand" href="#"><img class="img-fluid rounded mb-3 mb-md-4" src="/auxiliares/imgs/relogio_new.jpg" alt="" id="img_relogio" ></a>
-  </h1>
-  <h1 class="my-8" align="center">
-    <a class="navbar-brand" href="#"><img class="img-fluid rounded mb-3 mb-md-0" src="/auxiliares/imgs/foodTime.png" alt="" style="height:80px;" ></a>
-  </h1>
-  <h2>Encontrar Estabelecimento</h2>
+  <div class="espaco"></div>  
   <div class="row">
     <div class="col-lg-12 mb-4">
       <div class="row">
         <div class="col-md-4">
           <div class="control-group form-group">
             <div class="controls">
-              <label>Nome</label>
+              <label class="palavra_titulo">Nome</label>
               <input type="text" class="form-control" ng-model="filtro.Nome" id="nome">
               <!-- <input type="text" class="form-control" ng-model="filtro.Nome" id="nome" required data-validation-required-message="Por favor insira o nome do Estabelecimento"> -->
               <p class="help-block"></p>
@@ -24,7 +18,7 @@
         <div class="col-md-5">
           <div class="control-group form-group">
             <div class="controls" >
-              <label>Localização</label>
+              <label class="palavra_titulo">Localização</label>
               <div >
                 <div class="input-group">
                   <input type="text" class="form-control" ng-disabled="usarLocalizacao" ng-model="filtro.Endereco" placeholder="Procurar por...">
@@ -42,7 +36,7 @@
         <div class="col-md-3">
           <div class="control-group form-group">
             <div class="controls">
-              <label>Categoria</label>
+              <label class="palavra_titulo">Categoria</label>
               <select class="form-control dropdown" ng-selected="value=''" ng-model="filtro.Categoria" >
                 <option ng-repeat="categoria in categorias" ng-value="categoria.Descricao">{{categoria.Descricao}}</option>
               </select>
@@ -60,8 +54,8 @@
   </div>
   <!-- /.row -->
   <div id="ngrepeat" ng-repeat="estabelecimento in estabelecimentos | filter: {Nome: filtro.Nome}">
-    <div class="row">
-      <div class="col-md-2">
+    <div class="row border">
+      <div class="col-md-2 ">
         <a href="#">
           <!-- <img class="img-fluid rounded mb-3 mb-md-0" ng-src="\auxiliares\imgs\logoFoodTime_new.jpg" alt="" style="width:250px;height:200px;"> -->
           <img class="img-fluid rounded mb-3 mb-md-0 dimencao-imagem" ng-src="{{ estabelecimento.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg' }}" alt="" >

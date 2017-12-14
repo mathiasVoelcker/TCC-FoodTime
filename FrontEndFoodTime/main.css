@@ -1,8 +1,8 @@
 body {
   padding-top: 0px;
   height: 100%;
+ /* background-image: url('auxiliares/imgs/fundo_home.jpg')*/
 }
-
 a {
   color: inherit; /* blue colors for links too */
   text-decoration: inherit; /* no underline */
@@ -10,7 +10,6 @@ a {
 a:hover{
   text-decoration: none;
 }
-
 .content {
   padding: 10px 15px;
 }
@@ -18,12 +17,10 @@ a:hover{
 .navbar-form label {
   color: #9d9d9d;
 }
-
 .fixed{
   position: absolute;
   bottom: 0px;
   width: 100%
-
 }
 
 .success-label{
@@ -73,8 +70,7 @@ a:hover{
   color: white;
   margin-top: -1px;
 }
-
 .div_login{
   margin-top: 3px;
-  margin-left: 40px;
+  margin-left: 40px; 
 }
