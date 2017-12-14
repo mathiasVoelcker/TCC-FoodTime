@@ -1,10 +1,10 @@
 <cwi-header>
 </cwi-header>
 <div class="container">
-  <div class="row">
-    <div class="col-lg-6 mb-4">
-      <h2 id="texto_avaliar">Avaliar {{estabelecimento.Nome}}</h2>
-      <form name="formAvaliacao" ng-submit="avaliar(avaliacao)" novalidate>
+  <form name="formAvaliacao" ng-submit="avaliar(avaliacao)" novalidate>
+    <div class="row">
+      <div class="col-lg-6 mb-4">
+        <h2 id="texto_avaliar">Avaliar {{estabelecimento.Nome}}</h2>
         <br>
         <div class="control-group form-group">
           <div class="form-group">
@@ -71,8 +71,8 @@
         <div class="row">
           <span class="danger-label" ng-if="semFoto">Adicione uma foto à avaliação</span>
         </div>
-      </form>
+      </div>
     </div>
-  </div>
+  </form>
   <div class="row"></div>
 </div>

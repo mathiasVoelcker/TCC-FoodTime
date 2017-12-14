@@ -39,7 +39,7 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
 
     $scope.avaliacao
     $scope.avaliar = function(avaliacao){
-      // debugger
+      console.log("ENTROU")
       var file = document.getElementById('file').files[0];
       if(file != undefined){
         if($scope.formAvaliacao.$valid){
