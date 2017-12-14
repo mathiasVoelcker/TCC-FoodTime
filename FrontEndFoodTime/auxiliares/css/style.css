@@ -64,6 +64,9 @@ html, body {height:100%;}
 	border-color: rgb(252,185,78);
 }
 .d-flex_usuario{
+	/*margin-left:20%;
+	border: 5px solid rgb(252,185,78);
+	margin-top:50px;*/
 	width:15%;
 	height:10%;	
 	margin-left:20%;
@@ -73,7 +76,7 @@ html, body {height:100%;}
 #header_usuario{
 	display: flex;
 	margin-top:3.5%;
-	height:10%;
+	height:20%;
 }
 .cor_usuario{
 	color:rgb(252,185,78);

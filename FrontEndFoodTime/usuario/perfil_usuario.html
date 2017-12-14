@@ -1,11 +1,11 @@
 <cwi-header></cwi-header>
 
 <!-- Header - set the background image for the header in the line below -->
-<header class="py-3 bg-image-full" style="background-image: url('auxiliares/imgs/1@2x.jpg');" id="header_usuario">
+<!--<header class="py-3 bg-image-full" style="background-image: url('auxiliares/imgs/1@2x.jpg');" id="header_usuario">
   <img class="d-flex_usuario mr-6 rounded-circle" src="{{usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
-    alt="">
+    alt="" width="134" height="136">
   <!-- Content section -->
-  <section class="py-1">
+ <!-- <section class="py-1">
     <div class="container">
         <div class="espaco_2"></div>
         <h1 class="cor_dados">{{usuario.Nome}}</h1>
@@ -20,12 +20,39 @@
             <a class="btn btn-primary" href="#!/minhaPreferencia/">Minhas preferêcias</a>
             <a class="btn btn-primary" href="#!/sugerirEstabelecimento">Sugerir Estabelecimento</a>
             <!--<a class="btn btn-primary" href="#!/aprovacoes">Aprovações</a>-->
-          </div>
+         <!-- </div>
         </div>
       </div>
     </div>
   </section>
+</header>-->
+
+<header class="py-3 bg-image-full" style="background-image: url('auxiliares/imgs/1@2x.jpg');" id="header_usuario">
+  <!--<img class="d-flex_usuario mr-3 rounded-circle" src="auxiliares/imgs/photo.jpg" alt="">-->
+  <img class="d-flex_usuario mr-3 rounded-circle" ng-src="{{usuario.FotoPerfil || 'auxiliares/imgs/user.png'}}" alt="">
+<section class="py-1">
+  <div class="container">
+      <div class="espaco_2"></div>
+      <h1 class="cor_dados">{{usuario.Nome}}</h1>
+    <div class="row">
+      <div class="col-md-12">
+        <h4 class="cor_dados">Email:</h4> <span class="cor_resp">{{usuario.Email}}</span>
+        <h4 class="cor_dados">Data de Nascimento:</h4> <span class="cor_resp">{{usuario.DataNascimento}}</span>
+      </div>
+      <div class="container">
+        <br>
+        <div class="col-md-12s">
+          <a class="btn btn-primary" href="#!/minhaPreferencia/">Minhas preferêcias</a>
+          <a class="btn btn-primary" href="#!/sugerirEstabelecimento">Sugerir Estabelecimento</a>
+          <!--<a class="btn btn-primary" href="#!/aprovacoes">Aprovações</a>-->
+       </div>
+      </div>
+    </div>
+  </div>
+</section>
 </header>
+
+
 <div class="container">
 <section class="py-5">
   <div class="container">
