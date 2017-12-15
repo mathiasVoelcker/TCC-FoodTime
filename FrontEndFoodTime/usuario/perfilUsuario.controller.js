@@ -12,6 +12,7 @@ angular.module('app')
       function (response) {
         console.log(response.data)
         $scope.avaliacoes = response.data
+        $scope.$apply()
       }
     )
 
