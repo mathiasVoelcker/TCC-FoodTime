@@ -12,40 +12,39 @@
 </header>
 <br>
 <section class="py-3">
-    <div class="container">
-      <h3 ng-if="mostraRecomendacoes">Estabelecimentos Recomendados</h3>
-      <br>
-      <div class="row" ng-if="mostraRecomendacoes">
-        <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
-          <div class="card h-100 border-table-estabelecimento">
-            <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="{{recomendacao.Fotos[0] || '\\auxiliares\\imgs\\logoFoodTime_new.jpg'}}" alt="" style="width:100%;height:155px;"></a>
-            <div class="card-body">
-              <h4 class="card-title">
-                <a href="#!/estabelecimento/{{recomendacao.Id}}">{{recomendacao.Nome}}</a>
-              </h4>
-              <p class="card-text">Telefone: {{recomendacao.Telefone}}</p>
-              <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
-              <div>
-                <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
-                <a class="btn btn-auxiliar" style="cursor:pointer;" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
-              </div>
+  <div class="container">
+    <h3 ng-if="mostraRecomendacoes">Estabelecimentos Recomendados</h3>
+    <br>
+    <div class="row" ng-if="mostraRecomendacoes">
+      <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
+        <div class="card h-100 border-table-estabelecimento">
+          <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="../auxiliares/fotos/{{recomendacao.Fotos[0]}}" alt="" style="width:100%;height:155px;"></a>
+          <div class="card-body">
+            <h4 class="card-title">
+              <a href="#!/estabelecimento/{{recomendacao.Id}}">{{recomendacao.Nome}}</a>
+            </h4>
+            <p class="card-text">Telefone: {{recomendacao.Telefone}}</p>
+            <p class="card-text">Preco Medio: R$ {{recomendacao.PrecoMedio}}</p>
+            <div>
+              <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
+              <a class="btn btn-auxiliar" style="cursor:pointer;" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>
             </div>
           </div>
         </div>
       </div>
-     
     </div>
-  </section>
+  </div>
+</section>
 <section class="py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-5">
-          <h3>Adicionar participantes ao grupo</h3>
-          <div class="row">
-            <div class="col-md-11">
-              <adicionar-participantes id-grupo="grupo.Id" esta-criando="false"></adicionar-participantes>
-            </div>
+        <h3>Adicionar participantes ao grupo</h3>
+        <div class="row">
+          <div class="col-md-11">
+            <adicionar-participantes id-grupo="grupo.Id" esta-criando="false"></adicionar-participantes>
           </div>
+        </div>
       </div>
       <div class="col-md-3">
         <div>
@@ -54,8 +53,8 @@
         <br>
         <div class="table-overflow_participantes">
           <div class="media mb-4" ng-repeat="participante in participantes">
-            <img class="d-flex mr-3 rounded-circle border_img_grupos" src="{{participante.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
-              alt="" style="width:50px;height:50px;">
+            <img class="d-flex mr-3 rounded-circle border_img_grupos" src="../auxiliares/fotos/{{participante.Usuario.FotoPerfil}}"
+            alt="" style="width:50px;height:50px;">
             <div class="media-body">
               <h5 class="mt-0">{{participante.Usuario.Nome}}</h5>
               E-mail: {{participante.Usuario.Email}}
@@ -71,8 +70,8 @@
         <br>
         <div class="table-overflow_participantes">
           <div class="media mb-4" ng-repeat="solicitacao in solicitacoes">
-            <img class="d-flex mr-3 rounded-circle border_img_grupos" src="{{solicitacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
-              alt="" style="width:50px;height:50px;">
+            <img class="d-flex mr-3 rounded-circle border_img_grupos" src="../auxiliares/fotos/{{solicitacao.Usuario.FotoPerfil}}"
+            alt="" style="width:50px;height:50px;">
             <div class="media-body">
               <h5 class="mt-0">{{solicitacao.Usuario.Nome}}</h5>
               E-mail: {{solicitacao.Usuario.Email}}
@@ -83,8 +82,8 @@
       </div>
     </div>
     <br>
-   
+
   </div>
-  </div>
-  
+</div>
+
 </section>

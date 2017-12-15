@@ -44,7 +44,7 @@
                 <tr ng-repeat="usuario in usuarios">
                   <td class="clickable-area">
                     <div class="media mb-4" ng-click="selecionarUsuario(usuario)" >
-                      <img class="d-flex mr-3 rounded-circle" src="{{usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
+                      <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{usuario.FotoPerfil}}" alt="" style="width:50px;height:50px;">
                       <div class="media-body">
                         <h5 class="mt-3">{{usuario.Nome}}</h5>
                       </div>
@@ -76,7 +76,7 @@
                 <tr ng-repeat="solicitacao in solicitacoes">
                   <td>
                     <div class="media mb-4">
-                      <img class="d-flex mr-3 rounded-circle" src="{{solicitacao.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}" alt="" style="width:50px;height:50px;">
+                      <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{solicitacao.FotoPerfil}}" alt="" style="width:50px;height:50px;">
                       <div class="media-body">
                         <h5 class="mt-3">{{solicitacao.Nome}}</h5>
                       </div>
