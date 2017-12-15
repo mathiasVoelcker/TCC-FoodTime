@@ -8,11 +8,10 @@ namespace FoodTime.Dominio.Entidades
 {
     public class Endereco
     {
-        public Endereco(string rua, string numero, string apto, string complemento, string bairro, string cidade, string estado, string cep, decimal latitude, decimal longitude)
+        public Endereco(string rua, string numero, string complemento, string bairro, string cidade, string estado, string cep, decimal latitude, decimal longitude)
         {
             Rua = rua;
             Numero = numero;
-            Apto = apto;
             Complemento = complemento;
             Bairro = bairro;
             Cidade = cidade;
@@ -29,7 +28,6 @@ namespace FoodTime.Dominio.Entidades
         public int Id { get; private set; }
         public string Rua { get; private set; }
         public string Numero { get; private set; }
-        public string Apto { get; private set; }
         public string Complemento { get; private set; }
         public string Bairro { get; private set; }
         public string Cidade { get; private set; }
@@ -53,9 +51,6 @@ namespace FoodTime.Dominio.Entidades
                 mensagens.Add("Numero não pode ser nulo.");
 
             if (Numero.Length > 20)
-                mensagens.Add("Tamanho máximo 20 caracteres.");
-
-            if (Apto.Length > 20)
                 mensagens.Add("Tamanho máximo 20 caracteres.");
 
             if (Complemento.Length > 50)
@@ -97,7 +92,7 @@ namespace FoodTime.Dominio.Entidades
 
         public bool Comparar(string endereco)
         {
-            var enderecoString = Rua + " " + Numero + " " + Apto + " " + Complemento + " " + Bairro + " " + Cidade + " " + Estado + " " + CEP;
+            var enderecoString = Rua + " " + Numero + " " + Complemento + " " + Bairro + " " + Cidade + " " + Estado + " " + CEP;
             enderecoString = enderecoString.ToUpper();
             endereco = endereco.ToUpper();
             return enderecoString.Contains(endereco);

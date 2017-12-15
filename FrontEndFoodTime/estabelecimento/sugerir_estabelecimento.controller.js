@@ -6,6 +6,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
   $scope.estabelecimento.idCategorias = []
   $scope.estabelecimento.idFotos = []
   $scope.estabelecimento.IdPreferencias = []
+  $scope.estabelecimento.Aprovado = true
 
   $scope.buscouEstab = false
 

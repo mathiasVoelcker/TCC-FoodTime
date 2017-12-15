@@ -15,7 +15,6 @@ namespace FoodTime.Infraestrutura.Mapping
         {
             ToTable("Endereco", "schemaFoodTime");
             HasKey(x => x.Id);
-            Property(x => x.Apto).HasMaxLength(20).IsOptional();
             Property(x => x.Bairro).HasMaxLength(50).IsRequired();
             Property(x => x.CEP).HasMaxLength(8).IsRequired();
             Property(x => x.Cidade).HasMaxLength(50).IsRequired();

@@ -11,7 +11,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Inicializacao_De_Estabelecimento()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -38,7 +38,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Nome_Nulo_Ou_Vazio()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -80,7 +80,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Nome_Maior()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -101,7 +101,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Telefone_Nulo_Ou_Vazio()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -122,7 +122,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Telefone_Maior()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -143,7 +143,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Preco_Medio_Nulo_Ou_Vazio()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -164,7 +164,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Lista_De_Fotos_Nulo_Ou_Vazio()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = null;
             Estabelecimento estabelecimento;
@@ -187,7 +187,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Com_Lista_De_Categorias_Nulo_Ou_Vazio()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -209,7 +209,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Metodo_Esta_Aberto_Return_True()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -230,7 +230,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Metodo_Esta_Aberto_Return_False()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -252,7 +252,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Coeficiente()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -275,7 +275,7 @@ namespace FoodTime.UnitTest
         [TestMethod]
         public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Estabelecimento()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
+            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;

@@ -32,7 +32,7 @@ namespace FoodTime.UnitTest
 
             grupo = new Grupo(nomeGrupo, imagem);
 
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste",  "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -64,7 +64,7 @@ namespace FoodTime.UnitTest
 
             grupo = new Grupo(nomeGrupo, imagem);
 
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste",  "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
@@ -126,7 +126,7 @@ namespace FoodTime.UnitTest
             usuario = new Usuario(email, senha, nome, sobrenome, fotoPerfil, dataNascimento, isAdmin, null);
 
 
-            Endereco endereco = new Endereco("rua teste", "numero teste", "", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste",  "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = new List<Categoria>();
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;

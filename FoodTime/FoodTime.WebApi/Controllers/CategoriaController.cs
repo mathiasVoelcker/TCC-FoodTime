@@ -36,7 +36,7 @@ namespace FoodTime.WebApi.Controllers
         [Route("listar")]
         public IHttpActionResult BuscarTodasCategorias()
         {
-            List<Categoria> ListaDeCategoria = context.Categorias.ToList();
+            List<Categoria> ListaDeCategoria = context.Categorias.AsNoTracking().ToList();
             if (ListaDeCategoria.Count == 0)
                 return BadRequest("Nenhuma categoria encontrada.");
             return Ok(ListaDeCategoria);

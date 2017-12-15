@@ -13,7 +13,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "numero teste";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -22,11 +22,11 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Rua == rua);
             Assert.IsTrue(endereco.Numero == numero);
-            Assert.IsTrue(endereco.Apto == apto);
+            
             Assert.IsTrue(endereco.Complemento == complemento);
             Assert.IsTrue(endereco.Bairro == bairro);
             Assert.IsTrue(endereco.Cidade == cidade);
@@ -42,7 +42,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "";
             var numero = "numero teste";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -51,7 +51,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Rua == rua);
             Assert.IsTrue(endereco.ValidarEntrada().Count==1);
@@ -64,7 +64,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum ";
             var numero = "numero teste";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -73,7 +73,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Rua == rua);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -86,7 +86,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -95,7 +95,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Numero == numero);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -108,7 +108,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "Llorem ipsum Llorem ipsum Llorem ";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -117,7 +117,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Numero == numero);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -130,7 +130,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "";
             var cidade = "Porto Alegre";
@@ -139,7 +139,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Bairro == bairro);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -152,7 +152,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ";
             var cidade = "Porto Alegre";
@@ -161,7 +161,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Bairro == bairro);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -175,7 +175,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "";
@@ -184,7 +184,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Cidade == cidade);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -197,7 +197,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ipsum Llorem ";
@@ -206,7 +206,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Cidade == cidade);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -219,7 +219,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -228,7 +228,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Estado == estado);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -241,7 +241,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -250,7 +250,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Estado == estado);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -263,7 +263,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -272,7 +272,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.CEP == cep);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -285,7 +285,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -294,7 +294,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
            
             Assert.IsTrue(endereco.CEP == cep);
@@ -309,7 +309,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -318,7 +318,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.CEP == cep);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -331,7 +331,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -340,7 +340,7 @@ namespace FoodTime.UnitTest
             var latitude = 0M;
             var longitude = 15.0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Latitude == latitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -353,7 +353,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -362,7 +362,7 @@ namespace FoodTime.UnitTest
             var latitude = 15.1M;
             var longitude = 0M;
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
 
             Assert.IsTrue(endereco.Longitude == longitude);
             Assert.IsTrue(endereco.ValidarEntrada().Count == 1);
@@ -375,7 +375,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -385,7 +385,7 @@ namespace FoodTime.UnitTest
             var longitude = 0M;
             var stringAComparar = "ua tes";
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
             Assert.IsTrue(endereco.Comparar(stringAComparar));
         }
 
@@ -395,7 +395,7 @@ namespace FoodTime.UnitTest
             Endereco endereco;
             var rua = "rua teste";
             var numero = "369";
-            var apto = "";
+            
             var complemento = "";
             var bairro = "Centro";
             var cidade = "Porto Alegre";
@@ -405,7 +405,7 @@ namespace FoodTime.UnitTest
             var longitude = 0M;
             var stringAComparar = "ua test ";
 
-            endereco = new Endereco(rua, numero, apto, complemento, bairro, cidade, estado, cep, latitude, longitude);
+            endereco = new Endereco(rua, numero, complemento, bairro, cidade, estado, cep, latitude, longitude);
             Assert.IsFalse(endereco.Comparar(stringAComparar));
         }
     }
