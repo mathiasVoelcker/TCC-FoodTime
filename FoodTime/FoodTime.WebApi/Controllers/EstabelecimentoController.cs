@@ -31,11 +31,11 @@ namespace FoodTime.WebApi.Controllers
             Endereco endereco = context.Enderecos.OrderByDescending(x => x.Id).FirstOrDefault();
             List<Categoria> categorias = new List<Categoria>();
             List<Foto> fotos = new List<Foto>();
-            foreach (int idCategoria in estabelecimentoModel.idCategorias)
+            foreach (int idCategoria in estabelecimentoModel.IdCategorias)
             {
                 categorias.Add(context.Categorias.FirstOrDefault(x => x.Id == idCategoria));
             }
-            foreach (int idFoto in estabelecimentoModel.idFotos)
+            foreach (int idFoto in estabelecimentoModel.IdFotos)
             {
                 fotos.Add(context.Fotos.FirstOrDefault(x => x.Id == idFoto));
             }
@@ -49,6 +49,15 @@ namespace FoodTime.WebApi.Controllers
                 fotos,
                 estabelecimentoModel.Aprovado
                 );
+            foreach (int idPreferencia in estabelecimentoModel.IdPreferencias)
+            {
+                var preferencia = context.Preferencias.FirstOrDefault(x => x.Id == idPreferencia);
+                if (preferencia == null)
+                {
+                    return BadRequest("Preferencia nao encontrada");
+                }
+                context.EstabelecimentoPreferencias.Add(new EstabelecimentoPreferencia(estabelecimento, preferencia, true));
+            }
             context.Estabelecimentos.Add(estabelecimento);
             context.SaveChanges();
             return Created("Sucesso", estabelecimento);

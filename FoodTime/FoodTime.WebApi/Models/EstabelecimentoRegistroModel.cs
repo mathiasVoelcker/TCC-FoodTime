@@ -11,12 +11,13 @@ namespace FoodTime.WebApi.Models
 
         public string Nome { get; set; }
         public string Telefone { get; set; }
-        public List<int> idCategorias { get; set; }
-        public List<int> idFotos { get; set; }
+        public List<int> IdCategorias { get; set; }
+        public List<int> IdFotos { get; set; }
         public decimal PrecoMedio { get; set; }
         public DateTime HorarioAbertura { get; set; }
         public DateTime HorarioFechamento { get; set; }
         public Endereco Endereco { get; set; }
+        public List<int> IdPreferencias { get; set; }
         public bool Aprovado { get; set; }
     }
 }

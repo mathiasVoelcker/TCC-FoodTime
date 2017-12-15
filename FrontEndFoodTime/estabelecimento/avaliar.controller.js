@@ -2,12 +2,12 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
 
   $scope.idPreferencias = []
   $scope.semFoto = false;
+  $scope.idEstabelecimento = parseInt($routeParams.IdEstabelecimento)
+
   $scope.adicionarPreferencias = function (idPreferencia) {
     $scope.idPreferencias.push(idPreferencia)
     console.log($scope.idPreferencias)
   }
-
-  $scope.idEstabelecimento = parseInt($routeParams.IdEstabelecimento)
 
   $scope.removerPreferencias = function(idPreferencia){
     $scope.idPreferencias.splice(($scope.idPreferencias.indexOf(idPreferencia)), 1);

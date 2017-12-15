@@ -1,10 +1,11 @@
-angular.module('app').controller('SugerirEstabelecimentoController', function ($scope, $routeParams, authService, estabService, fotoService, categoriaService, $http) {
+angular.module('app').controller('SugerirEstabelecimentoController', function ($scope, $routeParams, $location, authService, estabService, fotoService, categoriaService, $http) {
 
   $scope.estabelecimento = { }
   $scope.estabelecimento.Endereco = { }
   $scope.estabelecimento.Fotos = []
   $scope.estabelecimento.idCategorias = []
   $scope.estabelecimento.idFotos = []
+  $scope.estabelecimento.IdPreferencias = []
 
   $scope.buscouEstab = false
 
@@ -38,8 +39,19 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
     return;
   }
 
+
+  $scope.adicionarPreferencias = function (idPreferencia) {
+    $scope.estabelecimento.IdPreferencias.push(idPreferencia)
+    console.log($scope.estabelecimento.IdPreferencias)
+  }
+
+  $scope.removerPreferencias = function(idPreferencia){
+    $scope.estabelecimento.IdPreferencias.splice(($scope.estabelecimento.IdPreferencias.indexOf(idPreferencia)), 1);
+    console.log($scope.estabelecimento.IdPreferencias)
+  }
+
   $scope.cadastrarEstabelecimento = function(estabelecimento){
-    if(sugerirEstabelecimento.$valid){
+    if($scope.sugerirEstabelecimento.$valid){
       var file = document.getElementById('file').files[0];
       var fd = new FormData();
       fd.append('file', file);
@@ -56,10 +68,10 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
           function(response){
             alert("Estabelecimento Cadastrado com sucesso")
             console.log(response)
+            redirecionar();
           }
         )
       }
-      redirecionar();
     }
 
 

@@ -90,12 +90,12 @@
               <label>Categoria</label>
               <select class="form-control dropdown" multiple ng-selected="value=''" ng-model="estabelecimento.idCategorias" >
                   <!-- <select class="form-control dropdown" multiple ng-selected="value=''" ng-model="filtro.Categoria" > -->
-                      
-                <option ng-repeat="categoria in categorias" ng-model="estabelecimento.idCategoria" ng-value="categoria.Id">{{categoria.Descricao}}</option> 
+
+                <option ng-repeat="categoria in categorias" ng-model="estabelecimento.idCategoria" ng-value="categoria.Id">{{categoria.Descricao}}</option>
               </select>
             </div>
           </div>
-          <preferencias-diretiva com-todas-preferencias="comTodasPreferencias" adicionar-preferencias-func="adicionarPreferencias" remover-preferencias-func="removerPreferencias"></preferencias-diretiva>
+          <preferencias-diretiva id-estabelecimento="0" com-todas-preferencias="true" adicionar-preferencias-func="adicionarPreferencias" remover-preferencias-func="removerPreferencias"></preferencias-diretiva>
 
         <div id="success"></div>
         <!-- For success/fail messages -->
