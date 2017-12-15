@@ -35,9 +35,9 @@ namespace FoodTime.WebApi.Controllers
             {
                 categorias.Add(context.Categorias.FirstOrDefault(x => x.Id == idCategoria));
             }
-            foreach (int idFoto in estabelecimentoModel.IdFotos)
+            foreach (string foto in estabelecimentoModel.Fotos)
             {
-                fotos.Add(context.Fotos.FirstOrDefault(x => x.Id == idFoto));
+                fotos.Add(new Foto(foto));
             }
             Estabelecimento estabelecimento = new Estabelecimento(estabelecimentoModel.Nome,
                 estabelecimentoModel.Telefone,
@@ -268,7 +268,7 @@ namespace FoodTime.WebApi.Controllers
             //buscar estabelecimentos nao recusados
             estabelecimentos = estabelecimentos.Where(x => !context.Usuarios.Include(y => y.EstabelecimentosRecusados).FirstOrDefault(y => y.Id == idUsuario).EstabelecimentosRecusados.Any(z => z.Id == x.Id)).ToList();
             //buscar estabelecimentos abertos
-            estabelecimentos = estabelecimentos.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 12, 12, 0, 0))).ToList();
+            estabelecimentos = estabelecimentos.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 15, 12, 0, 0))).ToList();
             if (estabelecimentos.Count == 0)
             {
                 return "Não há estabelecimentos abertos no momento.";
