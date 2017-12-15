@@ -42,7 +42,8 @@ angular.module('auth').factory('estabService', function (authConfig, $http, $q, 
   }
 
   function buscarPorFiltrosLocalizacao(filtro, posicao){
-    return $http.get(urlEstabelecimento+"buscarPorFiltrosLocalizacao?&estabFiltro.nome=" + filtro.Nome + "&estabLocalFiltro.latitude=" + posicao.lat + "&estabLocalFiltro.longitude=" + posicao.lng + "&estabFiltro.categorias=" + filtro.Categoria);
+    console.log(filtro)
+    return $http.get(urlEstabelecimento+"buscarPorFiltrosLocalizacao?&estabLocalFiltro.nome=" + filtro.Nome + "&estabLocalFiltro.latitude=" + posicao.lat + "&estabLocalFiltro.longitude=" + posicao.lng + "&estabLocalFiltro.categorias=" + filtro.Categoria);
   }
 
   function adicionarPreferencias(idPreferencias, idEstab){
