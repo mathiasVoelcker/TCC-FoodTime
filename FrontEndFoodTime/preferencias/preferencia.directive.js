@@ -22,6 +22,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
           preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario).then(
             function (response) {
               $scope.preferencias = response.data;
+              console.log($scope.preferencias)
             });
             // preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario);
           }
@@ -29,10 +30,14 @@ angular.module('app').directive('preferenciasDiretiva', function () {
 
           $scope.trocaLimite = function trocaLimite() {
             var target = document.getElementById("listarTodos");
-            if (target.checked == true)
-            $scope.limit = 'All';
+            if ($scope.flag)
+            {
+              $scope.limit = 'All';
+            }
             else
-            $scope.limit = 5;
+            {
+              $scope.limit = 5;
+            }
           }
 
 
