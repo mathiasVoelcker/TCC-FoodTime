@@ -1,4 +1,4 @@
-angular.module('app').controller('SugerirEstabelecimentoController', function ($scope, $routeParams, $location, authService, estabService, fotoService, categoriaService, $http) {
+angular.module('app').controller('SugerirEstabelecimentoController', function ($scope, $routeParams, $location, authService, estabService, toastr, fotoService, categoriaService, $http) {
 
   $scope.estabelecimento = { }
   $scope.estabelecimento.Endereco = { }
@@ -56,7 +56,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
         }
       })
     })
-    if(place.opening_hours != undefined){    
+    if(place.opening_hours != undefined){
       $scope.estabelecimento.HorarioAbertura = new Date(place.opening_hours.periods[0].open.nextDate)
       $scope.estabelecimento.HorarioFechamento = new Date(place.opening_hours.periods[0].close.nextDate)
     }
@@ -87,14 +87,14 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
         estabelecimento.Fotos.push(file.name);
         fotoService.addFoto(fd).then(
           function(response){
-            console.log("Foto adicionada com sucesso!");
+            toastr.success('Foto adicionada com sucesso!')
           }, function(response){
           }
         )};
         console.log(estabelecimento)
         estabService.criarEstabelecimento(estabelecimento).then(
           function(response){
-            alert("Estabelecimento Cadastrado com sucesso")
+            toastr.success('Estabelecimento Cadastrado com sucesso')
             console.log(response)
             redirecionar();
           }
