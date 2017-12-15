@@ -8,7 +8,7 @@
   <!-- Project One -->
   <div class="row">
     <div class="col-md-3">
-      <img class="img-fluid rounded mb-3 mb-md-0" src="{{estabelecimento.Fotos[0]}}" alt="" style="width:250px;height:200px;">
+      <img class="img-fluid rounded mb-3 mb-md-0" src="../auxiliares/fotos/{{estabelecimento.Fotos[0]}}" alt="" style="width:250px;height:200px;">
     </div>
     <div class="col-md-4">
       <h3>{{estabelecimento.Nome}}</h3>
@@ -29,7 +29,7 @@
   <div class="col-md-10">
     <div>
       <div class="media mb-4" ng-repeat="avaliacao in estabelecimento.Avaliacoes">
-        <img class="d-flex mr-3 rounded-circle" src="{{avaliacao.Usuario.FotoPerfil || 'https://n6-img-fp.akamaized.net/icones-gratis/homem-negro-simbolo-usuario_318-60703.jpg?size=338&ext=jpg'}}"
+        <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{avaliacao.Usuario.FotoPerfil}}"
           alt="" style="width:50px;height:50px;">
         <div class="media-body">
           <h5 class="mt-0">{{avaliacao.Usuario.Nome}}</h5>
