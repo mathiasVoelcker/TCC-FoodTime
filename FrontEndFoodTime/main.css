@@ -72,7 +72,7 @@ a:hover{
 }
 .div_login{
   margin-top: 3px;
-  margin-left: 40px; 
+  margin-left: 40px;
 }
 .clickable-area:hover{
   background-color: rgb(205,205,205);
@@ -100,4 +100,8 @@ a:hover{
 }
 .fundo_panel{
   /*background-color: rgb(252,185,78);*/
+}
+
+.loader {
+  background: url("../auxiliares/imgs/loading.gif") no-repeat center center;
 }

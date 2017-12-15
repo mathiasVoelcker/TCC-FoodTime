@@ -69,18 +69,20 @@
 
       <!-- <div class="col-md-5"> -->
       <div ng-if="estabelecimentos.length > 0">
-        <iframe
-        width="100%"
-        height="200"
-        frameborder="0"
-        scrolling="no"
-        marginheight="0"
-        marginwidth="0"
-        ng-src="{{trustSrc(estabelecimento.Endereco.Latitude, estabelecimento.Endereco.Longitude)}}"
-        >
+        <div  class="loader">
+          <iframe
+          width="100%"
+          height="200"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          ng-src="{{trustSrc(estabelecimento.Endereco.Latitude, estabelecimento.Endereco.Longitude)}}"
+          >
+        </div>
       </div>
 
+    </div>
+    <br>
   </div>
-  <br>
-</div>
 </div>

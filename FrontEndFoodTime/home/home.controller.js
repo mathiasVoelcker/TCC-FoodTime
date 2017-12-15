@@ -11,6 +11,7 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   // $scope.filtro.Nome = ""
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
+  $scope.mapaCarregado = false
   estabService.listar();
   navigator.geolocation.getCurrentPosition(function (position) {
     $scope.pos = {
@@ -19,6 +20,11 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
     }
     console.log($scope.pos)
   })
+
+  window.mapsCallBack = function(){
+    $scope.mapaCarregado = true
+    $scope.$apply()
+  }
 
   estabService.listarCinco().then(
     function(response){
