@@ -32,6 +32,34 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
     var place = $scope.autocomplete.getPlace();
     console.log(place)
     $scope.buscouEstab = true
+    place.address_components.forEach(function(address_component){
+      address_component.types.forEach(function(type){
+        switch(type){
+          case "route":
+          $scope.estabelecimento.Endereco.Rua = address_component.long_name
+          break;
+          case "street_number":
+          $scope.estabelecimento.Endereco.Numero = address_component.long_name
+          break;
+          case "postal_code":
+          $scope.estabelecimento.Endereco.CEP = address_component.long_name
+          break;
+          case "sublocality":
+          $scope.estabelecimento.Endereco.Bairro = address_component.long_name
+          break;
+          case "administrative_area_level_2":
+          $scope.estabelecimento.Endereco.Cidade = address_component.long_name
+          break;
+          case "administrative_area_level_1":
+          $scope.estabelecimento.Endereco.Estado = address_component.long_name
+          break;
+        }
+      })
+    })
+    if(place.opening_hours != undefined){    
+      $scope.estabelecimento.HorarioAbertura = new Date(place.opening_hours.periods[0].open.nextDate)
+      $scope.estabelecimento.HorarioFechamento = new Date(place.opening_hours.periods[0].close.nextDate)
+    }
     $scope.estabelecimento.Nome = place.name
     $scope.estabelecimento.Endereco.Latitude = place.geometry.location.lat();
     $scope.estabelecimento.Endereco.Longitude = place.geometry.location.lng();
