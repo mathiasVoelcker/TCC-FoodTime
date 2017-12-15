@@ -9,6 +9,7 @@ using System.Web.Http;
 
 namespace FoodTime.WebApi.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/grupoUsuario")]
     public class GrupoUsuarioController : ApiController
     {

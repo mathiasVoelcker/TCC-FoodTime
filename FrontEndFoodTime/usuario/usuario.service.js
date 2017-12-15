@@ -41,7 +41,7 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
   }
 
   function buscarPorFiltro(filtro){
-    return $http.get(urlUsuario + "/buscarPorFiltro?filtro=" + filtro)
+    return $http.get(urlUsuario + "buscarPorFiltro?filtro=" + filtro)
   }
 
   function buscarPorGrupo(idGrupo, filtro){

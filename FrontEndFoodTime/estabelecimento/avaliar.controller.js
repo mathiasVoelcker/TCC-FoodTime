@@ -33,7 +33,6 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
         console.log("Foto adicionada com sucesso!");
       }, function(response){
       })
-
     };
 
 

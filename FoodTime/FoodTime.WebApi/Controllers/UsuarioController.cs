@@ -11,7 +11,7 @@ using System.Web.Http;
 
 namespace FoodTime.WebApi.Controllers
 {
-
+    
     [RoutePrefix("api/usuario")]
     public class UsuarioController : ApiController
     {
@@ -27,7 +27,6 @@ namespace FoodTime.WebApi.Controllers
         [HttpGet]
         [Route("usuariologado")]
         public IHttpActionResult GetUsuarioLogado()
-
         {
             var usuario = context.Usuarios.FirstOrDefault(x => x.Email.Equals(User.Identity.Name));
 
@@ -38,6 +37,7 @@ namespace FoodTime.WebApi.Controllers
 
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IHttpActionResult ObterUsuarioPorEmail(string email)
         {
@@ -47,6 +47,7 @@ namespace FoodTime.WebApi.Controllers
             return Ok(new UsuarioModel(usuario));
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("buscarPorFiltro")]
         public IHttpActionResult ObterUsuarioPorFiltro(string filtro)
@@ -79,6 +80,7 @@ namespace FoodTime.WebApi.Controllers
             return Created($"api/usuario/{novoUsuario.Id}", novoUsuario);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("{id}")]
         public IHttpActionResult BuscarUsuarioPorId([FromUri]int id)
@@ -89,6 +91,7 @@ namespace FoodTime.WebApi.Controllers
             return Ok(new UsuarioModel(usuario));
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("buscarPorAvaliacoes")]
         public IHttpActionResult BuscarAvaliacoesPorUsuario([FromUri]UsuarioModel usuarioModel)
@@ -115,6 +118,7 @@ namespace FoodTime.WebApi.Controllers
             return Ok(usuarios);
         }
 
+        [AllowAnonymous]
         [HttpPut]
         [Route("excluirRecomendacao")]
         public IHttpActionResult ExcluirRecomendacao(int idEstabelecimento, int idUsuario)
@@ -126,6 +130,7 @@ namespace FoodTime.WebApi.Controllers
             return Ok(usuario);
         }
 
+        [AllowAnonymous]
         [HttpPut]
         [Route("adicionarPreferencias")]
         public IHttpActionResult AdicionarPreferencias([FromBody]List<int> idPreferencias, int idUsuario)

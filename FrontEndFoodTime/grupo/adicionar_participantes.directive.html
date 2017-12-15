@@ -1,4 +1,4 @@
-<form name="sentMessage" id="contactForm" novalidate>
+<form name="formGrupo" id="contactForm" novalidate>
     <div ng-if="estaCriando">
       <div class="control-group form-group">
         <div class="controls">
@@ -93,5 +93,6 @@
     <div id="success"></div>
     <!-- For success/fail messages -->
     <button type="submit" ng-click="salvarGrupo(grupo)" class="btn btn-primary" id="sendMessageButton">Salvar</button>
+    <span class="danger-label" ng-show="formGrupo.$invalid && formGrupo.$submitted">Todos os campos devem ser preenchidos</span>
   </div>
   </form>

@@ -4,7 +4,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
       "idGrupo": "=idGrupo",
       "estaCriando": "=estaCriando"
     },
-    controller: function ($scope, $rootScope, toastr, usuarioService, grupoService, authService, fotoService, $route){
+    controller: function ($scope, $rootScope, $location, toastr, usuarioService, grupoService, authService, fotoService, $route){
 
       var usuarioLogado = authService.getUsuario()
       $scope.mostraTabela = false
@@ -53,16 +53,18 @@ angular.module('app').directive('adicionarParticipantes', function(){
       }
 
       function criarGrupo(grupo){
-        if($scope.grupo.Nome == undefined){
-          toastr.error('Grupo deve ter um Nome!')
-        }
-        else{
-          $scope.addFoto()
-          console.log(grupo)
-          grupoService.criarGrupo(grupo).then(
-            function(response){
-              toastr.success('Grupo criado com sucesso!')
-            })
+        var file = document.getElementById('file').files[0];
+        if(file != undefined){
+          if($scope.formGrupo.$valid){
+            $scope.addFoto(file)
+            console.log(grupo)
+            grupoService.criarGrupo(grupo).then(
+              function(response){
+                toastr.success('Grupo criado com sucesso!')
+                $location.path(`/informacoesGrupo/${response.data.Id}`)
+              })
+
+            }
           }
         }
 
@@ -82,6 +84,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
                 toastr.success('Grupo atualizado com sucesso!')
               }
             )
+            $route.reload();
           }
         }
 
@@ -106,8 +109,7 @@ angular.module('app').directive('adicionarParticipantes', function(){
           }
         }
 
-        $scope.addFoto = function(){
-          var file = document.getElementById('file').files[0];
+        $scope.addFoto = function(file){
           var fd = new FormData();
           fd.append('file', file);
           $scope.grupo.Foto = file.name;

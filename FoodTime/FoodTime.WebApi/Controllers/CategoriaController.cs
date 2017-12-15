@@ -11,8 +11,6 @@ using FoodTime.Dominio.Entidades;
 
 namespace FoodTime.WebApi.Controllers
 {
-
-
     [AllowAnonymous]
     [RoutePrefix("api/categoria")]
     public class CategoriaController : ApiController

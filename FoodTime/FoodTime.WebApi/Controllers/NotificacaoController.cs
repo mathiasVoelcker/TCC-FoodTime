@@ -9,6 +9,7 @@ using System.Data.Entity;
 
 namespace FoodTime.WebApi.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/notificacao")]
     public class NotificacaoController : ApiController
     {

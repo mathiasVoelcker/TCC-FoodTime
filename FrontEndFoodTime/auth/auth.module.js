@@ -34,7 +34,6 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
       // Sucesso - HTTP 200
       function (response) {
-
         // Adiciona usuário e header ao localstorage
         var usuario = response.data.dados
         usuario.DataNascimento = formatarData(usuario.DataNascimento)
@@ -69,7 +68,6 @@ angular.module('auth').factory('authService', function (authConfig, $http, $q, $
 
   // LOGOUT (sem retorno)
   function logout() {
-
     // Limpa localstorage e http headers adicionados
     delete $localStorage.usuarioLogado;
     delete $localStorage.headerAuth;

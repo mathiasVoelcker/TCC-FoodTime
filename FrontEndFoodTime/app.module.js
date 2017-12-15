@@ -28,7 +28,7 @@ angular.module('app').constant('authConfig', {
     urlCategoria: 'http://localhost:65510/api/categoria/',
 
     //autenticado - admin
-    urlGrupo: 'http://localhost:65510/api/Grupo/',
+    urlGrupo: 'http://localhost:65510/api/grupo/',
 
     urlPreferencia: 'http://localhost:65510/api/preferencia/',
     urlGrupoUsuario: 'http://localhost:65510/api/GrupoUsuario/',

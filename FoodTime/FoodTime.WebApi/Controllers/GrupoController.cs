@@ -11,6 +11,7 @@ using System.Data.Entity;
 
 namespace FoodTime.WebApi.Controllers
 {
+    [AllowAnonymous]
     [RoutePrefix("api/grupo")]
     public class GrupoController : ApiController
     {
@@ -63,7 +64,7 @@ namespace FoodTime.WebApi.Controllers
                 }
             }
             context.SaveChanges();
-            return Ok(grupoModel);
+            return Ok(grupo);
         }
 
         [HttpGet]
