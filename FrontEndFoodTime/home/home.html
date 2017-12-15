@@ -64,7 +64,9 @@
       <div class="col-md-4">
         <h3><a href="#!/estabelecimento/{{estabelecimento.Id}}">{{estabelecimento.Nome}}</a></h3>
         <p>Preço Médio: {{estabelecimento.PrecoMedio}} &nbsp;Horário: Aberto </p>
-        <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp;Nº de avaliações: {{estabelecimento.NumAvaliacoes }}</p>
+        <p>Média: <span class="stars">
+          <span ng-style="{ 'width': getStars(estabelecimento.MediaAvaliacoes) }"></span>
+        </span> &nbsp;&nbsp;&nbsp;Nº de avaliações: {{estabelecimento.NumAvaliacoes }}</p>
       </div>
 
       <!-- <div class="col-md-5"> -->

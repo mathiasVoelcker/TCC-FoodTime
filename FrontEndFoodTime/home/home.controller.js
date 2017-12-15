@@ -12,6 +12,15 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
   $scope.mapaCarregado = false
+
+  $scope.getStars = function(rating) {
+    // Get the value
+    var val = parseFloat(rating);
+    // Turn value into number/100
+    var size = val*10;
+    return size + '%';
+  }
+
   estabService.listar();
   navigator.geolocation.getCurrentPosition(function (position) {
     $scope.pos = {
