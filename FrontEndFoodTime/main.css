@@ -98,9 +98,6 @@ a:hover{
   padding: 5px;
   border-radius: 2%;
 }
-.fundo_panel{
-  /*background-color: rgb(252,185,78);*/
-}
 
 .loader {
   background: url("../auxiliares/imgs/loading.gif") no-repeat center center;
