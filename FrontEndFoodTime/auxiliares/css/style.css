@@ -4,7 +4,6 @@
     overflow-y:auto;
 	margin-bottom:20px;
 }
-html, body {height:100%;}
 
 .table-overflow_participantes{
 	max-height:220px;
@@ -64,9 +63,6 @@ html, body {height:100%;}
 	border-color: rgb(252,185,78);
 }
 .d-flex_usuario{
-	/*margin-left:20%;
-	border: 5px solid rgb(252,185,78);
-	margin-top:50px;*/
 	width:15%;
 	height:10%;	
 	margin-left:20%;
@@ -89,8 +85,9 @@ html, body {height:100%;}
 	color: white;
 }
 .top-content{
-	background-image: url('../imgs/2.jpg');
-	background-repeat: repeat;
+	background-image: url('../imgs/fundo_09.jpg');
+	background-size: cover;
+	
 }
 #img_relogio{
 	padding-top: 80px;
@@ -129,4 +126,6 @@ html, body {height:100%;}
 	background:rgb(255, 8, 8);
 }
 
-  
+.text{
+	font-weight: bold;
+}
