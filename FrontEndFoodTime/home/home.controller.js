@@ -83,5 +83,9 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
     console.log($scope.usarLocalizacao)
   }
 
+  $scope.formatarPrecoMedio = function(numero){
+    numero = numero.toFixed(2);
+    return numero.toString().replace(/[.]/, ",")
+  }
 
 });

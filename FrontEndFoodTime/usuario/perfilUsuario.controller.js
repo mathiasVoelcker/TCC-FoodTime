@@ -45,4 +45,9 @@ angular.module('app')
       )
     }
 
+    $scope.formatarPrecoMedio = function(numero){
+      numero = numero.toFixed(2);
+      return numero.toString().replace(/[.]/, ",")
+    }
+
   });
