@@ -85,9 +85,11 @@
 	color: white;
 }
 .top-content{
-	
-
+	background-image: url('../imgs/fundo_09.jpg');
+	background-size: cover;
+	height: 100%;
 }
+
 #img_relogio{
 	padding-top: 80px;
 }

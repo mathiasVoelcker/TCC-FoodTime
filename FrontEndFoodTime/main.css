@@ -1,8 +1,10 @@
+html, body{
+  height: 100%;
+}
 body {
   padding-top: 0px;
   /*background-image: url('auxiliares/imgs/fundo_home.jpg')*/
-  background: url('auxiliares/imgs/fundo_09.jpg') no-repeat center center fixed;
-	background-size: cover;
+
 }
 a {
   color: inherit; /* blue colors for links too */
