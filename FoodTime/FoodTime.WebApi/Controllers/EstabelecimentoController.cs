@@ -25,7 +25,6 @@ namespace FoodTime.WebApi.Controllers
         [HttpPost]
         public IHttpActionResult CriarEstabelecimento([FromBody] EstabelecimentoRegistroModel estabelecimentoModel)
         {
-
             context.Enderecos.Add(estabelecimentoModel.Endereco);
             context.SaveChanges();
             Endereco endereco = context.Enderecos.OrderByDescending(x => x.Id).FirstOrDefault();
@@ -34,10 +33,6 @@ namespace FoodTime.WebApi.Controllers
             foreach (int idCategoria in estabelecimentoModel.IdCategorias)
             {
                 categorias.Add(context.Categorias.FirstOrDefault(x => x.Id == idCategoria));
-            }
-            foreach (string foto in estabelecimentoModel.Fotos)
-            {
-                fotos.Add(new Foto(foto));
             }
             Estabelecimento estabelecimento = new Estabelecimento(estabelecimentoModel.Nome,
                 estabelecimentoModel.Telefone,
@@ -59,6 +54,11 @@ namespace FoodTime.WebApi.Controllers
                 context.EstabelecimentoPreferencias.Add(new EstabelecimentoPreferencia(estabelecimento, preferencia, true));
             }
             context.Estabelecimentos.Add(estabelecimento);
+            context.SaveChanges();
+            foreach (string foto in estabelecimentoModel.Fotos)
+            {
+                fotos.Add(new Foto(foto));
+            }
             context.SaveChanges();
             return Created("Sucesso", estabelecimento);
         }
