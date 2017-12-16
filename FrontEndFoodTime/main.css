@@ -102,6 +102,12 @@ a:hover{
   background: url("../auxiliares/imgs/loading.gif") no-repeat center center;
 }
 
+.loader-card {
+  background: url("../auxiliares/imgs/loading.gif") no-repeat center center;
+  height: 421px;
+  width: 247px;
+}
+
 span.stars, span.stars span {
     display: block;
    /* Download the star image here: http://stackoverflow.com/questions/1987524/turn-a-number-into-star-rating-display-using-jquery-and-css */

@@ -6,6 +6,7 @@ angular.module('app')
     // console.log($scope.usuario.DataNascimento)
     // console.log($scope.usuario)
     buscarRecomendacoes()
+    $scope.carregouRecomendacao = false
 
 
     usuarioService.buscarAvaliacoesUsuario($scope.usuario.Id).then(
@@ -16,6 +17,13 @@ angular.module('app')
       }
     )
 
+    $scope.getStars = function(rating) {
+      // Get the value
+      var val = parseFloat(rating);
+      // Turn value into number/100
+      var size = val*10;
+      return size + '%';
+    }
 
     // //teste de buscar o primeiro
     // buscarUsuario(1);
@@ -31,12 +39,14 @@ angular.module('app')
           function (response) {
             console.log(response)
             $scope.recomendacoes = response.data
+            $scope.carregouRecomendacao = true
           }
         )
       })
     }
 
     $scope.excluirRecomendacao = function (idEstabelecimento) {
+      $scope.carregouRecomendacao = false
       usuarioService.excluirRecomendacao(idEstabelecimento, $scope.usuario.Id).then(
         function (response) {
           console.log(response)
