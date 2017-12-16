@@ -7,6 +7,7 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
   var novosParticipantes = []
   var idUsuario = authService.getUsuario().Id
   var idGrupo = $routeParams.IdGrupo
+  $scope.carregouRecomendacao = false
 
   grupoService.buscarGrupo($routeParams.IdGrupo).then(
     function (response) {
@@ -63,13 +64,15 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
         }
         grupoService.buscarRecomendacao(idUsuario, idGrupo, pos.lat, pos.lng).then(
           function (response) {
-            $scope.mostraRecomendacoes = (typeof response.data != "string")
+            // $scope.mostraRecomendacoes = (typeof response.data != "string")
             $scope.recomendacoes = response.data
+            $scope.carregouRecomendacao = true
           })
         })
       }
 
       $scope.excluirRecomendacao = function (idEstabelecimento) {
+        $scope.carregouRecomendacao = false
         usuarioService.excluirRecomendacao(idEstabelecimento, idUsuario).then(
           function (response) {
             console.log(response)

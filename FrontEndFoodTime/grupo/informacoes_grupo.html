@@ -15,7 +15,7 @@
   <div class="container">
     <h3 ng-if="mostraRecomendacoes">Estabelecimentos Recomendados</h3>
     <br>
-    <div class="row" ng-if="mostraRecomendacoes">
+    <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-6 portfolio-item" ng-repeat="recomendacao in recomendacoes">
         <div class="card h-100 border-table-estabelecimento">
           <a href="#!/estabelecimento/{{recomendacao.Id}}"><img class="card-img-top" src="../auxiliares/fotos/{{recomendacao.Fotos[0]}}" alt="" style="width:100%;height:155px;"></a>
@@ -31,6 +31,14 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="loader-card border-table-estabelecimento col-lg-3 col-sm-6" ng-if="!carregouRecomendacao">
+      </div>
+      <div class="loader-card border-table-estabelecimento col-lg-3 col-sm-6" ng-if="!carregouRecomendacao">
+      </div>
+      <div class="loader-card border-table-estabelecimento col-lg-3 col-sm-6" ng-if="!carregouRecomendacao">
+      </div>
+      <div class="loader-card border-table-estabelecimento col-lg-3 col-sm-6" ng-if="!carregouRecomendacao">
       </div>
     </div>
   </div>
