@@ -27,6 +27,11 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
       console.log(IdUsuarios)
     }
 
+    $scope.removerParticipante = function(participante){
+      $scope.grupo.IdUsuarios.splice($scope.grupo.IdUsuarios.indexOf(participante.Id), 1)
+      console.log($scope.grupo)
+    }
+
     $scope.atualizarGrupo = function(){
       if(IdUsuarios.length == 0){
         toastr.error('Nenhum usuário selecionado!')

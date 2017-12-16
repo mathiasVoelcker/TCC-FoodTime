@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('GrupoController', function ($scope, authService, toastr, usuarioService, grupoService, fotoService, $http) {
+.controller('GrupoController', function ($scope, $location, authService, toastr, usuarioService, grupoService, fotoService, $http) {
 
   var usuarioLogado = authService.getUsuario()
   $scope.grupo = {Nome: "", Foto: "", IdUsuarios: [usuarioLogado.Id]};
@@ -12,6 +12,11 @@ angular.module('app')
 
   $scope.selecionarParticipante = function(participante){
     $scope.grupo.IdUsuarios.push(participante.Id)
+    console.log($scope.grupo)
+  }
+
+  $scope.removerParticipante = function(participante){
+    $scope.grupo.IdUsuarios.splice($scope.grupo.IdUsuarios.indexOf(participante.Id), 1)
     console.log($scope.grupo)
   }
 

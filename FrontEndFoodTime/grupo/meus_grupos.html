@@ -21,7 +21,7 @@
             <p class="help-block"></p>
           </div>
         </div>
-        <adicionar-participantes id-grupo="0" selecionar-participante="selecionarParticipante"></adicionar-participantes>
+        <adicionar-participantes id-grupo="0" selecionar-participante="selecionarParticipante" remover-participante="removerParticipante"></adicionar-participantes>
         <button type="submit" ng-click="criarGrupo(grupo)" class="btn btn-primary" id="sendMessageButton">Salvar</button>
         <span class="danger-label" ng-show="formGrupo.$invalid && formGrupo.$submitted">Todos os campos devem ser preenchidos</span>
       </form>

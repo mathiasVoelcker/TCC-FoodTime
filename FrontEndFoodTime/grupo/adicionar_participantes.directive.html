@@ -26,8 +26,8 @@
           </thead>
           <tbody>
             <tr ng-repeat="usuario in usuarios">
-              <td class="clickable-area">
-                <div class="media mb-4" ng-click="selecionarUsuario(usuario)" >
+              <td class="clickable-area" ng-click="selecionarUsuario(usuario)">
+                <div class="media mb-4">
                   <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{usuario.FotoPerfil}}" alt="" style="width:50px;height:50px;">
                   <div class="media-body">
                     <h5 class="mt-3">{{usuario.Nome}}</h5>
@@ -58,7 +58,7 @@
           </thead>
           <tbody >
             <tr ng-repeat="solicitacao in solicitacoes">
-              <td>
+              <td class="clickable-area" ng-click="removerUsuario(solicitacao)">
                 <div class="media mb-4">
                   <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{solicitacao.FotoPerfil}}" alt="" style="width:50px;height:50px;">
                   <div class="media-body">
@@ -74,4 +74,4 @@
     </div>
   </div>
 </div>
-<!-- For success/fail messages -->    
+<!-- For success/fail messages -->

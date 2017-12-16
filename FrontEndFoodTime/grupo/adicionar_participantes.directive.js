@@ -2,7 +2,8 @@ angular.module('app').directive('adicionarParticipantes', function(){
   return {
     scope: {
       "idGrupo": "=idGrupo",
-      "selecionarParticipante": "=selecionarParticipante"
+      "selecionarParticipante": "=selecionarParticipante",
+      "removerParticipante": "=removerParticipante"
       // "removerParticipantes": "=removerParticipantes"
     },
     controller: function ($scope, $rootScope, $location, toastr, usuarioService, grupoService, authService, fotoService, $route){
@@ -29,6 +30,14 @@ angular.module('app').directive('adicionarParticipantes', function(){
         $scope.usuarios.splice($scope.usuarios.indexOf(usuario), 1); //remover usuario de lista de participantes quando selecionado
         $scope.solicitacoes.push(usuario); //inserir usuario a lista de solicitacoes para o grupo
         $scope.selecionarParticipante(usuario)
+      }
+
+      $scope.removerUsuario = function(usuario) {
+        if(usuario.Id != usuarioLogado.Id){
+          $scope.solicitacoes.splice(($scope.solicitacoes.indexOf(usuario)), 1);
+          $scope.usuarios.push(usuario);
+          $scope.removerParticipante(usuario)
+        }
       }
 
       function atualizarTabelasParticipantes(){
