@@ -105,6 +105,7 @@ namespace FoodTime.WebApi.Controllers
             return Ok(avaliacoes);
         }
 
+        [AllowAnonymous]
         [HttpGet]
         [Route("buscarPorGrupo")]
         public IHttpActionResult BuscarUsuariosNaoMembrosDeGrupo(int idGrupo, string filtro)

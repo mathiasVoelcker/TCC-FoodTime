@@ -1,98 +1,77 @@
-<form name="formGrupo" id="contactForm" novalidate>
-    <div ng-if="estaCriando">
-      <div class="control-group form-group">
-        <div class="controls">
-          <label>Nome:</label>
-          <input type="text" ng-model="grupo.Nome" class="form-control" id="name" placeholder="Digite o nome do grupo" required data-validation-required-message="Por favor, digite seu nome.">
-          <p class="help-block"></p>
-        </div>
-      </div>
-      <div class="control-group form-group">
-        <div class="controls">
-          <label>Foto:</label>
-          <input type="file" class="btn" id="file" required>
-          <p class="help-block"></p>
-        </div>
+
+<div class="control-group form-group">
+  <div class="controls" >
+    <label>Buscar participante</label>
+    <div >
+      <div class="input-group">
+        <input type="text" ng-model="filtro" class="form-control" placeholder="Buscar usuarios por nome ou e-mail">
+        <span class="input-group-btn">
+          <a class="btn btn-primary" ng-click="buscarUsuarioPorFiltro(filtro)" id="sendMessageButton">Pesquisar</a>
+        </span>
       </div>
     </div>
-    <div class="control-group form-group">
-      <div class="controls" >
-        <label>Buscar participante</label>
-        <div >
-          <div class="input-group">
-            <input type="text" ng-model="filtro" class="form-control" placeholder="Buscar usuarios por nome ou e-mail">
-            <span class="input-group-btn">
-              <a class="btn btn-primary" ng-click="buscarUsuarioPorFiltro(filtro)" id="sendMessageButton">Pesquisar</a>
-            </span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-default" ng-if="mostraTabela">
-      <h4>Resultado da Pesquisa</h4>
-      <!-- /.panel-heading -->
-      <div class="table-overflow_grupo">
-        <div class="panel-body">
-          <div class="table-responsive table-bordered">
-            <table class="table">
-              <thead class="card-header">
-                <tr>
-                  <th>Participante</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr ng-repeat="usuario in usuarios">
-                  <td class="clickable-area">
-                    <div class="media mb-4" ng-click="selecionarUsuario(usuario)" >
-                      <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{usuario.FotoPerfil}}" alt="" style="width:50px;height:50px;">
-                      <div class="media-body">
-                        <h5 class="mt-3">{{usuario.Nome}}</h5>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.table-responsive -->
-        </div>
-      </div>
-      <!-- /.panel-body -->
-    </div>
-    <span class="danger-label" ng-if="naoEncontrou">Nenhum Usuario encontrado</span>
-    <div class="panel panel-default" ng-if="solicitacoes.length != 0">
-      <h4>Participantes Selecionados</h4>
-      <!-- /.panel-heading -->
-      <div class="table-overflow_grupo">
-        <div class="panel-body">
-          <div class="table-responsive table-bordered">
-            <table class="table">
-              <thead class="card-header">
-                <tr>
-                  <th>Participante</th>
-                </tr>
-              </thead>
-              <tbody >
-                <tr ng-repeat="solicitacao in solicitacoes">
-                  <td>
-                    <div class="media mb-4">
-                      <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{solicitacao.FotoPerfil}}" alt="" style="width:50px;height:50px;">
-                      <div class="media-body">
-                        <h5 class="mt-3">{{solicitacao.Nome}}</h5>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <!-- /.table-responsive -->
-        </div>
-      </div>
-    </div>
-    <div id="success"></div>
-    <!-- For success/fail messages -->
-    <button type="submit" ng-click="salvarGrupo(grupo)" class="btn btn-primary" id="sendMessageButton">Salvar</button>
-    <span class="danger-label" ng-show="formGrupo.$invalid && formGrupo.$submitted">Todos os campos devem ser preenchidos</span>
   </div>
-  </form>
+</div>
+<div class="panel panel-default" ng-if="mostraTabela">
+  <h4>Resultado da Pesquisa</h4>
+  <!-- /.panel-heading -->
+  <div class="table-overflow_grupo">
+    <div class="panel-body">
+      <div class="table-responsive table-bordered">
+        <table class="table">
+          <thead class="card-header">
+            <tr>
+              <th>Participante</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="usuario in usuarios">
+              <td class="clickable-area">
+                <div class="media mb-4" ng-click="selecionarUsuario(usuario)" >
+                  <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{usuario.FotoPerfil}}" alt="" style="width:50px;height:50px;">
+                  <div class="media-body">
+                    <h5 class="mt-3">{{usuario.Nome}}</h5>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+  </div>
+  <!-- /.panel-body -->
+</div>
+<span class="danger-label" ng-if="naoEncontrou">Nenhum Usuario encontrado</span>
+<div class="panel panel-default" ng-if="solicitacoes.length != 0">
+  <h4>Participantes Selecionados</h4>
+  <!-- /.panel-heading -->
+  <div class="table-overflow_grupo">
+    <div class="panel-body">
+      <div class="table-responsive table-bordered">
+        <table class="table">
+          <thead class="card-header">
+            <tr>
+              <th>Participante</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr ng-repeat="solicitacao in solicitacoes">
+              <td>
+                <div class="media mb-4">
+                  <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{solicitacao.FotoPerfil}}" alt="" style="width:50px;height:50px;">
+                  <div class="media-body">
+                    <h5 class="mt-3">{{solicitacao.Nome}}</h5>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- /.table-responsive -->
+    </div>
+  </div>
+</div>
+<!-- For success/fail messages -->    

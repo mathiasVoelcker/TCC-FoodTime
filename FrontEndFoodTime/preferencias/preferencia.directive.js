@@ -54,15 +54,14 @@ angular.module('app').directive('preferenciasDiretiva', function () {
             if($scope.comTodasPreferencias){
               $scope.adicionarPreferenciasFunc(preferencia.Id)
             }
-            // $scope.grupo.IdUsuarios.push(preferencia)
           }
+          
           $scope.retirarSelecionarPreferencia = function (preferencia) {
             $scope.preferenciasSelecionadas.splice(($scope.preferenciasSelecionadas.indexOf(preferencia)), 1);
             $scope.preferencias.push(preferencia);
             if($scope.comTodasPreferencias){
               $scope.removerPreferenciasFunc(preferencia.Id)
             }
-            // $scope.grupo.IdUsuarios.push(preferencia)
           }
 
           $scope.adicionarPreferencias = function () {

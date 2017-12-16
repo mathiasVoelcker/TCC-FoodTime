@@ -6,7 +6,25 @@
       <div>
         <h3>Criar Grupo</h3>
       </div>
-      <adicionar-participantes id-grupo="" esta-criando="true"></adicionar-participantes>
+      <form name="formGrupo" id="contactForm" novalidate>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label>Nome:</label>
+            <input type="text" ng-model="grupo.Nome" class="form-control" id="name" placeholder="Digite o nome do grupo" required data-validation-required-message="Por favor, digite seu nome.">
+            <p class="help-block"></p>
+          </div>
+        </div>
+        <div class="control-group form-group">
+          <div class="controls">
+            <label>Foto:</label>
+            <input type="file" class="btn" id="file" required>
+            <p class="help-block"></p>
+          </div>
+        </div>
+        <adicionar-participantes id-grupo="0" selecionar-participante="selecionarParticipante"></adicionar-participantes>
+        <button type="submit" ng-click="criarGrupo(grupo)" class="btn btn-primary" id="sendMessageButton">Salvar</button>
+        <span class="danger-label" ng-show="formGrupo.$invalid && formGrupo.$submitted">Todos os campos devem ser preenchidos</span>
+      </form>
     </div>
     <div class="col-md-6">
       <section class="py-3">
@@ -25,7 +43,7 @@
               </div>
             </div>
           </div>
-      </section>
+        </section>
       </div>
     </div>
   </div>

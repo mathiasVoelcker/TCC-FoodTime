@@ -1,10 +1,13 @@
-angular.module('app').controller('InformacoesGrupoController', function ($scope, $routeParams, authService, grupoService, usuarioService, $http) {
+angular.module('app').controller('InformacoesGrupoController', function ($scope, $routeParams, $route, toastr, authService, grupoService, usuarioService, $http) {
 
+  var IdUsuarios = []
+  $scope.mostraRecomendacoes = false
   $scope.participantes = []
   $scope.solicitacoes = []
-  $scope.mostraRecomendacoes = false
+  var novosParticipantes = []
   var idUsuario = authService.getUsuario().Id
   var idGrupo = $routeParams.IdGrupo
+
   grupoService.buscarGrupo($routeParams.IdGrupo).then(
     function (response) {
       $scope.grupo = response.data
@@ -18,6 +21,34 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
       })
       buscarRecomendacoes()
     })
+
+    $scope.selecionarParticipante = function(participante){
+      IdUsuarios.push(participante.Id)
+      console.log(IdUsuarios)
+    }
+
+    $scope.atualizarGrupo = function(){
+      if(IdUsuarios.length == 0){
+        toastr.error('Nenhum usuário selecionado!')
+      }
+      else{
+        var novoParticipante = {IdUsuario: 0, idGrupo: idGrupo, Aprovado: false}
+        IdUsuarios.forEach(function(idUsuario){
+          novoParticipante.IdUsuario = idUsuario
+          novosParticipantes.push(novoParticipante)
+        })
+        grupoService.atualizarGrupo(novosParticipantes).then(
+          function(response){
+            console.log(response)
+            toastr.success('Grupo atualizado com sucesso!')
+            $route.reload();
+          },
+          function(response){
+            toastr.error(response.data.Message)
+          }
+        )
+      }
+    }
 
     function buscarRecomendacoes() {
       navigator.geolocation.getCurrentPosition(function (position) {

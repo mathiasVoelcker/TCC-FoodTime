@@ -42,7 +42,10 @@
         <h3>Adicionar participantes ao grupo</h3>
         <div class="row">
           <div class="col-md-11">
-            <adicionar-participantes id-grupo="grupo.Id" esta-criando="false"></adicionar-participantes>
+            <form name="atualizarParticipantes">
+              <adicionar-participantes id-grupo="grupo.Id" selecionar-participante="selecionarParticipante"></adicionar-participantes>
+              <button type="submit" ng-click="atualizarGrupo()" class="btn btn-primary" id="sendMessageButton">Salvar</button>
+            </form>
           </div>
         </div>
       </div>
