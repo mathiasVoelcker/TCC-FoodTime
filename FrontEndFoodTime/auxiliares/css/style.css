@@ -44,7 +44,7 @@
 	font-weight:bold;
     background-color: rgb(236,66,36);
     border-color: rgb(172,39,86);
-    
+
 }
 .btn-auxiliar{
 	color: #fff;
@@ -64,7 +64,7 @@
 }
 .d-flex_usuario{
 	width:15%;
-	height:10%;	
+	height:10%;
 	margin-left:20%;
 	border: 5px solid rgb(252,185,78);
 	margin-top:50px;
@@ -85,9 +85,8 @@
 	color: white;
 }
 .top-content{
-	background-image: url('../imgs/fundo_09.jpg');
-	background-size: cover;
 	
+
 }
 #img_relogio{
 	padding-top: 80px;
@@ -108,12 +107,12 @@
 }
 .border_img{
 	border: 3px solid rgb(236,66,36);
-	
+
 }
 
 .border_img_grupos{
 	border: 3px solid rgb(236,66,36);
-	
+
 }
 .palavra_titulo{
 	font-weight: bold;
