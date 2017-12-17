@@ -17,7 +17,7 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <div class="nav-link dropdown-toggle" href="#!/" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true"
+            <div class="nav-link " href="#!/"  id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
             <div ng-if="solicitacoes.length > 0">
               <i class="fa fa-envelope-open" style="font-size:24px;color:white"></i>&nbsp;{{solicitacoes.length}}
@@ -25,8 +25,7 @@
             <div ng-if="solicitacoes.length == 0">
                 <i class="fa fa-envelope" style="font-size:24px;color:white"></i>
             </div>
-           <!-- <img src="../auxiliares/imgs/invitation.png" style="width:30px;height:30px;"/>-->
-          <div class="dropdown-menu dropdown-menu-right" style="width: 200px;" aria-labelledby="navbarDropdownPortfolio" >
+          <div class="dropdown-menu " style="width: 230px;" aria-labelledby="navbarDropdownPortfolio" >
             <div ng-if="solicitacoes.length > 0">
               <h5 class="dropdown-item">Meus convites</h5>
               <div class="" ng-repeat="solicitacao in solicitacoes">
