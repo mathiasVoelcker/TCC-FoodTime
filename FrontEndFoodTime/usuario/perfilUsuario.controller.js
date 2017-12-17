@@ -3,24 +3,16 @@ angular.module('app')
 
     $scope.usuario = authService.getUsuario();
     console.log($scope.usuario)
-    // console.log($scope.usuario.DataNascimento)
-    // console.log($scope.usuario)
-    buscarRecomendacoes()
-    $scope.carregouRecomendacao = false
-
 
     usuarioService.buscarAvaliacoesUsuario($scope.usuario.Id).then(
       function (response) {
         console.log(response.data)
         $scope.avaliacoes = response.data
-        $scope.$apply()
+
       }
     )
 
-    // //teste de buscar o primeiro
-    // buscarUsuario(1);
-
-    function buscarRecomendacoes() {
+    $scope.buscarRecomendacoes = function() {
       navigator.geolocation.getCurrentPosition(function (position) {
         var pos = {
           lat: position.coords.latitude,
@@ -36,15 +28,7 @@ angular.module('app')
         )
       })
     }
+    $scope.buscarRecomendacoes()
 
-    $scope.excluirRecomendacao = function (idEstabelecimento) {
-      $scope.carregouRecomendacao = false
-      usuarioService.excluirRecomendacao(idEstabelecimento, $scope.usuario.Id).then(
-        function (response) {
-          console.log(response)
-          buscarRecomendacoes()
-        }
-      )
-    }
-
-  });
+  }
+)

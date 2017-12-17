@@ -9,6 +9,21 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
   var idGrupo = $routeParams.IdGrupo
   $scope.carregouRecomendacao = false
 
+  $scope.buscarRecomendacoes = function(){
+    navigator.geolocation.getCurrentPosition(function (position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      }
+      grupoService.buscarRecomendacao(idUsuario, idGrupo, pos.lat, pos.lng).then(
+        function (response) {
+          // $scope.mostraRecomendacoes = (typeof response.data != "string")
+          $scope.recomendacoes = response.data
+          $scope.carregouRecomendacao = true
+        })
+      })
+    }
+
   grupoService.buscarGrupo($routeParams.IdGrupo).then(
     function (response) {
       $scope.grupo = response.data
@@ -20,7 +35,7 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
           $scope.solicitacoes.push(grupoUsuario)
         }
       })
-      buscarRecomendacoes()
+      $scope.buscarRecomendacoes()
     })
 
     $scope.selecionarParticipante = function(participante){
@@ -55,31 +70,6 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
         )
       }
     }
-
-    function buscarRecomendacoes() {
-      navigator.geolocation.getCurrentPosition(function (position) {
-        var pos = {
-          lat: position.coords.latitude,
-          lng: position.coords.longitude
-        }
-        grupoService.buscarRecomendacao(idUsuario, idGrupo, pos.lat, pos.lng).then(
-          function (response) {
-            // $scope.mostraRecomendacoes = (typeof response.data != "string")
-            $scope.recomendacoes = response.data
-            $scope.carregouRecomendacao = true
-          })
-        })
-      }
-
-      $scope.excluirRecomendacao = function (idEstabelecimento) {
-        $scope.carregouRecomendacao = false
-        usuarioService.excluirRecomendacao(idEstabelecimento, idUsuario).then(
-          function (response) {
-            console.log(response)
-            buscarRecomendacoes()
-          }
-        )
-      }
 
       $scope.formatarPrecoMedio = function(numero){
         numero = numero.toFixed(2);
