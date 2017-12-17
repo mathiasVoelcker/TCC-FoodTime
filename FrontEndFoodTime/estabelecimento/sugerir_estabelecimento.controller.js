@@ -95,6 +95,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
         )};
         console.log(estabelecimento)
         estabelecimento.Endereco.CEP = estabelecimento.Endereco.CEP.replace(/[^a-zA-Z0-9]/g, '')
+        estabelecimento.Telefone = estabelecimento.Telefone.replace(/[^a-zA-Z0-9]/g, '')
         console.log(estabelecimento)
         estabService.criarEstabelecimento(estabelecimento).then(
           function(response){

@@ -28,7 +28,7 @@ namespace FoodTime.WebApi.Controllers
         [Route("usuariologado")]
         public IHttpActionResult GetUsuarioLogado()
         {
-            var usuario = context.Usuarios.FirstOrDefault(x => x.Email.Equals(User.Identity.Name));
+            var usuario = context.Usuarios.Include(x => x.Preferencias).FirstOrDefault(x => x.Email.Equals(User.Identity.Name));
 
             if (usuario == null)
                 return BadRequest("Usuário não encontrado.");

@@ -30,5 +30,12 @@ angular.module('app')
     }
     $scope.buscarRecomendacoes()
 
+    $scope.retornarPreferencias = function(){
+      var preferencias = ""
+      $scope.usuario.Preferencias.forEach(function(preferencia) {
+        preferencias = preferencias + preferencia.Descricao + ", ";
+      })
+      return preferencias.substring(0, preferencias.length - 2);
+    }
   }
 )

@@ -11,7 +11,14 @@
         <div class="row">
           <div class="col-md-12">
             <h4 class="cor_dados">Email:</h4> <span class="cor_resp">{{usuario.Email}}</span>
-            <h4 class="cor_dados">Data de Nascimento:</h4> <span class="cor_resp">{{usuario.DataNascimento}}</span>
+            <div class="row">
+              <div class="col-md-5">
+                <h4 class="cor_dados">Data de Nascimento:</h4> <span class="cor_resp">{{usuario.DataNascimento}}</span>
+              </div>
+              <div class="col-md-5">
+                <h4 class="cor_dados">Gosto de:</h4> <span class="cor_resp">{{retornarPreferencias()}} </span>
+              </div>
+            </div>
           </div>
           <div class="container">
             <br>
