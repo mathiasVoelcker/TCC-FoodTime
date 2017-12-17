@@ -27,20 +27,6 @@ angular.module('app').directive('preferenciasDiretiva', function () {
             // preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario);
           }
 
-
-          $scope.trocaLimite = function trocaLimite() {
-            var target = document.getElementById("listarTodos");
-            if ($scope.flag)
-            {
-              $scope.limit = 'All';
-            }
-            else
-            {
-              $scope.limit = 5;
-            }
-          }
-
-
           $scope.mostraTabela = false
           $scope.naoEncontrou = false
           $scope.preferencias
@@ -55,7 +41,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
               $scope.adicionarPreferenciasFunc(preferencia.Id)
             }
           }
-          
+
           $scope.retirarSelecionarPreferencia = function (preferencia) {
             $scope.preferenciasSelecionadas.splice(($scope.preferenciasSelecionadas.indexOf(preferencia)), 1);
             $scope.preferencias.push(preferencia);

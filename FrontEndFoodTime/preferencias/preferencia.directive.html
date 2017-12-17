@@ -15,23 +15,24 @@
     <div class="panel panel-default">
       <h4>Resultado da Pesquisa</h4>
       <!-- /.panel-heading -->
-      <div class="panel-body">
-        <div class="table-responsive table-bordered">
-          <table class="table">
-            <thead class="card-header">
-              <tr>
-                <th>Preferência</th>
-              </tr>
-            </thead>
-            <tbody ng-init="limit=5">
-              <tr ng-repeat="preferencia in preferencias | limitTo: limit | filter: filtro" >
-                <td class="clickable-area" ng-click="selecionarPreferencia(preferencia)">{{preferencia.Descricao}}</td>
-              </tr>
-              <label><input type="checkbox" id="listarTodos" ng-click="trocaLimite()" ng-model="flag" value=""> Listar Todos</label>
-            </tbody>
-          </table>
+      <div class="table-overflow_grupo">
+        <div class="panel-body">
+          <div class="table-responsive table-bordered">
+            <table class="table">
+              <thead class="card-header">
+                <tr>
+                  <th>Preferência</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="preferencia in preferencias | filter: filtro" >
+                  <td class="clickable-area" ng-click="selecionarPreferencia(preferencia)">{{preferencia.Descricao}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.table-responsive -->
         </div>
-        <!-- /.table-responsive -->
       </div>
       <!-- /.panel-body -->
     </div>
