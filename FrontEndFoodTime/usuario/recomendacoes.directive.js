@@ -27,9 +27,11 @@ angular.module('app').directive('recomendacoesDiretiva', function () {
         return numero.toString().replace(/[.]/, ",")
       }
 
+      $scope.retornarRelevancia = function(relevancia){
+        // var retorno = (1 - (relevancia/5)).toFixed(2);
+        var retorno = relevancia * 100
+        return retorno.toFixed(2);
+      }
     }
-
-
   }
-
 })

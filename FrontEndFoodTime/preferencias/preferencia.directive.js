@@ -27,6 +27,20 @@ angular.module('app').directive('preferenciasDiretiva', function () {
             // preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario);
           }
 
+
+          $scope.trocaLimite = function trocaLimite() {
+            var target = document.getElementById("listarTodos");
+            if ($scope.flag)
+            {
+              $scope.limit = 'All';
+            }
+            else
+            {
+              $scope.limit = 5;
+            }
+          }
+
+
           $scope.mostraTabela = false
           $scope.naoEncontrou = false
           $scope.preferencias

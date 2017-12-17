@@ -17,6 +17,7 @@
         <span ng-show="estabelecimento.EstaAberto" class="success-label">Aberto</span>
         <span ng-show="!estabelecimento.EstaAberto" class="danger-label">Fechado</span>
       </p>
+      {{preferencias}}
       <p>
         <span class="stars">
           <span ng-style="{ 'width': getStars(estabelecimento.MediaAvaliacoes) }"></span>

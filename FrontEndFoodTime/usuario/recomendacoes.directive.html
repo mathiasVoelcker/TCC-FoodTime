@@ -8,6 +8,9 @@
         </h4>
         <p class="card-text">Telefone: {{recomendacao.Telefone}}</p>
         <p class="card-text">Preço Médio: R$ {{formatarPrecoMedio(recomendacao.PrecoMedio)}}</p>
+        <p>
+          {{retornarRelevancia(recomendacao.Relevancia)}}% Relevante
+        </p>
         <div>
           <a class="btn btn-primary" href="#!/avaliar/{{recomendacao.Id}}">Avaliar</a>
           <a class="btn btn-auxiliar" style="cursor:pointer;" ng-click="excluirRecomendacao(recomendacao.Id)">Recusar</a>

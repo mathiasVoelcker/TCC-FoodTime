@@ -103,5 +103,22 @@ namespace FoodTime.WebApi.Controllers
             listaDePreferencias = listaDePreferencias.Except(listaDePreferenciasDeEstab).ToList();
             return Ok(listaDePreferencias);
         }
+
+        [HttpGet, Route("listarPreferenciasDeEstab")]
+        public IHttpActionResult BuscarTodasPreferenciasDeEstab([FromUri]int idEstab)
+        {
+            var preferencias = context.EstabelecimentoPreferencias
+                .Include(x => x.Preferencia)
+                .Include(x => x.Estabelecimento)
+                .AsNoTracking()
+                .Where(x => (x.Estabelecimento.Id == idEstab && x.Aprovado))
+                .Select(x => x.Preferencia)
+                .ToList();
+            if(preferencias == null)
+            {
+                return BadRequest("Este estabelecimento não possui preferências cadastradas");
+            }
+            return Ok(preferencias);
+        }
     }
 }
