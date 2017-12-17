@@ -252,6 +252,11 @@ namespace FoodTime.WebApi.Controllers
                 estabsModel.Add(CriarEstabModel(estabelecimento));
             }
 
+            if (estabsModel.Count == 0)
+            {
+                return BadRequest("Não foi encontrado nenhum estabelecimento.");
+            }
+
             return Ok(estabsModel);
         }
 

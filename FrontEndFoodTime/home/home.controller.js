@@ -8,7 +8,7 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   $scope.filtro = { Nome: "", Endereco: "", Categoria: "" };
   $scope.usarLocalizacao = false
   $scope.estabelecimentos = []
-  $scope.mensagemErro
+  $scope.mensagemErro = ""
   // $scope.filtro.Nome = ""
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
@@ -33,7 +33,7 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
       $scope.estabelecimentos = response.data;
       estabelecimentos = response.data;
       console.log(response)
-      // $scope.$apply();
+      $scope.mensagemErro = ""
       // estabelecimentos.forEach(function(element) {
       //   debugger
       //   $scope.estabelecimentos[element.Id].Endereco.Latitude = element.Endereco.Latitude;
@@ -56,7 +56,9 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
         function (response) {
           $scope.estabelecimentos = response.data;
           console.log($scope.estabelecimentos)
-          // $scope.$apply();
+          $scope.mensagemErro = ""
+        }, function(response){
+          $scope.mensagemErro = response.data.Message
         }
       );
     }
