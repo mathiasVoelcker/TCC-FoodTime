@@ -13,59 +13,59 @@
             <h4 class="cor_dados">Email:</h4> <span class="cor_resp">{{usuario.Email}}</span>
             <div class="row">
               <div class="col-md-5">
-                <h4 class="cor_dados">Data de Nascimento:</h4> <span class="cor_resp">{{usuario.DataNascimento}}</span>
+                <h4 class="cor_dados">Gosto de:</h4> <span class="cor_resp">{{retornarPreferencias()}} </span>
               </div>
               <div class="col-md-5">
-                <h4 class="cor_dados">Gosto de:</h4> <span class="cor_resp">{{retornarPreferencias()}} </span>
-        </div>
-        <div class="container">
-          <br>
-          <div class="col-md-12s">
-            <a class="btn btn-primary" href="#!/minhaPreferencia/">Minhas preferências</a>
-            <a class="btn btn-primary" href="#!/sugerirEstabelecimento">Sugerir Estabelecimento</a>
-            <!--<a class="btn btn-primary" href="#!/aprovacoes">Aprovações</a>-->
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</header>
-<br>
-<!-- Content section -->
-  <!-- Content section -->
-  <div class="container">
-    <section class="py-2">
-      <div class="container">
-        <h3>Recomendações</h3>
-        <br>
-        <recomendacoes-diretiva recomendacoes="recomendacoes" buscar-recomendacoes="buscarRecomendacoes" carregou-recomendacao="carregouRecomendacao"></recomendacoes-diretiva>
-      </div>
-    </section>
-  </div>
-  <div ng-if="avaliacoes">
-    <div class="container">
-      <section class="py-5">
-        <div class="container">
-          <h3>Minhas Últimas Avaliações</h3>
-          <br>
-          <div class="row" ng-repeat="avaliacao in avaliacoes">
-            <div class="media mb-4">
-              <img class="d-flex mr-3 rounded-circle" src="/auxiliares/fotos/{{avaliacao.FotoAvaliacao}}" alt="" style="width:10%; height: 114px; width: 114px;">
-              <div class="media-body">
-                <h5 class="mt-0">{{avaliacao.Estabelecimento.Nome}}</h5>
-                <span class="stars">
-                  <span ng-style="{ 'width': getStars(avaliacao.Nota) }"></span>
-                </span>
-                {{avaliacao.Comentario}}
-                <div class="espaco_1"></div>
-                <i style="font-size:20px" class="fa">&#xf017;</i>&nbsp;<span class="palavra_resp">{{formatarData(avaliacao.DataAvaliacao)}}</span>
+                <h4 class="cor_dados">Data de Nascimento:</h4> <span class="cor_resp">{{usuario.DataNascimento}}</span>
               </div>
-              
+              <div class="container">
+                <br>
+                <div class="col-md-12s">
+                  <a class="btn btn-primary" href="#!/minhaPreferencia/">Minhas preferências</a>
+                  <a class="btn btn-primary" href="#!/sugerirEstabelecimento">Sugerir Estabelecimento</a>
+                  <!--<a class="btn btn-primary" href="#!/aprovacoes">Aprovações</a>-->
+                </div>
+              </div>
             </div>
           </div>
+        </section>
+      </header>
+      <br>
+      <!-- Content section -->
+      <!-- Content section -->
+      <div class="container">
+        <section class="py-2">
+          <div class="container">
+            <h3>Recomendações</h3>
+            <br>
+            <recomendacoes-diretiva recomendacoes="recomendacoes" buscar-recomendacoes="buscarRecomendacoes" carregou-recomendacao="carregouRecomendacao"></recomendacoes-diretiva>
+          </div>
+        </section>
+      </div>
+      <div ng-if="avaliacoes">
+        <div class="container">
+          <section class="py-5">
+            <div class="container">
+              <h3>Minhas Últimas Avaliações</h3>
+              <br>
+              <div class="row" ng-repeat="avaliacao in avaliacoes">
+                <div class="media mb-4">
+                  <img class="d-flex mr-3 rounded-circle" src="/auxiliares/fotos/{{avaliacao.FotoAvaliacao}}" alt="" style="width:10%; height: 114px; width: 114px;">
+                  <div class="media-body">
+                    <h5 class="mt-0">{{avaliacao.Estabelecimento.Nome}}</h5>
+                    <span class="stars">
+                      <span ng-style="{ 'width': getStars(avaliacao.Nota) }"></span>
+                    </span>
+                    {{avaliacao.Comentario}}
+                    <div class="espaco_1"></div>
+                    <i style="font-size:20px" class="fa">&#xf017;</i>&nbsp;<span class="palavra_resp">{{formatarData(avaliacao.DataAvaliacao)}}</span>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
+      </div>
+      <div class="espaco"></div>
     </div>
-  </div>
-  <div class="espaco"></div>
-</div>
