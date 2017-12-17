@@ -112,6 +112,15 @@
 	border: 5px solid rgb(252,185,78);
 	margin-top:50px;
 }
+
+.d-flex_grupo{
+	width:230px;
+	height:230px;
+	margin-left:20%;
+	border: 5px solid rgb(252,185,78);
+	margin-top:50px;
+}
+
 #header_usuario{
 	display: flex;
 	margin-top:3.5%;
