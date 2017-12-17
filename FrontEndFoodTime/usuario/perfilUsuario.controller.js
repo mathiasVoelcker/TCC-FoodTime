@@ -5,6 +5,7 @@ angular.module('app')
   console.log($scope.usuario)
   // console.log($scope.usuario.DataNascimento)
   // console.log($scope.usuario)
+  $scope.MensagemErro = ''
   buscarRecomendacoes()
   $scope.carregouRecomendacao = false
 
@@ -14,7 +15,8 @@ angular.module('app')
       console.log(response.data)
       $scope.avaliacoes = response.data
       $scope.$apply()
-    }
+    },
+
   )
 
   $scope.retornarPreferencias = function(){
@@ -40,6 +42,10 @@ angular.module('app')
           console.log(response)
           $scope.recomendacoes = response.data
           $scope.carregouRecomendacao = true
+        },
+        function (response){
+          $scope.MensagemErro = response.data.Message
+          $scope.carregouRecomendacao = true
         }
       )
     })
@@ -53,24 +59,5 @@ angular.module('app')
         buscarRecomendacoes()
       }
     )
-  }
-
-  $scope.formatarPrecoMedio = function(numero){
-    numero = numero.toFixed(2);
-    return numero.toString().replace(/[.]/, ",")
-  }
-
-  $scope.formatarData =function (data) {
-    data = data.substring(0, 10)
-    var dataArray = data.split("-")
-    var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
-    return retorno
-  }
-
-  $scope.formatarData =function (data) {
-    data = data.substring(0, 10)
-    var dataArray = data.split("-")
-    var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
-    return retorno
   }
 });

@@ -8,6 +8,7 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
   var idUsuario = authService.getUsuario().Id
   var idGrupo = $routeParams.IdGrupo
   $scope.carregouRecomendacao = false
+  $scope.MensagemErro = ''
 
   $scope.buscarRecomendacoes = function(){
     navigator.geolocation.getCurrentPosition(function (position) {
@@ -19,6 +20,10 @@ angular.module('app').controller('InformacoesGrupoController', function ($scope,
         function (response) {
           // $scope.mostraRecomendacoes = (typeof response.data != "string")
           $scope.recomendacoes = response.data
+          $scope.carregouRecomendacao = true
+        },
+        function (response){
+          $scope.MensagemErro = response.data.Message
           $scope.carregouRecomendacao = true
         })
       })

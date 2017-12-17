@@ -38,7 +38,8 @@
           <div class="container">
             <h3 ng-if="recomendacoes">Recomendações</h3>
             <br>
-            <recomendacoes-diretiva recomendacoes="recomendacoes" buscar-recomendacoes="buscarRecomendacoes" carregou-recomendacao="carregouRecomendacao"></recomendacoes-diretiva>
+            <span class="danger-label">{{MensagemErro}}</span>
+            <recomendacoes-diretiva ng-if="MensagemErro == ''" recomendacoes="recomendacoes" buscar-recomendacoes="buscarRecomendacoes" carregou-recomendacao="carregouRecomendacao"></recomendacoes-diretiva>
           </div>
         </section>
       </div>

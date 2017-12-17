@@ -10,8 +10,8 @@
       <h1 class="cor_dados">{{grupo.Nome}}</h1>
       <div class="row">
         <div class="col-md-12">
-          <h4 class="cor_dados"><i class="fa fa-users" style="font-size:24px;color:white"></i>&nbsp;Participantes: <span class="cor_resp">{{participantes.length}} </span> </h4> 
-          <h4 class="cor_dados"><i class="fa fa-address-card-o" style="font-size:24px;color:white"></i>&nbsp;Convidados: <span class="cor_resp">{{solicitacoes.length}}</span></h4> 
+          <h4 class="cor_dados"><i class="fa fa-users" style="font-size:24px;color:white"></i>&nbsp;Participantes: <span class="cor_resp">{{participantes.length}} </span> </h4>
+          <h4 class="cor_dados"><i class="fa fa-address-card-o" style="font-size:24px;color:white"></i>&nbsp;Convidados: <span class="cor_resp">{{solicitacoes.length}}</span></h4>
         </div>
       </div>
     </div>
@@ -20,9 +20,10 @@
 <br>
 <section class="py-3">
   <div class="container">
-    <h3 ng-if="recomendacoes">Recomendações</h3>
+    <h3>Recomendações</h3>
     <br>
-    <recomendacoes-diretiva recomendacoes="recomendacoes" buscar-recomendacoes="buscarRecomendacoes" carregou-recomendacao="carregouRecomendacao"></recomendacoes-diretiva>
+    <span class="danger-label">{{MensagemErro}}</span>
+    <recomendacoes-diretiva ng-if="MensagemErro == ''" recomendacoes="recomendacoes" buscar-recomendacoes="buscarRecomendacoes" carregou-recomendacao="carregouRecomendacao"></recomendacoes-diretiva>
   </div>
 </section>
 <section class="py-5">
