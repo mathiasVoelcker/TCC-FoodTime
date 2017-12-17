@@ -5,9 +5,15 @@ angular.module('app')
       scope: {},
       templateUrl: '../home/header.directive.html',
 
-      controller: function ($scope, toastr, usuarioService, authService, $http) {
+      controller: function ($scope, toastr, usuarioService, authService, $http, $location) {
 
         atualizarUsuario();
+
+        function redirecionar(promise) {
+          promise.then(function () {
+            $location.path('/meusGrupos/');
+          })
+        }
 
         $scope.logout = authService.logout;
 
@@ -36,18 +42,22 @@ angular.module('app')
             )
           
             $scope.aceitarSolicitacao = function(idGrupo){
-              usuarioService.aprovarSolicitacao(idGrupo, idUsuario).then(
+              let promise;
+              promise = usuarioService.aprovarSolicitacao(idGrupo, idUsuario).then(
                 function(response){
                   console.log(response)
                   toastr.success('Você agora faz parte deste grupo!');
+                  redirecionar(promise);
                 }
               )
             }
             $scope.rejeitarSolicitacao = function(idNotificacao){
-              usuarioService.rejeitarSolicitacao(idNotificacao).then(
+              let promise;
+              promise = usuarioService.rejeitarSolicitacao(idNotificacao).then(
                 function(response){
                   console.log(response)
                   toastr.success('Você Rejeitou a solicitação do grupo!');
+                  redirecionar(promise);
                 }
               )
             }

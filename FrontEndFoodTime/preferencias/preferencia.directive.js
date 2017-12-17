@@ -9,9 +9,15 @@ angular.module('app').directive('preferenciasDiretiva', function () {
       removerPreferenciasFunc: '='
     },
     templateUrl: '../preferencias/preferencia.directive.html',
-    controller: function ($scope, authService, toastr, $rootScope, preferenciasService, usuarioService) {
+    controller: function ($scope, authService, toastr, $rootScope, preferenciasService, usuarioService, $location) {
       console.log($scope.comTodasPreferencias)
       var idUsuario = authService.getUsuario().Id
+
+      function redirecionar(promise) {
+        promise.then(function () {
+          $location.path('/perfilUsuario/');
+        })
+      }
 
       if ($scope.comTodasPreferencias) {
         preferenciasService.listarPorEstab($scope.idEstabelecimento).then(
@@ -65,15 +71,17 @@ angular.module('app').directive('preferenciasDiretiva', function () {
           }
 
           $scope.adicionarPreferencias = function () {
+            let promise;
             console.log($scope.preferenciasSelecionadas)
             idPreferencias = $scope.preferenciasSelecionadas.map(function (pref) {
               return pref.Id
             });
             $scope.idPreferencias = idPreferencias;
             console.log(idPreferencias)
-            usuarioService.adicionarPreferencias(idPreferencias, idUsuario).then(
+            promise = usuarioService.adicionarPreferencias(idPreferencias, idUsuario).then(
               function(response){
                 toastr.success('Preferencias atualizadas!')
+                redirecionar(promise);
               }
             )
           }
