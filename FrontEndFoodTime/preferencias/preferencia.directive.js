@@ -24,7 +24,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
           function (response) {
             $scope.preferencias = response.data;
           });
-        } else {
+        } else {  
           preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario).then(
             function (response) {
               $scope.preferencias = response.data;

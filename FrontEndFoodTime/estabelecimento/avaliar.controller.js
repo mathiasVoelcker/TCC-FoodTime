@@ -1,4 +1,10 @@
-angular.module('app').controller('AvaliarController', function ($scope, $routeParams, toastr, usuarioService, estabService, authService, fotoService) {
+angular.module('app').controller('AvaliarController', function ($scope, $routeParams, toastr, usuarioService, estabService, authService, fotoService, $location) {
+
+  function redirecionar(promise) {
+    promise.then(function () {
+      $location.path('/estabelecimento/'+$routeParams.IdEstabelecimento);
+    })
+  }
 
   $scope.idPreferencias = []
   $scope.semFoto = false;
@@ -38,6 +44,7 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
 
     $scope.avaliacao
     $scope.avaliar = function(avaliacao){
+      let promise;
       console.log("ENTROU")
       var file = document.getElementById('file').files[0];
       if(file != undefined){
@@ -49,10 +56,11 @@ angular.module('app').controller('AvaliarController', function ($scope, $routePa
           avaliacao.FotoAvaliacao = file.name;
           $scope.addFoto(file)
           console.log(avaliacao);
-          estabService.criarAvaliacao(avaliacao).then(
+          promise =  estabService.criarAvaliacao(avaliacao).then(
             function(response){
               console.log(response)
               toastr.success('Avaliação feita com sucesso!')
+              redirecionar(promise);
               if($scope.idPreferencias.length > 0){
                 estabService.adicionarPreferencias($scope.idPreferencias, $scope.avaliacao.IdEstabelecimento).then(
                   function(response){
