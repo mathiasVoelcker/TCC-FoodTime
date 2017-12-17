@@ -207,16 +207,16 @@ namespace FoodTime.UnitTest
         }
 
         [TestMethod]
-        public void Testar_Validar_De_Estabelecimento_Metodo_Esta_Aberto_Return_True()
+        public void Testar_Estabelecimento_Aberto_Das_11_As_23_True()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
             var nome = "nome teste";
             var telefone = "telefone teste";
-            DateTime horaFechamento = new DateTime().Date.AddHours(3);
-            DateTime horaAbertura = new DateTime().Date;
+            DateTime horaFechamento = new DateTime(1998, 04, 30, 23, 0, 0);
+            DateTime horaAbertura = new DateTime(1998, 04, 30, 11, 0, 0);
             decimal precoMedio = 15.4M;
             bool aprovado = true;
 
@@ -224,20 +224,20 @@ namespace FoodTime.UnitTest
 
             Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
             Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsTrue(estabelecimento.EstaAberto(new DateTime().Date));
+            Assert.IsTrue(estabelecimento.EstaAberto(new DateTime(1998, 04, 30, 12, 0, 0)));
         }
 
         [TestMethod]
-        public void Testar_Validar_De_Estabelecimento_Metodo_Esta_Aberto_Return_False()
+        public void Testar_Estabelecimento_Aberto_Das_14_As_2_True()
         {
-            Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
             List<Categoria> listaCategorias = null;
             List<Foto> listaFotos = new List<Foto>();
             Estabelecimento estabelecimento;
             var nome = "nome teste";
             var telefone = "telefone teste";
-            DateTime horaFechamento = new DateTime().Date.AddHours(12);
-            DateTime horaAbertura = new DateTime().Date.AddHours(3);
+            DateTime horaFechamento = new DateTime(1998, 04, 30, 2, 0, 0);
+            DateTime horaAbertura = new DateTime(1998, 04, 30, 14, 0, 0);
             decimal precoMedio = 15.4M;
             bool aprovado = true;
 
@@ -245,12 +245,75 @@ namespace FoodTime.UnitTest
 
             Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
             Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
-            Assert.IsFalse(estabelecimento.EstaAberto(new DateTime().Date));
+            Assert.IsTrue(estabelecimento.EstaAberto(new DateTime(1998, 04, 30, 15, 0, 0)));
+        }
+
+        [TestMethod]
+        public void Testar_Estabelecimento_Aberto_Das_14_As_3_True()
+        {
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            List<Categoria> listaCategorias = null;
+            List<Foto> listaFotos = new List<Foto>();
+            Estabelecimento estabelecimento;
+            var nome = "nome teste";
+            var telefone = "telefone teste";
+            DateTime horaFechamento = new DateTime(1998, 04, 30, 3, 0, 0);
+            DateTime horaAbertura = new DateTime(1998, 04, 30, 14, 0, 0);
+            decimal precoMedio = 15.4M;
+            bool aprovado = true;
+
+            estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
+
+            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
+            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
+            Assert.IsTrue(estabelecimento.EstaAberto(new DateTime(1998, 04, 30, 2, 0, 0)));
+        }
+
+        [TestMethod]
+        public void Testar_Estabelecimento_Aberto_Das_11_As_23_False()
+        {
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            List<Categoria> listaCategorias = null;
+            List<Foto> listaFotos = new List<Foto>();
+            Estabelecimento estabelecimento;
+            var nome = "nome teste";
+            var telefone = "telefone teste";
+            DateTime horaFechamento = new DateTime(1998, 04, 30, 23, 0, 0);
+            DateTime horaAbertura = new DateTime(1998, 04, 30, 11, 0, 0);
+            decimal precoMedio = 15.4M;
+            bool aprovado = true;
+
+            estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
+
+            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
+            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
+            Assert.IsFalse(estabelecimento.EstaAberto(new DateTime(1998, 04, 30, 10, 0, 0)));
+        }
+
+        [TestMethod]
+        public void Testar_Estabelecimento_Aberto_Das_14_As_2_False()
+        {
+            Endereco endereco = new Endereco("rua teste", "numero teste", "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 15.0M, 15.0M);
+            List<Categoria> listaCategorias = null;
+            List<Foto> listaFotos = new List<Foto>();
+            Estabelecimento estabelecimento;
+            var nome = "nome teste";
+            var telefone = "telefone teste";
+            DateTime horaFechamento = new DateTime(1998, 04, 30, 2, 0, 0);
+            DateTime horaAbertura = new DateTime(1998, 04, 30, 14, 0, 0);
+            decimal precoMedio = 15.4M;
+            bool aprovado = true;
+
+            estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
+
+            Assert.IsTrue(estabelecimento.HorarioAbertura == horaAbertura);
+            Assert.IsTrue(estabelecimento.HorarioFechamento == horaFechamento);
+            Assert.IsFalse(estabelecimento.EstaAberto(new DateTime(1998, 04, 30, 5, 0, 0)));
         }
 
 
         [TestMethod]
-        public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Coeficiente()
+        public void Testar_Metodo_Distancia_Coeficiente()
         {
             Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
             List<Categoria> listaCategorias = null;
@@ -268,12 +331,14 @@ namespace FoodTime.UnitTest
             estabelecimento = new Estabelecimento(nome, telefone, endereco, listaCategorias, horaAbertura, horaFechamento, precoMedio, listaFotos, aprovado);
       
             var result = (402.5m - 50m)/402.5m;
-
+            result = (10000m * result) - 9999m;
+            Console.WriteLine(result);
+            Console.WriteLine(estabelecimento.DistanciaCoeficiente(latitude, longitude));
             Assert.IsTrue(estabelecimento.DistanciaCoeficiente(latitude, longitude) == result);
         }
 
         [TestMethod]
-        public void Testar_Validar_De_Estabelecimento_Metodo_Distancia_Estabelecimento()
+        public void Testar_Metodo_Distancia_Coeficiente_Estabelecimento()
         {
             Endereco endereco = new Endereco("rua teste", "numero teste",  "", "Centro", "Porto Alegre", "Rio Grande do Sul", "96508060", 0m, 0m);
             List<Categoria> listaCategorias = null;
@@ -294,7 +359,5 @@ namespace FoodTime.UnitTest
 
             Assert.IsTrue(estabelecimento.DistanciaEstabelecimento(latitude, longitude) == result);
         }
-
-
     }
 }

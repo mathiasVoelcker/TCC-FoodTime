@@ -68,7 +68,7 @@ namespace FoodTime.WebApi.Controllers
         {
             List<Estabelecimento> estabelecimentos = new List<Estabelecimento>();
             var retorno = ConferirEstabRecomendados(idUsuario, out estabelecimentos); //atribui estabelecimentos abertos, aprovados e nao recusados, e retorna mensagem de erro caso nao encontre
-            if(retorno != null)
+            if (retorno != null)
             {
                 return BadRequest(retorno);
             }
@@ -80,12 +80,15 @@ namespace FoodTime.WebApi.Controllers
                 var estabelecimentoRecomendado = new EstabelecimentoRecomendacaoModel(estabelecimento);
                 var EstabelecimentoPreferencias = context.EstabelecimentoPreferencias.Include(x => x.Preferencia).Include(x => x.Estabelecimento).AsNoTracking().Where(x => (x.Estabelecimento.Id == estabelecimento.Id && x.Aprovado)).ToList(); //lista todas preferencias aprovadas do estabelecimento
                 var numPreferenciasCorrespondentes = EstabelecimentoPreferencias.Where(x => (usuario.Preferencias.Any(y => y.Id == x.Preferencia.Id) && x.Aprovado)).Count(); //contagem de preferencias de estabelecimento correspondentes as preferencias do usuario
-                var notasEstab = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
-                decimal notaMedia = notasEstab.Count == 0 ? 0.5m : (decimal)notasEstab.Average(); // calcula media de notas de estabelecimento
                 decimal distanciaCoeficiente = estabelecimento.DistanciaCoeficiente(latitude, longitude); // coeficiente de distancia para calculo de relevancia
-                decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias; //coeficiente de preferencia para calculo de relevancia
-                estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distanciaCoeficiente); //calcula relevancia de estabelecimento
-                estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
+                if (distanciaCoeficiente > 0)
+                {
+                    var notasEstab = context.Avaliacoes.Include(x => x.Estabelecimento).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).Select(x => x.Nota).ToList();
+                    decimal notaMedia = notasEstab.Count == 0 ? 0.5m : (decimal)notasEstab.Average(); // calcula media de notas de estabelecimento
+                    decimal preferenciaCoeficiente = numPreferencias == 0 ? 0 : (decimal)numPreferenciasCorrespondentes / (decimal)numPreferencias; //coeficiente de preferencia para calculo de relevancia
+                    estabelecimentoRecomendado.setRelevancia(preferenciaCoeficiente, (notaMedia / 10), distanciaCoeficiente); //calcula relevancia de estabelecimento
+                    estabelecimentosRecomendados.Add(estabelecimentoRecomendado);
+                }
             }
             return Ok(estabelecimentosRecomendados.OrderByDescending(x => x.Relevancia).Take(4));
         }
@@ -101,7 +104,7 @@ namespace FoodTime.WebApi.Controllers
             }
             List<EstabelecimentoRecomendacaoModel> estabelecimentosRecomendados = new List<EstabelecimentoRecomendacaoModel>();
             var usuariosGrupo = context.GrupoUsuarios.Include(x => x.Usuario.Preferencias).AsNoTracking().Where(x => x.Grupo.Id == idGrupo && x.Aprovado).ToList();
-            if(usuariosGrupo.Count() == 0)
+            if (usuariosGrupo.Count() == 0)
             {
                 return Ok("Este grupo nao possui membros ainda");
             }
@@ -237,7 +240,7 @@ namespace FoodTime.WebApi.Controllers
         {
             EstabelecimentoModel estabModel = new EstabelecimentoModel(estabelecimento);
             var avaliacoes = context.Avaliacoes.Include(x => x.Usuario).AsNoTracking().Where(x => x.Estabelecimento.Id == estabelecimento.Id).ToList();
-            estabModel.EstaAberto = estabelecimento.EstaAberto(new DateTime(2017, 11, 4, 15, 12, 0, 0));
+            estabModel.EstaAberto = estabelecimento.EstaAberto(DateTime.Now);
             if (avaliacoes.Count() != 0)
             {
                 foreach (Avaliacao avaliacao in avaliacoes)
@@ -268,7 +271,7 @@ namespace FoodTime.WebApi.Controllers
             //buscar estabelecimentos nao recusados
             estabelecimentos = estabelecimentos.Where(x => !context.Usuarios.Include(y => y.EstabelecimentosRecusados).FirstOrDefault(y => y.Id == idUsuario).EstabelecimentosRecusados.Any(z => z.Id == x.Id)).ToList();
             //buscar estabelecimentos abertos
-            estabelecimentos = estabelecimentos.Where(x => x.EstaAberto(new DateTime(2017, 11, 4, 15, 12, 0, 0))).ToList();
+            estabelecimentos = estabelecimentos.Where(x => x.EstaAberto(DateTime.Now)).ToList();
             if (estabelecimentos.Count == 0)
             {
                 return "Não há estabelecimentos abertos no momento.";

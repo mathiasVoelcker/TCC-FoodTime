@@ -36,7 +36,7 @@ namespace FoodTime.WebApi.Models
 
         public void setRelevancia(decimal preferenciasCorrespondencias, decimal notaMedia, decimal distancia)
         {
-            Relevancia = (preferenciasCorrespondencias + notaMedia + (100 * distancia)) / 102;
+            Relevancia = (preferenciasCorrespondencias + notaMedia + distancia)/3;
         }
     }
 }

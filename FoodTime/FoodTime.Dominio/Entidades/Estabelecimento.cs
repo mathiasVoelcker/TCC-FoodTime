@@ -39,18 +39,29 @@ namespace FoodTime.Dominio.Entidades
 
         public bool EstaAberto(DateTime horarioAtual)
         {
-            var diff = HorarioAbertura.TimeOfDay - horarioAtual.TimeOfDay;
-            if (diff.Ticks > 0)
+            if((HorarioAbertura.TimeOfDay - HorarioFechamento.TimeOfDay).Ticks < 0)
+            {
+                if ((HorarioAbertura.TimeOfDay - horarioAtual.TimeOfDay).Ticks > 0)
+                    return false;
+                if ((HorarioFechamento.TimeOfDay - horarioAtual.TimeOfDay).Ticks < 0)
+                    return false;
+            }
+            else
+            {
+                if ((HorarioAbertura.TimeOfDay - horarioAtual.TimeOfDay).Ticks < 0)
+                    return true;
+                if ((HorarioFechamento.TimeOfDay - horarioAtual.TimeOfDay).Ticks > 0)
+                    return true;
                 return false;
-            diff = HorarioFechamento.TimeOfDay - horarioAtual.TimeOfDay;
-            if (diff.Ticks < 0)
-                return false;
+            }
             return true;
         }
 
         public decimal DistanciaCoeficiente(decimal latitude, decimal longitude)
         {
-            return ((402.5m - DistanciaEstabelecimento(latitude, longitude)) / 402.5m);
+            var distanciaCoeficiente = ((402.5m - DistanciaEstabelecimento(latitude, longitude)) / 402.5m);
+            distanciaCoeficiente = (10000m * distanciaCoeficiente) - 9999m;
+            return distanciaCoeficiente;
         }
 
         public decimal DistanciaEstabelecimento(decimal latitude, decimal longitude)
