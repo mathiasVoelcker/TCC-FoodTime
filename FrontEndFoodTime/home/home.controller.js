@@ -76,7 +76,7 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
 
   $scope.setUsarLocalizacao = function (usarLocalizacao) {
     $scope.usarLocalizacao = usarLocalizacao;
+    $scope.filtro.Endereco = "";
     console.log($scope.usarLocalizacao)
   }
-
 });

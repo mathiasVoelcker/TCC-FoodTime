@@ -21,9 +21,9 @@
               <label class="palavra_titulo">Localização</label>
               <div>
                 <div class="input-group">
-                  <input type="text" class="form-control" ng-disabled="usarLocalizacao" ng-model="filtro.Endereco" placeholder="Procurar por...">
+                  <input type="text" class="form-control" ng-disabled="usarLocalizacao"  ng-model="filtro.Endereco" placeholder="Procurar por...">
                   <span class="input-group-btn">
-                    <button type="button" class="btn btn-primary" ng-click="setUsarLocalizacao(!usarLocalizacao)" >Localização Atual</button>
+                    <button type="button" class="btn btn-primary" ng-click="setUsarLocalizacao(!usarLocalizacao);" >Localização Atual</button> 
                   </span>
                 </div>
                 <span ng-if="usarLocalizacao" class="success-label">Usar geolocalizacao</span>
@@ -49,8 +49,12 @@
   </div>
   <span class="danger-label">{{mensagemErro}}</span>
   <!-- /.row -->
+  
   <div id="ngrepeat" ng-repeat="estabelecimento in estabelecimentos | filter: {Nome: filtro.Nome}">
     <div class="col-md-12">
+        <div ng-if="estabelecimentos.length == 0">
+          <p> <h3>Não existe dados para essa consulta.</h3>  </p>
+        </div>
       <hr>
       <div class="row ">
         <div class="col-md-2 ">
@@ -74,7 +78,6 @@
             Este estabelecimento ainda não foi avaliado.
           </p>
         </div>
-
         <div class="col-md-6">
           <div ng-if="estabelecimentos.length > 0">
             <div class="loader">
@@ -86,5 +89,4 @@
       </div>
     </div>
   </div>
-
   <div class="espaco"></div>

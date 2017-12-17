@@ -52,7 +52,7 @@ angular.module('app')
               )
             }
         }
-      }
+      } 
     }
 
   });
