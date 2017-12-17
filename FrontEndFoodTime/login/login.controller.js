@@ -16,7 +16,7 @@ angular.module('app').controller('LoginController', function ($scope, toastr, au
         redirecionar(promise);
       },
       function (response) {
-        toastr.error('Erro no Login!')
+        toastr.error('Login ou Senha estão incorretos!')
       });
   };
 

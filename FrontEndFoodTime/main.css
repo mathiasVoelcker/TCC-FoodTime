@@ -60,6 +60,9 @@ a:hover{
 .espaco_2{
   height: 50px;
 }
+.espaco_1{
+  height: 10px;
+}
 .icone-notificacao{
   position: absolute;
   background-color: red;

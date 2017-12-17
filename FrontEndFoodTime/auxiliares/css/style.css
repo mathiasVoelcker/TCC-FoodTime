@@ -12,7 +12,7 @@
 }
 .nav-link{
 	font-weight:bold;
-	color:#1b1e21;
+	color:white;
 }
 .bg-dark {
 	background-color: #ffc107!important;
@@ -20,6 +20,14 @@
 
 .navbar-dark .navbar-nav .nav-link .nav-link {
 	color: rgba(0,0,0,.9);
+	/*background-color: #ffc107!important;*/
+	background-color: rgb(117,62,31)!important;
+	
+}
+
+.navbar-dark .navbar-nav .nav-link .nav-link {
+    color: white;
+
 }
 
 .navbar-dark .navbar-brand {
@@ -33,10 +41,20 @@
 
 .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav  {
 	color: #1d2124;
+    color: white;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+
+.navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav  {
+    color: white;
+
 }
 
 .show>.nav-link{
-	color: #1d2124;
+	color: white;
 }
 
 .btn-primary:hover {
@@ -48,6 +66,13 @@
 }
 .btn-auxiliar{
 	/* color: #fff; */
+    background-color: rgb(225,142,4);
+    border-color: black;
+    
+}
+.btn-auxiliar{
+	color: white;
+
 	font-weight:bold;
 	background-color: rgb(236,66,36);
 	border:1px solid black;
@@ -56,6 +81,12 @@
 .btn-auxiliar:hover{
 	color: #fff !important;
 	background-color: rgb(193, 58, 34);;
+
+	color: white;
+	font-weight:bold;
+	background-color: #B92107;
+	border:1px solid black;
+
 }
 
 .btn-primary {
@@ -94,11 +125,13 @@
 }
 .cor_resp{
 	color: white;
+	font-weight: bold;
 }
 .top-content{
 	background-image: url('../imgs/fundo_09.jpg');
 	background-size: cover;
 	height: 100%;
+
 }
 
 #img_relogio{
@@ -140,4 +173,10 @@
 
 .text{
 	font-weight: bold;
+}
+.texto{
+	color: white;
+}
+.border_logo{
+	text-shadow:white 1px -1px, white -1px 1px, white 1px 1px, white -1px -1px
 }
