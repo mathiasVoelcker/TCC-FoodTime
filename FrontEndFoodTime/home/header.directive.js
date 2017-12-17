@@ -43,8 +43,8 @@ angular.module('app')
                 }
               )
             }
-            $scope.rejeitarSolicitacao = function(idGrupo){
-              usuarioService.rejeitarSolicitacao(idGrupo).then(
+            $scope.rejeitarSolicitacao = function(idNotificacao){
+              usuarioService.rejeitarSolicitacao(idNotificacao).then(
                 function(response){
                   console.log(response)
                   toastr.success('Você Rejeitou a solicitação do grupo!');

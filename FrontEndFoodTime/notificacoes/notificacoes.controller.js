@@ -18,4 +18,13 @@ angular.module('app')
       }
     )
   }
+
+  $scope.rejeitarSolicitacao = function(idNotificacao){
+    usuarioService.rejeitarSolicitacao(idNotificacao).then(
+      function(response){
+        console.log(response)
+        toastr.success('Notificação excluída com sucesso!');
+      }
+    )
+  }
 });

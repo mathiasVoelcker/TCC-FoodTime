@@ -56,8 +56,8 @@ angular.module('auth').factory('usuarioService', function($http, authConfig){
     return $http.put(urlGrupoUsuario + "AprovarSolicitacao?idGrupo=" + idGrupo + "&idUsuario=" + idUsuario)
   }
 
-  function rejeitarSolicitacao(idGrupo){
-    return $http.put(urlNotificacao + idGrupo)
+  function rejeitarSolicitacao(idNotificacao){
+    return $http.put(urlNotificacao + idNotificacao)
   }
 
   function adicionarPreferencias(idPreferencias, idUsuario){

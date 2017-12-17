@@ -2,7 +2,7 @@
 <div class="espaco"></div>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 border-table fundo_panel">
+    <div class="col-md-5 border-table fundo_panel">
       <div>
         <h3>Criar Grupo</h3>
       </div>
@@ -26,13 +26,13 @@
         <span class="danger-label" ng-show="formGrupo.$invalid && formGrupo.$submitted">Todos os campos devem ser preenchidos</span>
       </form>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-7">
       <section class="py-3">
         <div class="container">
           <h3>Meus Grupos</h3>
           <br>
           <div class="row">
-            <div class="col-lg-5 col-md-4 portfolio-item" ng-repeat="grupo in gruposUsuario">
+            <div class="col-lg-4 col-md-7 portfolio-item" ng-repeat="grupo in gruposUsuario">
               <div class="card h-100 border-table-estabelecimento">
                 <a><img class="card-img-top" src="/../auxiliares/fotos/{{grupo.Foto}}" alt="" style="width:100%;height:155px;"></a>
                 <div class="card-body">
