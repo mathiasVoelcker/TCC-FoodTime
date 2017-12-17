@@ -89,7 +89,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
         estabelecimento.Fotos.push(file.name);
         fotoService.addFoto(fd).then(
           function(response){
-            toastr.success('Foto adicionada com sucesso!')
+           /* toastr.success('Foto adicionada com sucesso!')*/
           }, function(response){
           }
         )};
@@ -99,7 +99,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
         console.log(estabelecimento)
         estabService.criarEstabelecimento(estabelecimento).then(
           function(response){
-            toastr.success('Estabelecimento Cadastrado com sucesso')
+            toastr.success('Estabelecimento Cadastrado com sucesso!')
             console.log(response)
             redirecionar();
           }

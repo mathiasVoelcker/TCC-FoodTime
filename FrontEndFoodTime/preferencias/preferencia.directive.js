@@ -9,7 +9,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
       removerPreferenciasFunc: '='
     },
     templateUrl: '../preferencias/preferencia.directive.html',
-    controller: function ($scope, authService, $rootScope, preferenciasService, usuarioService) {
+    controller: function ($scope, authService, toastr, $rootScope, preferenciasService, usuarioService) {
       console.log($scope.comTodasPreferencias)
       var idUsuario = authService.getUsuario().Id
 
@@ -59,7 +59,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
             console.log(idPreferencias)
             usuarioService.adicionarPreferencias(idPreferencias, idUsuario).then(
               function(response){
-                alert("Preferencias atualizadas!")
+                toastr.success('Preferencias atualizadas!')
               }
             )
           }

@@ -5,7 +5,7 @@ angular.module('app')
       scope: {},
       templateUrl: '../home/header.directive.html',
 
-      controller: function ($scope, usuarioService, authService, $http) {
+      controller: function ($scope, toastr, usuarioService, authService, $http) {
 
         atualizarUsuario();
 

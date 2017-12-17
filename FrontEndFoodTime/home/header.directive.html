@@ -30,8 +30,8 @@
               <h5 class="dropdown-item">Meus convites</h5>
               <div class="" ng-repeat="solicitacao in solicitacoes">
                 <span class="dropdown-item" style="white-space: normal;">{{solicitacao.Grupo.Nome}}
-                  <img class="img-fluid rounded mb-3 mb-md-0" src="../auxiliares/imgs/ok.png" alt="" ng-click="aceitarSolicitacao(solicitacao.Grupo.Id)"  style="width:30px;height:30px;">
-                  <img class="img-fluid rounded mb-3 mb-md-0" src="../auxiliares/imgs/erro.png" ng-click="rejeitarSolicitacao(solicitacao.Grupo.Id)" alt="" style="width:25px;height:25px;">
+                  <img class="img-fluid rounded mb-3 mb-md-0"  src="../auxiliares/imgs/ok.png" alt="" ng-click="aceitarSolicitacao(solicitacao.Grupo.Id)"  style="width:30px;height:30px;cursor:pointer;">
+                  <img class="img-fluid rounded mb-3 mb-md-0"  src="../auxiliares/imgs/erro.png" ng-click="rejeitarSolicitacao(solicitacao.Grupo.Id)" alt="" style="width:25px;height:25px;cursor:pointer;">
                 </span>
               </div>
             </div>
