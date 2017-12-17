@@ -96,6 +96,8 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
         console.log(estabelecimento)
         estabelecimento.Endereco.CEP = estabelecimento.Endereco.CEP.replace(/[^a-zA-Z0-9]/g, '')
         estabelecimento.Telefone = estabelecimento.Telefone.replace(/[^a-zA-Z0-9]/g, '')
+        estabelecimento.HorarioAbertura.setHours(estabelecimento.HorarioAbertura.getHours() - 2)
+        estabelecimento.HorarioFechamento.setHours(estabelecimento.HorarioFechamento.getHours() - 2)
         console.log(estabelecimento)
         estabService.criarEstabelecimento(estabelecimento).then(
           function(response){
