@@ -1,13 +1,13 @@
 .table-overflow
 {
 	max-height:130px;
-    overflow-y:auto;
+	overflow-y:auto;
 	margin-bottom:20px;
 }
 
 .table-overflow_participantes{
 	max-height:220px;
-    overflow-y:auto;
+	overflow-y:auto;
 	margin-bottom:20px;
 }
 .nav-link{
@@ -15,24 +15,24 @@
 	color:#1b1e21;
 }
 .bg-dark {
-    background-color: #ffc107!important;
+	background-color: #ffc107!important;
 }
 
 .navbar-dark .navbar-nav .nav-link .nav-link {
-    color: rgba(0,0,0,.9);
+	color: rgba(0,0,0,.9);
 }
 
 .navbar-dark .navbar-brand {
 	font-weight:bold;
-    color: #1b1e21;
+	color: #1b1e21;
 }
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #1d2124;
+	color: #1d2124;
 }
 
 .navbar-dark .navbar-nav .active>.nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav  {
-    color: #1d2124;
+	color: #1d2124;
 }
 
 .show>.nav-link{
@@ -42,22 +42,33 @@
 .btn-primary:hover {
 	color: #fff;
 	font-weight:bold;
-    background-color: rgb(236,66,36);
-    border-color: rgb(172,39,86);
+	background-color: rgb(236,66,36);
+	border-color: rgb(172,39,86);
 
 }
 .btn-auxiliar{
-	color: #fff;
+	/* color: #fff; */
 	font-weight:bold;
 	background-color: rgb(236,66,36);
 	border:1px solid black;
 }
-.btn-primary {
-    color: black;
-	font-weight:bold;
-    background-color: rgb(252,185,78);
-    border-color: black;
+
+.btn-auxiliar:hover{
+	color: #fff !important;
+	background-color: rgb(193, 58, 34);;
 }
+
+.btn-primary {
+	color: black;
+	font-weight:bold;
+	background-color: rgb(252,185,78);
+	border-color: black;
+}
+
+.btn-primary:hover{
+	background-color: rgba(204, 148, 60, 1);
+}
+
 .btn_pesquisa{
 	background-color: rgb(252,185,78);
 	border-color: rgb(252,185,78);
@@ -99,12 +110,12 @@
 
 .table-overflow_grupo{
 	max-height:330px;
-    overflow-y:auto;
+	overflow-y:auto;
 	margin-bottom:20px;
 }
 .table-overflow_preferencias{
 	max-height:270px;
-    overflow-y:auto;
+	overflow-y:auto;
 	margin-bottom:20px;
 }
 .border_img{

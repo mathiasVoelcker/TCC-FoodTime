@@ -7,6 +7,7 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
   $scope.estabelecimento.idFotos = []
   $scope.estabelecimento.IdPreferencias = []
   $scope.estabelecimento.Aprovado = true
+  $scope.phoneMask = "(99) 9999-9999";
 
   $scope.buscouEstab = false
 
@@ -92,6 +93,8 @@ angular.module('app').controller('SugerirEstabelecimentoController', function ($
           }, function(response){
           }
         )};
+        console.log(estabelecimento)
+        estabelecimento.Endereco.CEP = estabelecimento.Endereco.CEP.replace(/[^a-zA-Z0-9]/g, '')
         console.log(estabelecimento)
         estabService.criarEstabelecimento(estabelecimento).then(
           function(response){
