@@ -17,14 +17,6 @@ angular.module('app')
       }
     )
 
-    $scope.getStars = function(rating) {
-      // Get the value
-      var val = parseFloat(rating);
-      // Turn value into number/100
-      var size = val*10;
-      return size + '%';
-    }
-
     // //teste de buscar o primeiro
     // buscarUsuario(1);
 
@@ -53,11 +45,6 @@ angular.module('app')
           buscarRecomendacoes()
         }
       )
-    }
-
-    $scope.formatarPrecoMedio = function(numero){
-      numero = numero.toFixed(2);
-      return numero.toString().replace(/[.]/, ",")
     }
 
   });

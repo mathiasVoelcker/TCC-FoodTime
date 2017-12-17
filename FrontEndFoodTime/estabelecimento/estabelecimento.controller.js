@@ -4,6 +4,7 @@ angular.module('app').controller('EstabelecimentoController', function ($scope, 
     function(response){
       console.log(response)
       $scope.estabelecimento = response.data
+
     }
   )
   // estabService.buscarAvaliacoesEstab(IdEstabelecimento).then(
@@ -11,5 +12,5 @@ angular.module('app').controller('EstabelecimentoController', function ($scope, 
   //     console.log(response)
   //     $scope.avaliacoes = response.data
   //   }
-  // )
+  // )\
 });

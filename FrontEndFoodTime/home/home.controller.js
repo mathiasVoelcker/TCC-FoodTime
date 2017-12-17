@@ -13,14 +13,6 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   // $scope.filtro.Categoria = ""
   $scope.mapaCarregado = false
 
-  $scope.getStars = function(rating) {
-    // Get the value
-    var val = parseFloat(rating);
-    // Turn value into number/100
-    var size = val*10;
-    return size + '%';
-  }
-
   estabService.listar();
   navigator.geolocation.getCurrentPosition(function (position) {
     $scope.pos = {
@@ -81,11 +73,6 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   $scope.setUsarLocalizacao = function (usarLocalizacao) {
     $scope.usarLocalizacao = usarLocalizacao;
     console.log($scope.usarLocalizacao)
-  }
-
-  $scope.formatarPrecoMedio = function(numero){
-    numero = numero.toFixed(2);
-    return numero.toString().replace(/[.]/, ",")
   }
 
 });

@@ -13,29 +13,36 @@
     <div class="col-md-4">
       <h3>{{estabelecimento.Nome}}</h3>
       <p>{{estabelecimento.Endereco.Rua}}</p>
-      <p>Preço Médio: {{estabelecimento.PrecoMedio}} &nbsp;&nbsp;&nbsp;
+      <p>Preço Médio: R$ {{formatarPrecoMedio(estabelecimento.PrecoMedio)}} &nbsp;&nbsp;&nbsp;
         <span ng-show="estabelecimento.EstaAberto" class="success-label">Aberto</span>
         <span ng-show="!estabelecimento.EstaAberto" class="danger-label">Fechado</span>
       </p>
-      <p>Média: {{estabelecimento.MediaAvaliacoes}} &nbsp;&nbsp;&nbsp; Nº de avaliações: {{estabelecimento.NumAvaliacoes}}</p>
+      <p>
+        <span class="stars">
+          <span ng-style="{ 'width': getStars(estabelecimento.MediaAvaliacoes) }"></span>
+        </span>
+        {{estabelecimento.NumAvaliacoes}} Avaliações</p>
+      </div>
+      <div class="col-md-5">
+        <a class="btn btn-primary" href="#!/avaliar/{{IdEstabelecimento}}">Avaliar Estabelecimento</a>
+      </div>
     </div>
-    <div class="col-md-5">
-      <a class="btn btn-primary" href="#!/avaliar/{{IdEstabelecimento}}">Avaliar Estabelecimento</a>
-    </div>
-  </div>
-  <hr>
-  <h3 class="my-4">Últimas Avaliações
-  </h3>
-  <div class="col-md-10">
-    <div>
-      <div class="media mb-4" ng-repeat="avaliacao in estabelecimento.Avaliacoes">
-        <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{avaliacao.Usuario.FotoPerfil}}"
+    <hr>
+    <h3 class="my-4">Últimas Avaliações
+    </h3>
+    <div class="col-md-10">
+      <div>
+        <div class="media mb-4" ng-repeat="avaliacao in estabelecimento.Avaliacoes">
+          <img class="d-flex mr-3 rounded-circle" src="../auxiliares/fotos/{{avaliacao.Usuario.FotoPerfil}}"
           alt="" style="width:50px;height:50px;">
-        <div class="media-body">
-          <h5 class="mt-0">{{avaliacao.Usuario.Nome}}</h5>
-          {{avaliacao.Comentario}}
+          <div class="media-body">
+            <h5 class="mt-0">{{avaliacao.Usuario.Nome}}</h5>
+            <span class="stars">
+              <span ng-style="{ 'width': getStars(avaliacao.Nota) }"></span>
+            </span>
+            {{avaliacao.Comentario}}
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
