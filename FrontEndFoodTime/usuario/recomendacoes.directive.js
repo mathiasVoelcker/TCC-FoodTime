@@ -22,6 +22,14 @@ angular.module('app').directive('recomendacoesDiretiva', function () {
         )
       }
 
+      $scope.formatarPrecoMedio = function(numero){
+        numero = numero.toFixed(2);
+        return numero.toString().replace(/[.]/, ",")
+      }
+
     }
+
+
   }
+
 })
