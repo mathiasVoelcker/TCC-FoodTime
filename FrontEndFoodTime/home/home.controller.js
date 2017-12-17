@@ -8,6 +8,7 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
   $scope.filtro = { Nome: "", Endereco: "", Categoria: "" };
   $scope.usarLocalizacao = false
   $scope.estabelecimentos = []
+  $scope.mensagemErro
   // $scope.filtro.Nome = ""
   // $scope.filtro.Endereco = ""
   // $scope.filtro.Categoria = ""
@@ -64,9 +65,12 @@ angular.module('app').controller('HomeController', function ($scope, $sce, authS
         function (response) {
           $scope.estabelecimentos = response.data;
           console.log($scope.estabelecimentos)
+          $scope.mensagemErro = ""
           // $scope.$apply();
+        }, function(response){
+          $scope.mensagemErro = response.data.Message
         }
-      );
+      )
     }
   }
 

@@ -153,7 +153,7 @@ namespace FoodTime.WebApi.Controllers
 
         [HttpGet]
         [Route("listarMapa")]
-        public IHttpActionResult buscarTodosEstabelecimentosMapa()
+        public IHttpActionResult BuscarTodosEstabelecimentosMapa()
         {
             List<Estabelecimento> listaDeEstabelecimentos = context.Estabelecimentos.Include(x => x.Endereco).Include(x => x.Categorias).Include(x => x.Fotos).Take(5).ToList();
             if (listaDeEstabelecimentos.Count == 0)
@@ -219,6 +219,10 @@ namespace FoodTime.WebApi.Controllers
             foreach (Estabelecimento estabelecimento in estabs)
             {
                 estabsModel.Add(CriarEstabModel(estabelecimento));
+            }
+            if(estabsModel.Count == 0)
+            {
+                return BadRequest("Não foi encontrado nenhum estabelecimento.");
             }
 
             return Ok(estabsModel);
