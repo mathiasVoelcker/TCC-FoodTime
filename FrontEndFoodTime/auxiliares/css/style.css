@@ -138,10 +138,15 @@
 	font-weight: bold;
 }
 .top-content{
-	background-image: url('../imgs/fundo_09.jpg');
+	/*background-image: url('../imgs/fundo_09.jpg');
 	background-size: cover;
-	height: 100%;
+	/*position:absolute;*/
 
+	background: url(../imgs/fundo_09.jpg) fixed no-repeat;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
 #img_relogio{

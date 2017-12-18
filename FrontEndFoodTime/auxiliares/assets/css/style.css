@@ -82,7 +82,8 @@ img { max-width: 100%; }
 /***** Top content *****/
 
 .inner-bg {
-    padding: 100px 0 60px 0;
+	/*padding: 100px 0 60px 0;*/
+	padding: 20px 0 42px 0;
 }
 
 .top-content .text {
@@ -176,7 +177,7 @@ img { max-width: 100%; }
 
 @media (max-width: 767px) {
 	
-	.inner-bg { padding: 60px 0 110px 0; }
+	/*.inner-bg { padding: 60px 0 110px 0; }*/
 
 }
 

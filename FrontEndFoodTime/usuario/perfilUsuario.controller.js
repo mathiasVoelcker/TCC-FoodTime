@@ -51,5 +51,11 @@ angular.module('app')
   }
   $scope.buscarRecomendacoes()
 
+  $scope.formatarData = function (data) {
+    data = data.substring(0, 10)
+    var dataArray = data.split("-")
+    var retorno = dataArray[2] + "/" + dataArray[1] + "/" + dataArray[0]
+    return retorno
+  }
 
 });
