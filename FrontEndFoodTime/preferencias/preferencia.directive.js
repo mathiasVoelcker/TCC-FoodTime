@@ -24,7 +24,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
           function (response) {
             $scope.preferencias = response.data;
           });
-        } else {  
+        } else {
           preferenciasService.listarPreferenciasMenosAsDoUsuario(idUsuario).then(
             function (response) {
               $scope.preferencias = response.data;
@@ -80,7 +80,7 @@ angular.module('app').directive('preferenciasDiretiva', function () {
             console.log(idPreferencias)
             promise = usuarioService.adicionarPreferencias(idPreferencias, idUsuario).then(
               function(response){
-                toastr.success('Preferencias atualizadas!')
+                toastr.success('Preferências atualizadas!')
                 redirecionar(promise);
               }
             )
