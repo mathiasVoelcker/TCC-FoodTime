@@ -10,8 +10,8 @@ angular.module('app').directive('recomendacoesDiretiva', function () {
     templateUrl: '../usuario/recomendacoes.directive.html',
     controller: function ($scope, authService, $rootScope, preferenciasService, usuarioService) {
 
-      $scope.carregouRecomendacao = false
-      $scope.usuario = authService.getUsuario(); 
+      // $scope.carregouRecomendacao = false
+      $scope.usuario = authService.getUsuario();
 
       $scope.excluirRecomendacao = function (idEstabelecimento) {
         $scope.carregouRecomendacao = false
@@ -19,6 +19,7 @@ angular.module('app').directive('recomendacoesDiretiva', function () {
           function (response) {
             console.log(response)
             $scope.buscarRecomendacoes()
+            $scope.carregouRecomendacao = true
           }
         )
       }

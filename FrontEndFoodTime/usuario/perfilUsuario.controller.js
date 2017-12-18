@@ -15,8 +15,7 @@ angular.module('app')
       console.log(response.data)
       $scope.avaliacoes = response.data
       $scope.$apply()
-    },
-
+    }
   )
 
   $scope.retornarPreferencias = function(){
@@ -52,13 +51,5 @@ angular.module('app')
   }
   $scope.buscarRecomendacoes()
 
-  $scope.excluirRecomendacao = function (idEstabelecimento) {
-    $scope.carregouRecomendacao = false
-    usuarioService.excluirRecomendacao(idEstabelecimento, $scope.usuario.Id).then(
-      function (response) {
-        console.log(response)
-        buscarRecomendacoes()
-      }
-    )
-  }
+
 });
