@@ -1,4 +1,4 @@
-angular.module('app', ['ngRoute', 'auth', 'toastr']);
+angular.module('app', ['ngRoute', 'auth', 'toastr', 'ngMask']);
 
 // Configurações utilizadas pelo módulo de autenticação (authService)
 angular.module('app').constant('authConfig', {
