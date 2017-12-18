@@ -6,7 +6,7 @@ angular.module('app')
   // console.log($scope.usuario.DataNascimento)
   // console.log($scope.usuario)
   $scope.MensagemErro = ''
-  buscarRecomendacoes()
+
   $scope.carregouRecomendacao = false
 
 
@@ -30,7 +30,7 @@ angular.module('app')
   // //teste de buscar o primeiro
   // buscarUsuario(1);
 
-  function buscarRecomendacoes() {
+  $scope.buscarRecomendacoes = function() {
     navigator.geolocation.getCurrentPosition(function (position) {
       var pos = {
         lat: position.coords.latitude,
@@ -50,6 +50,7 @@ angular.module('app')
       )
     })
   }
+  $scope.buscarRecomendacoes()
 
   $scope.excluirRecomendacao = function (idEstabelecimento) {
     $scope.carregouRecomendacao = false
